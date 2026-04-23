@@ -15,6 +15,37 @@ npm run preview   # preview the production build
 
 > Requirements: Node.js 20+
 
+## Deployment (AKS + Helm)
+
+This repo includes:
+
+- Docker image build for the Vite app via `Dockerfile`
+- Helm chart in `helm/`
+- GitHub Actions workflow in `.github/workflows/deploy-dev.yml`
+
+The workflow deploys to:
+
+- Host: `website.app.ai-harness.com`
+- Helm release: `ai-harness-website-temp`
+- Namespace: `websites`
+
+### Required GitHub secrets
+
+Configure these repository secrets:
+
+- `AZURE_CREDENTIALS`
+- `ACR_LOGIN_SERVER`
+- `ACR_USERNAME`
+- `ACR_PASSWORD`
+- `AZURE_AKS_RESOURCE_GROUP`
+- `AZURE_AKS_CLUSTER_NAME`
+
+On push to `master` (or manual dispatch), the workflow:
+
+1. Builds and pushes a new image to ACR
+2. Computes a date-based tag (`dd.mm.yyyy.N`)
+3. Runs `helm upgrade --install` with ingress for `website.app.ai-harness.com`
+
 ## Pages
 
 | Route | Description |

@@ -1,0 +1,8 @@
+1. Get the application URL by running these commands:
+{{- if .Values.ingress.enabled }}
+  export APP_HOST=$(kubectl get ingress {{ include "ai-harness-website.fullname" . }} -n {{ .Release.Namespace }} -o jsonpath="{.spec.rules[0].host}")
+  echo "https://$APP_HOST"
+{{- else }}
+  kubectl port-forward svc/{{ include "ai-harness-website.fullname" . }} 8080:{{ .Values.service.port }} -n {{ .Release.Namespace }}
+  echo "Visit http://127.0.0.1:8080"
+{{- end }}

@@ -1,0 +1,30 @@
+nameOverride: ""
+fullnameOverride: ""
+
+replicaCount: 1
+
+image:
+  repository: ai-harness-website
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: traefik
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cert-issuer
+  hosts:
+    - host: website.app.ai-harness.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: website-app-ai-harness-com-tls
+      hosts:
+        - website.app.ai-harness.com
+
+resources: {}
