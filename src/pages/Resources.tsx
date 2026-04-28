@@ -24,11 +24,11 @@ function Hero() {
       <Container className="relative">
         <div className="mx-auto max-w-3xl text-center">
           <Eyebrow>Resources</Eyebrow>
-          <h1 className="mt-6 text-[44px] font-semibold leading-[1.04] tracking-[-0.02em] text-ink-900 sm:text-[60px]">
+          <h1 className="mt-6 text-[36px] font-semibold leading-[1.04] tracking-[-0.02em] text-ink-900 sm:text-[60px]">
             The playbook for <span className="text-gradient">AI-era operations.</span>
           </h1>
           <p className="mt-5 text-lg text-ink-600 sm:text-xl">
-            Research, practical guides, customer stories, and product updates — made for the leaders rolling
+            Research, practical guides, customer stories, and product updates, made for the leaders rolling
             AI out to the business.
           </p>
         </div>
@@ -40,24 +40,9 @@ function Hero() {
 function Featured() {
   const items = [
     {
-      tag: "Guide",
-      title: "The CFO's guide to AI unit economics",
-      summary: "How to budget, allocate, and measure ROI when AI agents become line items in your P&L.",
-      icon: <FileText className="h-4 w-4" />,
-    },
-    {
-      tag: "Research",
-      title: "2026 State of the AI Workforce",
-      summary: "500+ enterprise leaders on deployment patterns, governance, and the workflows AI is owning.",
-      icon: <Newspaper className="h-4 w-4" />,
-    },
-    {
-      tag: "Customer Story",
-      title: "How Helix Financial scaled AI across KYC",
-      summary: "A step-by-step look at the rollout that cut case processing time by 4.2× in 90 days.",
-      icon: <Sparkles className="h-4 w-4" />,
-    },
-  ];
+      tag: "Guide", title: "The CFO's guide to AI unit economics", summary: "How to budget, allocate, and measure ROI when AI agents become line items in your P&L.", icon: <FileText className="h-4 w-4" />, }, {
+      tag: "Research", title: "2026 State of the AI Workforce", summary: "500+ enterprise leaders on deployment patterns, governance, and the workflows AI is owning.", icon: <Newspaper className="h-4 w-4" />, }, {
+      tag: "Customer Story", title: "How Helix Financial scaled AI across KYC", summary: "A step-by-step look at the rollout that cut case processing time by 4.2× in 90 days.", icon: <Sparkles className="h-4 w-4" />, }, ];
   return (
     <section id="blog" className="py-16">
       <Container>
@@ -99,61 +84,22 @@ function Featured() {
 function Library() {
   const categories = [
     {
-      title: "Documentation",
-      icon: <BookOpen className="h-5 w-5" />,
-      items: ["Quickstart guide", "Agent framework reference", "Workflow modeling", "Security & governance controls", "REST & Webhooks API"],
-      id: "docs",
-    },
-    {
-      title: "Guides & Playbooks",
-      icon: <FileText className="h-5 w-5" />,
-      items: [
-        "Rolling out AI in financial services",
-        "Building an internal agent catalog",
-        "Cost & budget governance patterns",
-        "Human-in-the-loop design patterns",
-      ],
-    },
-    {
-      title: "Customer Stories",
-      icon: <Sparkles className="h-5 w-5" />,
-      items: [
-        "Helix Financial — KYC transformation",
-        "Meridian Health — clinical ops at scale",
-        "Northforge — engineering velocity",
-        "Vantage BPO — contact center uplift",
-      ],
-      id: "stories",
-    },
-    {
-      title: "Webinars & Video",
-      icon: <Play className="h-5 w-5" />,
-      items: [
-        "Executive intro to AI-Harness (18 min)",
-        "Governance deep-dive for CISOs",
-        "Designing an AI-native operating model",
-        "Partner & integration showcase",
-      ],
-    },
-    {
-      title: "Changelog",
-      icon: <Newspaper className="h-5 w-5" />,
-      items: [
-        "Multi-region data residency",
-        "Approval workflow templates",
-        "Skill marketplace (beta)",
-        "Budget guardrails 2.0",
-      ],
-      id: "changelog",
-    },
-  ];
+      title: "Documentation", icon: <BookOpen className="h-5 w-5" />, items: ["Quickstart guide", "Agent framework reference", "Workflow modeling", "Security & governance controls", "REST & Webhooks API"], id: "docs", }, {
+      title: "Guides & Playbooks", icon: <FileText className="h-5 w-5" />, items: [
+        "Rolling out AI in financial services", "Building an internal agent catalog", "Cost & budget governance patterns", "Human-in-the-loop design patterns", ], }, {
+      title: "Customer Stories", icon: <Sparkles className="h-5 w-5" />, items: [
+        "Helix Financial, KYC transformation", "Meridian Health, clinical ops at scale", "Northforge, engineering velocity", "Vantage BPO, contact center uplift", ], id: "stories", }, {
+      title: "Webinars & Video", icon: <Play className="h-5 w-5" />, items: [
+        "Executive intro to AI-Harness (18 min)", "Governance deep-dive for CISOs", "Designing an AI-native operating model", "Partner & integration showcase", ], }, {
+      title: "Changelog", icon: <Newspaper className="h-5 w-5" />, items: [
+        "Multi-region data residency", "Approval workflow templates", "Skill marketplace (beta)", "Budget guardrails 2.0", ], id: "changelog", }, ];
 
   return (
     <section className="py-20">
       <Container>
         <SectionHeading
           eyebrow="The library"
-          title={<>Everything you need — <span className="text-gradient">in one place.</span></>}
+          title={<>Everything you need, <span className="text-gradient">in one place.</span></>}
         />
         <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {categories.map((c) => (
@@ -196,7 +142,7 @@ function Newsletter() {
               <Eyebrow>Newsletter</Eyebrow>
               <h3 className="mt-4 text-3xl font-semibold tracking-tight text-ink-900">The AI Workforce Digest</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-ink-600">
-                A monthly read on how modern operations teams are rolling out AI — benchmarks, patterns, and
+                A monthly read on how modern operations teams are rolling out AI, benchmarks, patterns, and
                 what's working (and what isn't).
               </p>
             </div>

@@ -9,45 +9,12 @@ type FooterColumn = {
 
 const columns: FooterColumn[] = [
   {
-    title: "Platform",
-    links: [
-      { label: "Overview", to: "/platform" },
-      { label: "AI Agents", to: "/platform#agents" },
-      { label: "Workflow Engine", to: "/platform#workflows" },
-      { label: "Governance", to: "/security" },
-      { label: "Integrations", to: "/platform#integrations" },
-    ],
-  },
-  {
-    title: "Solutions",
-    links: [
-      { label: "By Use Case", to: "/solutions" },
-      { label: "By Industry", to: "/industries" },
-      { label: "For Operations", to: "/solutions#operations" },
-      { label: "For Engineering", to: "/solutions#engineering" },
-      { label: "For Customer Ops", to: "/solutions#customer" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Resource Library", to: "/resources" },
-      { label: "Documentation", to: "/resources#docs" },
-      { label: "Blog", to: "/resources#blog" },
-      { label: "Customer Stories", to: "/resources#stories" },
-      { label: "Changelog", to: "/resources#changelog" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About", to: "/about" },
-      { label: "Careers", to: "/about#careers" },
-      { label: "Contact", to: "/contact" },
-      { label: "Security & Trust", to: "/security" },
-      { label: "Pricing", to: "/pricing" },
-    ],
-  },
+    title: "Platform", links: [
+      { label: "Overview", to: "/platform" }, { label: "AI Agents", to: "/platform#agents" }, { label: "Workflow Engine", to: "/platform#workflows" }, { label: "Governance", to: "/security" }, { label: "Integrations", to: "/platform#integrations" }, ], }, {
+    title: "Solutions", links: [
+      { label: "By Use Case", to: "/solutions" }, { label: "By Industry", to: "/industries" }, { label: "For Operations", to: "/solutions#operations" }, { label: "For Engineering", to: "/solutions#engineering" }, { label: "For Customer Ops", to: "/solutions#customer" }, ], }, {
+    title: "Company", links: [
+      { label: "About", to: "/about" }, { label: "Careers", to: "/about#careers" }, { label: "Contact", to: "/contact" }, { label: "Security & Trust", to: "/security" }, { label: "Pricing", to: "/pricing" }, ], },
 ];
 
 export default function Footer() {
@@ -58,12 +25,12 @@ export default function Footer() {
       <div aria-hidden className="pointer-events-none absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-indigo-500/15 blur-3xl" />
 
       <Container className="relative py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(4,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div>
             <Logo dark />
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-ink-400">
               The enterprise control plane for a unified human + AI workforce. Deploy, govern, and scale
-              AI agents across every workflow — with full transparency.
+              AI agents across every workflow, with full transparency.
             </p>
             <div className="mt-7 flex flex-wrap gap-2">
               <Link
@@ -100,9 +67,9 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} AI-Harness, Inc. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <Link to="/security" className="hover:text-white">Security</Link>
-            <Link to="/resources" className="hover:text-white">Privacy</Link>
-            <Link to="/resources" className="hover:text-white">Terms</Link>
-            <Link to="/resources" className="hover:text-white">DPA</Link>
+            <Link to="/contact" className="hover:text-white">Privacy</Link>
+            <Link to="/contact" className="hover:text-white">Terms</Link>
+            <Link to="/contact" className="hover:text-white">DPA</Link>
             <Link to="/contact" className="hover:text-white">Contact</Link>
           </div>
         </div>

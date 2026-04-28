@@ -17,15 +17,12 @@ export default function RequestDemo() {
               See AI-Harness <span className="text-gradient">live.</span>
             </h1>
             <p className="mt-5 text-[16.5px] leading-relaxed text-ink-600">
-              In 30 minutes, we'll walk through how AI-Harness would map to your organization — with concrete
+              In 30 minutes, we'll walk through how AI-Harness would map to your organization, with concrete
               examples from teams already operating this way.
             </p>
             <ul className="mt-10 space-y-5">
               {[
-                { icon: <Calendar className="h-5 w-5" />, title: "30-minute tailored walkthrough", desc: "A working session, not a pitch. Bring your team and your questions." },
-                { icon: <Users className="h-5 w-5" />, title: "Mapped to your org", desc: "We'll model the first workflow against your structure and compliance constraints." },
-                { icon: <Sparkles className="h-5 w-5" />, title: "Clear next steps", desc: "Leave with a draft rollout plan and the ROI framing for your leadership team." },
-              ].map((b) => (
+                { icon: <Calendar className="h-5 w-5" />, title: "30-minute tailored walkthrough", desc: "A working session, not a pitch. Bring your team and your questions." }, { icon: <Users className="h-5 w-5" />, title: "Mapped to your org", desc: "We'll model the first workflow against your structure and compliance constraints." }, { icon: <Sparkles className="h-5 w-5" />, title: "Clear next steps", desc: "Leave with a draft rollout plan and the ROI framing for your leadership team." }, ].map((b) => (
                 <li key={b.title} className="flex gap-4">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-200/60">
                     {b.icon}
@@ -40,7 +37,7 @@ export default function RequestDemo() {
             <div className="mt-10 rounded-2xl border border-ink-200 bg-white p-5">
               <p className="text-[13.5px] text-ink-700">
                 <span className="font-semibold text-ink-900">Prefer self-serve?</span> Start a free workspace in
-                minutes — no credit card required.
+                minutes, no credit card required.
               </p>
               <div className="mt-3">
                 <Button to="/signup" variant="secondary" size="sm">
@@ -109,10 +106,7 @@ export default function RequestDemo() {
 }
 
 function Input({
-  label,
-  name,
-  type = "text",
-  required,
+  label, name, type = "text", required,
 }: {
   label: string;
   name: string;
@@ -150,10 +144,7 @@ function Select({ label, name, options }: { label: string; name: string; options
 }
 
 function Textarea({
-  label,
-  name,
-  rows = 3,
-  placeholder,
+  label, name, rows = 3, placeholder,
 }: {
   label: string;
   name: string;

@@ -9,7 +9,6 @@ import UseCases from "./pages/UseCases";
 import Pricing from "./pages/Pricing";
 import Security from "./pages/Security";
 import About from "./pages/About";
-import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -38,7 +37,7 @@ export default function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/security" element={<Security />} />
           <Route path="/about" element={<About />} />
-          <Route path="/resources" element={<Resources />} />
+          <Route path="/resources" element={<NotFound />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />

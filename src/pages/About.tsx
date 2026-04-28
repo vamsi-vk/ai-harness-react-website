@@ -15,7 +15,7 @@ export default function About() {
       <Careers />
       <CTASection
         title="Ready to run the AI-era operating model?"
-        description="Join the teams shaping how modern organizations work — humans and AI, together."
+        description="Join the teams shaping how modern organizations work, humans and AI, together."
       />
     </>
   );
@@ -28,12 +28,12 @@ function Hero() {
       <Container className="relative">
         <div className="mx-auto max-w-3xl text-center">
           <Eyebrow>Our Story</Eyebrow>
-          <h1 className="mt-6 text-[44px] font-semibold leading-[1.04] tracking-[-0.02em] text-ink-900 sm:text-[60px]">
+          <h1 className="mt-6 text-[36px] font-semibold leading-[1.04] tracking-[-0.02em] text-ink-900 sm:text-[60px]">
             We're building the operating system for <span className="text-gradient">the AI-era enterprise.</span>
           </h1>
           <p className="mt-5 text-lg text-ink-600 sm:text-xl">
             Every major technology wave has been defined by how organizations put it to work. We believe AI
-            will be no different — and the companies that figure out how to run a unified human + AI workforce
+            will be no different, and the companies that figure out how to run a unified human + AI workforce
             will define the next decade.
           </p>
         </div>
@@ -45,30 +45,14 @@ function Hero() {
 function Beliefs() {
   const beliefs = [
     {
-      icon: <Compass className="h-5 w-5" />,
-      title: "AI is a workforce, not a toolbox.",
-      description:
-        "Treat AI agents as accountable teammates — with roles, reports, and responsibilities — and you change what's possible.",
-    },
-    {
-      icon: <Users2 className="h-5 w-5" />,
-      title: "Humans stay in the loop that matters.",
-      description:
-        "The best results come when humans do what humans do best — judgment, relationships, strategy — and AI handles the rest.",
-    },
-    {
-      icon: <Sparkles className="h-5 w-5" />,
-      title: "Governance unlocks ambition.",
-      description:
-        "The organizations that scale AI fastest are the ones with the strongest controls — not the weakest.",
-    },
-    {
-      icon: <Heart className="h-5 w-5" />,
-      title: "Transparency is the product.",
-      description:
-        "Every decision traceable. Every outcome explainable. No black boxes in the workflows that matter.",
-    },
-  ];
+      icon: <Compass className="h-5 w-5" />, title: "AI is a workforce, not a toolbox.", description:
+        "Treat AI agents as accountable teammates, with roles, reports, and responsibilities, and you change what's possible.", }, {
+      icon: <Users2 className="h-5 w-5" />, title: "Humans stay in the loop that matters.", description:
+        "The best results come when humans do what humans do best, judgment, relationships, strategy, and AI handles the rest.", }, {
+      icon: <Sparkles className="h-5 w-5" />, title: "Governance unlocks ambition.", description:
+        "The organizations that scale AI fastest are the ones with the strongest controls, not the weakest.", }, {
+      icon: <Heart className="h-5 w-5" />, title: "Transparency is the product.", description:
+        "Every decision traceable. Every outcome explainable. No black boxes in the workflows that matter.", }, ];
 
   return (
     <section id="careers" className="py-20 sm:py-28">
@@ -95,11 +79,7 @@ function Beliefs() {
 
 function Leadership() {
   const team = [
-    { name: "Alex Rivera", role: "Co-founder & CEO", bio: "Former VP of Platform at a Fortune 100 fintech." },
-    { name: "Priya Shah", role: "Co-founder & CTO", bio: "Distributed systems engineer. Ex-ML infra at a leading cloud." },
-    { name: "Marcus Chen", role: "Chief Product Officer", bio: "Led enterprise workflow products for 10+ years." },
-    { name: "Sofia Lindqvist", role: "VP of Security", bio: "Built governance programs at top-tier SaaS companies." },
-  ];
+    { name: "Alex Rivera", role: "Co-founder & CEO", bio: "Former VP of Platform at a Fortune 100 fintech." }, { name: "Priya Shah", role: "Co-founder & CTO", bio: "Distributed systems engineer. Ex-ML infra at a leading cloud." }, { name: "Marcus Chen", role: "Chief Product Officer", bio: "Led enterprise workflow products for 10+ years." }, { name: "Sofia Lindqvist", role: "VP of Security", bio: "Built governance programs at top-tier SaaS companies." }, ];
 
   return (
     <section className="py-20 sm:py-28 bg-ink-50/70">
@@ -154,8 +134,7 @@ function Careers() {
                 Come build the platform that <span className="text-gradient">changes how work gets done.</span>
               </h2>
               <p className="mt-5 text-[16.5px] leading-relaxed text-ink-700">
-                We're hiring across engineering, product, design, and go-to-market. Remote-friendly across the US,
-                EU, and UK.
+                We're hiring across engineering, product, design, and go-to-market. Remote-friendly across the US, EU, and UK.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button to="/contact">
@@ -176,8 +155,7 @@ function Careers() {
                   >
                     {perk}
                   </div>
-                ),
-              )}
+                ), )}
             </div>
           </div>
         </div>

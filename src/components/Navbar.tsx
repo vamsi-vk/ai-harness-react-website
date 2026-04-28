@@ -6,12 +6,7 @@ import Button from "./Button";
 import { cn } from "../lib/cn";
 
 const navItems = [
-  { label: "Platform", to: "/platform" },
-  { label: "Solutions", to: "/solutions" },
-  { label: "Industries", to: "/industries" },
-  { label: "Security", to: "/security" },
-  { label: "Pricing", to: "/pricing" },
-  { label: "Resources", to: "/resources" },
+  { label: "Platform", to: "/platform" }, { label: "Solutions", to: "/solutions" }, { label: "Industries", to: "/industries" }, { label: "Security", to: "/security" }, { label: "Pricing", to: "/pricing" },
 ];
 
 export default function Navbar() {
@@ -33,11 +28,9 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        scrolled
+        "sticky top-0 z-50 w-full transition-all duration-300", scrolled
           ? "border-b border-ink-200/70 bg-white/80 backdrop-blur-xl"
-          : "border-b border-transparent bg-white/0",
-      )}
+          : "border-b border-transparent bg-white/0", )}
     >
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6 sm:px-8">
         <div className="flex items-center gap-10">
@@ -49,9 +42,7 @@ export default function Navbar() {
                 to={item.to}
                 className={({ isActive }) =>
                   cn(
-                    "rounded-full px-3.5 py-2 text-[14px] font-medium transition-colors",
-                    isActive ? "text-ink-900 bg-ink-100" : "text-ink-600 hover:text-ink-900 hover:bg-ink-50",
-                  )
+                    "rounded-full px-3.5 py-2 text-[14px] font-medium transition-colors", isActive ? "text-ink-900 bg-ink-100" : "text-ink-600 hover:text-ink-900 hover:bg-ink-50", )
                 }
               >
                 {item.label}
@@ -60,12 +51,6 @@ export default function Navbar() {
           </nav>
         </div>
         <div className="hidden items-center gap-2 lg:flex">
-          <Link
-            to="/login"
-            className="rounded-full px-3.5 py-2 text-[14px] font-medium text-ink-600 hover:bg-ink-50 hover:text-ink-900"
-          >
-            Sign in
-          </Link>
           <Button to="/demo" variant="secondary" size="sm">
             Book a demo
           </Button>
@@ -94,16 +79,13 @@ export default function Navbar() {
                   to={item.to}
                   className={({ isActive }) =>
                     cn(
-                      "rounded-lg px-3 py-3 text-[15px] font-medium",
-                      isActive ? "bg-ink-100 text-ink-900" : "text-ink-700 hover:bg-ink-50",
-                    )
+                      "rounded-lg px-3 py-3 text-[15px] font-medium", isActive ? "bg-ink-100 text-ink-900" : "text-ink-700 hover:bg-ink-50", )
                   }
                 >
                   {item.label}
                 </NavLink>
               ))}
               <div className="mt-3 flex flex-col gap-2 border-t border-ink-200 pt-4">
-                <Button to="/login" variant="ghost" size="md">Sign in</Button>
                 <Button to="/demo" variant="secondary" size="md">Book a demo</Button>
                 <Button to="/signup" variant="primary" size="md">Start free</Button>
               </div>

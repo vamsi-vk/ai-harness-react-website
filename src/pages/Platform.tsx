@@ -1,21 +1,5 @@
 import {
-  Bot,
-  Workflow,
-  Brain,
-  ShieldCheck,
-  Layers,
-  Sparkles,
-  Gauge,
-  Users,
-  Puzzle,
-  Activity,
-  Target,
-  Network,
-  ArrowRight,
-  CheckCircle2,
-  Zap,
-  Database,
-  Cog,
+  Bot, Workflow, Brain, ShieldCheck, Layers, Sparkles, Gauge, Users, Puzzle, Activity, Target, Network, ArrowRight, CheckCircle2, Zap, Database, Cog,
 } from "lucide-react";
 import Container from "../components/Container";
 import Button from "../components/Button";
@@ -49,13 +33,13 @@ function PlatformHero() {
       <Container className="relative">
         <div className="mx-auto max-w-3xl text-center">
           <Eyebrow>The Platform</Eyebrow>
-          <h1 className="mt-6 text-[44px] font-semibold leading-[1.04] tracking-[-0.02em] text-ink-900 sm:text-[60px]">
+          <h1 className="mt-6 text-[36px] font-semibold leading-[1.04] tracking-[-0.02em] text-ink-900 sm:text-[60px]">
             The control plane for your{" "}
             <span className="text-gradient">AI workforce.</span>
           </h1>
           <p className="mt-5 text-lg text-ink-600 sm:text-xl">
             Everything you need to deploy, govern, and scale AI inside the way your organization
-            already works — from agent creation to board-level oversight.
+            already works, from agent creation to board-level oversight.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button to="/signup" size="lg">
@@ -77,11 +61,7 @@ function PlatformHero() {
 
 function CapabilitiesOverview() {
   const tabs = [
-    { icon: <Bot className="h-4 w-4" />, label: "Agents", id: "agents" },
-    { icon: <Workflow className="h-4 w-4" />, label: "Workflows", id: "workflows" },
-    { icon: <ShieldCheck className="h-4 w-4" />, label: "Governance", id: "governance" },
-    { icon: <Puzzle className="h-4 w-4" />, label: "Integrations", id: "integrations" },
-  ];
+    { icon: <Bot className="h-4 w-4" />, label: "Agents", id: "agents" }, { icon: <Workflow className="h-4 w-4" />, label: "Workflows", id: "workflows" }, { icon: <ShieldCheck className="h-4 w-4" />, label: "Governance", id: "governance" }, { icon: <Puzzle className="h-4 w-4" />, label: "Integrations", id: "integrations" }, ];
 
   return (
     <section className="py-20">
@@ -106,42 +86,18 @@ function CapabilitiesOverview() {
 function AgentsSection() {
   const capabilities = [
     {
-      icon: <Users className="h-5 w-5" />,
-      title: "Role-based agents",
-      description:
-        "Model agents after real job functions — SMEs, analysts, reviewers, executors. Each agent has clear scope and accountability.",
-    },
-    {
-      icon: <Sparkles className="h-5 w-5" />,
-      title: "Skill & tool injection",
-      description:
-        "Equip agents with custom skills, tools, and API integrations. Capabilities compose and evolve without redeploying.",
-    },
-    {
-      icon: <Brain className="h-5 w-5" />,
-      title: "Knowledge & data access",
-      description:
-        "Connect secure knowledge bases, document stores, and databases — with row-level permissions that mirror your organization.",
-    },
-    {
-      icon: <Cog className="h-5 w-5" />,
-      title: "Lifecycle management",
-      description:
-        "Version, review, promote, and retire agents with confidence. Roll back bad changes instantly — no redeploy required.",
-    },
-    {
-      icon: <Network className="h-5 w-5" />,
-      title: "Org chart & reporting lines",
-      description:
-        "Agents have managers, peers, and reports — just like humans. Delegation, escalation, and accountability flow naturally.",
-    },
-    {
-      icon: <Zap className="h-5 w-5" />,
-      title: "Bring your own runtime",
-      description:
-        "Use the models and agent runtimes your organization has already approved. AI-Harness is the control plane — not another framework.",
-    },
-  ];
+      icon: <Users className="h-5 w-5" />, title: "Role-based agents", description:
+        "Model agents after real job functions, SMEs, analysts, reviewers, executors. Each agent has clear scope and accountability.", }, {
+      icon: <Sparkles className="h-5 w-5" />, title: "Skill & tool injection", description:
+        "Equip agents with custom skills, tools, and API integrations. Capabilities compose and evolve without redeploying.", }, {
+      icon: <Brain className="h-5 w-5" />, title: "Knowledge & data access", description:
+        "Connect secure knowledge bases, document stores, and databases, with row-level permissions that mirror your organization.", }, {
+      icon: <Cog className="h-5 w-5" />, title: "Lifecycle management", description:
+        "Version, review, promote, and retire agents with confidence. Roll back bad changes instantly, no redeploy required.", }, {
+      icon: <Network className="h-5 w-5" />, title: "Org chart & reporting lines", description:
+        "Agents have managers, peers, and reports, just like humans. Delegation, escalation, and accountability flow naturally.", }, {
+      icon: <Zap className="h-5 w-5" />, title: "Bring your own runtime", description:
+        "Use the models and agent runtimes your organization has already approved. AI-Harness is the control plane, not another framework.", }, ];
 
   return (
     <section id="agents" className="scroll-mt-24 py-20 sm:py-28">
@@ -171,15 +127,11 @@ function WorkflowsSection() {
               align="left"
               eyebrow="Workflow & Project Engine"
               title={<>Structured work, <span className="text-gradient">fluid execution.</span></>}
-              description="Define the stages and rules that matter. Let tasks flow automatically to the best-fit teammate — human or AI."
+              description="Define the stages and rules that matter. Let tasks flow automatically to the best-fit teammate, human or AI."
             />
             <ul className="mt-8 space-y-4">
               {[
-                { t: "Configurable project stages", d: "Design custom lifecycles for each type of work — from intake to delivery." },
-                { t: "Intelligent task routing", d: "Rule-based and skill-aware assignment across humans, AI, and hybrid teams." },
-                { t: "Goal alignment", d: "Every task traces back to a parent initiative so priorities never drift." },
-                { t: "Automation & heartbeats", d: "Schedule recurring work, trigger from events, or run agents continuously." },
-              ].map((i) => (
+                { t: "Configurable project stages", d: "Design custom lifecycles for each type of work, from intake to delivery." }, { t: "Intelligent task routing", d: "Rule-based and skill-aware assignment across humans, AI, and hybrid teams." }, { t: "Goal alignment", d: "Every task traces back to a parent initiative so priorities never drift." }, { t: "Automation & heartbeats", d: "Schedule recurring work, trigger from events, or run agents continuously." }, ].map((i) => (
                 <li key={i.t} className="flex gap-4">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
                   <div>
@@ -201,11 +153,7 @@ function WorkflowsSection() {
 
 function GovernanceSection() {
   const items = [
-    { icon: <Activity className="h-5 w-5" />, title: "Full action telemetry", description: "Every prompt, tool call, and agent decision is captured and searchable." },
-    { icon: <ShieldCheck className="h-5 w-5" />, title: "Approval gates", description: "Require human review before high-impact or high-spend actions are executed." },
-    { icon: <Target className="h-5 w-5" />, title: "Budget & cost guardrails", description: "Set spend ceilings per agent, team, or project. Agents halt before they overrun." },
-    { icon: <Layers className="h-5 w-5" />, title: "Role-based access", description: "Granular permissions that mirror your org, not a flat admin/user toggle." },
-  ];
+    { icon: <Activity className="h-5 w-5" />, title: "Full action telemetry", description: "Every prompt, tool call, and agent decision is captured and searchable." }, { icon: <ShieldCheck className="h-5 w-5" />, title: "Approval gates", description: "Require human review before high-impact or high-spend actions are executed." }, { icon: <Target className="h-5 w-5" />, title: "Budget & cost guardrails", description: "Set spend ceilings per agent, team, or project. Agents halt before they overrun." }, { icon: <Layers className="h-5 w-5" />, title: "Role-based access", description: "Granular permissions that mirror your org, not a flat admin/user toggle." }, ];
 
   return (
     <section id="governance" className="scroll-mt-24 py-20 sm:py-28">
@@ -228,30 +176,12 @@ function GovernanceSection() {
 function IntegrationsSection() {
   const categories = [
     {
-      title: "Communication",
-      tools: ["Slack", "Microsoft Teams", "Google Chat", "Email"],
-    },
-    {
-      title: "Work & Tickets",
-      tools: ["Jira", "Linear", "Asana", "ServiceNow", "Zendesk"],
-    },
-    {
-      title: "Data & Docs",
-      tools: ["Snowflake", "Databricks", "Google Drive", "SharePoint", "Notion"],
-    },
-    {
-      title: "CRM & Sales",
-      tools: ["Salesforce", "HubSpot", "Dynamics 365"],
-    },
-    {
-      title: "Developer",
-      tools: ["GitHub", "GitLab", "Bitbucket", "PagerDuty"],
-    },
-    {
-      title: "Identity",
-      tools: ["Okta", "Azure AD", "Google Workspace SSO"],
-    },
-  ];
+      title: "Communication", tools: ["Slack", "Microsoft Teams", "Google Chat", "Email"], }, {
+      title: "Work & Tickets", tools: ["Jira", "Linear", "Asana", "ServiceNow", "Zendesk"], }, {
+      title: "Data & Docs", tools: ["Snowflake", "Databricks", "Google Drive", "SharePoint", "Notion"], }, {
+      title: "CRM & Sales", tools: ["Salesforce", "HubSpot", "Dynamics 365"], }, {
+      title: "Developer", tools: ["GitHub", "GitLab", "Bitbucket", "PagerDuty"], }, {
+      title: "Identity", tools: ["Okta", "Azure AD", "Google Workspace SSO"], }, ];
 
   return (
     <section id="integrations" className="scroll-mt-24 bg-ink-50/70 py-20 sm:py-28">
@@ -283,30 +213,10 @@ function IntegrationsSection() {
 function StackDiagram() {
   const layers = [
     {
-      tone: "dark",
-      label: "Governance Layer",
-      description: "Audit, approvals, RBAC, policy, budgets, reporting",
-      icons: [<ShieldCheck key="s" className="h-4 w-4" />, <Activity key="a" className="h-4 w-4" />, <Gauge key="g" className="h-4 w-4" />],
-    },
-    {
-      tone: "light",
-      label: "Workflow & Collaboration",
-      description: "Projects, tasks, routing, context, comments, approvals",
-      icons: [<Workflow key="w" className="h-4 w-4" />, <Users key="u" className="h-4 w-4" />, <Target key="t" className="h-4 w-4" />],
-    },
-    {
-      tone: "light",
-      label: "Agent Framework",
-      description: "Agent creation, skills, tools, lifecycle, org chart",
-      icons: [<Bot key="b" className="h-4 w-4" />, <Sparkles key="sp" className="h-4 w-4" />, <Cog key="c" className="h-4 w-4" />],
-    },
-    {
-      tone: "light",
-      label: "Infrastructure & Integrations",
-      description: "Your models, data, identity, and systems of record",
-      icons: [<Database key="d" className="h-4 w-4" />, <Puzzle key="p" className="h-4 w-4" />, <Network key="n" className="h-4 w-4" />],
-    },
-  ];
+      tone: "dark", label: "Governance Layer", description: "Audit, approvals, RBAC, policy, budgets, reporting", icons: [<ShieldCheck key="s" className="h-4 w-4" />, <Activity key="a" className="h-4 w-4" />, <Gauge key="g" className="h-4 w-4" />], }, {
+      tone: "light", label: "Workflow & Collaboration", description: "Projects, tasks, routing, context, comments, approvals", icons: [<Workflow key="w" className="h-4 w-4" />, <Users key="u" className="h-4 w-4" />, <Target key="t" className="h-4 w-4" />], }, {
+      tone: "light", label: "Agent Framework", description: "Agent creation, skills, tools, lifecycle, org chart", icons: [<Bot key="b" className="h-4 w-4" />, <Sparkles key="sp" className="h-4 w-4" />, <Cog key="c" className="h-4 w-4" />], }, {
+      tone: "light", label: "Infrastructure & Integrations", description: "Your models, data, identity, and systems of record", icons: [<Database key="d" className="h-4 w-4" />, <Puzzle key="p" className="h-4 w-4" />, <Network key="n" className="h-4 w-4" />], }, ];
 
   return (
     <section className="py-20 sm:py-28">

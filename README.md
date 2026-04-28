@@ -1,6 +1,6 @@
 # AI-Harness Marketing Website
 
-The public marketing and product website for **AI-Harness** — the enterprise platform for deploying, governing, and scaling a unified workforce of humans and AI agents.
+The public marketing and product website for **AI-Harness** ,  the enterprise platform for deploying, governing, and scaling a unified workforce of humans and AI agents.
 
 Built with React 19, Vite 6, TypeScript, TailwindCSS v4, React Router 7, and Lucide Icons.
 
@@ -50,7 +50,7 @@ On push to `master` (or manual dispatch), the workflow:
 
 | Route | Description |
 |---|---|
-| `/` | Home — hero, value props, platform pillars, how-it-works, industries preview, outcomes, testimonial, CTA |
+| `/` | Home ,  hero, value props, platform pillars, how-it-works, industries preview, outcomes, testimonial, CTA |
 | `/platform` | Deep-dive into the product: agents, workflows, governance, integrations, architecture |
 | `/solutions` | Use cases by workflow (Ops, Customer, Engineering, Marketing, Legal, Finance, HR, SecOps) + value by role |
 | `/industries` | Financial Services, Healthcare, Legal, Insurance, Professional Services, Tech/SaaS, Manufacturing, Retail, Public Sector, Media |
@@ -97,6 +97,6 @@ Every app-screenshot placeholder in the site points to `/screenshot-dashboard.pn
 
 ## Notes
 
-- The site has no external analytics or tracking baked in — add your provider of choice (e.g. Segment, PostHog, GA) in `main.tsx` or `App.tsx`.
-- Forms (Contact, Sign Up, Demo, Newsletter) are wired for UX but do not POST anywhere yet — connect them to your CRM / marketing platform.
+- The site has no external analytics or tracking baked in ,  add your provider of choice (e.g. Segment, PostHog, GA) in `main.tsx` or `App.tsx`.
+- Forms (Contact, Sign Up, Demo, Newsletter) are wired for UX but do not POST anywhere yet ,  connect them to your CRM / marketing platform.
 - All CTAs use SaaS-standard patterns: "Start free" (primary) and "Book a demo" (secondary), with "Talk to sales" on Enterprise.

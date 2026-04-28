@@ -12,12 +12,7 @@ type Props = {
 };
 
 export default function SectionHeading({
-  eyebrow,
-  title,
-  description,
-  align = "center",
-  tone = "light",
-  className,
+  eyebrow, title, description, align = "center", tone = "light", className,
 }: Props) {
   const isCenter = align === "center";
   const dark = tone === "dark";
@@ -30,9 +25,7 @@ export default function SectionHeading({
       )}
       <h2
         className={cn(
-          "text-[34px] sm:text-[44px] leading-[1.05] font-semibold tracking-[-0.02em]",
-          dark ? "text-white" : "text-ink-900",
-        )}
+          "text-[34px] sm:text-[44px] leading-[1.05] font-semibold tracking-[-0.02em]", dark ? "text-white" : "text-ink-900", )}
       >
         {title}
       </h2>

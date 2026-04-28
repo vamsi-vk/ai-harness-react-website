@@ -1,26 +1,7 @@
 import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import {
-  ArrowRight,
-  Bot,
-  ShieldCheck,
-  Workflow,
-  Users,
-  Gauge,
-  FileCheck2,
-  Sparkles,
-  Layers,
-  LineChart,
-  Lock,
-  Brain,
-  CheckCircle2,
-  Building2,
-  Stethoscope,
-  Scale,
-  Factory,
-  ShoppingBag,
-  Umbrella,
-  Laptop,
-  Briefcase,
+  ArrowRight, Bot, ShieldCheck, Workflow, Users, Gauge, FileCheck2, Sparkles, Layers, LineChart, Lock, Brain, CheckCircle2, Factory, ShoppingBag, Laptop, Briefcase,
 } from "lucide-react";
 import Container from "../components/Container";
 import Button from "../components/Button";
@@ -41,9 +22,6 @@ export default function Home() {
       <WorkflowShowcase />
       <GovernanceBlock />
       <IndustriesPreview />
-      <Outcomes />
-      <Testimonial />
-      <IntegrationsStrip />
       <CTASection />
     </>
   );
@@ -57,13 +35,11 @@ function Hero() {
       <Container className="relative">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <Eyebrow>The Enterprise AI Workforce Platform</Eyebrow>
-          <h1 className="mt-6 text-[44px] font-semibold tracking-[-0.025em] leading-[1.02] text-ink-900 sm:text-[68px]">
-            Run a unified workforce of{" "}
-            <span className="text-gradient">humans and AI agents</span>
+          <h1 className="mt-6 text-[36px] font-semibold tracking-[-0.025em] leading-[1.02] text-ink-900 sm:text-[68px]">
+            Human-Led. <span className="text-gradient">AI-Powered.</span> One Team.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-600 sm:text-xl">
-            AI-Harness embeds AI agents into the way your organization already works — assigning tasks,
-            owning projects, and collaborating with teams inside a single governed workspace.
+            AI-Harness embeds accountable AI teammates into real processes, so your team moves faster without losing governance.
           </p>
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
             <Button to="/signup" size="lg">
@@ -75,7 +51,7 @@ function Hero() {
             </Button>
           </div>
           <p className="mt-5 text-sm text-ink-500">
-            Deploy in your cloud · Audit-ready from day one · No agent framework lock-in
+            Faster execution across business functions · Governed AI operations · End-to-end traceability and accountability
           </p>
         </div>
 
@@ -114,10 +90,7 @@ function Hero() {
 }
 
 function FloatingStat({
-  icon,
-  label,
-  value,
-  className = "",
+  icon, label, value, className = "",
 }: {
   icon: React.ReactNode;
   label: string;
@@ -144,7 +117,7 @@ function TrustedBy() {
     <section className="pb-16">
       <Container>
         <p className="mb-8 text-center text-sm font-medium uppercase tracking-[0.14em] text-ink-500">
-          Trusted by modern operations teams
+          Trusted by modern enterprise teams
         </p>
         <LogoCloud />
       </Container>
@@ -155,29 +128,19 @@ function TrustedBy() {
 function ValueProps() {
   const items = [
     {
-      icon: <Users className="h-5 w-5" />,
-      title: "Hybrid workforce, one system",
-      description:
-        "Humans and AI agents are assigned, tracked, and reviewed through identical workflows — no brittle handoffs.",
-    },
-    {
-      icon: <Workflow className="h-5 w-5" />,
-      title: "Embedded in real work",
-      description:
-        "Agents own projects and tasks inside your existing operating cadence, not a disconnected chat window.",
-    },
-    {
-      icon: <ShieldCheck className="h-5 w-5" />,
-      title: "Governance by default",
-      description:
-        "Every decision is logged, attributable, and reversible. Leaders stay in control as AI scales.",
-    },
-    {
-      icon: <Layers className="h-5 w-5" />,
-      title: "Built to scale",
-      description:
-        "From a single team to a global operation — roll out AI across departments without re-platforming.",
-    },
+      icon: <Users className="h-5 w-5" />, title: "Hybrid workforce, one system", description:
+        "Humans and AI agents are assigned, tracked, and reviewed through the same processes, no brittle handoffs.", }, {
+      icon: <Workflow className="h-5 w-5" />, title: "Embedded in real work", description:
+        "Agents own tasks inside your existing operating cadence, not a disconnected chat window.", }, {
+      icon: <ShieldCheck className="h-5 w-5" />, title: "Governance by default", description:
+        "Every decision is logged and auditable. Leaders retain clear oversight and control over AI agents as adoption scales.", }, {
+      icon: <Layers className="h-5 w-5" />, title: "Built to scale", description:
+        "Start with one team and expand across departments with clear governance and consistent execution.", }, ];
+  const stats = [
+    { value: 68, decimals: 0, suffix: "%", label: "Faster cycle times on repeatable processes" },
+    { value: 4.2, decimals: 1, suffix: "×", label: "Increase in throughput per operations team" },
+    { value: 40, decimals: 0, suffix: "%", label: "Lower cost-to-serve across customer operations" },
+    { value: 100, decimals: 0, suffix: "%", label: "AI actions captured in the audit trail" },
   ];
 
   return (
@@ -185,66 +148,143 @@ function ValueProps() {
       <Container>
         <SectionHeading
           eyebrow="Why AI-Harness"
-          title={<>AI that <span className="text-gradient">operates like a team</span> — not a tool.</>}
-          description="Most AI pilots stall because they live outside the work. AI-Harness makes agents accountable participants in your workflows, with the traceability your operations and compliance leaders require."
+          title={
+            <>
+              AI that <span className="text-gradient">operates like a team</span>, <br />
+              not a tool.
+            </>
+          }
+          description="Most AI pilots fail to scale because they sit outside core operations. AI-Harness embeds accountable AI agents directly into live workflows, with the governance and traceability enterprise leaders require."
         />
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item) => (
             <FeatureCard key={item.title} {...item} />
           ))}
         </div>
+        <div className="relative mt-12 overflow-hidden rounded-3xl border border-ink-900 bg-gradient-to-br from-ink-950 via-ink-900 to-indigo-950 p-1">
+          <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-brand-500/30 blur-3xl" />
+          <div aria-hidden className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-indigo-500/25 blur-3xl" />
+          <div className="relative rounded-[22px] border border-white/10 bg-ink-950/70 p-6 sm:p-8">
+            <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-300">Outcomes at a glance</p>
+                <h3 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                  The metrics leaders care about most.
+                </h3>
+              </div>
+              <p className="max-w-md text-[14px] text-ink-300">
+                Benchmarks customers report after deploying AI-Harness in core operations.
+              </p>
+            </div>
+            <div className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+              {stats.map((s) => (
+                <div key={s.label} className="bg-ink-950/80 p-6">
+                  <div className="text-4xl font-semibold tracking-tight text-white">
+                    <CountUpValue target={s.value} decimals={s.decimals} suffix={s.suffix} />
+                  </div>
+                  <p className="mt-2 text-[14px] leading-snug text-ink-300">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </Container>
     </section>
   );
 }
 
+function CountUpValue({
+  target,
+  decimals = 0,
+  suffix = "",
+  duration = 1200,
+}: {
+  target: number;
+  decimals?: number;
+  suffix?: string;
+  duration?: number;
+}) {
+  const [value, setValue] = useState(0);
+  const ref = useRef<HTMLSpanElement | null>(null);
+  const isAnimatingRef = useRef(false);
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+
+        if (!entry.isIntersecting) {
+          setValue(0);
+          if (rafRef.current) cancelAnimationFrame(rafRef.current);
+          isAnimatingRef.current = false;
+          return;
+        }
+
+        if (isAnimatingRef.current) return;
+        isAnimatingRef.current = true;
+        const start = performance.now();
+        const startValue = 0;
+
+        const tick = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setValue(startValue + (target - startValue) * eased);
+          if (progress < 1) {
+            rafRef.current = requestAnimationFrame(tick);
+          } else {
+            isAnimatingRef.current = false;
+          }
+        };
+
+        rafRef.current = requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 },
+    );
+
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [target, duration]);
+
+  return <span ref={ref}>{value.toFixed(decimals)}{suffix}</span>;
+}
+
 function PlatformPillars() {
   const pillars = [
     {
-      icon: <Bot className="h-5 w-5" />,
-      title: "Intelligent Agent Framework",
-      description:
-        "Create, configure, and evolve AI agents with defined roles, skills, guardrails, and data access — all in one place.",
-    },
-    {
-      icon: <Workflow className="h-5 w-5" />,
-      title: "Workflow & Project Engine",
-      description:
-        "Structured stages, task pipelines, and dynamic routing. Work flows consistently across humans and AI.",
-    },
-    {
-      icon: <Brain className="h-5 w-5" />,
-      title: "Shared Context Layer",
-      description:
-        "Agents inherit full project context — history, goals, stakeholders — so no information is lost on handoff.",
-    },
-    {
-      icon: <ShieldCheck className="h-5 w-5" />,
-      title: "Governance & Audit",
-      description:
-        "Immutable action logs, role-based controls, approval gates, and budget limits — built in, not bolted on.",
-    },
-    {
-      icon: <Gauge className="h-5 w-5" />,
-      title: "Operational Intelligence",
-      description:
-        "Live dashboards for throughput, quality, cost per outcome, and where human attention is most needed.",
-    },
-    {
-      icon: <Sparkles className="h-5 w-5" />,
-      title: "Skill & Capability Injection",
-      description:
-        "Give agents new tools, data sources, and decision frameworks without disrupting running workflows.",
-    },
-  ];
+      icon: <ShieldCheck className="h-5 w-5" />, title: "Governance & Audit", description:
+        "Immutable action logs, role-based controls, approval gates, and budget limits, built in, not bolted on.", }, {
+      icon: <Gauge className="h-5 w-5" />, title: "Operational Intelligence", description:
+        "Live dashboards for throughput, quality, cost per outcome, and where human attention is most needed.", }, {
+      icon: <Workflow className="h-5 w-5" />, title: "Data Ownership & Control", description:
+        "Maintain full ownership of your data with strict access controls, tenant isolation, and policy-based usage across every AI interaction.", }, {
+      icon: <Bot className="h-5 w-5" />, title: "Intelligent Agent Framework", description:
+        "Create, configure, and evolve AI agents with defined roles, skills, guardrails, and data access, all in one place.", }, {
+      icon: <Brain className="h-5 w-5" />, title: "Shared Context Layer", description:
+        "Agents inherit full project context, history, goals, stakeholders, so no information is lost on handoff.", }, {
+      icon: <Sparkles className="h-5 w-5" />, title: "Skill & Capability Injection", description:
+        "Give agents new tools, data sources, and decision frameworks without disrupting running workflows.", }, ];
 
   return (
     <section className="py-20 sm:py-28">
       <Container>
         <SectionHeading
           eyebrow="The platform"
-          title={<>Six capabilities that make AI <br className="hidden sm:block" />enterprise-ready.</>}
-          description="The building blocks you need to move AI from proof-of-concept to production — without compromising on oversight, quality, or speed."
+          title={
+            <>
+              Six AI-Harness capabilities
+              <br className="hidden sm:block" />
+              to scale AI with <span className="text-gradient">control and results.</span>
+            </>
+          }
+          description="The building blocks you need to move AI from proof-of-concept to production, without compromising on oversight, quality, or speed."
         />
         <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {pillars.map((p) => (
@@ -268,24 +308,12 @@ function PlatformPillars() {
 function HowItWorks() {
   const steps = [
     {
-      n: "01",
-      title: "Model your organization",
-      description:
-        "Design the org chart, projects, and workflows you want AI to operate in. Use your existing structure — no process overhaul required.",
-    },
-    {
-      n: "02",
-      title: "Deploy role-based agents",
-      description:
-        "Configure AI agents with specific roles — analysts, reviewers, SMEs, executors — and equip them with the skills, data, and guardrails they need.",
-    },
-    {
-      n: "03",
-      title: "Operate with confidence",
-      description:
-        "Tasks flow to the right teammate — human or AI — with full context. Leadership sees progress, cost, and quality in real time.",
-    },
-  ];
+      n: "01", title: "Model your organization", description:
+        "Design the org chart, projects, and workflows you want AI to operate in. Use your existing structure, no process overhaul required.", }, {
+      n: "02", title: "Deploy role-based agents", description:
+        "Configure AI agents with specific roles, analysts, reviewers, SMEs, executors, and equip them with the skills, data, and guardrails they need.", }, {
+      n: "03", title: "Operate with confidence", description:
+        "Tasks flow to the right teammate, human or AI, with full context. Leadership sees progress, cost, and quality in real time.", }, ];
 
   return (
     <section className="py-20 sm:py-28">
@@ -296,7 +324,7 @@ function HowItWorks() {
               align="left"
               eyebrow="How it works"
               title={<>From pilot to production, <span className="text-gradient">without the chaos.</span></>}
-              description="A clear path from day one. Model how work gets done, deploy agents into that model, and scale with the guardrails built in."
+              description="A clear path from day one. Define how work gets done, deploy agents into your workflows, and scale with guardrails built in."
             />
             <ol className="mt-10 space-y-6">
               {steps.map((s) => (
@@ -338,23 +366,19 @@ function WorkflowShowcase() {
     <section className="py-20 sm:py-28 bg-ink-50/70">
       <Container>
         <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:items-center">
-          <div className="relative overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift">
+          <div className="order-2 relative overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift lg:order-1">
             <img src="/workflow.png" alt="Unified workflow board" className="block w-full" />
           </div>
-          <div>
+          <div className="order-1 lg:order-2">
             <SectionHeading
               align="left"
               eyebrow="Unified workflow"
               title={<>One place to plan, <span className="text-gradient">execute</span>, and review.</>}
-              description="Give your operations one shared surface where people, projects, and agents meet — from strategy down to the next task due."
+              description="Give your operations one shared surface where people, projects, and agents meet, from strategy down to the next task due."
             />
             <ul className="mt-8 space-y-4">
               {[
-                "Structured projects with stages, states, and clear ownership",
-                "Automatic routing to the best-fit human or AI agent for each task",
-                "Real-time visibility into progress, blockers, and cost",
-                "Full conversation and decision history on every work item",
-              ].map((line) => (
+                "Structured projects with stages, states, and clear ownership", "Automatic routing to the best-fit human or AI agent for each task", "Real-time visibility into progress, blockers, and cost", "Full conversation and decision history on every work item", ].map((line) => (
                 <li key={line} className="flex items-start gap-3 text-[15px] text-ink-700">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
                   {line}
@@ -370,11 +394,7 @@ function WorkflowShowcase() {
 
 function GovernanceBlock() {
   const items = [
-    { icon: <FileCheck2 className="h-5 w-5" />, title: "Immutable audit trail" },
-    { icon: <Lock className="h-5 w-5" />, title: "Role-based access & approvals" },
-    { icon: <LineChart className="h-5 w-5" />, title: "Cost, usage & quality telemetry" },
-    { icon: <ShieldCheck className="h-5 w-5" />, title: "Policy-aware agent guardrails" },
-  ];
+    { icon: <FileCheck2 className="h-5 w-5" />, title: "Immutable audit trail" }, { icon: <Lock className="h-5 w-5" />, title: "Role-based access & approvals" }, { icon: <LineChart className="h-5 w-5" />, title: "Cost, usage & quality telemetry" }, { icon: <ShieldCheck className="h-5 w-5" />, title: "Policy-aware agent guardrails" }, ];
 
   return (
     <section className="relative py-20 sm:py-28">
@@ -387,11 +407,10 @@ function GovernanceBlock() {
             <div>
               <Eyebrow tone="dark">Governance &amp; Trust</Eyebrow>
               <h2 className="mt-5 text-[36px] font-semibold tracking-[-0.02em] leading-[1.05] text-white sm:text-[48px]">
-                AI your board, legal, and auditors can actually sign off on.
+                Where Execution Meets Board-Level Governance.
               </h2>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-300">
-                AI-Harness is built for regulated, high-stakes environments. Every agent action is logged,
-                scoped, and reversible — so scaling AI never means losing control.
+                AI-Harness is built for regulated, high-stakes environments. Every agent action is logged, scoped, and reversible, so scaling AI never means losing control.
               </p>
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {items.map((it) => (
@@ -425,15 +444,7 @@ function GovernanceBlock() {
 
 function IndustriesPreview() {
   const industries = [
-    { icon: <Building2 className="h-5 w-5" />, name: "Financial Services" },
-    { icon: <Stethoscope className="h-5 w-5" />, name: "Healthcare & Life Sciences" },
-    { icon: <Scale className="h-5 w-5" />, name: "Legal & Compliance" },
-    { icon: <Umbrella className="h-5 w-5" />, name: "Insurance" },
-    { icon: <Briefcase className="h-5 w-5" />, name: "Professional Services" },
-    { icon: <Factory className="h-5 w-5" />, name: "Manufacturing & Supply Chain" },
-    { icon: <ShoppingBag className="h-5 w-5" />, name: "Retail & eCommerce" },
-    { icon: <Laptop className="h-5 w-5" />, name: "Technology & SaaS" },
-  ];
+    { icon: <Briefcase className="h-5 w-5" />, name: "Professional Services" }, { icon: <Factory className="h-5 w-5" />, name: "Manufacturing & Supply Chain" }, { icon: <ShoppingBag className="h-5 w-5" />, name: "Retail & eCommerce" }, { icon: <Laptop className="h-5 w-5" />, name: "Technology & SaaS" }, ];
 
   return (
     <section className="py-20 sm:py-28">
@@ -441,7 +452,7 @@ function IndustriesPreview() {
         <SectionHeading
           eyebrow="Industries"
           title={<>Built for the industries where <span className="text-gradient">execution matters.</span></>}
-          description="AI-Harness adapts to the domain knowledge, compliance posture, and operating rhythms of your industry — with purpose-built agent templates and policy packs."
+          description="AI-Harness helps your teams execute faster, operate consistently, and scale AI with control, using industry-ready workflows, agent templates, and policy guardrails."
         />
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {industries.map((it) => (
@@ -468,98 +479,4 @@ function IndustriesPreview() {
   );
 }
 
-function Outcomes() {
-  const stats = [
-    { value: "68%", label: "Faster cycle times on repeatable workflows" },
-    { value: "4.2×", label: "Increase in throughput per operations team" },
-    { value: "40%", label: "Lower cost-to-serve across customer operations" },
-    { value: "100%", label: "Of AI actions captured in the audit trail" },
-  ];
-  return (
-    <section className="py-20 sm:py-28">
-      <Container>
-        <SectionHeading
-          eyebrow="Outcomes"
-          title={<>Metrics your executive team is <span className="text-gradient">already asking for.</span></>}
-          description="The benchmarks customers see after rolling AI-Harness across their core operations."
-        />
-        <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-ink-200 bg-ink-200 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.label} className="bg-white p-8">
-              <div className="text-5xl font-semibold tracking-tight text-ink-900">{s.value}</div>
-              <p className="mt-3 text-[15px] text-ink-600">{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </Container>
-    </section>
-  );
-}
 
-function Testimonial() {
-  return (
-    <section className="py-20 sm:py-28">
-      <Container>
-        <div className="relative mx-auto max-w-4xl rounded-[28px] border border-ink-200 bg-gradient-to-br from-brand-50 via-white to-indigo-50 p-10 shadow-soft sm:p-14">
-          <svg
-            aria-hidden
-            className="absolute left-10 top-10 h-12 w-12 text-brand-300"
-            viewBox="0 0 48 32"
-            fill="currentColor"
-          >
-            <path d="M0 32V16C0 7 6 0 16 0v8c-4 0-8 3-8 8h8v16H0zm24 0V16C24 7 30 0 40 0v8c-4 0-8 3-8 8h8v16H24z" />
-          </svg>
-          <p className="relative mt-6 font-serif text-[26px] leading-[1.3] text-ink-900 sm:text-[32px]">
-            “Within a quarter, our AI agents were operating alongside analysts with the same accountability.
-            We finally have one system of record for what was decided, by whom, and why —
-            AI included.”
-          </p>
-          <div className="mt-8 flex items-center gap-4">
-            <div className="grid h-12 w-12 place-items-center rounded-full bg-ink-900 text-sm font-semibold text-white">
-              SM
-            </div>
-            <div>
-              <p className="text-[15px] font-semibold text-ink-900">Sarah Mehta</p>
-              <p className="text-sm text-ink-600">Chief Operating Officer, Helix Financial</p>
-            </div>
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-function IntegrationsStrip() {
-  const items = [
-    "Slack", "Microsoft 365", "Google Workspace", "Salesforce", "HubSpot",
-    "Jira", "Linear", "ServiceNow", "Snowflake", "Databricks",
-    "Okta", "GitHub", "GitLab", "Zendesk", "Notion",
-  ];
-  return (
-    <section className="border-y border-ink-200 bg-ink-50/60 py-14">
-      <Container>
-        <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-sm">
-            <Eyebrow>Integrations</Eyebrow>
-            <h3 className="mt-4 text-2xl font-semibold tracking-tight text-ink-900">
-              Works with the stack your teams already use.
-            </h3>
-            <p className="mt-3 text-[15px] text-ink-600">
-              Native connectors plus an open API make it easy to plug AI-Harness into every corner of your operations.
-            </p>
-          </div>
-          <div className="grid flex-1 grid-cols-3 gap-2 sm:grid-cols-5">
-            {items.map((name) => (
-              <div
-                key={name}
-                className="flex h-12 items-center justify-center rounded-xl border border-ink-200 bg-white px-3 text-[13px] font-medium text-ink-700"
-              >
-                {name}
-              </div>
-            ))}
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
