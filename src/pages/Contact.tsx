@@ -13,7 +13,7 @@ export default function Contact() {
         <Container className="relative">
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow>Contact</Eyebrow>
-            <h1 className="mt-6 text-[44px] font-semibold leading-[1.04] tracking-[-0.02em] text-ink-900 sm:text-[56px]">
+            <h1 className="mt-6 text-[36px] font-semibold leading-[1.04] tracking-[-0.02em] text-ink-900 sm:text-[56px]">
               We'd love to <span className="text-gradient">hear from you.</span>
             </h1>
             <p className="mt-5 text-lg text-ink-600">
@@ -28,11 +28,7 @@ export default function Contact() {
           <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr]">
             <div className="space-y-5">
               {[
-                { icon: <MessageSquare className="h-5 w-5" />, title: "Sales", sub: "sales@ai-harness.com", desc: "Deals, pilots, and enterprise rollouts." },
-                { icon: <Mail className="h-5 w-5" />, title: "Support", sub: "support@ai-harness.com", desc: "Customer support and product help." },
-                { icon: <PhoneCall className="h-5 w-5" />, title: "Press & partners", sub: "partners@ai-harness.com", desc: "Media and partnership inquiries." },
-                { icon: <Building2 className="h-5 w-5" />, title: "Security", sub: "security@ai-harness.com", desc: "Responsible disclosure and security team." },
-              ].map((c) => (
+                { icon: <MessageSquare className="h-5 w-5" />, title: "Sales", sub: "sales@ai-harness.com", desc: "Deals, pilots, and enterprise rollouts." }, { icon: <Mail className="h-5 w-5" />, title: "Support", sub: "support@ai-harness.com", desc: "Customer support and product help." }, { icon: <PhoneCall className="h-5 w-5" />, title: "Press & partners", sub: "partners@ai-harness.com", desc: "Media and partnership inquiries." }, { icon: <Building2 className="h-5 w-5" />, title: "Security", sub: "security@ai-harness.com", desc: "Responsible disclosure and security team." }, ].map((c) => (
                 <div key={c.title} className="flex items-start gap-4 rounded-2xl border border-ink-200 bg-white p-5">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-200/60">
                     {c.icon}
@@ -61,7 +57,7 @@ export default function Contact() {
                   <div className="grid h-14 w-14 place-items-center rounded-full bg-brand-50 text-brand-700">
                     <ArrowRight className="h-6 w-6" />
                   </div>
-                  <h3 className="mt-6 text-2xl font-semibold text-ink-900">Thanks — we'll be in touch.</h3>
+                  <h3 className="mt-6 text-2xl font-semibold text-ink-900">Thanks, we'll be in touch.</h3>
                   <p className="mt-3 max-w-md text-[15px] text-ink-600">
                     A member of our team will reach out within 1 business day. In the meantime, feel free to start
                     a free account and explore the platform.
@@ -87,11 +83,11 @@ export default function Contact() {
                     <Field label="Team size" name="size" as="select" options={["1–10", "11–50", "51–200", "201–1,000", "1,000+"]} />
                   </div>
                   <Field label="How can we help?" name="message" as="textarea" rows={5} />
-                  <div className="flex items-center justify-between gap-4 pt-2">
+                  <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                     <p className="text-xs text-ink-500">
                       By submitting, you agree to our Privacy Policy.
                     </p>
-                    <Button>
+                    <Button className="w-full sm:w-auto">
                       Send message
                       <ArrowRight className="h-4 w-4" />
                     </Button>
@@ -107,13 +103,7 @@ export default function Contact() {
 }
 
 function Field({
-  label,
-  name,
-  type = "text",
-  required,
-  as = "input",
-  rows = 3,
-  options = [],
+  label, name, type = "text", required, as = "input", rows = 3, options = [],
 }: {
   label: string;
   name: string;

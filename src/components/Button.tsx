@@ -10,19 +10,14 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-ink-900 text-white hover:bg-ink-800 hover:-translate-y-px shadow-soft hover:shadow-lift",
-  secondary:
-    "bg-white text-ink-900 border border-ink-200 hover:border-ink-300 hover:bg-ink-50 shadow-soft",
-  ghost:
-    "text-ink-700 hover:text-ink-900 hover:bg-ink-100",
-  white:
+    "bg-ink-900 text-white hover:bg-ink-800 hover:-translate-y-px shadow-soft hover:shadow-lift", secondary:
+    "bg-white text-ink-900 border border-ink-200 hover:border-ink-300 hover:bg-ink-50 shadow-soft", ghost:
+    "text-ink-700 hover:text-ink-900 hover:bg-ink-100", white:
     "bg-white text-ink-900 hover:bg-ink-50 shadow-soft hover:shadow-lift hover:-translate-y-px",
 };
 
 const sizes: Record<Size, string> = {
-  sm: "h-9 px-4 text-sm",
-  md: "h-11 px-5 text-[15px]",
-  lg: "h-13 px-7 text-base py-3.5",
+  sm: "h-9 px-4 text-sm", md: "h-11 px-5 text-[15px]", lg: "h-13 px-7 text-base py-3.5",
 };
 
 type CommonProps = {
@@ -68,7 +63,7 @@ export default function Button(props: Props) {
       </a>
     );
   }
-  const { variant: _v, size: _s, className: _c, children: _ch, to: _t, href: _h, ...rest } = props as NativeButtonProps & { to?: string; href?: string };
+  const { variant: _v, size: _s, className: _c, children: _ch, to: _t, href: _h,...rest } = props as NativeButtonProps & { to?: string; href?: string };
   return (
     <button className={classes} {...rest}>
       {children}

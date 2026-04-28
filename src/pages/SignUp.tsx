@@ -19,15 +19,11 @@ export default function SignUp() {
               Start your <span className="text-gradient">free workspace.</span>
             </h1>
             <p className="mt-5 text-[16.5px] leading-relaxed text-ink-600">
-              Deploy your first AI agent in minutes. Free forever for small teams — scale up when you're ready.
+              Deploy your first AI agent in minutes. Free forever for small teams, scale up when you're ready.
             </p>
             <ul className="mt-8 space-y-3">
               {[
-                "Up to 5 users and 3 AI agents",
-                "Full project & task workspace",
-                "Audit trail from day one",
-                "No credit card required",
-              ].map((b) => (
+                "Up to 5 users and 3 AI agents", "Full project & task workspace", "Audit trail from day one", "No credit card required", ].map((b) => (
                 <li key={b} className="flex items-center gap-3 text-[15px] text-ink-800">
                   <span className="grid h-6 w-6 place-items-center rounded-full bg-brand-50 text-brand-700">
                     <Check className="h-3.5 w-3.5" />
@@ -41,7 +37,7 @@ export default function SignUp() {
                 <ShieldCheck className="h-5 w-5" />
               </span>
               <p className="text-[13.5px] text-ink-700">
-                Enterprise-ready from day one. SSO, SCIM, and audit logs are built in — not bolted on.
+                Enterprise-ready from day one. SSO, SCIM, and audit logs are built in, not bolted on.
               </p>
             </div>
           </div>
@@ -84,8 +80,7 @@ export default function SignUp() {
                         and{" "}
                         <a href="#" onClick={(e) => e.preventDefault()} className="text-brand-700 hover:underline">
                           Privacy Policy
-                        </a>
-                        .
+                        </a>.
                       </span>
                     </label>
                     <Button className="w-full">
@@ -117,10 +112,7 @@ export default function SignUp() {
 }
 
 function Input({
-  label,
-  name,
-  type = "text",
-  required,
+  label, name, type = "text", required,
 }: {
   label: string;
   name: string;

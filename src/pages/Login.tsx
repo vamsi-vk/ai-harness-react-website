@@ -60,10 +60,7 @@ export default function Login() {
 }
 
 function Input({
-  label,
-  name,
-  type = "text",
-  required,
+  label, name, type = "text", required,
 }: {
   label: string;
   name: string;
