@@ -7,7 +7,6 @@ import Platform from "./pages/Platform";
 import Industries from "./pages/Industries";
 import UseCases from "./pages/UseCases";
 import Security from "./pages/Security";
-import About from "./pages/About";
 import Contact from "./pages/Contact";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -27,21 +26,30 @@ export default function App() {
     <div className="flex min-h-full flex-col bg-white text-ink-800">
       <ScrollToTop />
       <Navbar />
-      <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/platform" element={<Platform />} />
-          <Route path="/industries" element={<Industries />} />
-          <Route path="/solutions" element={<UseCases />} />
-          <Route path="/security" element={<Security />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/resources" element={<NotFound />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/demo" element={<RequestDemo />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+      <main className="relative flex-1 overflow-x-clip">
+        <div aria-hidden className="pointer-events-none fixed inset-0 z-0">
+          <div className="absolute -left-20 top-[10%] h-72 w-72 rounded-full bg-brand-200/35 blur-3xl" />
+          <div className="absolute right-[-80px] top-[22%] h-80 w-80 rounded-full bg-indigo-200/30 blur-3xl" />
+          <div className="absolute left-[8%] top-[52%] h-56 w-56 rounded-full bg-sky-200/28 blur-3xl" />
+          <div className="absolute right-[12%] top-[68%] h-44 w-44 rounded-full bg-brand-200/26 blur-3xl" />
+          <div className="absolute bottom-10 right-8 h-20 w-20 rounded-lg border border-indigo-200/35 bg-white/35" />
+          <div className="absolute bottom-6 right-4 h-16 w-24 bg-[radial-gradient(circle,rgba(99,102,241,0.34)_1.2px,transparent_1.2px)] [background-size:10px_10px] opacity-50" />
+        </div>
+        <div className="relative z-10">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/platform" element={<Platform />} />
+            <Route path="/industries" element={<Industries />} />
+            <Route path="/solutions" element={<UseCases />} />
+            <Route path="/security" element={<Security />} />
+            <Route path="/resources" element={<NotFound />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/demo" element={<RequestDemo />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
       </main>
       <Footer />
     </div>
