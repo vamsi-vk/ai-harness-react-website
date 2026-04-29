@@ -237,7 +237,7 @@ function CrossIndustry() {
     "Deploy in your cloud, your VPC, or on-prem, your data never leaves.", "Bring your own models and agent runtimes, no framework lock-in.", "Enterprise controls from day one, SSO, SCIM, audit, approvals.", "Built for global rollouts, multi-region, multi-tenant, multi-language.", ];
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20">
       <Container>
         <div className="rounded-[32px] border border-ink-200 bg-gradient-to-br from-brand-50 via-white to-indigo-50 p-10 sm:p-14">
           <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">

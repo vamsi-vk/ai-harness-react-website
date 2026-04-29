@@ -100,7 +100,7 @@ function AgentsSection() {
         "Use the models and agent runtimes your organization has already approved. AI-Harness is the control plane, not another framework.", }, ];
 
   return (
-    <section id="agents" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="agents" className="scroll-mt-24 py-16 sm:py-20">
       <Container>
         <SectionHeading
           eyebrow="AI Agents"
@@ -119,7 +119,7 @@ function AgentsSection() {
 
 function WorkflowsSection() {
   return (
-    <section id="workflows" className="scroll-mt-24 bg-ink-50/70 py-20 sm:py-28">
+    <section id="workflows" className="scroll-mt-24 bg-ink-50/70 py-16 sm:py-20">
       <Container>
         <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:items-center">
           <div>
@@ -156,7 +156,7 @@ function GovernanceSection() {
     { icon: <Activity className="h-5 w-5" />, title: "Full action telemetry", description: "Every prompt, tool call, and agent decision is captured and searchable." }, { icon: <ShieldCheck className="h-5 w-5" />, title: "Approval gates", description: "Require human review before high-impact or high-spend actions are executed." }, { icon: <Target className="h-5 w-5" />, title: "Budget & cost guardrails", description: "Set spend ceilings per agent, team, or project. Agents halt before they overrun." }, { icon: <Layers className="h-5 w-5" />, title: "Role-based access", description: "Granular permissions that mirror your org, not a flat admin/user toggle." }, ];
 
   return (
-    <section id="governance" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="governance" className="scroll-mt-24 py-16 sm:py-20">
       <Container>
         <SectionHeading
           eyebrow="Governance"
@@ -184,7 +184,7 @@ function IntegrationsSection() {
       title: "Identity", tools: ["Okta", "Azure AD", "Google Workspace SSO"], }, ];
 
   return (
-    <section id="integrations" className="scroll-mt-24 bg-ink-50/70 py-20 sm:py-28">
+    <section id="integrations" className="scroll-mt-24 bg-ink-50/70 py-16 sm:py-20">
       <Container>
         <SectionHeading
           eyebrow="Integrations"
@@ -219,7 +219,7 @@ function StackDiagram() {
       tone: "light", label: "Infrastructure & Integrations", description: "Your models, data, identity, and systems of record", icons: [<Database key="d" className="h-4 w-4" />, <Puzzle key="p" className="h-4 w-4" />, <Network key="n" className="h-4 w-4" />], }, ];
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20">
       <Container>
         <SectionHeading
           eyebrow="Architecture"

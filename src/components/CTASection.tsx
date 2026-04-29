@@ -8,7 +8,7 @@ type Props = {
 };
 
 export default function CTASection({
-  title = "Turn AI into your most reliable teammate.", description = "Ship AI-powered workflows your leadership team can actually trust. Start free, no credit card, no consultants.",
+  title = "Turn AI into your highly reliable teammate.", description = "Ship AI-powered workflows your leadership team can actually trust. Start free, no credit card, no consultants.",
 }: Props) {
   return (
     <section className="relative">

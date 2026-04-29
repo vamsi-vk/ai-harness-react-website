@@ -55,7 +55,7 @@ function Beliefs() {
         "Every decision traceable. Every outcome explainable. No black boxes in the workflows that matter.", }, ];
 
   return (
-    <section id="careers" className="py-20 sm:py-28">
+    <section id="careers" className="py-16 sm:py-20">
       <Container>
         <SectionHeading
           eyebrow="What we believe"
@@ -82,7 +82,7 @@ function Leadership() {
     { name: "Alex Rivera", role: "Co-founder & CEO", bio: "Former VP of Platform at a Fortune 100 fintech." }, { name: "Priya Shah", role: "Co-founder & CTO", bio: "Distributed systems engineer. Ex-ML infra at a leading cloud." }, { name: "Marcus Chen", role: "Chief Product Officer", bio: "Led enterprise workflow products for 10+ years." }, { name: "Sofia Lindqvist", role: "VP of Security", bio: "Built governance programs at top-tier SaaS companies." }, ];
 
   return (
-    <section className="py-20 sm:py-28 bg-ink-50/70">
+    <section className="py-16 sm:py-20 bg-ink-50/70">
       <Container>
         <SectionHeading
           eyebrow="Leadership"
@@ -124,7 +124,7 @@ function Investors() {
 
 function Careers() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20">
       <Container>
         <div className="rounded-[32px] border border-ink-200 bg-gradient-to-br from-brand-50 via-white to-indigo-50 p-10 sm:p-14">
           <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-center">

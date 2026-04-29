@@ -14,17 +14,17 @@ const columns: FooterColumn[] = [
     title: "Solutions", links: [
       { label: "By Use Case", to: "/solutions" }, { label: "By Industry", to: "/industries" }, { label: "For Operations", to: "/solutions#operations" }, { label: "For Engineering", to: "/solutions#engineering" }, { label: "For Customer Ops", to: "/solutions#customer" }, ], }, {
     title: "Company", links: [
-      { label: "About", to: "/about" }, { label: "Careers", to: "/about#careers" }, { label: "Contact", to: "/contact" }, { label: "Security & Trust", to: "/security" }, { label: "Pricing", to: "/pricing" }, ], },
+      { label: "About", to: "/about" }, { label: "Careers", to: "/about#careers" }, { label: "Contact", to: "/contact" }, { label: "Security & Trust", to: "/security" }, ], },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative mt-24 overflow-hidden border-t border-ink-200 bg-ink-950 text-ink-300">
+    <footer className="relative mt-16 overflow-hidden border-t border-ink-200 bg-ink-950 text-ink-300">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent" />
       <div aria-hidden className="pointer-events-none absolute -left-40 top-0 h-96 w-96 rounded-full bg-brand-600/20 blur-3xl" />
       <div aria-hidden className="pointer-events-none absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-indigo-500/15 blur-3xl" />
 
-      <Container className="relative py-20">
+      <Container className="relative py-16">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div>
             <Logo dark />
