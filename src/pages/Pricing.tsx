@@ -221,7 +221,7 @@ function PlansGrid({ billing }: { billing: "monthly" | "yearly" }) {
 
 function CompareTable() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20">
       <Container>
         <div className="overflow-x-auto rounded-2xl border border-ink-200 bg-white">
           <div className="min-w-[760px]">
@@ -279,7 +279,7 @@ function ValueRibbon() {
 function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20">
       <Container>
         <div className="grid gap-14 lg:grid-cols-[1fr_1.4fr]">
           <SectionHeading

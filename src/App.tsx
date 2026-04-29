@@ -6,7 +6,6 @@ import Home from "./pages/Home";
 import Platform from "./pages/Platform";
 import Industries from "./pages/Industries";
 import UseCases from "./pages/UseCases";
-import Pricing from "./pages/Pricing";
 import Security from "./pages/Security";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -34,7 +33,6 @@ export default function App() {
           <Route path="/platform" element={<Platform />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/solutions" element={<UseCases />} />
-          <Route path="/pricing" element={<Pricing />} />
           <Route path="/security" element={<Security />} />
           <Route path="/about" element={<About />} />
           <Route path="/resources" element={<NotFound />} />

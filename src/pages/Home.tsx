@@ -16,6 +16,7 @@ export default function Home() {
     <>
       <Hero />
       <TrustedBy />
+      <SolutionsPreview />
       <ValueProps />
       <PlatformPillars />
       <HowItWorks />
@@ -273,15 +274,15 @@ function PlatformPillars() {
         "Give agents new tools, data sources, and decision frameworks without disrupting running workflows.", }, ];
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20">
       <Container>
         <SectionHeading
           eyebrow="The platform"
           title={
             <>
-              Six AI-Harness capabilities
+              The capabilities that turn AI
               <br className="hidden sm:block" />
-              to scale AI with <span className="text-gradient">control and results.</span>
+              into <span className="text-gradient">governed business execution.</span>
             </>
           }
           description="The building blocks you need to move AI from proof-of-concept to production, without compromising on oversight, quality, or speed."
@@ -316,7 +317,7 @@ function HowItWorks() {
         "Tasks flow to the right teammate, human or AI, with full context. Leadership sees progress, cost, and quality in real time.", }, ];
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20">
       <Container>
         <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:items-center">
           <div>
@@ -363,7 +364,7 @@ function HowItWorks() {
 
 function WorkflowShowcase() {
   return (
-    <section className="py-20 sm:py-28 bg-ink-50/70">
+    <section className="py-16 sm:py-20 bg-ink-50/70">
       <Container>
         <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div className="order-2 relative overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift lg:order-1">
@@ -394,10 +395,14 @@ function WorkflowShowcase() {
 
 function GovernanceBlock() {
   const items = [
-    { icon: <FileCheck2 className="h-5 w-5" />, title: "Immutable audit trail" }, { icon: <Lock className="h-5 w-5" />, title: "Role-based access & approvals" }, { icon: <LineChart className="h-5 w-5" />, title: "Cost, usage & quality telemetry" }, { icon: <ShieldCheck className="h-5 w-5" />, title: "Policy-aware agent guardrails" }, ];
+    { icon: <FileCheck2 className="h-5 w-5" />, title: "Immutable audit trail" },
+    { icon: <Lock className="h-5 w-5" />, title: "Role-based access & approvals" },
+    { icon: <LineChart className="h-5 w-5" />, title: "Cost, usage & quality telemetry" },
+    { icon: <ShieldCheck className="h-5 w-5" />, title: "Policy-aware agent guardrails" },
+  ];
 
   return (
-    <section className="relative py-20 sm:py-28">
+    <section className="relative py-16 sm:py-20">
       <Container>
         <div className="relative overflow-hidden rounded-[32px] bg-ink-950 px-8 py-16 sm:px-14 sm:py-20 md:px-20">
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid-dark opacity-50" />
@@ -447,7 +452,7 @@ function IndustriesPreview() {
     { icon: <Briefcase className="h-5 w-5" />, name: "Professional Services" }, { icon: <Factory className="h-5 w-5" />, name: "Manufacturing & Supply Chain" }, { icon: <ShoppingBag className="h-5 w-5" />, name: "Retail & eCommerce" }, { icon: <Laptop className="h-5 w-5" />, name: "Technology & SaaS" }, ];
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20">
       <Container>
         <SectionHeading
           eyebrow="Industries"
@@ -473,6 +478,100 @@ function IndustriesPreview() {
           <Button to="/industries" variant="secondary">
             See all industries
           </Button>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function SolutionsPreview() {
+  const useCases = [
+    { label: "Operations & Shared Services", hash: "#operations" },
+    { label: "Customer Operations", hash: "#customer" },
+    { label: "Engineering & Product", hash: "#engineering" },
+    { label: "Finance & FP&A", hash: "#finance" },
+  ];
+  const executiveRoles = [
+    { label: "For the CEO & Board", hash: "#role-ceo-board" },
+    { label: "For the COO", hash: "#role-coo" },
+    { label: "For the CIO / CTO", hash: "#role-cio-cto" },
+    { label: "For the CFO", hash: "#role-cfo" },
+  ];
+
+  return (
+    <section className="pb-8 sm:pb-12">
+      <Container>
+        <div className="relative overflow-hidden rounded-3xl border border-ink-600/80 bg-gradient-to-br from-ink-800 via-ink-800 to-indigo-900 p-6 shadow-lift sm:p-8">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-brand-500/25 blur-3xl"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-24 -left-20 h-56 w-56 rounded-full bg-indigo-400/20 blur-3xl"
+          />
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-300">
+                Solutions Snapshot
+              </p>
+              <h2 className="mt-2 text-[30px] font-semibold leading-tight tracking-[-0.02em] text-white sm:text-[36px]">
+                From CEO to team lead: AI-Harness in your workflow.
+              </h2>
+              <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-200">
+                See where AI-Harness drives outcomes first, and how value maps to executive priorities
+                from CEO to functional leaders.
+              </p>
+            </div>
+            <div className="relative inline-flex">
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 rounded-xl bg-brand-200/50 blur-sm"
+              />
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -inset-1 rounded-2xl border border-brand-200/60 animate-ping [animation-duration:2.4s]"
+              />
+              <Link
+                to="/solutions"
+                className="group relative inline-flex h-11 min-w-[172px] items-center justify-center gap-2 rounded-xl bg-white px-5 text-sm font-semibold tracking-[0.01em] text-ink-900 shadow-soft transition-all hover:-translate-y-0.5 hover:bg-brand-50 hover:text-brand-800"
+              >
+                View all solutions
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <div className="rounded-2xl border border-white/20 bg-white/[0.08] p-5 backdrop-blur">
+              <h3 className="text-[15px] font-semibold text-white">Popular use cases</h3>
+              <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                {useCases.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={{ pathname: "/solutions", hash: item.hash }}
+                    className="inline-flex h-9 items-center justify-center rounded-full border border-white/25 bg-white/15 px-3 text-center text-[13px] font-medium text-ink-100 transition-colors hover:bg-white/25"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-2xl border border-white/20 bg-white/[0.08] p-5 backdrop-blur">
+              <h3 className="text-[15px] font-semibold text-white">Built for leadership teams</h3>
+              <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                {executiveRoles.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={{ pathname: "/solutions", hash: item.hash }}
+                    className="inline-flex h-9 items-center justify-center rounded-full border border-white/25 bg-white/15 px-3 text-center text-[13px] font-medium text-ink-100 transition-colors hover:bg-white/25"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </section>

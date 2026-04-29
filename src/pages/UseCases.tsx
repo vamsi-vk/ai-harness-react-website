@@ -1,7 +1,8 @@
 import {
   Users2, Headphones, CircuitBoard, Megaphone, Scale, DollarSign, ShieldCheck, ArrowRight, Workflow, Target, CheckCircle2,
 } from "lucide-react";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { useLocation } from "react-router-dom";
 import Container from "../components/Container";
 import Button from "../components/Button";
 import Eyebrow from "../components/Eyebrow";
@@ -39,11 +40,31 @@ const useCases: UseCase[] = [
 ];
 
 export default function UseCases() {
+  const location = useLocation();
+  const [highlightedId, setHighlightedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const id = location.hash.replace("#", "");
+    if (!id) return;
+
+    setHighlightedId(id);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setHighlightedId((current) => (current === id ? null : current));
+    }, 3000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [location.hash]);
+
   return (
     <>
       <UseCasesHero />
-      <UseCaseGrid />
-      <ByRole />
+      <UseCaseGrid highlightedId={highlightedId} />
+      <ByRole highlightedId={highlightedId} />
       <CTASection
         title="Put AI to work where it counts most."
         description="Start with a single workflow. Expand to an entire department. AI-Harness scales with your operational ambitions."
@@ -81,7 +102,7 @@ function UseCasesHero() {
   );
 }
 
-function UseCaseGrid() {
+function UseCaseGrid({ highlightedId }: { highlightedId: string | null }) {
   return (
     <section className="py-16">
       <Container>
@@ -90,7 +111,11 @@ function UseCaseGrid() {
             <div
               id={u.id}
               key={u.id}
-              className="group relative flex scroll-mt-24 flex-col overflow-hidden rounded-3xl border border-ink-200/90 bg-white p-7 transition-all hover:-translate-y-0.5 hover:border-ink-300 hover:shadow-soft"
+              className={`group relative flex scroll-mt-24 flex-col overflow-hidden rounded-3xl border bg-white p-7 transition-all hover:-translate-y-0.5 hover:shadow-soft ${
+                highlightedId === u.id
+                  ? "border-ink-900 shadow-[0_0_0_3px_rgba(15,23,42,0.35)]"
+                  : "border-ink-200/90 hover:border-ink-300"
+              }`}
             >
               <div className="flex items-center justify-between">
                 <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-50/80 text-brand-700 ring-1 ring-inset ring-brand-200/70">
@@ -127,24 +152,24 @@ function UseCaseGrid() {
   );
 }
 
-function ByRole() {
+function ByRole({ highlightedId }: { highlightedId: string | null }) {
   const roles = [
     {
-      title: "For the CEO & Board", description: "A single source of truth for how AI is being used, at what cost, and with what outcomes. Stay strategic, not operational.", points: [
+      id: "role-ceo-board", title: "For the CEO & Board", description: "A single source of truth for how AI is being used, at what cost, and with what outcomes. Stay strategic, not operational.", points: [
         "Executive dashboards across every business unit", "Approval and escalation visibility at a glance", "Spend, outcomes, and risk in one view", ], }, {
-      title: "For the COO", description: "Standardize how AI gets deployed across departments. Measure the leverage and protect against drift.", points: [
+      id: "role-coo", title: "For the COO", description: "Standardize how AI gets deployed across departments. Measure the leverage and protect against drift.", points: [
         "Common playbooks across teams", "Operational KPIs tied to AI investment", "Safe rollout patterns and guardrails", ], }, {
-      title: "For the CIO / CTO", description: "A governed platform that integrates into your identity, data, and model infrastructure, without adding another silo.", points: [
+      id: "role-cio-cto", title: "For the CIO / CTO", description: "A governed platform that integrates into your identity, data, and model infrastructure, without adding another silo.", points: [
         "SSO, SCIM, audit, and data residency", "Open integrations with your model and data stack", "Bring your own agents, no framework rewrite", ], }, {
-      title: "For the CFO", description: "Transparent economics for AI. Budgets, cost centers, and unit economics your finance team can actually reconcile.", points: [
+      id: "role-cfo", title: "For the CFO", description: "Transparent economics for AI. Budgets, cost centers, and unit economics your finance team can actually reconcile.", points: [
         "Cost attribution to project, team, and outcome", "Budget ceilings with automated enforcement", "Usage analytics and forecasting", ], }, {
-      title: "For the CHRO", description: "Scale AI as a workforce concept, not a technology project. Clear roles, clear accountability, clear upskilling paths.", points: [
+      id: "role-chro", title: "For the CHRO", description: "Scale AI as a workforce concept, not a technology project. Clear roles, clear accountability, clear upskilling paths.", points: [
         "Role-based agent modeling that mirrors your org", "Change-management-ready rollout patterns", "Transparent hand-offs between people and AI", ], }, {
-      title: "For the CRO / CCO", description: "Serve customers faster without losing the human touch or the compliance guardrails.", points: [
+      id: "role-cro-cco", title: "For the CRO / CCO", description: "Serve customers faster without losing the human touch or the compliance guardrails.", points: [
         "Assisted and autonomous workflows side-by-side", "Consistent brand voice and policy adherence", "Escalation paths that never drop the ball", ], }, ];
 
   return (
-    <section className="py-20 sm:py-28 bg-ink-50/70">
+    <section className="py-16 sm:py-20 bg-ink-50/70">
       <Container>
         <SectionHeading
           eyebrow="By Role"
@@ -153,7 +178,15 @@ function ByRole() {
         />
         <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {roles.map((r) => (
-            <div key={r.title} className="rounded-2xl border border-ink-200 bg-white p-6">
+            <div
+              id={r.id}
+              key={r.title}
+              className={`scroll-mt-24 rounded-2xl border bg-white p-6 transition-all ${
+                highlightedId === r.id
+                  ? "border-ink-900 shadow-[0_0_0_3px_rgba(15,23,42,0.35)]"
+                  : "border-ink-200"
+              }`}
+            >
               <div className="flex items-center gap-3">
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-200/60">
                   <Target className="h-5 w-5" />

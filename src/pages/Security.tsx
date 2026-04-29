@@ -32,20 +32,21 @@ function SecurityHero() {
       <div aria-hidden className="pointer-events-none absolute -left-40 top-10 h-[420px] w-[420px] rounded-full bg-brand-600/25 blur-3xl" />
       <div aria-hidden className="pointer-events-none absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-indigo-500/20 blur-3xl" />
       <Container className="relative">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
-          <div>
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="max-w-2xl">
             <Eyebrow tone="dark">Security &amp; Governance</Eyebrow>
-            <h1 className="mt-6 text-[36px] font-semibold leading-[1.04] tracking-[-0.02em] text-white sm:text-[60px]">
-              Built for the enterprises <span className="text-gradient">auditors call first.</span>
+            <h1 className="mt-6 text-[40px] font-semibold leading-[1.08] tracking-[-0.02em] text-white sm:text-[52px]">
+              Built for risk, compliance,
+              <br className="hidden sm:block" /> and execution teams.
             </h1>
-            <p className="mt-5 text-lg text-ink-300 sm:text-xl">
-              AI-Harness is engineered for regulated, high-stakes environments. Every agent action is
-              logged, every decision auditable, every policy enforceable, from the first pilot to
-              organization-wide rollout.
+            <p className="mt-5 max-w-xl text-[18px] leading-relaxed text-ink-300 sm:text-[21px]">
+              From approvals to audit trails, AI-Harness embeds governance into daily operations.
+              Every action is traceable, every policy enforceable, and every outcome measurable,
+              so scaling AI never becomes a compliance liability.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button to="/demo" variant="white" size="lg">
-                Request the Trust &amp; Security brief
+                Request trust &amp; security brief
                 <ArrowRight className="h-4 w-4" />
               </Button>
               <Button to="/contact" size="lg" className="border border-white/15 bg-white/5 text-white hover:bg-white/10">
@@ -72,7 +73,7 @@ function PillarsBlock() {
       icon: <Eye className="h-5 w-5" />, title: "Observability", description: "Live telemetry on agent behavior, cost, and quality. Export to your SIEM, data warehouse, or observability stack.", }, {
       icon: <Server className="h-5 w-5" />, title: "Flexible Deployment", description: "Cloud, private cloud, VPC, or on-prem. Bring your own models, your own keys, your own data residency.", }, ];
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20">
       <Container>
         <SectionHeading
           eyebrow="Six pillars of control"
@@ -93,7 +94,7 @@ function ComplianceBlock() {
   const items = [
     { title: "SOC 2 Type II", sub: "Annual audit, available under NDA" }, { title: "ISO 27001", sub: "Certification on roadmap 2026" }, { title: "GDPR & CCPA", sub: "Data subject rights & DPA included" }, { title: "HIPAA", sub: "BAA available on Enterprise" }, { title: "PCI-aware", sub: "Controls for regulated payments workflows" }, { title: "EU AI Act-ready", sub: "Policy packs & risk classification support" }, ];
   return (
-    <section className="py-20 sm:py-28 bg-ink-50/70">
+    <section className="py-16 sm:py-20 bg-ink-50/70">
       <Container>
         <SectionHeading
           eyebrow="Compliance"
@@ -122,7 +123,7 @@ function DataHandling() {
     { k: "Encryption in transit", v: "TLS 1.3 across every network boundary" }, { k: "Encryption at rest", v: "AES-256 with customer-managed keys (Enterprise)" }, { k: "Data residency", v: "US, EU, UK, APAC, customer-selectable" }, { k: "Tenancy isolation", v: "Strict tenant isolation, per-customer encryption contexts" }, { k: "Secrets management", v: "First-class secret vault, rotation, scoped access" }, { k: "Model provider choice", v: "Use your approved models, OpenAI, Anthropic, Bedrock, Azure, self-hosted" }, ];
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20">
       <Container>
         <div className="grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:items-center">
           <div>
@@ -169,7 +170,7 @@ function AgentGovernance() {
   const items = [
     "Budget ceilings per agent, team, or workspace", "Automatic throttling when an agent approaches its limit", "Policy packs for industry-specific guardrails", "Approval thresholds by value, risk, or category", "Full session replay of any agent's decisions", "Reversible actions, roll back any agent change", ];
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20">
       <Container>
         <div className="rounded-[32px] bg-gradient-to-br from-brand-50 via-white to-indigo-50 p-10 sm:p-14 border border-ink-200">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
@@ -202,7 +203,7 @@ function TrustCenter() {
   const docs = [
     { icon: <FileCheck2 className="h-5 w-5" />, title: "SOC 2 Type II Report", sub: "Available under NDA" }, { icon: <ShieldCheck className="h-5 w-5" />, title: "Security Whitepaper", sub: "Technical and control overview" }, { icon: <Globe className="h-5 w-5" />, title: "DPA & Subprocessor List", sub: "Up-to-date GDPR-aligned DPA" }, { icon: <ClipboardList className="h-5 w-5" />, title: "Questionnaires", sub: "CAIQ, SIG, custom responses" }, ];
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20">
       <Container>
         <SectionHeading
           eyebrow="Trust center"
