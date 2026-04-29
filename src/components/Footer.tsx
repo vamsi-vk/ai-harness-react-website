@@ -14,7 +14,7 @@ const columns: FooterColumn[] = [
     title: "Solutions", links: [
       { label: "By Use Case", to: "/solutions" }, { label: "By Industry", to: "/industries" }, { label: "For Operations", to: "/solutions#operations" }, { label: "For Engineering", to: "/solutions#engineering" }, { label: "For Customer Ops", to: "/solutions#customer" }, ], }, {
     title: "Company", links: [
-      { label: "About", to: "/about" }, { label: "Careers", to: "/about#careers" }, { label: "Contact", to: "/contact" }, { label: "Security & Trust", to: "/security" }, ], },
+      { label: "Contact", to: "/contact" }, { label: "Security & Trust", to: "/security" }, ], },
 ];
 
 export default function Footer() {
