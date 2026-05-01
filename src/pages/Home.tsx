@@ -1,7 +1,7 @@
-import { Link, type To } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import {
-  ArrowRight, Bot, ShieldCheck, Workflow, Users, Gauge, FileCheck2, Sparkles, Layers, LineChart, Lock, Brain, CheckCircle2, Factory, ShoppingBag, Laptop, Briefcase, CircleHelp,
+  ArrowRight, Bot, ShieldCheck, Workflow, Users, Gauge, FileCheck2, Sparkles, Layers, LineChart, Lock, Brain, CheckCircle2, Factory, ShoppingBag, Laptop, Briefcase,
 } from "lucide-react";
 import Container from "../components/Container";
 import Button from "../components/Button";
@@ -15,7 +15,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <ExecutiveQuestionsPopup />
       <TrustedBy />
       <SolutionsPreview />
       <ValueProps />
@@ -25,164 +24,6 @@ export default function Home() {
       <GovernanceBlock />
       <IndustriesPreview />
       <CTASection />
-    </>
-  );
-}
-
-type RoleQuestion = {
-  question: string;
-  to: To;
-};
-
-type ExecutiveRole = {
-  id: string;
-  label: string;
-  prompt: string;
-  questions: RoleQuestion[];
-};
-
-function ExecutiveQuestionsPopup() {
-  const roles: ExecutiveRole[] = [
-    {
-      id: "ceo",
-      label: "I'm a CEO",
-      prompt: "Common CEO questions",
-      questions: [
-        { question: "Where can I see AI ROI across teams?", to: { pathname: "/solutions", hash: "#role-ceo-board" } },
-        { question: "How do we scale safely without losing control?", to: "/security" },
-        { question: "What platform capabilities support board reporting?", to: "/platform" },
-      ],
-    },
-    {
-      id: "founder",
-      label: "I'm a Founder",
-      prompt: "Common founder questions",
-      questions: [
-        { question: "Which workflows should we automate first?", to: { pathname: "/solutions", hash: "#operations" } },
-        { question: "How quickly can we launch and expand AI use cases?", to: "/platform" },
-        { question: "How do we keep quality high while moving faster?", to: { pathname: "/solutions", hash: "#role-coo" } },
-      ],
-    },
-    {
-      id: "coo",
-      label: "I'm a COO",
-      prompt: "Common COO questions",
-      questions: [
-        { question: "How do we standardize AI execution across functions?", to: { pathname: "/solutions", hash: "#role-coo" } },
-        { question: "How can operations teams improve throughput quickly?", to: { pathname: "/solutions", hash: "#operations" } },
-        { question: "How do we monitor workflow performance in real time?", to: "/platform" },
-      ],
-    },
-    {
-      id: "cto",
-      label: "I'm a CIO / CTO",
-      prompt: "Common CIO/CTO questions",
-      questions: [
-        { question: "How does this integrate with our existing stack?", to: { pathname: "/solutions", hash: "#role-cio-cto" } },
-        { question: "What controls do we get for governance and security?", to: "/security" },
-        { question: "Can we bring our own models and tooling?", to: { pathname: "/platform", hash: "#integrations" } },
-      ],
-    },
-    {
-      id: "cfo",
-      label: "I'm a CFO",
-      prompt: "Common CFO questions",
-      questions: [
-        { question: "How do we track spend by team and outcome?", to: { pathname: "/solutions", hash: "#role-cfo" } },
-        { question: "How are budget controls enforced?", to: "/security" },
-        { question: "Where can I review finance-focused workflows?", to: { pathname: "/solutions", hash: "#finance" } },
-      ],
-    },
-  ];
-
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedRoleId, setSelectedRoleId] = useState(roles[0].id);
-  const selectedRole = roles.find((role) => role.id === selectedRoleId) ?? roles[0];
-
-  useEffect(() => {
-    if (!isOpen) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [isOpen]);
-
-  return (
-    <>
-      <button
-        type="button"
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-1/2 z-30 inline-flex -translate-x-1/2 items-center gap-2 rounded-full border-2 border-brand-100 bg-gradient-to-r from-brand-700 via-brand-600 to-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_18px_42px_-16px_rgba(37,99,235,0.65)] ring-1 ring-white/35 transition-all hover:-translate-y-0.5 hover:brightness-105 sm:bottom-8 sm:right-8 sm:translate-x-0"
-      >
-        <CircleHelp className="h-4 w-4 text-white" />
-        I'm a...
-      </button>
-
-      {isOpen ? (
-        <div className="fixed inset-0 z-40 flex items-center justify-center p-4 sm:p-6">
-          <button
-            type="button"
-            aria-label="Close questions popup"
-            onClick={() => setIsOpen(false)}
-            className="absolute inset-0 bg-ink-950/55 backdrop-blur-sm"
-          />
-          <div className="relative w-full max-w-3xl rounded-3xl border border-ink-200 bg-white p-6 shadow-lift sm:p-8">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">
-                  Executive question guide
-                </p>
-                <h3 className="mt-2 text-2xl font-semibold tracking-tight text-ink-900">
-                  Select your role to view key priorities.
-                </h3>
-              </div>
-              <button
-                type="button"
-                aria-label="Close popup"
-                onClick={() => setIsOpen(false)}
-                className="grid h-9 w-9 place-items-center rounded-full border border-ink-200 text-lg text-ink-700 transition-colors hover:bg-ink-50"
-              >
-                ×
-              </button>
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-2">
-              {roles.map((role) => (
-                <button
-                  key={role.id}
-                  type="button"
-                  onClick={() => setSelectedRoleId(role.id)}
-                  className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
-                    selectedRole.id === role.id
-                      ? "border-brand-700 bg-brand-700 text-white"
-                      : "border-ink-200 bg-white text-ink-700 hover:bg-ink-50"
-                  }`}
-                >
-                  {role.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="mt-6 rounded-2xl border border-ink-200 bg-ink-50/70 p-5">
-              <p className="text-sm font-semibold text-ink-900">{selectedRole.prompt}</p>
-              <div className="mt-4 grid gap-3">
-                {selectedRole.questions.map((item) => (
-                  <Link
-                    key={item.question}
-                    to={item.to}
-                    onClick={() => setIsOpen(false)}
-                    className="group inline-flex items-center justify-between gap-3 rounded-xl border border-ink-200 bg-white px-4 py-3 text-left text-[15px] font-medium text-ink-800 transition-all hover:-translate-y-0.5 hover:border-ink-300 hover:shadow-soft"
-                  >
-                    {item.question}
-                    <ArrowRight className="h-4 w-4 shrink-0 text-ink-400 transition-transform group-hover:translate-x-0.5 group-hover:text-ink-800" />
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : null}
     </>
   );
 }
@@ -651,10 +492,10 @@ function SolutionsPreview() {
     { label: "Finance & FP&A", hash: "#finance" },
   ];
   const executiveRoles = [
-    { label: "I'm a CEO / Board Leader", hash: "#role-ceo-board" },
-    { label: "I'm a COO", hash: "#role-coo" },
-    { label: "I'm a CIO / CTO", hash: "#role-cio-cto" },
-    { label: "I'm a CFO", hash: "#role-cfo" },
+    { label: "For the CEO & Board", hash: "#role-ceo-board" },
+    { label: "For the COO", hash: "#role-coo" },
+    { label: "For the CIO / CTO", hash: "#role-cio-cto" },
+    { label: "For the CFO", hash: "#role-cfo" },
   ];
 
   return (
