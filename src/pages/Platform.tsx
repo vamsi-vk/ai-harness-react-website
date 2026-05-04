@@ -61,17 +61,17 @@ function PlatformHero() {
 
 function CapabilitiesOverview() {
   const tabs = [
-    { icon: <Bot className="h-4 w-4" />, label: "Agents", id: "agents" }, { icon: <Workflow className="h-4 w-4" />, label: "Workflows", id: "workflows" }, { icon: <ShieldCheck className="h-4 w-4" />, label: "Governance", id: "governance" }, { icon: <Puzzle className="h-4 w-4" />, label: "Integrations", id: "integrations" }, ];
+    { icon: <Bot className="h-5 w-5" />, label: "Agents", id: "agents" }, { icon: <Workflow className="h-5 w-5" />, label: "Workflows", id: "workflows" }, { icon: <ShieldCheck className="h-5 w-5" />, label: "Governance", id: "governance" }, { icon: <Puzzle className="h-5 w-5" />, label: "Integrations", id: "integrations" }, ];
 
   return (
-    <section className="py-20">
+    <section className="py-10 sm:py-12">
       <Container>
-        <div className="mx-auto flex max-w-3xl flex-wrap justify-center gap-2">
+        <div className="mx-auto flex max-w-5xl flex-wrap justify-center gap-3 rounded-2xl border border-ink-200 bg-ink-50/70 p-3">
           {tabs.map((t) => (
             <a
               key={t.id}
               href={`#${t.id}`}
-              className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-700 hover:border-ink-300 hover:bg-ink-50"
+              className="inline-flex items-center gap-2.5 rounded-full border border-ink-200 bg-white px-5 py-2.5 text-[15px] font-semibold text-ink-800 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:text-ink-900 hover:shadow"
             >
               <span className="text-brand-600">{t.icon}</span>
               {t.label}
@@ -100,14 +100,14 @@ function AgentsSection() {
         "Use the models and agent runtimes your organization has already approved. AI-Harness is the control plane, not another framework.", }, ];
 
   return (
-    <section id="agents" className="scroll-mt-24 py-16 sm:py-20">
+    <section id="agents" className="scroll-mt-24 py-12 sm:py-14">
       <Container>
         <SectionHeading
           eyebrow="AI Agents"
           title={<>Agents that behave like <span className="text-gradient">accountable team members.</span></>}
           description="Define who they are, what they can do, who they report to, and where their authority ends. Then let them get to work."
         />
-        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {capabilities.map((c) => (
             <FeatureCard key={c.title} {...c} />
           ))}
