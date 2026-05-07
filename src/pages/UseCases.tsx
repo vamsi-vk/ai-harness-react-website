@@ -8,6 +8,7 @@ import Button from "../components/Button";
 import Eyebrow from "../components/Eyebrow";
 import SectionHeading from "../components/SectionHeading";
 import CTASection from "../components/CTASection";
+import Seo from "../components/Seo";
 
 type UseCase = {
   id: string;
@@ -62,6 +63,12 @@ export default function UseCases() {
 
   return (
     <>
+      <Seo
+        path="/solutions"
+        title="Solutions — High-value workflows where AI pays for itself"
+        description="AI-Harness solutions across operations, customer ops, engineering, marketing, legal & compliance, finance, people, and security — the workflows where governed AI agents deliver measurable ROI."
+        keywords="AI solutions, AI use cases, AI for operations, AI for customer support, AI for engineering, AI for finance, AI for compliance"
+      />
       <UseCasesHero />
       <UseCaseGrid highlightedId={highlightedId} />
       <ByRole highlightedId={highlightedId} />

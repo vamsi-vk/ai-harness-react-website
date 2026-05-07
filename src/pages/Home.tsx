@@ -10,10 +10,20 @@ import SectionHeading from "../components/SectionHeading";
 import FeatureCard from "../components/FeatureCard";
 import LogoCloud from "../components/LogoCloud";
 import CTASection from "../components/CTASection";
+import HeroBoard from "../components/HeroBoard";
+import Seo from "../components/Seo";
+import PictureSet from "../components/PictureSet";
+import { useFooterVisible } from "../lib/useFooterVisible";
 
 export default function Home() {
   return (
     <>
+      <Seo
+        path="/"
+        title="AI-Harness — The Human + AI Workforce Platform"
+        description="Embed accountable AI agents into the projects, tasks, and workflows your teams already run. Unified human + AI workforce, with shared context, governance, and full audit trails."
+        keywords="AI workforce platform, AI agents, human AI collaboration, AI workflow automation, AI governance, enterprise AI platform"
+      />
       <Hero />
       <ExecutiveQuestionsPopup />
       <TrustedBy />
@@ -88,6 +98,7 @@ function ExecutiveQuestionsPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedRoleId, setSelectedRoleId] = useState(roles[0].id);
   const selectedRole = roles.find((role) => role.id === selectedRoleId) ?? roles[0];
+  const footerVisible = useFooterVisible();
 
   useEffect(() => {
     if (!isOpen) return;
@@ -103,7 +114,13 @@ function ExecutiveQuestionsPopup() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-1/2 z-30 inline-flex -translate-x-1/2 items-center gap-2.5 rounded-full border-2 border-white/80 bg-gradient-to-r from-brand-700 via-brand-600 to-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_18px_44px_-14px_rgba(37,99,235,0.75)] ring-2 ring-brand-200/70 transition-all hover:-translate-y-0.5 hover:brightness-110 sm:right-8 sm:translate-x-0"
+        aria-hidden={footerVisible}
+        tabIndex={footerVisible ? -1 : 0}
+        className={`fixed bottom-8 right-1/2 z-30 inline-flex -translate-x-1/2 items-center gap-2.5 rounded-full border-2 border-white/80 bg-gradient-to-r from-brand-700 via-brand-600 to-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_18px_44px_-14px_rgba(37,99,235,0.75)] ring-2 ring-brand-200/70 transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm:right-8 sm:translate-x-0 ${
+          footerVisible
+            ? "pointer-events-none translate-y-6 opacity-0"
+            : "opacity-100"
+        }`}
       >
         <CircleHelp className="h-4 w-4 text-white" />
         Role-based insights
@@ -184,12 +201,12 @@ function Hero() {
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-60 [mask-image:linear-gradient(to_bottom,white_0%,white_60%,transparent_100%)]" />
       <Container className="relative">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-          <Eyebrow>The Enterprise AI Workforce Platform</Eyebrow>
+          <Eyebrow>The Human + AI Workforce Platform</Eyebrow>
           <h1 className="mt-6 text-[36px] font-semibold tracking-[-0.025em] leading-[1.02] text-ink-900 sm:text-[68px]">
             Human-Led. <span className="text-gradient">AI-Powered.</span> One Team.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-600 sm:text-xl">
-            AI-Harness embeds accountable AI teammates into real processes, so your team moves faster without losing governance.
+            AI-Harness brings accountable AI agents into the projects, tasks, and workflows your teams already run — assigned, tracked, and reviewed alongside every other teammate, with shared context and full audit trails.
           </p>
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
             <Button to="/signup" size="lg">
@@ -201,7 +218,7 @@ function Hero() {
             </Button>
           </div>
           <p className="mt-5 text-sm text-ink-500">
-            Faster execution across business functions · Governed AI operations · End-to-end traceability and accountability
+            AI as first-class teammates · Unified project & task workflows · End-to-end governance and auditability
           </p>
         </div>
 
@@ -212,25 +229,20 @@ function Hero() {
               <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
               <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
-              <span className="ml-3 text-xs font-medium text-ink-500">ai-harness.com / command-center</span>
+              <span className="ml-3 text-xs font-medium text-ink-500">ai-harness.com / workspace / projects / MVP1</span>
             </div>
-            <img
-              src="/screenshot-dashboard.png"
-              alt="AI-Harness Command Center dashboard"
-              className="block w-full"
-              loading="eager"
-            />
+            <HeroBoard />
           </div>
           <FloatingStat
             className="left-[-16px] top-14 hidden sm:flex"
-            icon={<Gauge className="h-4 w-4" />}
-            label="Avg. task throughput"
-            value="+312%"
+            icon={<Bot className="h-4 w-4" />}
+            label="Owned by AI agents"
+            value="32% of board"
           />
           <FloatingStat
             className="right-[-16px] bottom-16 hidden sm:flex"
             icon={<ShieldCheck className="h-4 w-4" />}
-            label="Audit-logged actions"
+            label="Audit trail coverage"
             value="100%"
           />
         </div>
@@ -354,46 +366,66 @@ function CountUpValue({
   suffix?: string;
   duration?: number;
 }) {
-  const [value, setValue] = useState(0);
+  // Initialize with the *target* value so the very first paint and any
+  // pre-rendered/indexable HTML contain the real number. The animation, when
+  // it runs, briefly drops to 0 and tweens back up — purely a progressive
+  // enhancement on top of correct, crawler-readable content.
+  const [value, setValue] = useState<number>(target);
   const ref = useRef<HTMLSpanElement | null>(null);
-  const isAnimatingRef = useRef(false);
+  const hasAnimatedRef = useRef(false);
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
+    if (hasAnimatedRef.current) return;
+    if (typeof IntersectionObserver === "undefined") return;
+
+    const reduceMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      hasAnimatedRef.current = true;
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
+
+    const startAnimation = () => {
+      if (hasAnimatedRef.current) return;
+      hasAnimatedRef.current = true;
+
+      const start = performance.now();
+
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setValue(target * eased);
+        if (progress < 1) {
+          rafRef.current = requestAnimationFrame(tick);
+        } else {
+          setValue(target);
+          rafRef.current = null;
+        }
+      };
+
+      // Drop to 0 immediately on the same frame the animation starts so we
+      // never paint a half-state (target → 0 → tween).
+      setValue(0);
+      rafRef.current = requestAnimationFrame(tick);
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        if (!entry) return;
-
-        if (!entry.isIntersecting) {
-          setValue(0);
-          if (rafRef.current) cancelAnimationFrame(rafRef.current);
-          isAnimatingRef.current = false;
-          return;
+        if (entry?.isIntersecting) {
+          startAnimation();
+          observer.disconnect();
         }
-
-        if (isAnimatingRef.current) return;
-        isAnimatingRef.current = true;
-        const start = performance.now();
-        const startValue = 0;
-
-        const tick = (now: number) => {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          setValue(startValue + (target - startValue) * eased);
-          if (progress < 1) {
-            rafRef.current = requestAnimationFrame(tick);
-          } else {
-            isAnimatingRef.current = false;
-          }
-        };
-
-        rafRef.current = requestAnimationFrame(tick);
       },
-      { threshold: 0.4 },
+      // Fire as soon as any part of the section enters the viewport so the
+      // brief `target → 0` swap happens while the user's eye is still above
+      // the section. By the time they focus on it, the count-up is mid-way.
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" },
     );
 
     observer.observe(el);
@@ -403,7 +435,16 @@ function CountUpValue({
     };
   }, [target, duration]);
 
-  return <span ref={ref}>{value.toFixed(decimals)}{suffix}</span>;
+  // The aria-label always reflects the *target* so screen readers, the AX
+  // tree, and any scraper that respects ARIA see the real number even while
+  // the count-up is in flight.
+  const label = `${target.toFixed(decimals)}${suffix}`;
+  return (
+    <span ref={ref} aria-label={label} role="text">
+      {value.toFixed(decimals)}
+      {suffix}
+    </span>
+  );
 }
 
 function PlatformPillars() {
@@ -502,7 +543,15 @@ function HowItWorks() {
           <div className="relative">
             <div aria-hidden className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-brand-100 via-white to-indigo-100 blur-2xl opacity-60" />
             <div className="relative overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift">
-              <img src="/lifecycle.png" alt="AI agent lifecycle" className="block w-full" />
+              <PictureSet
+                base="/lifecycle"
+                alt="AI agent lifecycle"
+                width={1376}
+                height={768}
+                loading="lazy"
+                decoding="async"
+                className="block h-auto w-full"
+              />
             </div>
           </div>
         </div>
@@ -517,7 +566,15 @@ function WorkflowShowcase() {
       <Container>
         <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div className="order-2 relative overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift lg:order-1">
-            <img src="/workflow.png" alt="Unified workflow board" className="block w-full" />
+            <PictureSet
+              base="/workflow"
+              alt="Unified workflow board"
+              width={1376}
+              height={768}
+              loading="lazy"
+              decoding="async"
+              className="block h-auto w-full"
+            />
           </div>
           <div className="order-1 lg:order-2">
             <SectionHeading
@@ -587,7 +644,15 @@ function GovernanceBlock() {
               </div>
             </div>
             <div className="relative">
-              <img src="/governance.png" alt="Governance visualization" className="w-full rounded-2xl" />
+              <PictureSet
+                base="/governance"
+                alt="Governance visualization"
+                width={1376}
+                height={768}
+                loading="lazy"
+                decoding="async"
+                className="h-auto w-full rounded-2xl"
+              />
             </div>
           </div>
         </div>

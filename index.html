@@ -2,14 +2,131 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/ai-harness-favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="AI-Harness is the enterprise platform for deploying, governing, and scaling a unified workforce of humans and AI agents. Embed AI into your workflows with full traceability and control." />
+    <link rel="icon" type="image/png" href="/ai-harness-favicon.png" />
+    <link rel="apple-touch-icon" href="/ai-harness-favicon.png" />
     <meta name="theme-color" content="#5B21B6" />
-    <title>AI-Harness, The Enterprise Platform for Your AI Workforce</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+    <!-- Default metadata. Per-route <title>, <meta>, <link rel="canonical">
+         are injected by the <Seo /> component once React mounts. The defaults
+         below are what crawlers / share-preview bots see if JS does not run. -->
+    <title>AI-Harness — The Human + AI Workforce Platform</title>
+    <meta
+      name="description"
+      content="AI-Harness brings accountable AI agents into the projects, tasks, and workflows your teams already run — assigned, tracked, and reviewed alongside every teammate, with shared context and full audit trails."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://ai-harness.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AI-Harness" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://ai-harness.com/" />
+    <meta property="og:title" content="AI-Harness — The Human + AI Workforce Platform" />
+    <meta
+      property="og:description"
+      content="Embed accountable AI agents into your real projects, tasks, and workflows. Unified human + AI workforce, governed and auditable."
+    />
+    <meta property="og:image" content="https://ai-harness.com/og.png" />
+    <meta property="og:image:secure_url" content="https://ai-harness.com/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="AI-Harness — The Human + AI Workforce Platform"
+    />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ai_harness" />
+    <meta name="twitter:creator" content="@ai_harness" />
+    <meta name="twitter:url" content="https://ai-harness.com/" />
+    <meta name="twitter:title" content="AI-Harness — The Human + AI Workforce Platform" />
+    <meta
+      name="twitter:description"
+      content="Embed accountable AI agents into your real projects, tasks, and workflows. Unified human + AI workforce, governed and auditable."
+    />
+    <meta name="twitter:image" content="https://ai-harness.com/og.png" />
+    <meta
+      name="twitter:image:alt"
+      content="AI-Harness — The Human + AI Workforce Platform"
+    />
+
+    <!-- Structured data: Organization, WebSite, and SoftwareApplication.
+         Per-route BreadcrumbList + FAQPage JSON-LD is emitted by the
+         <Seo /> and <FaqJsonLd /> components once React mounts. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://ai-harness.com/#organization",
+            "name": "AI-Harness",
+            "alternateName": "AI Harness",
+            "url": "https://ai-harness.com",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://ai-harness.com/ai-harness-logo-light.png",
+              "width": 1024,
+              "height": 320
+            },
+            "image": "https://ai-harness.com/og.png",
+            "description": "AI-Harness is the human + AI workforce platform. It embeds accountable AI agents into the projects, tasks, and workflows your teams already run — with shared context, governance, and full audit trails.",
+            "slogan": "The Human + AI Workforce Platform",
+            "sameAs": [
+              "https://linkedin.com/company/ai-harness-com/",
+              "https://x.com/ai_harness",
+              "https://instagram.com/ai.harness",
+              "https://youtube.com/@ai-harness"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://ai-harness.com/#website",
+            "url": "https://ai-harness.com",
+            "name": "AI-Harness",
+            "description": "The human + AI workforce platform — accountable AI agents inside the projects, tasks, and workflows your teams already run.",
+            "publisher": { "@id": "https://ai-harness.com/#organization" },
+            "inLanguage": "en-US"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://ai-harness.com/#software",
+            "name": "AI-Harness",
+            "url": "https://ai-harness.com",
+            "applicationCategory": "BusinessApplication",
+            "applicationSubCategory": "AI Workforce / Agent Orchestration",
+            "operatingSystem": "Web, Cloud, On-premises",
+            "description": "Embed accountable AI agents into your real projects, tasks, and workflows. Unified human + AI workforce, governed and auditable.",
+            "image": "https://ai-harness.com/og.png",
+            "screenshot": "https://ai-harness.com/og.png",
+            "publisher": { "@id": "https://ai-harness.com/#organization" },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://ai-harness.com/signup",
+              "category": "Free tier — paid Business and Enterprise plans available"
+            },
+            "featureList": [
+              "Configurable AI agents",
+              "Workflow engine for projects and tasks",
+              "Role-based access control & SSO",
+              "Immutable audit logs and approval gates",
+              "Cost & budget guardrails",
+              "Bring-your-own-model (OpenAI, Anthropic, Google, Bedrock, Azure)"
+            ]
+          }
+        ]
+      }
+    </script>
+
+    <!-- Fonts are self-hosted via @fontsource packages and imported in
+         src/main.tsx. No external CDN is needed; see issue #14 for context. -->
   </head>
   <body>
     <div id="root"></div>

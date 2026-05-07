@@ -7,10 +7,18 @@ import Eyebrow from "../components/Eyebrow";
 import SectionHeading from "../components/SectionHeading";
 import FeatureCard from "../components/FeatureCard";
 import CTASection from "../components/CTASection";
+import PictureSet from "../components/PictureSet";
+import Seo from "../components/Seo";
 
 export default function Security() {
   return (
     <>
+      <Seo
+        path="/security"
+        title="Security & Trust — Enterprise-grade AI governance"
+        description="How AI-Harness keeps your data, models, and AI agents safe: identity, access, encryption, isolation, full audit trails, SOC 2, ISO 27001, GDPR, and responsible AI governance."
+        keywords="AI security, AI governance, SOC 2, ISO 27001, GDPR, AI audit trail, responsible AI, enterprise AI compliance"
+      />
       <SecurityHero />
       <PillarsBlock />
       <ComplianceBlock />
@@ -55,7 +63,16 @@ function SecurityHero() {
             </div>
           </div>
           <div className="relative">
-            <img src="/governance.png" alt="Security & governance" className="w-full rounded-3xl" />
+            <PictureSet
+              base="/governance"
+              alt="Security & governance"
+              width={1376}
+              height={768}
+              fetchPriority="high"
+              decoding="async"
+              loading="eager"
+              className="h-auto w-full rounded-3xl"
+            />
           </div>
         </div>
       </Container>

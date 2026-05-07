@@ -11,6 +11,9 @@ export default function Logo({ dark = false, className = "" }: LogoProps) {
       <img
         src={dark ? "/ai-harness-logo-dark.png" : "/ai-harness-logo-light.png"}
         alt="AI-Harness logo"
+        width={1156}
+        height={335}
+        decoding="async"
         className="h-10 w-auto sm:h-11"
       />
     </Link>
