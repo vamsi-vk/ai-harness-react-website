@@ -138,3 +138,7 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite
+
+# Sidecar cache files written by scripts/optimize-images.mjs.
+# Generated next-gen image variants (.webp, .avif) DO get committed.
+public/.*.optimized

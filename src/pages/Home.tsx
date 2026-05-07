@@ -12,6 +12,7 @@ import LogoCloud from "../components/LogoCloud";
 import CTASection from "../components/CTASection";
 import HeroBoard from "../components/HeroBoard";
 import Seo from "../components/Seo";
+import PictureSet from "../components/PictureSet";
 import { useFooterVisible } from "../lib/useFooterVisible";
 
 export default function Home() {
@@ -202,7 +203,7 @@ function Hero() {
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <Eyebrow>The Human + AI Workforce Platform</Eyebrow>
           <h1 className="mt-6 text-[36px] font-semibold tracking-[-0.025em] leading-[1.02] text-ink-900 sm:text-[68px]">
-            One workspace. <span className="text-gradient">Humans and AI agents</span> on the same team.
+            Human-Led. <span className="text-gradient">AI-Powered.</span> One Team.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-600 sm:text-xl">
             AI-Harness brings accountable AI agents into the projects, tasks, and workflows your teams already run — assigned, tracked, and reviewed alongside every other teammate, with shared context and full audit trails.
@@ -542,7 +543,15 @@ function HowItWorks() {
           <div className="relative">
             <div aria-hidden className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-brand-100 via-white to-indigo-100 blur-2xl opacity-60" />
             <div className="relative overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift">
-              <img src="/lifecycle.png" alt="AI agent lifecycle" className="block w-full" />
+              <PictureSet
+                base="/lifecycle"
+                alt="AI agent lifecycle"
+                width={1376}
+                height={768}
+                loading="lazy"
+                decoding="async"
+                className="block h-auto w-full"
+              />
             </div>
           </div>
         </div>
@@ -557,7 +566,15 @@ function WorkflowShowcase() {
       <Container>
         <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div className="order-2 relative overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift lg:order-1">
-            <img src="/workflow.png" alt="Unified workflow board" className="block w-full" />
+            <PictureSet
+              base="/workflow"
+              alt="Unified workflow board"
+              width={1376}
+              height={768}
+              loading="lazy"
+              decoding="async"
+              className="block h-auto w-full"
+            />
           </div>
           <div className="order-1 lg:order-2">
             <SectionHeading
@@ -627,7 +644,15 @@ function GovernanceBlock() {
               </div>
             </div>
             <div className="relative">
-              <img src="/governance.png" alt="Governance visualization" className="w-full rounded-2xl" />
+              <PictureSet
+                base="/governance"
+                alt="Governance visualization"
+                width={1376}
+                height={768}
+                loading="lazy"
+                decoding="async"
+                className="h-auto w-full rounded-2xl"
+              />
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@ import Eyebrow from "../components/Eyebrow";
 import SectionHeading from "../components/SectionHeading";
 import FeatureCard from "../components/FeatureCard";
 import CTASection from "../components/CTASection";
+import PictureSet from "../components/PictureSet";
 import Seo from "../components/Seo";
 
 export default function Security() {
@@ -62,7 +63,16 @@ function SecurityHero() {
             </div>
           </div>
           <div className="relative">
-            <img src="/governance.png" alt="Security & governance" className="w-full rounded-3xl" />
+            <PictureSet
+              base="/governance"
+              alt="Security & governance"
+              width={1376}
+              height={768}
+              fetchPriority="high"
+              decoding="async"
+              loading="eager"
+              className="h-auto w-full rounded-3xl"
+            />
           </div>
         </div>
       </Container>

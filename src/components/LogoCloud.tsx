@@ -20,7 +20,15 @@ export default function LogoCloud() {
           >
             {logo.image ? (
               <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-md border border-ink-200 bg-white">
-                <img src={logo.image} alt={`${logo.name} logo`} className="h-full w-full object-cover" loading="lazy" />
+                <img
+                  src={logo.image}
+                  alt={`${logo.name} logo`}
+                  width={48}
+                  height={48}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
               </span>
             ) : (
               <span className="grid h-11 w-11 place-items-center rounded-md bg-ink-100 text-ink-500">

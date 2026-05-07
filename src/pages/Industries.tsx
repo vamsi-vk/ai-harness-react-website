@@ -7,6 +7,7 @@ import Button from "../components/Button";
 import Eyebrow from "../components/Eyebrow";
 import SectionHeading from "../components/SectionHeading";
 import CTASection from "../components/CTASection";
+import PictureSet from "../components/PictureSet";
 import Seo from "../components/Seo";
 import { useFooterVisible } from "../lib/useFooterVisible";
 
@@ -132,7 +133,16 @@ function IndustriesHero() {
           </p>
         </div>
         <div className="relative mx-auto mt-14 max-w-5xl overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift">
-          <img src="/industries.png" alt="Industries served by AI-Harness" className="block w-full" />
+          <PictureSet
+            base="/industries"
+            alt="Industries served by AI-Harness"
+            width={1376}
+            height={768}
+            fetchPriority="high"
+            decoding="async"
+            loading="eager"
+            className="block h-auto w-full"
+          />
         </div>
       </Container>
     </section>

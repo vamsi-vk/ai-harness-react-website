@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import Eyebrow from "../components/Eyebrow";
 import SectionHeading from "../components/SectionHeading";
 import CTASection from "../components/CTASection";
+import FaqJsonLd from "../components/FaqJsonLd";
 import { cn } from "../lib/cn";
 
 type Plan = {
@@ -63,6 +64,7 @@ export default function Pricing() {
       <PlansGrid billing={billing} />
       <CompareTable />
       <ValueRibbon />
+      <FaqJsonLd faqs={faqs} />
       <FAQ />
       <CTASection
         title="Start free. Grow into the platform."

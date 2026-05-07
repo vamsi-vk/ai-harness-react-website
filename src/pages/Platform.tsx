@@ -7,6 +7,7 @@ import Eyebrow from "../components/Eyebrow";
 import SectionHeading from "../components/SectionHeading";
 import FeatureCard from "../components/FeatureCard";
 import CTASection from "../components/CTASection";
+import PictureSet from "../components/PictureSet";
 import Seo from "../components/Seo";
 
 export default function Platform() {
@@ -59,7 +60,16 @@ function PlatformHero() {
           </div>
         </div>
         <div className="relative mx-auto mt-14 max-w-6xl overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift">
-          <img src="/hero.png" alt="AI-Harness platform overview" className="block w-full" />
+          <PictureSet
+            base="/hero"
+            alt="AI-Harness platform overview"
+            width={1376}
+            height={768}
+            fetchPriority="high"
+            decoding="async"
+            loading="eager"
+            className="block h-auto w-full"
+          />
         </div>
       </Container>
     </section>
@@ -150,7 +160,15 @@ function WorkflowsSection() {
             </ul>
           </div>
           <div className="relative overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift">
-            <img src="/workflow.png" alt="AI-Harness workflow board" className="block w-full" />
+            <PictureSet
+              base="/workflow"
+              alt="AI-Harness workflow board"
+              width={1376}
+              height={768}
+              loading="lazy"
+              decoding="async"
+              className="block h-auto w-full"
+            />
           </div>
         </div>
       </Container>

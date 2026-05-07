@@ -1,17 +1,22 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import Platform from "./pages/Platform";
-import Industries from "./pages/Industries";
-import UseCases from "./pages/UseCases";
-import Security from "./pages/Security";
-import Contact from "./pages/Contact";
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
-import RequestDemo from "./pages/RequestDemo";
-import NotFound from "./pages/NotFound";
+
+// Home is eagerly bundled — it's the LCP-critical landing page that most
+// users hit first. Every other route is code-split via React.lazy() so it
+// only ships to users who actually navigate to it. See vite.config.ts for
+// the matching vendor chunking strategy.
+const Platform = lazy(() => import("./pages/Platform"));
+const Industries = lazy(() => import("./pages/Industries"));
+const UseCases = lazy(() => import("./pages/UseCases"));
+const Security = lazy(() => import("./pages/Security"));
+const Contact = lazy(() => import("./pages/Contact"));
+const SignUp = lazy(() => import("./pages/SignUp"));
+const Login = lazy(() => import("./pages/Login"));
+const RequestDemo = lazy(() => import("./pages/RequestDemo"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -19,6 +24,14 @@ function ScrollToTop() {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, [pathname]);
   return null;
+}
+
+// Minimal Suspense fallback. We deliberately do NOT show a spinner — for the
+// route chunks (~5–20 KB each) the swap is fast enough that any visible
+// loading state would flicker. The min-height keeps the footer from
+// jumping while the chunk streams in.
+function RouteFallback() {
+  return <div className="min-h-screen" aria-hidden />;
 }
 
 export default function App() {
@@ -36,19 +49,21 @@ export default function App() {
           <div className="absolute bottom-6 right-4 h-16 w-24 bg-[radial-gradient(circle,rgba(99,102,241,0.34)_1.2px,transparent_1.2px)] [background-size:10px_10px] opacity-50" />
         </div>
         <div className="relative z-10">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/platform" element={<Platform />} />
-            <Route path="/industries" element={<Industries />} />
-            <Route path="/solutions" element={<UseCases />} />
-            <Route path="/security" element={<Security />} />
-            <Route path="/resources" element={<NotFound />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/demo" element={<RequestDemo />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<RouteFallback />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/platform" element={<Platform />} />
+              <Route path="/industries" element={<Industries />} />
+              <Route path="/solutions" element={<UseCases />} />
+              <Route path="/security" element={<Security />} />
+              <Route path="/resources" element={<NotFound />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/demo" element={<RequestDemo />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </div>
       </main>
       <Footer />
