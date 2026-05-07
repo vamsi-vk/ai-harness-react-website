@@ -1,0 +1,57 @@
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+Disallow: /login
+Disallow: /signup
+
+# Explicit allows for AI / LLM crawlers
+# (login/signup repeated under each agent because more-specific rules
+#  override the User-agent: * block per the robots.txt spec)
+
+User-agent: GPTBot
+Allow: /
+Disallow: /login
+Disallow: /signup
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /login
+Disallow: /signup
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /login
+Disallow: /signup
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /login
+Disallow: /signup
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /login
+Disallow: /signup
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /login
+Disallow: /signup
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /login
+Disallow: /signup
+
+User-agent: CCBot
+Allow: /
+Disallow: /login
+Disallow: /signup
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /login
+Disallow: /signup
+
+Sitemap: https://ai-harness.com/sitemap.xml

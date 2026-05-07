@@ -4,11 +4,19 @@ import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 import Container from "../components/Container";
 import Button from "../components/Button";
 import Logo from "../components/Logo";
+import Seo from "../components/Seo";
 
 export default function SignUp() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
+    <>
+    <Seo
+      path="/signup"
+      title="Sign up — Start free with AI-Harness"
+      description="Create your AI-Harness workspace and start orchestrating AI agents alongside your team. Free to start, no credit card required."
+      noindex
+    />
     <section className="relative overflow-hidden py-16 sm:py-20">
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-spotlight" />
       <Container className="relative">
@@ -108,6 +116,7 @@ export default function SignUp() {
         </div>
       </Container>
     </section>
+    </>
   );
 }
 

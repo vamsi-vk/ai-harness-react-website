@@ -7,6 +7,8 @@ import Button from "../components/Button";
 import Eyebrow from "../components/Eyebrow";
 import SectionHeading from "../components/SectionHeading";
 import CTASection from "../components/CTASection";
+import Seo from "../components/Seo";
+import { useFooterVisible } from "../lib/useFooterVisible";
 
 type Industry = {
   id: string;
@@ -58,6 +60,12 @@ const industries: Industry[] = [
 export default function Industries() {
   return (
     <>
+      <Seo
+        path="/industries"
+        title="Industries — AI-Harness across financial services, retail, healthcare and more"
+        description="See how teams in financial services, retail, manufacturing, healthcare, technology, professional services, government, and media use AI-Harness to govern AI agents inside their workflows."
+        keywords="AI for financial services, AI for retail, AI for manufacturing, AI for healthcare, enterprise AI by industry"
+      />
       <IndustriesHero />
       <OverviewGrid />
       {industries.map((ind, i) => (
@@ -75,6 +83,7 @@ export default function Industries() {
 
 function FloatingBackButton() {
   const [visible, setVisible] = useState(false);
+  const footerVisible = useFooterVisible();
 
   useEffect(() => {
     const onScroll = () => {
@@ -89,12 +98,16 @@ function FloatingBackButton() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (!visible) return null;
+  const shown = visible && !footerVisible;
 
   return (
     <a
       href="#all-industries"
-      className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-4 py-2.5 text-sm font-semibold text-ink-700 shadow-soft transition-all hover:-translate-y-0.5 hover:border-ink-300 hover:text-ink-900"
+      aria-hidden={!shown}
+      tabIndex={shown ? 0 : -1}
+      className={`fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-4 py-2.5 text-sm font-semibold text-ink-700 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-ink-300 hover:text-ink-900 ${
+        shown ? "opacity-100" : "pointer-events-none translate-y-3 opacity-0"
+      }`}
     >
       <ArrowUp className="h-4 w-4" />
       All industries
