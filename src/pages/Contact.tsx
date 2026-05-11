@@ -1,13 +1,34 @@
-import { useState } from "react";
-import { Mail, MessageSquare, PhoneCall, Building2, MapPin, ArrowRight } from "lucide-react";
+import { useState, type ReactElement } from "react";
+import { Mail, MessageSquare, PhoneCall, Building2, MapPin, ArrowRight, Linkedin, Instagram, Youtube, Share2 } from "lucide-react";
 import Container from "../components/Container";
 import Button from "../components/Button";
 import Eyebrow from "../components/Eyebrow";
+import Seo from "../components/Seo";
+
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" className={className}>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644Z" />
+    </svg>
+  );
+}
+
+const socials: Array<{ label: string; href: string; Icon: (props: { className?: string }) => ReactElement }> = [
+  { label: "LinkedIn", href: "https://linkedin.com/company/ai-harness-com/", Icon: ({ className }) => <Linkedin className={className} /> },
+  { label: "X (Twitter)", href: "https://x.com/ai_harness", Icon: XIcon },
+  { label: "Instagram", href: "https://instagram.com/ai.harness", Icon: ({ className }) => <Instagram className={className} /> },
+  { label: "YouTube", href: "https://youtube.com/@ai-harness", Icon: ({ className }) => <Youtube className={className} /> },
+];
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
   return (
     <>
+      <Seo
+        path="/contact"
+        title="Contact — Talk to the AI-Harness team"
+        description="Get in touch with sales, support, partners, or security. The AI-Harness team responds within one business day."
+      />
       <section className="relative overflow-hidden pb-10 pt-20">
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-spotlight" />
         <Container className="relative">
@@ -47,6 +68,36 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold text-ink-900">Offices</p>
                   <p className="mt-1 text-[13.5px] text-ink-600">San Francisco · New York · London · Singapore</p>
+                </div>
+              </div>
+              <div className="rounded-2xl border border-ink-200 bg-white p-5">
+                <div className="flex items-start gap-4">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-200/60">
+                    <Share2 className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p className="font-semibold text-ink-900">Follow us</p>
+                    <p className="mt-1 text-[13.5px] text-ink-600">
+                      Product launches, customer stories, and AI research.
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-4 grid grid-cols-2 gap-2.5">
+                  {socials.map(({ label, href, Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="group flex items-center gap-3 rounded-xl border border-ink-200 bg-white px-3.5 py-2.5 transition-colors hover:border-brand-300 hover:bg-brand-50/40"
+                    >
+                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-ink-100 text-ink-700 transition-colors group-hover:bg-brand-100 group-hover:text-brand-700">
+                        <Icon className="h-4 w-4" />
+                      </span>
+                      <span className="block truncate text-[13px] font-semibold text-ink-900">{label}</span>
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>

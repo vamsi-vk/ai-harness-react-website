@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, type To } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import {
-  ArrowRight, Bot, ShieldCheck, Workflow, Users, Gauge, FileCheck2, Sparkles, Layers, LineChart, Lock, Brain, CheckCircle2, Factory, ShoppingBag, Laptop, Briefcase,
+  ArrowRight, Bot, ShieldCheck, Workflow, Users, Gauge, FileCheck2, Sparkles, Layers, LineChart, Lock, Brain, CheckCircle2, Factory, ShoppingBag, Laptop, Briefcase, CircleHelp,
 } from "lucide-react";
 import Container from "../components/Container";
 import Button from "../components/Button";
@@ -10,11 +10,22 @@ import SectionHeading from "../components/SectionHeading";
 import FeatureCard from "../components/FeatureCard";
 import LogoCloud from "../components/LogoCloud";
 import CTASection from "../components/CTASection";
+import HeroBoard from "../components/HeroBoard";
+import Seo from "../components/Seo";
+import PictureSet from "../components/PictureSet";
+import { useFooterVisible } from "../lib/useFooterVisible";
 
 export default function Home() {
   return (
     <>
+      <Seo
+        path="/"
+        title="AI-Harness — The Human + AI Workforce Platform"
+        description="Embed accountable AI agents into the projects, tasks, and workflows your teams already run. Unified human + AI workforce, with shared context, governance, and full audit trails."
+        keywords="AI workforce platform, AI agents, human AI collaboration, AI workflow automation, AI governance, enterprise AI platform"
+      />
       <Hero />
+      <ExecutiveQuestionsPopup />
       <TrustedBy />
       <SolutionsPreview />
       <ValueProps />
@@ -28,6 +39,161 @@ export default function Home() {
   );
 }
 
+type RoleQuestion = {
+  question: string;
+  to: To;
+};
+
+type ExecutiveRole = {
+  id: string;
+  label: string;
+  prompt: string;
+  questions: RoleQuestion[];
+};
+
+function ExecutiveQuestionsPopup() {
+  const roles: ExecutiveRole[] = [
+    {
+      id: "ceo",
+      label: "CEO & Board",
+      prompt: "Role-based insights for executive leadership",
+      questions: [
+        { question: "Where can I see AI ROI across teams?", to: { pathname: "/solutions", hash: "#role-ceo-board" } },
+        { question: "How do we scale safely without losing control?", to: "/security" },
+        { question: "What platform capabilities support board reporting?", to: "/platform" },
+      ],
+    },
+    {
+      id: "coo",
+      label: "COO",
+      prompt: "Role-based insights for operational execution",
+      questions: [
+        { question: "How do we standardize AI execution across functions?", to: { pathname: "/solutions", hash: "#role-coo" } },
+        { question: "How can operations teams improve throughput quickly?", to: { pathname: "/solutions", hash: "#operations" } },
+        { question: "How do we monitor workflow performance in real time?", to: "/platform" },
+      ],
+    },
+    {
+      id: "cio-cto",
+      label: "CIO / CTO",
+      prompt: "Role-based insights for technology leadership",
+      questions: [
+        { question: "How does this integrate with our existing stack?", to: { pathname: "/solutions", hash: "#role-cio-cto" } },
+        { question: "What controls do we get for governance and security?", to: "/security" },
+        { question: "Can we bring our own models and tooling?", to: { pathname: "/platform", hash: "#integrations" } },
+      ],
+    },
+    {
+      id: "cfo",
+      label: "CFO",
+      prompt: "Role-based insights for finance leadership",
+      questions: [
+        { question: "How do we track spend by team and outcome?", to: { pathname: "/solutions", hash: "#role-cfo" } },
+        { question: "How are budget controls enforced?", to: "/security" },
+        { question: "Where can I review finance-focused workflows?", to: { pathname: "/solutions", hash: "#finance" } },
+      ],
+    },
+  ];
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedRoleId, setSelectedRoleId] = useState(roles[0].id);
+  const selectedRole = roles.find((role) => role.id === selectedRoleId) ?? roles[0];
+  const footerVisible = useFooterVisible();
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setIsOpen(true)}
+        aria-hidden={footerVisible}
+        tabIndex={footerVisible ? -1 : 0}
+        className={`fixed bottom-8 right-1/2 z-30 inline-flex -translate-x-1/2 items-center gap-2.5 rounded-full border-2 border-white/80 bg-gradient-to-r from-brand-700 via-brand-600 to-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_18px_44px_-14px_rgba(37,99,235,0.75)] ring-2 ring-brand-200/70 transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm:right-8 sm:translate-x-0 ${
+          footerVisible
+            ? "pointer-events-none translate-y-6 opacity-0"
+            : "opacity-100"
+        }`}
+      >
+        <CircleHelp className="h-4 w-4 text-white" />
+        Role-based insights
+      </button>
+
+      {isOpen ? (
+        <div className="fixed inset-0 z-40 flex items-center justify-center p-4 sm:p-6">
+          <button
+            type="button"
+            aria-label="Close questions popup"
+            onClick={() => setIsOpen(false)}
+            className="absolute inset-0 bg-ink-950/55 backdrop-blur-sm"
+          />
+          <div className="relative w-full max-w-3xl rounded-3xl border border-ink-200 bg-white p-6 shadow-lift sm:p-8">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">
+                  Executive question guide
+                </p>
+                <h3 className="mt-2 text-2xl font-semibold tracking-tight text-ink-900">
+                  Select a leadership role.
+                </h3>
+              </div>
+              <button
+                type="button"
+                aria-label="Close popup"
+                onClick={() => setIsOpen(false)}
+                className="grid h-9 w-9 place-items-center rounded-full border border-ink-200 text-lg text-ink-700 transition-colors hover:bg-ink-50"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {roles.map((role) => (
+                <button
+                  key={role.id}
+                  type="button"
+                  onClick={() => setSelectedRoleId(role.id)}
+                  className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+                    selectedRole.id === role.id
+                      ? "border-brand-700 bg-brand-700 text-white"
+                      : "border-ink-200 bg-white text-ink-700 hover:bg-ink-50"
+                  }`}
+                >
+                  {role.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-ink-200 bg-ink-50/70 p-5">
+              <p className="text-sm font-semibold text-ink-900">{selectedRole.prompt}</p>
+              <div className="mt-4 grid gap-3">
+                {selectedRole.questions.map((item) => (
+                  <Link
+                    key={item.question}
+                    to={item.to}
+                    onClick={() => setIsOpen(false)}
+                    className="group inline-flex items-center justify-between gap-3 rounded-xl border border-ink-200 bg-white px-4 py-3 text-left text-[15px] font-medium text-ink-800 transition-all hover:-translate-y-0.5 hover:border-ink-300 hover:shadow-soft"
+                  >
+                    {item.question}
+                    <ArrowRight className="h-4 w-4 shrink-0 text-ink-400 transition-transform group-hover:translate-x-0.5 group-hover:text-ink-800" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </>
+  );
+}
+
 function Hero() {
   return (
     <section className="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28">
@@ -35,12 +201,12 @@ function Hero() {
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-60 [mask-image:linear-gradient(to_bottom,white_0%,white_60%,transparent_100%)]" />
       <Container className="relative">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-          <Eyebrow>The Enterprise AI Workforce Platform</Eyebrow>
+          <Eyebrow>The Human + AI Workforce Platform</Eyebrow>
           <h1 className="mt-6 text-[36px] font-semibold tracking-[-0.025em] leading-[1.02] text-ink-900 sm:text-[68px]">
             Human-Led. <span className="text-gradient">AI-Powered.</span> One Team.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-600 sm:text-xl">
-            AI-Harness embeds accountable AI teammates into real processes, so your team moves faster without losing governance.
+            AI-Harness brings accountable AI agents into the projects, tasks, and workflows your teams already run — assigned, tracked, and reviewed alongside every other teammate, with shared context and full audit trails.
           </p>
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
             <Button to="/signup" size="lg">
@@ -52,7 +218,7 @@ function Hero() {
             </Button>
           </div>
           <p className="mt-5 text-sm text-ink-500">
-            Faster execution across business functions · Governed AI operations · End-to-end traceability and accountability
+            AI as first-class teammates · Unified project & task workflows · End-to-end governance and auditability
           </p>
         </div>
 
@@ -63,25 +229,20 @@ function Hero() {
               <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
               <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
-              <span className="ml-3 text-xs font-medium text-ink-500">ai-harness.com / command-center</span>
+              <span className="ml-3 text-xs font-medium text-ink-500">ai-harness.com / workspace / projects / MVP1</span>
             </div>
-            <img
-              src="/screenshot-dashboard.png"
-              alt="AI-Harness Command Center dashboard"
-              className="block w-full"
-              loading="eager"
-            />
+            <HeroBoard />
           </div>
           <FloatingStat
             className="left-[-16px] top-14 hidden sm:flex"
-            icon={<Gauge className="h-4 w-4" />}
-            label="Avg. task throughput"
-            value="+312%"
+            icon={<Bot className="h-4 w-4" />}
+            label="Owned by AI agents"
+            value="32% of board"
           />
           <FloatingStat
             className="right-[-16px] bottom-16 hidden sm:flex"
             icon={<ShieldCheck className="h-4 w-4" />}
-            label="Audit-logged actions"
+            label="Audit trail coverage"
             value="100%"
           />
         </div>
@@ -205,46 +366,66 @@ function CountUpValue({
   suffix?: string;
   duration?: number;
 }) {
-  const [value, setValue] = useState(0);
+  // Initialize with the *target* value so the very first paint and any
+  // pre-rendered/indexable HTML contain the real number. The animation, when
+  // it runs, briefly drops to 0 and tweens back up — purely a progressive
+  // enhancement on top of correct, crawler-readable content.
+  const [value, setValue] = useState<number>(target);
   const ref = useRef<HTMLSpanElement | null>(null);
-  const isAnimatingRef = useRef(false);
+  const hasAnimatedRef = useRef(false);
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
+    if (hasAnimatedRef.current) return;
+    if (typeof IntersectionObserver === "undefined") return;
+
+    const reduceMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      hasAnimatedRef.current = true;
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
+
+    const startAnimation = () => {
+      if (hasAnimatedRef.current) return;
+      hasAnimatedRef.current = true;
+
+      const start = performance.now();
+
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setValue(target * eased);
+        if (progress < 1) {
+          rafRef.current = requestAnimationFrame(tick);
+        } else {
+          setValue(target);
+          rafRef.current = null;
+        }
+      };
+
+      // Drop to 0 immediately on the same frame the animation starts so we
+      // never paint a half-state (target → 0 → tween).
+      setValue(0);
+      rafRef.current = requestAnimationFrame(tick);
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        if (!entry) return;
-
-        if (!entry.isIntersecting) {
-          setValue(0);
-          if (rafRef.current) cancelAnimationFrame(rafRef.current);
-          isAnimatingRef.current = false;
-          return;
+        if (entry?.isIntersecting) {
+          startAnimation();
+          observer.disconnect();
         }
-
-        if (isAnimatingRef.current) return;
-        isAnimatingRef.current = true;
-        const start = performance.now();
-        const startValue = 0;
-
-        const tick = (now: number) => {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          setValue(startValue + (target - startValue) * eased);
-          if (progress < 1) {
-            rafRef.current = requestAnimationFrame(tick);
-          } else {
-            isAnimatingRef.current = false;
-          }
-        };
-
-        rafRef.current = requestAnimationFrame(tick);
       },
-      { threshold: 0.4 },
+      // Fire as soon as any part of the section enters the viewport so the
+      // brief `target → 0` swap happens while the user's eye is still above
+      // the section. By the time they focus on it, the count-up is mid-way.
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" },
     );
 
     observer.observe(el);
@@ -254,7 +435,16 @@ function CountUpValue({
     };
   }, [target, duration]);
 
-  return <span ref={ref}>{value.toFixed(decimals)}{suffix}</span>;
+  // The aria-label always reflects the *target* so screen readers, the AX
+  // tree, and any scraper that respects ARIA see the real number even while
+  // the count-up is in flight.
+  const label = `${target.toFixed(decimals)}${suffix}`;
+  return (
+    <span ref={ref} aria-label={label} role="text">
+      {value.toFixed(decimals)}
+      {suffix}
+    </span>
+  );
 }
 
 function PlatformPillars() {
@@ -353,7 +543,15 @@ function HowItWorks() {
           <div className="relative">
             <div aria-hidden className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-brand-100 via-white to-indigo-100 blur-2xl opacity-60" />
             <div className="relative overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift">
-              <img src="/lifecycle.png" alt="AI agent lifecycle" className="block w-full" />
+              <PictureSet
+                base="/lifecycle"
+                alt="AI agent lifecycle"
+                width={1376}
+                height={768}
+                loading="lazy"
+                decoding="async"
+                className="block h-auto w-full"
+              />
             </div>
           </div>
         </div>
@@ -368,7 +566,15 @@ function WorkflowShowcase() {
       <Container>
         <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div className="order-2 relative overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift lg:order-1">
-            <img src="/workflow.png" alt="Unified workflow board" className="block w-full" />
+            <PictureSet
+              base="/workflow"
+              alt="Unified workflow board"
+              width={1376}
+              height={768}
+              loading="lazy"
+              decoding="async"
+              className="block h-auto w-full"
+            />
           </div>
           <div className="order-1 lg:order-2">
             <SectionHeading
@@ -438,7 +644,15 @@ function GovernanceBlock() {
               </div>
             </div>
             <div className="relative">
-              <img src="/governance.png" alt="Governance visualization" className="w-full rounded-2xl" />
+              <PictureSet
+                base="/governance"
+                alt="Governance visualization"
+                width={1376}
+                height={768}
+                loading="lazy"
+                decoding="async"
+                className="h-auto w-full rounded-2xl"
+              />
             </div>
           </div>
         </div>

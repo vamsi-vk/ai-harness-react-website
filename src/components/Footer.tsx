@@ -1,4 +1,6 @@
+import type { ReactElement } from "react";
 import { Link } from "react-router-dom";
+import { Linkedin, Instagram, Youtube } from "lucide-react";
 import Logo from "./Logo";
 import Container from "./Container";
 
@@ -6,6 +8,26 @@ type FooterColumn = {
   title: string;
   links: Array<{ label: string; to: string }>;
 };
+
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      fill="currentColor"
+      className={className}
+    >
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644Z" />
+    </svg>
+  );
+}
+
+const socials: Array<{ label: string; href: string; Icon: (props: { className?: string }) => ReactElement }> = [
+  { label: "LinkedIn", href: "https://linkedin.com/company/ai-harness-com/", Icon: ({ className }) => <Linkedin className={className} /> },
+  { label: "X (Twitter)", href: "https://x.com/ai_harness", Icon: XIcon },
+  { label: "Instagram", href: "https://instagram.com/ai.harness", Icon: ({ className }) => <Instagram className={className} /> },
+  { label: "YouTube", href: "https://youtube.com/@ai-harness", Icon: ({ className }) => <Youtube className={className} /> },
+];
 
 const columns: FooterColumn[] = [
   {
@@ -19,7 +41,7 @@ const columns: FooterColumn[] = [
 
 export default function Footer() {
   return (
-    <footer className="relative mt-16 overflow-hidden border-t border-ink-200 bg-ink-950 text-ink-300">
+    <footer id="site-footer" className="relative mt-16 overflow-hidden border-t border-ink-200 bg-ink-950 text-ink-300">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent" />
       <div aria-hidden className="pointer-events-none absolute -left-40 top-0 h-96 w-96 rounded-full bg-brand-600/20 blur-3xl" />
       <div aria-hidden className="pointer-events-none absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-indigo-500/15 blur-3xl" />
@@ -45,6 +67,20 @@ export default function Footer() {
               >
                 Book a demo
               </Link>
+            </div>
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              {socials.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-ink-300 transition-colors hover:border-white/30 hover:bg-white/10 hover:text-white"
+                >
+                  <Icon className="h-[18px] w-[18px]" />
+                </a>
+              ))}
             </div>
           </div>
           {columns.map((col) => (

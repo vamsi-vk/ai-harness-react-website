@@ -3,10 +3,17 @@ import { ArrowRight, CheckCircle2, Calendar, Users, Sparkles } from "lucide-reac
 import Container from "../components/Container";
 import Button from "../components/Button";
 import Eyebrow from "../components/Eyebrow";
+import Seo from "../components/Seo";
 
 export default function RequestDemo() {
   const [sent, setSent] = useState(false);
   return (
+    <>
+    <Seo
+      path="/demo"
+      title="Book a demo — See AI-Harness live"
+      description="A 30-minute working session — not a pitch. We map AI-Harness to your organization with concrete examples and a draft rollout plan."
+    />
     <section className="relative overflow-hidden pb-20 pt-20">
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-spotlight" />
       <Container className="relative">
@@ -102,6 +109,7 @@ export default function RequestDemo() {
         </div>
       </Container>
     </section>
+    </>
   );
 }
 

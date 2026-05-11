@@ -3,9 +3,17 @@ import { ArrowRight } from "lucide-react";
 import Container from "../components/Container";
 import Button from "../components/Button";
 import Logo from "../components/Logo";
+import Seo from "../components/Seo";
 
 export default function Login() {
   return (
+    <>
+    <Seo
+      path="/login"
+      title="Sign in — AI-Harness"
+      description="Sign in to your AI-Harness workspace."
+      noindex
+    />
     <section className="relative overflow-hidden py-20">
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-spotlight" />
       <Container className="relative">
@@ -56,6 +64,7 @@ export default function Login() {
         </div>
       </Container>
     </section>
+    </>
   );
 }
 

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
 
   --color-brand-50: #F5F3FF;
@@ -105,4 +105,52 @@ body {
 }
 .animate-fade-up {
   animation: fadeUp 0.6s ease-out both;
+}
+
+/* Hero board: ticket entrance */
+@keyframes ticketDrop {
+  0%   { opacity: 0; transform: translateY(-10px) scale(0.96); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-ticket-drop {
+  animation: ticketDrop 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* Hero board: brief glow ring around an updated card */
+@keyframes ticketGlow {
+  0%, 100% { box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04); }
+  50%      { box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.18), 0 1px 0 rgba(15, 23, 42, 0.04); }
+}
+.animate-ticket-glow {
+  animation: ticketGlow 1.6s ease-in-out;
+}
+
+/* Hero board: small flash on a count badge */
+@keyframes countBump {
+  0%   { transform: scale(1);   color: var(--color-ink-500); }
+  35%  { transform: scale(1.18); color: var(--color-brand-700); }
+  100% { transform: scale(1);   color: var(--color-ink-500); }
+}
+.animate-count-bump {
+  animation: countBump 0.6s ease-out;
+}
+
+/* Hero board: AI agent activity ring */
+@keyframes agentRing {
+  0%   { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.55); }
+  70%  { box-shadow: 0 0 0 7px rgba(139, 92, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+}
+.animate-agent-ring {
+  animation: agentRing 2.2s ease-out infinite;
+}
+
+/* Hero board: live status dot */
+@keyframes liveDot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); }
+  50%      { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+}
+.animate-live-dot {
+  animation: liveDot 1.8s ease-out infinite;
 }
