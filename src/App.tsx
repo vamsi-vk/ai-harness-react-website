@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Suspense, lazy, useEffect } from "react";
 import Navbar from "./components/Navbar";
@@ -26,6 +27,11 @@ function ScrollToTop() {
   return null;
 }
 
+function VercelAnalytics() {
+  const { pathname } = useLocation();
+  return <Analytics path={pathname} route={pathname} />;
+}
+
 // Minimal Suspense fallback. We deliberately do NOT show a spinner — for the
 // route chunks (~5–20 KB each) the swap is fast enough that any visible
 // loading state would flicker. The min-height keeps the footer from
@@ -38,6 +44,7 @@ export default function App() {
   return (
     <div className="flex min-h-full flex-col bg-white text-ink-800">
       <ScrollToTop />
+      <VercelAnalytics />
       <Navbar />
       <main className="relative flex-1 overflow-x-clip">
         <div aria-hidden className="pointer-events-none fixed inset-0 z-0">
