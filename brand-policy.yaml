@@ -1,0 +1,188 @@
+brand_policy:
+  version: "1.3"
+  brand_name: "AI-Harness"
+  default_language: "en-US"
+  objective: "Ensure multi-agent consistency in tone, structure, claims, and CTA behavior."
+
+rule_priority:
+  - claims_safety_and_compliance
+  - brand_voice_and_tone
+  - structural_template_integrity
+  - channel_optimization
+
+approved_ctas:
+  primary:
+    - "Start free"
+  secondary:
+    - "Book a demo"
+  trust_security:
+    - "Request trust & security brief"
+
+required_brand_terms:
+  must_use_exact:
+    - "AI-Harness"
+  preferred_phrases:
+    - "human + AI"
+    - "governed AI operations"
+    - "enterprise control plane"
+    - "role-based AI agents"
+    - "workflow-native AI"
+
+banned_terms:
+  - "magic"
+  - "black box"
+  - "zero risk"
+  - "perfect accuracy"
+  - "instant ROI"
+  - "replace your team"
+  - "no governance needed"
+
+absolute_claim_terms_blocklist:
+  - "always"
+  - "guaranteed"
+  - "never fails"
+  - "fully compliant everywhere"
+
+required_tone_attributes:
+  - "clear"
+  - "credible"
+  - "practical"
+  - "enterprise-professional"
+  - "governance-aware"
+
+forbidden_tone_attributes:
+  - "hype-heavy"
+  - "fear-based"
+  - "sensational"
+  - "replacement-of-humans framing"
+
+claims_policy:
+  quantitative_claims:
+    qualifier_required: true
+    allowed_qualifier_patterns:
+      - "customer-reported"
+      - "pilot benchmark"
+      - "results vary by"
+      - "based on typical deployment patterns"
+    disallow_unqualified_numbers: true
+  certification_claims:
+    require_verification: true
+    disallow_unverified_certifications: true
+  regulatory_language:
+    preferred:
+      - "designed for"
+      - "supports"
+      - "aligned with"
+    disallowed:
+      - "guaranteed compliant"
+      - "certified for all jurisdictions"
+
+templates:
+  website_section:
+    id: "A"
+    required_headings_in_order:
+      - "Audience"
+      - "Funnel Stage"
+      - "Section Goal"
+      - "Headline"
+      - "Subhead"
+      - "Key Points"
+      - "Governance Cue"
+      - "Outcome Statement"
+      - "CTA"
+      - "Claim Qualifier Notes"
+    constraints:
+      key_points_count: 4
+      cta_count: 1
+      governance_reference_required: true
+  sales_one_pager:
+    id: "B"
+    required_headings_in_order:
+      - "Audience"
+      - "Business Problem"
+      - "Why Current Approaches Break"
+      - "AI-Harness Approach"
+      - "Control and Governance Model"
+      - "Expected Outcomes"
+      - "Implementation Motion"
+      - "Primary CTA"
+      - "Risk Disclosures / Claim Notes"
+    constraints:
+      cta_count: 1
+      governance_reference_required: true
+  outbound_email:
+    id: "C"
+    required_headings_in_order:
+      - "Audience"
+      - "Subject Line"
+      - "Opening"
+      - "Pain + Stakes"
+      - "AI-Harness Value"
+      - "Governance Assurance"
+      - "CTA"
+      - "Claim Qualifier Notes"
+    constraints:
+      cta_count: 1
+      governance_reference_required: true
+  linkedin_post:
+    id: "D"
+    required_headings_in_order:
+      - "Audience"
+      - "Hook"
+      - "Core Insight"
+      - "Practical Framework"
+      - "AI-Harness Tie-in"
+      - "CTA"
+      - "Claim Qualifier Notes"
+    constraints:
+      practical_framework_bullets_max: 3
+      cta_count: 1
+      governance_reference_required: true
+
+required_output_metadata:
+  heading: "Output Metadata"
+  required_fields:
+    - "Template Used"
+    - "Audience"
+    - "Funnel Stage"
+    - "Claim Risk Level"
+    - "Contains Quantitative Claims"
+    - "Qualifier Included"
+    - "Governance Reference Included"
+    - "CTA Used"
+    - "Guideline Version"
+
+lint_checks:
+  structural:
+    - "Required headings are present in exact order"
+    - "No extra headings inserted"
+    - "Bullet count constraints are satisfied"
+    - "Exactly one primary CTA"
+  language:
+    - "Brand name is exactly AI-Harness"
+    - "No banned terms present"
+    - "No absolute claim terms unless approved exception"
+  tone:
+    - "At least one governance/control reference"
+    - "No replacement-of-humans framing"
+    - "Enterprise-professional style maintained"
+  claims:
+    - "Quantitative claims include qualifiers"
+    - "No unverified certification claims"
+    - "No legal/compliance guarantees"
+
+scoring:
+  total_points: 100
+  rubric:
+    brand_alignment: 20
+    clarity_readability: 15
+    persona_relevance: 15
+    messaging_hierarchy_adherence: 15
+    claims_safety_and_qualifiers: 20
+    cta_funnel_fit: 10
+    grammar_style: 5
+  thresholds:
+    publish_ready: "90-100"
+    minor_edits: "80-89"
+    significant_edits: "70-79"
+    rewrite_required: "<70"
