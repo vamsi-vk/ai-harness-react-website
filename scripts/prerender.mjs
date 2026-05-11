@@ -28,8 +28,6 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join, resolve, extname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import puppeteer from "puppeteer";
-
 import { PRERENDER_ROUTES } from "./seo-routes.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -118,6 +116,33 @@ function startStaticServer({ shellHtml }) {
       }
     });
     server.listen(PORT, "127.0.0.1", () => resolveServer(server));
+  });
+}
+
+/** Launch Chromium in a way that works locally and on Vercel's Linux builders. */
+async function launchBrowser() {
+  const useServerlessChromium =
+    process.env.VERCEL === "1" ||
+    process.env.CI === "true" ||
+    process.platform === "linux";
+
+  if (useServerlessChromium) {
+    const [{ default: chromium }, { default: puppeteerCore }] = await Promise.all([
+      import("@sparticuz/chromium"),
+      import("puppeteer-core"),
+    ]);
+
+    return puppeteerCore.launch({
+      args: [...chromium.args, "--no-sandbox", "--disable-setuid-sandbox"],
+      executablePath: await chromium.executablePath(),
+      headless: true,
+    });
+  }
+
+  const { default: puppeteer } = await import("puppeteer");
+  return puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
 }
 
@@ -216,10 +241,7 @@ async function main() {
   const server = await startStaticServer({ shellHtml });
 
   console.log("[prerender] launching headless Chromium…");
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  const browser = await launchBrowser();
 
   let failed = 0;
   try {
