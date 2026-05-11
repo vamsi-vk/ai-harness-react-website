@@ -59,7 +59,11 @@ export default function Seo({
 }: SeoProps) {
   const isHome = path === "/";
   const fullTitle = isHome ? title : `${title} · ${SITE_NAME}`;
-  const url = `${SITE_URL}${path === "/" ? "" : path}`;
+  // Home canonical keeps the trailing slash ("https://ai-harness.com/") to
+  // match the long-standing form indexed by search engines and the value in
+  // public/sitemap.xml. Sub-routes have no trailing slash to match the
+  // `trailingSlash: false` rule in vercel.json.
+  const url = isHome ? `${SITE_URL}/` : `${SITE_URL}${path}`;
   const fullOg = ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`;
   const ogImageType = fullOg.toLowerCase().endsWith(".jpg") || fullOg.toLowerCase().endsWith(".jpeg")
     ? "image/jpeg"
