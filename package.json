@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "build:analyze": "tsc -b && vite build --mode analyze",
+    "build": "npm run sitemap && tsc -b && vite build && npm run prerender",
+    "build:analyze": "npm run sitemap && tsc -b && vite build --mode analyze && npm run prerender",
+    "build:no-prerender": "npm run sitemap && tsc -b && vite build",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "prerender": "node scripts/prerender.mjs",
     "preview": "vite preview",
     "typecheck": "tsc -b",
     "optimize:images": "node scripts/optimize-images.mjs"
@@ -24,6 +27,7 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
+    "puppeteer": "^24.43.0",
     "rollup-plugin-visualizer": "^7.0.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.0.7",
