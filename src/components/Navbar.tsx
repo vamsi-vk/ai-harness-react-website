@@ -6,7 +6,7 @@ import Button from "./Button";
 import { cn } from "../lib/cn";
 
 const navItems = [
-  { label: "Platform", to: "/platform" }, { label: "Solutions", to: "/solutions" }, { label: "Industries", to: "/industries" }, { label: "Security", to: "/security" },
+  { label: "Platform", to: "/platform" }, { label: "Solutions", to: "/solutions" }, { label: "Industries", to: "/industries" }, { label: "Security", to: "/security" }, { label: "About Us", to: "/about" },
 ];
 
 export default function Navbar() {

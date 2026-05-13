@@ -37,6 +37,7 @@ export const SEO_ROUTES = [
   { path: "/solutions",  prerender: true, sitemap: { priority: 0.9, changefreq: "weekly"  } },
   { path: "/industries", prerender: true, sitemap: { priority: 0.9, changefreq: "weekly"  } },
   { path: "/security",   prerender: true, sitemap: { priority: 0.8, changefreq: "monthly" } },
+  { path: "/about",      prerender: true, sitemap: { priority: 0.7, changefreq: "monthly" } },
   { path: "/contact",    prerender: true, sitemap: { priority: 0.7, changefreq: "monthly" } },
   { path: "/demo",       prerender: true, sitemap: { priority: 0.7, changefreq: "monthly" } },
   // Auth: prerender for share previews, exclude from sitemap (disallowed in robots.txt).
