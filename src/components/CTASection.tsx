@@ -2,13 +2,25 @@ import Button from "./Button";
 import Container from "./Container";
 import { ArrowRight } from "lucide-react";
 
+type CtaConfig = {
+  label: string;
+  to: string;
+};
+
 type Props = {
   title?: string;
   description?: string;
+  primaryCta?: CtaConfig;
+  secondaryCta?: CtaConfig;
+  footnote?: string | false;
 };
 
 export default function CTASection({
-  title = "Turn AI into your highly reliable teammate.", description = "Ship AI-powered workflows your leadership team can actually trust. Start free, no credit card, no consultants.",
+  title = "Turn AI into your highly reliable teammate.",
+  description = "Ship AI-powered workflows your leadership team can actually trust. Start free, no credit card, no consultants.",
+  primaryCta = { label: "Start free", to: "/signup" },
+  secondaryCta = { label: "Talk to an expert", to: "/demo" },
+  footnote = "14-day free trial · No credit card · SOC 2-ready controls",
 }: Props) {
   return (
     <section className="relative">
@@ -24,17 +36,17 @@ export default function CTASection({
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-ink-300">{description}</p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button to="/signup" variant="white" size="lg">
-                Start free
+              <Button to={primaryCta.to} variant="white" size="lg">
+                {primaryCta.label}
                 <ArrowRight className="h-4 w-4" />
               </Button>
-              <Button to="/demo" size="lg" className="border border-white/15 bg-white/5 text-white hover:bg-white/10">
-                Talk to an expert
+              <Button to={secondaryCta.to} size="lg" className="border border-white/15 bg-white/5 text-white hover:bg-white/10">
+                {secondaryCta.label}
               </Button>
             </div>
-            <p className="mt-5 text-sm text-ink-400">
-              14-day free trial · No credit card · SOC 2-ready controls
-            </p>
+            {footnote && (
+              <p className="mt-5 text-sm text-ink-400">{footnote}</p>
+            )}
           </div>
         </div>
       </Container>
