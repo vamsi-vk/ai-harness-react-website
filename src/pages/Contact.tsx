@@ -26,14 +26,14 @@ export default function Contact() {
     <>
       <Seo
         path="/contact"
-        title="Contact — Talk to the AI-Harness team"
+        title="Contact Us — Talk to the AI-Harness team"
         description="Get in touch with sales, support, partners, or security. The AI-Harness team responds within one business day."
       />
       <section className="relative overflow-hidden pb-10 pt-20">
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-spotlight" />
         <Container className="relative">
           <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow>Contact</Eyebrow>
+            <Eyebrow>Contact Us</Eyebrow>
             <h1 className="mt-6 text-[36px] font-semibold leading-[1.04] tracking-[-0.02em] text-ink-900 sm:text-[56px]">
               We'd love to <span className="text-gradient">hear from you.</span>
             </h1>
@@ -67,7 +67,7 @@ export default function Contact() {
                 </span>
                 <div>
                   <p className="font-semibold text-ink-900">Offices</p>
-                  <p className="mt-1 text-[13.5px] text-ink-600">San Francisco · New York · London · Singapore</p>
+                  <p className="mt-1 text-[13.5px] text-ink-600">San Francisco · Singapore · India</p>
                 </div>
               </div>
               <div className="rounded-2xl border border-ink-200 bg-white p-5">
