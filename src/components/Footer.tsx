@@ -36,7 +36,7 @@ const columns: FooterColumn[] = [
     title: "Solutions", links: [
       { label: "By Use Case", to: "/solutions" }, { label: "By Industry", to: "/industries" }, { label: "For Operations", to: "/solutions#operations" }, { label: "For Engineering", to: "/solutions#engineering" }, { label: "For Customer Ops", to: "/solutions#customer" }, ], }, {
     title: "Company", links: [
-      { label: "About Us", to: "/about" }, { label: "Contact", to: "/contact" }, { label: "Security & Trust", to: "/security" }, ], },
+      { label: "About Us", to: "/about" }, { label: "Contact Us", to: "/contact" }, { label: "Security & Trust", to: "/security" }, ], },
 ];
 
 export default function Footer() {
@@ -106,7 +106,6 @@ export default function Footer() {
             <Link to="/contact" className="hover:text-white">Privacy</Link>
             <Link to="/contact" className="hover:text-white">Terms</Link>
             <Link to="/contact" className="hover:text-white">DPA</Link>
-            <Link to="/contact" className="hover:text-white">Contact</Link>
           </div>
         </div>
       </Container>

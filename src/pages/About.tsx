@@ -694,13 +694,6 @@ function WhoWeServe() {
     },
   ];
 
-  const industries = [
-    "Professional services",
-    "Manufacturing & supply chain",
-    "Retail & eCommerce",
-    "Technology & SaaS",
-  ];
-
   return (
     <section id="who-we-serve" className="relative py-20 sm:py-24">
       <Container>
@@ -742,29 +735,6 @@ function WhoWeServe() {
           ))}
         </div>
 
-        <div className="mt-16 sm:mt-20">
-          <div className="relative mx-auto max-w-5xl">
-            <div
-              aria-hidden
-              className="absolute inset-x-0 top-1/2 hidden h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-ink-200 to-transparent sm:block"
-            />
-            <div className="relative flex justify-center">
-              <span className="bg-white px-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink-500 sm:px-6">
-                Industries we operate across
-              </span>
-            </div>
-          </div>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 text-center text-[14.5px] font-medium text-ink-700 sm:gap-x-6">
-            {industries.map((name, i) => (
-              <Fragment key={name}>
-                <span>{name}</span>
-                {i < industries.length - 1 && (
-                  <span aria-hidden className="text-ink-300">·</span>
-                )}
-              </Fragment>
-            ))}
-          </div>
-        </div>
       </Container>
     </section>
   );
