@@ -1,8 +1,9 @@
-import type { ReactElement } from "react";
+import { useState, type ReactElement } from "react";
 import { Link } from "react-router-dom";
 import { Linkedin, Instagram, Youtube } from "lucide-react";
 import Logo from "./Logo";
 import Container from "./Container";
+import LegalModal, { type LegalModalKind } from "./LegalModal";
 
 type FooterColumn = {
   title: string;
@@ -40,6 +41,15 @@ const columns: FooterColumn[] = [
 ];
 
 export default function Footer() {
+  const [openModal, setOpenModal] = useState<LegalModalKind | null>(null);
+
+  const legalLinks: Array<{ label: string; kind: LegalModalKind }> = [
+    { label: "Security", kind: "security" },
+    { label: "Privacy", kind: "privacy" },
+    { label: "Terms", kind: "terms" },
+    { label: "DPA", kind: "dpa" },
+  ];
+
   return (
     <footer id="site-footer" className="relative mt-16 overflow-hidden border-t border-ink-200 bg-ink-950 text-ink-300">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent" />
@@ -102,13 +112,21 @@ export default function Footer() {
         <div className="mt-16 flex flex-col items-start gap-4 border-t border-white/10 pt-8 text-sm text-ink-400 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} AI-Harness, Inc. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            <Link to="/security" className="hover:text-white">Security</Link>
-            <Link to="/contact" className="hover:text-white">Privacy</Link>
-            <Link to="/contact" className="hover:text-white">Terms</Link>
-            <Link to="/contact" className="hover:text-white">DPA</Link>
+            {legalLinks.map((item) => (
+              <button
+                key={item.kind}
+                type="button"
+                onClick={() => setOpenModal(item.kind)}
+                className="cursor-pointer text-ink-400 transition-colors hover:text-white"
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         </div>
       </Container>
+
+      <LegalModal kind={openModal} onClose={() => setOpenModal(null)} />
     </footer>
   );
 }
