@@ -39,7 +39,7 @@ For enterprise teams that need measurable AI outcomes without losing control, AI
 - Operationally rigorous
 - Trustworthy and governance-first
 - Outcome-oriented
-- Enterprise-ready
+- Built for the enterprise
 - Clear and pragmatic, never hype-heavy
 
 ---

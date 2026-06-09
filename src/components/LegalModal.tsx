@@ -166,7 +166,7 @@ function KeyRow({ k, v, Icon }: { k: string; v: string; Icon: typeof Key }) {
 const CONTENT: Record<LegalModalKind, ModalContent> = {
   security: {
     eyebrow: "Security",
-    title: "Enterprise-grade security & governance",
+    title: "Enterprise security & governance",
     subtitle:
       "How AI-Harness keeps your data, models, and AI agents safe across the unified human + AI workforce.",
     icon: <ShieldCheck className="h-5 w-5" />,
@@ -186,8 +186,8 @@ const CONTENT: Record<LegalModalKind, ModalContent> = {
               </span>,
               <span>
                 <strong className="text-ink-900">Audit trail:</strong> Immutable
-                log of every prompt, tool call, data access, and decision —
-                searchable and exportable.
+                log of every prompt, tool call, data access, and decision.
+                Searchable and exportable.
               </span>,
               <span>
                 <strong className="text-ink-900">Approval workflows:</strong>{" "}
@@ -201,7 +201,7 @@ const CONTENT: Record<LegalModalKind, ModalContent> = {
               </span>,
               <span>
                 <strong className="text-ink-900">Observability:</strong> Live
-                telemetry on agent behavior, cost, and quality — export to your
+                telemetry on agent behavior, cost, and quality. Export to your
                 SIEM or data warehouse.
               </span>,
             ]}
@@ -211,18 +211,18 @@ const CONTENT: Record<LegalModalKind, ModalContent> = {
         <Section title="Compliance &amp; certifications">
           <Bullets
             items={[
-              "SOC 2 Type II — annual audit, available under NDA.",
-              "ISO 27001 — certification on roadmap for 2026.",
-              "GDPR & CCPA — data subject rights and DPA included.",
-              "HIPAA — BAA available on Enterprise plans.",
-              "EU AI Act-ready — policy packs and risk classification support.",
+              "SOC 2 Type II: annual audit, available under NDA.",
+              "ISO 27001: certification on roadmap for 2026.",
+              "GDPR & CCPA: data subject rights and DPA included.",
+              "HIPAA: BAA available on Enterprise plans.",
+              "EU AI Act-ready: policy packs and risk classification support.",
             ]}
           />
         </Section>
 
         <Section title="Agent governance">
           AI-Harness keeps people in control with platform-enforced budgets,
-          policies, and approvals — so agents support your teams within the
+          policies, and approvals, so agents support your teams within the
           rules you set.
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
             {[
@@ -270,23 +270,23 @@ const CONTENT: Record<LegalModalKind, ModalContent> = {
           <Bullets
             items={[
               <span>
-                <strong className="text-ink-900">Account data</strong> — name,
+                <strong className="text-ink-900">Account data:</strong> name,
                 work email, organization, and authentication identifiers
                 provided by your SSO.
               </span>,
               <span>
-                <strong className="text-ink-900">Usage data</strong> — workflow
+                <strong className="text-ink-900">Usage data:</strong> workflow
                 events, task transitions, and agent activity used to render
                 dashboards and audit logs.
               </span>,
               <span>
-                <strong className="text-ink-900">Customer content</strong> —
+                <strong className="text-ink-900">Customer content:</strong>{" "}
                 projects, tasks, prompts, files, and outputs you submit. Treated
                 as confidential and isolated per tenant.
               </span>,
               <span>
-                <strong className="text-ink-900">Operational telemetry</strong>{" "}
-                — performance, error, and security signals used to keep the
+                <strong className="text-ink-900">Operational telemetry:</strong>{" "}
+                performance, error, and security signals used to keep the
                 service reliable.
               </span>,
             ]}
@@ -309,7 +309,7 @@ const CONTENT: Record<LegalModalKind, ModalContent> = {
             items={[
               "We do not train AI models on your customer content.",
               "We do not sell or rent personal data to advertisers or third parties.",
-              "We do not co-mingle data across tenants — strict isolation at every layer.",
+              "We do not co-mingle data across tenants. Strict isolation at every layer.",
             ]}
           />
         </Section>
@@ -320,10 +320,10 @@ const CONTENT: Record<LegalModalKind, ModalContent> = {
           personal data. Submit requests through your workspace admin or by
           contacting{" "}
           <a
-            href="mailto:privacy@ai-harness.com"
+            href="mailto:support@ai-harness.com"
             className="font-semibold text-brand-700 hover:text-brand-800"
           >
-            privacy@ai-harness.com
+            support@ai-harness.com
           </a>
           .
         </Section>
@@ -456,7 +456,7 @@ const CONTENT: Record<LegalModalKind, ModalContent> = {
             <KeyRow Icon={Lock} k="Encryption in transit" v="TLS 1.3 across every network boundary" />
             <KeyRow Icon={Key} k="Encryption at rest" v="AES-256, customer-managed keys on Enterprise" />
             <KeyRow Icon={Server} k="Tenancy isolation" v="Strict per-tenant isolation and encryption contexts" />
-            <KeyRow Icon={Database} k="Data residency" v="US, EU, UK, APAC — customer-selectable" />
+            <KeyRow Icon={Database} k="Data residency" v="US, EU, UK, APAC (customer-selectable)" />
             <KeyRow Icon={ClipboardList} k="Audit logging" v="Immutable, exportable record of every action" />
           </div>
         </Section>
@@ -483,8 +483,8 @@ const CONTENT: Record<LegalModalKind, ModalContent> = {
                 access, correction, deletion, and portability requests.
               </span>,
               <span>
-                We will notify you without undue delay — and in any case within
-                72 hours — after becoming aware of a personal data breach
+                We will notify you without undue delay, and in any case within
+                72 hours, after becoming aware of a personal data breach
                 affecting your data.
               </span>,
               <span>

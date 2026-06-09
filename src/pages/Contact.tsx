@@ -26,7 +26,7 @@ export default function Contact() {
     <>
       <Seo
         path="/contact"
-        title="Contact Us — Talk to the AI-Harness team"
+        title="Contact Us | Talk to the AI-Harness team"
         description="Get in touch with sales, support, partners, or security. The AI-Harness team responds within one business day."
       />
       <section className="relative overflow-hidden pb-10 pt-20">

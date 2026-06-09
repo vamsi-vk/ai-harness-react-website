@@ -4,11 +4,11 @@
  * Single source of truth for SEO-relevant route metadata.
  *
  * Used by:
- *   - scripts/prerender.mjs       — picks routes where `prerender: true`
- *   - scripts/generate-sitemap.mjs — picks routes where `sitemap` is set
+ *   - scripts/prerender.mjs       : picks routes where `prerender: true`
+ *   - scripts/generate-sitemap.mjs : picks routes where `sitemap` is set
  *
  * When you add a new public route to src/App.tsx, ALSO add an entry here.
- * That's the only change needed — both the prerendered HTML and the
+ * That's the only change needed; both the prerendered HTML and the
  * sitemap.xml will pick it up automatically on the next build.
  *
  * Conventions:

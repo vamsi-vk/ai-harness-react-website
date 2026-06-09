@@ -6,7 +6,7 @@ import Button from "./Button";
 import { cn } from "../lib/cn";
 
 const navItems = [
-  { label: "Platform", to: "/platform" }, { label: "Solutions", to: "/solutions" }, { label: "Industries", to: "/industries" }, { label: "Security", to: "/security" },
+  { label: "Platform", to: "/platform" }, { label: "Solutions", to: "/solutions" }, { label: "Industries", to: "/industries" }, { label: "Security", to: "/security" }, { label: "Contact Us", to: "/contact" },
 ];
 
 export default function Navbar() {
@@ -32,24 +32,22 @@ export default function Navbar() {
           ? "border-b border-ink-200/70 bg-white/80 backdrop-blur-xl"
           : "border-b border-transparent bg-white/0", )}
     >
-      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6 sm:px-8">
-        <div className="flex items-center gap-10">
-          <Logo />
-          <nav className="hidden items-center gap-1 lg:flex">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) =>
-                  cn(
-                    "rounded-full px-3.5 py-2 text-[14px] font-medium transition-colors", isActive ? "text-ink-900 bg-ink-100" : "text-ink-600 hover:text-ink-900 hover:bg-ink-50", )
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
-        </div>
+      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-6 px-6 sm:px-8">
+        <Logo />
+        <nav className="hidden items-center gap-1 lg:flex">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive }) =>
+                cn(
+                  "rounded-full px-3.5 py-2 text-[14px] font-medium transition-colors", isActive ? "text-ink-900 bg-ink-100" : "text-ink-600 hover:text-ink-900 hover:bg-ink-50", )
+              }
+            >
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
         <div className="hidden items-center gap-2 lg:flex">
           <Button to="/demo" variant="secondary" size="sm">
             Book a demo

@@ -15,8 +15,8 @@ export default function Platform() {
     <>
       <Seo
         path="/platform"
-        title="Platform — Agents, workflows, and governance"
-        description="The AI-Harness platform: configurable AI agents, a workflow engine for projects and tasks, integrations across your stack, and enterprise governance — built for humans and AI to ship together."
+        title="Platform | Agents, workflows, and governance"
+        description="The AI-Harness platform: configurable AI agents, a workflow engine for projects and tasks, integrations across your stack, and enterprise governance, built for humans and AI to ship together."
         keywords="AI platform, AI agent framework, workflow engine, AI governance, enterprise AI integrations"
       />
       <PlatformHero />

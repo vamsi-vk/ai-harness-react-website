@@ -63,7 +63,7 @@ export default function Industries() {
     <>
       <Seo
         path="/industries"
-        title="Industries — AI-Harness across financial services, retail, healthcare and more"
+        title="Industries | AI-Harness across financial services, retail, healthcare and more"
         description="See how teams in financial services, retail, manufacturing, healthcare, technology, professional services, government, and media use AI-Harness to govern AI agents inside their workflows."
         keywords="AI for financial services, AI for retail, AI for manufacturing, AI for healthcare, enterprise AI by industry"
       />

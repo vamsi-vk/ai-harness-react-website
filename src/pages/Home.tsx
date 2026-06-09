@@ -20,7 +20,7 @@ export default function Home() {
     <>
       <Seo
         path="/"
-        title="AI-Harness — The Human + AI Workforce Platform"
+        title="AI-Harness | The Human + AI Workforce Platform"
         description="Embed accountable AI agents into the projects, tasks, and workflows your teams already run. Unified human + AI workforce, with shared context, governance, and full audit trails."
         keywords="AI workforce platform, AI agents, human AI collaboration, AI workflow automation, AI governance, enterprise AI platform"
       />
@@ -206,7 +206,7 @@ function Hero() {
             Human-Led. <span className="text-gradient">AI-Powered.</span> One Team.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-600 sm:text-xl">
-            AI-Harness brings accountable AI agents into the projects, tasks, and workflows your teams already run — assigned, tracked, and reviewed alongside every other teammate, with shared context and full audit trails.
+            AI-Harness brings accountable AI agents into the projects, tasks, and workflows your teams already run, assigned, tracked, and reviewed alongside every other teammate, with shared context and full audit trails.
           </p>
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
             <Button to="/signup" size="lg">
@@ -368,7 +368,7 @@ function CountUpValue({
 }) {
   // Initialize with the *target* value so the very first paint and any
   // pre-rendered/indexable HTML contain the real number. The animation, when
-  // it runs, briefly drops to 0 and tweens back up — purely a progressive
+  // it runs, briefly drops to 0 and tweens back up; purely a progressive
   // enhancement on top of correct, crawler-readable content.
   const [value, setValue] = useState<number>(target);
   const ref = useRef<HTMLSpanElement | null>(null);
@@ -671,7 +671,7 @@ function IndustriesPreview() {
         <SectionHeading
           eyebrow="Industries"
           title={<>Built for the industries where <span className="text-gradient">execution matters.</span></>}
-          description="AI-Harness helps your teams execute faster, operate consistently, and scale AI with control, using industry-ready workflows, agent templates, and policy guardrails."
+          description="AI-Harness helps your teams execute faster, operate consistently, and scale AI with control, using proven workflows, agent templates, and policy guardrails."
         />
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {industries.map((it) => (

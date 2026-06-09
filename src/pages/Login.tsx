@@ -10,7 +10,7 @@ export default function Login() {
     <>
     <Seo
       path="/login"
-      title="Sign in — AI-Harness"
+      title="Sign in | AI-Harness"
       description="Sign in to your AI-Harness workspace."
       noindex
     />

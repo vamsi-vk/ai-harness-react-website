@@ -1,9 +1,9 @@
 /**
- * FaqJsonLd — emit a Schema.org FAQPage JSON-LD block.
+ * FaqJsonLd: emit a Schema.org FAQPage JSON-LD block.
  *
  * Drop this beside your visible FAQ component, passing the same source-of-truth
  * Q&A array. Google requires the JSON-LD content to match what's rendered on
- * the page — keep both reading from one constant to avoid drift.
+ * the page, so keep both reading from one constant to avoid drift.
  *
  * Example:
  *   const faqs = [{ q: "...", a: "..." }, ...];
@@ -12,7 +12,7 @@
  */
 
 export type FaqItem = {
-  /** Question text (plain string — no HTML). */
+  /** Question text (plain string, no HTML). */
   q: string;
   /** Answer text. Plain string is preferred; light HTML allowed but escaped. */
   a: string;

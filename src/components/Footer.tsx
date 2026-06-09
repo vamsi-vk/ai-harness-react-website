@@ -44,7 +44,6 @@ export default function Footer() {
   const [openModal, setOpenModal] = useState<LegalModalKind | null>(null);
 
   const legalLinks: Array<{ label: string; kind: LegalModalKind }> = [
-    { label: "Security", kind: "security" },
     { label: "Privacy", kind: "privacy" },
     { label: "Terms", kind: "terms" },
     { label: "DPA", kind: "dpa" },

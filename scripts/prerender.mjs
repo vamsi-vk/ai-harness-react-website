@@ -67,7 +67,7 @@ const MIME = {
 /** Start a minimal static file server over dist/ that also acts as an SPA
  *  fallback. Crucially the SPA fallback returns an *in-memory* copy of the
  *  original Vite-built index.html (`shellHtml`), NOT whatever happens to be
- *  on disk at dist/index.html — that file gets overwritten with the
+ *  on disk at dist/index.html, which gets overwritten with the
  *  prerendered home page during this run, and serving it to subsequent
  *  routes would leak Home's metadata into every other page. */
 function startStaticServer({ shellHtml }) {
@@ -233,7 +233,7 @@ async function main() {
   if (!shellHtml.includes("data-default")) {
     console.warn(
       "[prerender] warning: dist/index.html has no [data-default] tags. " +
-        "Static defaults won't be stripped from prerendered routes — they may end up with duplicate <title>/<meta>.",
+        "Static defaults won't be stripped from prerendered routes; they may end up with duplicate <title>/<meta>.",
     );
   }
 
@@ -271,7 +271,7 @@ async function main() {
     console.error(`[prerender] finished with ${failed} failure(s) in ${totalMs} ms`);
     process.exit(1);
   }
-  console.log(`[prerender] done — ${ROUTES.length} routes in ${totalMs} ms`);
+  console.log(`[prerender] done: ${ROUTES.length} routes in ${totalMs} ms`);
 }
 
 main().catch((err) => {

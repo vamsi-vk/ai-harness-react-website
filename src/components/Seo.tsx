@@ -1,5 +1,5 @@
 /**
- * Seo — per-route metadata for crawlers and social platforms.
+ * Seo: per-route metadata for crawlers and social platforms.
  *
  * Uses React 19's native Document Metadata support: any <title>, <meta>, or
  * <link> rendered inside a component is hoisted into <head> automatically and
@@ -11,7 +11,7 @@
 const SITE_URL = "https://ai-harness.com";
 const SITE_NAME = "AI-Harness";
 const DEFAULT_OG_IMAGE = "/og.png";
-const DEFAULT_OG_IMAGE_ALT = "AI-Harness — The Human + AI Workforce Platform";
+const DEFAULT_OG_IMAGE_ALT = "AI-Harness | The Human + AI Workforce Platform";
 const DEFAULT_TWITTER_HANDLE = "@ai_harness";
 
 export type Breadcrumb = {
@@ -22,17 +22,17 @@ export type Breadcrumb = {
 };
 
 type SeoProps = {
-  /** Page title — appended with the site name automatically (except on home). */
+  /** Page title; appended with the site name automatically (except on home). */
   title: string;
   /** Meta description, ~150–160 chars. Required. */
   description: string;
   /** Path of the route, e.g. "/contact". Used to build canonical + og:url. */
   path: string;
-  /** Optional override for the social image (defaults to /og.png — 1200×630). */
+  /** Optional override for the social image (defaults to /og.png, 1200×630). */
   ogImage?: string;
   /** Alt text for the social image. Falls back to a sensible default. */
   ogImageAlt?: string;
-  /** og:type — defaults to "website". Use "article" for blog posts. */
+  /** og:type. Defaults to "website". Use "article" for blog posts. */
   type?: "website" | "article";
   /** Set true to emit `noindex, follow` (e.g. for /404, auth pages). */
   noindex?: boolean;
@@ -108,7 +108,7 @@ export default function Seo({
       <meta name="twitter:image" content={fullOg} />
       <meta name="twitter:image:alt" content={ogImageAlt} />
 
-      {/* BreadcrumbList JSON-LD — emitted on non-home routes unless opted out. */}
+      {/* BreadcrumbList JSON-LD: emitted on non-home routes unless opted out. */}
       {breadcrumbJson ? (
         <script
           type="application/ld+json"
