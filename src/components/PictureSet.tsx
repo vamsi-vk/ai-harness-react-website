@@ -1,5 +1,5 @@
 /**
- * PictureSet — render an <img> wrapped in <picture> with AVIF + WebP
+ * PictureSet: render an <img> wrapped in <picture> with AVIF + WebP
  * fallbacks so modern browsers download the smallest format they can decode.
  *
  * Expected file layout in /public:
@@ -32,7 +32,7 @@ type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "srcSet"> & {
    * automatically for convenience).
    */
   base: string;
-  /** Required for accessibility — same as a normal <img alt>. */
+  /** Required for accessibility, same as a normal <img alt>. */
   alt: string;
   /** Optional className applied to the inner <img>, not the <picture>. */
   className?: string;

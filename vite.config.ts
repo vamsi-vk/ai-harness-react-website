@@ -37,7 +37,7 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         // Function form is more reliable than the object form for Vite 6 +
-        // Rollup 4 — pattern-matching node_modules paths catches transitive
+        // Rollup 4: pattern-matching node_modules paths catches transitive
         // deps (e.g. `scheduler` for React, `@remix-run/router` for React
         // Router) and avoids the "Generated an empty chunk" warning that
         // happens when the entry inlines packages it can re-export.

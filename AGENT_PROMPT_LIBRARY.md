@@ -45,7 +45,7 @@ Before final output, self-check against brand-policy.yaml lint and scoring rules
 ```text
 [Use Global instruction block above]
 
-Create a production-ready creative brief for static ad visuals.
+Create a complete creative brief for static ad visuals.
 
 Inputs:
 - Audience:

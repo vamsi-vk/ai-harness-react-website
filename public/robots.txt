@@ -56,7 +56,7 @@ Disallow: /signup
 
 Sitemap: https://ai-harness.com/sitemap.xml
 
-# AI-readable site map (llmstxt.org spec) — curated index for LLMs / AI agents.
+# AI-readable site map (llmstxt.org spec): curated index for LLMs / AI agents.
 # This is informational only; the file is publicly served at the URL below and
 # is implicitly allowed by the rules above.
 # llms-txt: https://ai-harness.com/llms.txt

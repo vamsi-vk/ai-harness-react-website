@@ -15,7 +15,7 @@ export default function Security() {
     <>
       <Seo
         path="/security"
-        title="Security & Trust — Enterprise-grade AI governance"
+        title="Security & Trust | Enterprise AI governance"
         description="How AI-Harness keeps your data, models, and AI agents safe: identity, access, encryption, isolation, full audit trails, SOC 2, ISO 27001, GDPR, and responsible AI governance."
         keywords="AI security, AI governance, SOC 2, ISO 27001, GDPR, AI audit trail, responsible AI, enterprise AI compliance"
       />

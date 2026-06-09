@@ -3,7 +3,7 @@
  *
  * Generates .webp (q85) and .avif (q60) siblings for the listed PNG illustrations
  * in /public so the <PictureSet /> component can serve next-gen formats with
- * graceful PNG fallback. Source PNGs are NOT modified — they remain the
+ * graceful PNG fallback. Source PNGs are NOT modified; they remain the
  * universal fallback.
  *
  * Run manually whenever the source PNGs change:
@@ -42,7 +42,7 @@ function fmt(bytes) {
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 }
 
-/** Hash a Buffer to a short hex digest — used to skip already-optimized files. */
+/** Hash a Buffer to a short hex digest; used to skip already-optimized files. */
 async function shortHash(buf) {
   const { createHash } = await import("node:crypto");
   return createHash("sha1").update(buf).digest("hex").slice(0, 12);
@@ -51,7 +51,7 @@ async function shortHash(buf) {
 async function optimizeOne(filename) {
   const srcPath = join(PUBLIC_DIR, filename);
   if (!existsSync(srcPath)) {
-    console.warn(`  ⚠  skip ${filename} — not found in public/`);
+    console.warn(`  ⚠  skip ${filename}: not found in public/`);
     return null;
   }
 

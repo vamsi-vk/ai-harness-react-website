@@ -65,8 +65,8 @@ export default function UseCases() {
     <>
       <Seo
         path="/solutions"
-        title="Solutions — High-value workflows where AI pays for itself"
-        description="AI-Harness solutions across operations, customer ops, engineering, marketing, legal & compliance, finance, people, and security — the workflows where governed AI agents deliver measurable ROI."
+        title="Solutions | High-value workflows where AI pays for itself"
+        description="AI-Harness solutions across operations, customer ops, engineering, marketing, legal & compliance, finance, people, and security. The workflows where governed AI agents deliver measurable ROI."
         keywords="AI solutions, AI use cases, AI for operations, AI for customer support, AI for engineering, AI for finance, AI for compliance"
       />
       <UseCasesHero />
@@ -171,7 +171,7 @@ function ByRole({ highlightedId }: { highlightedId: string | null }) {
       id: "role-cfo", title: "For the CFO", description: "Transparent economics for AI. Budgets, cost centers, and unit economics your finance team can actually reconcile.", points: [
         "Cost attribution to project, team, and outcome", "Budget ceilings with automated enforcement", "Usage analytics and forecasting", ], }, {
       id: "role-chro", title: "For the CHRO", description: "Scale AI as a workforce concept, not a technology project. Clear roles, clear accountability, clear upskilling paths.", points: [
-        "Role-based agent modeling that mirrors your org", "Change-management-ready rollout patterns", "Transparent hand-offs between people and AI", ], }, {
+        "Role-based agent modeling that mirrors your org", "Rollout patterns built for change management", "Transparent hand-offs between people and AI", ], }, {
       id: "role-cro-cco", title: "For the CRO / CCO", description: "Serve customers faster without losing the human touch or the compliance guardrails.", points: [
         "Assisted and autonomous workflows side-by-side", "Consistent brand voice and policy adherence", "Escalation paths that never drop the ball", ], }, ];
 

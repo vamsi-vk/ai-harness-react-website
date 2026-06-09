@@ -11,8 +11,8 @@ export default function RequestDemo() {
     <>
     <Seo
       path="/demo"
-      title="Book a demo — See AI-Harness live"
-      description="A 30-minute working session — not a pitch. We map AI-Harness to your organization with concrete examples and a draft rollout plan."
+      title="Book a demo | See AI-Harness live"
+      description="A 30-minute working session, not a pitch. We map AI-Harness to your organization with concrete examples and a draft rollout plan."
     />
     <section className="relative overflow-hidden pb-20 pt-20">
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-spotlight" />

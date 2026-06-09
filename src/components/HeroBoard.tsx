@@ -196,7 +196,7 @@ function TicketCard({
         </span>
       )}
       <div className="mt-2 flex items-center justify-between">
-        <span className="text-[10px] text-ink-300">—</span>
+        <span className="text-[10px] text-ink-300">·</span>
         <span
           className={`grid h-5 w-5 place-items-center rounded-full bg-gradient-to-br ${ticket.assignee.gradient} text-[9px] font-semibold text-white ${
             ticket.assignee.isAi ? "animate-agent-ring" : ""

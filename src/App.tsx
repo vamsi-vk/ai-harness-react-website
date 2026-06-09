@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 
-// Home is eagerly bundled — it's the LCP-critical landing page that most
+// Home is eagerly bundled because it's the LCP-critical landing page that most
 // users hit first. Every other route is code-split via React.lazy() so it
 // only ships to users who actually navigate to it. See vite.config.ts for
 // the matching vendor chunking strategy.
@@ -33,7 +33,7 @@ function VercelAnalytics() {
   return <Analytics path={pathname} route={pathname} />;
 }
 
-// Minimal Suspense fallback. We deliberately do NOT show a spinner — for the
+// Minimal Suspense fallback. We deliberately do NOT show a spinner; for the
 // route chunks (~5–20 KB each) the swap is fast enough that any visible
 // loading state would flicker. The min-height keeps the footer from
 // jumping while the chunk streams in.
