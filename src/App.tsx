@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 
+
+
 // Home is eagerly bundled because it's the LCP-critical landing page that most
 // users hit first. Every other route is code-split via React.lazy() so it
 // only ships to users who actually navigate to it. See vite.config.ts for
