@@ -25,8 +25,8 @@ type Plan = {
 const plans: Plan[] = [
   {
     name: "Starter", description: "For teams exploring their first AI-powered workflows.", priceMonthly: 0, priceYearly: 0, ctaLabel: "Start free", ctaTo: "/signup", ctaVariant: "secondary", features: [
-      "Up to 5 users", "Up to 3 AI agents", "Project & task workspace", "Basic audit log", "Community support", ], footer: "Free forever for small teams", }, {
-    name: "Business", description: "For operating teams scaling AI across critical workflows.", priceMonthly: 49, priceYearly: 39, priceNote: "per user / month", ctaLabel: "Start 14-day trial", ctaTo: "/signup", ctaVariant: "primary", highlight: true, features: [
+      "Up to 5 users", "Up to 3 AI agents", "Project & task workspace", "Basic audit log", "Community support", ], footer: "Your own instance with $10 free credits", }, {
+    name: "Business", description: "For operating teams scaling AI across critical workflows.", priceMonthly: 49, priceYearly: 39, priceNote: "per user / month", ctaLabel: "Get started", ctaTo: "/signup", ctaVariant: "primary", highlight: true, features: [
       "Unlimited agents & projects", "Role-based access control", "Advanced workflow automation", "Cost & budget guardrails", "SSO (SAML / OIDC)", "Priority support with SLA", ], }, {
     name: "Enterprise", description: "For organizations deploying AI across the business.", priceMonthly: null, priceYearly: null, priceNote: "Custom pricing", ctaLabel: "Talk to sales", ctaTo: "/demo", ctaVariant: "secondary", features: [
       "Everything in Business", "Private cloud / on-prem deployment", "Bring your own models", "SCIM, advanced RBAC & audit", "Dedicated success manager", "Custom policy packs & integrations", "Procurement & legal support", ], },
@@ -47,7 +47,7 @@ const compareSections: Array<{
 
 const faqs = [
   {
-    q: "How does the free Starter plan work?", a: "Starter is free forever for small teams, up to 5 users and 3 AI agents. You get the core workspace, project and task management, and a basic audit log. No credit card required.", }, {
+    q: "How does the free Starter plan work?", a: "When you sign up, we provision a new instance for your team with $10 in free credits to start, up to 5 users and 3 AI agents. You get the core workspace, project and task management, and a basic audit log. No credit card required.", }, {
     q: "What counts as a user?", a: "A user is any human seat in your workspace, analysts, managers, and admins. AI agents are not charged per agent in Business; they are part of your workspace quota. Enterprise includes agent count in your MSA.", }, {
     q: "Do I need to bring my own model provider?", a: "Yes. AI-Harness is a control plane, not an inference provider. You bring OpenAI, Anthropic, Google, AWS Bedrock, Azure OpenAI, or any self-hosted model, and we orchestrate your agents on top.", }, {
     q: "Can I deploy AI-Harness in my own cloud?", a: "Yes, Enterprise customers can deploy AI-Harness in their own cloud (AWS, Azure, GCP) or VPC, or run it on-premises. Data never leaves your environment.", }, {
@@ -262,7 +262,7 @@ function CompareTable() {
 
 function ValueRibbon() {
   const items = [
-    "Start free forever", "14-day Business trial, no credit card", "Cancel anytime", "Volume discounts available", ];
+    "$10 free credits to start", "No credit card required", "Cancel anytime", "Volume discounts available", ];
   return (
     <section className="py-8">
       <Container>

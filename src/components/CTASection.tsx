@@ -17,10 +17,10 @@ type Props = {
 
 export default function CTASection({
   title = "Turn AI into your highly reliable teammate.",
-  description = "Ship AI-powered workflows your leadership team can actually trust. Start free, no credit card, no consultants.",
+  description = "Ship AI-powered workflows your leadership team can actually trust. Start with $10 free credits, no credit card, no consultants.",
   primaryCta = { label: "Start free", to: "/signup" },
   secondaryCta = { label: "Talk to an expert", to: "/demo" },
-  footnote = "14-day free trial · No credit card · SOC 2-ready controls",
+  footnote = "Your own instance in minutes · $10 free credits · No credit card · SOC 2-ready controls",
 }: Props) {
   return (
     <section className="relative">

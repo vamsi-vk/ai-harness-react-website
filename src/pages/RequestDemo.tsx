@@ -43,8 +43,8 @@ export default function RequestDemo() {
             </ul>
             <div className="mt-10 rounded-2xl border border-ink-200 bg-white p-5">
               <p className="text-[13.5px] text-ink-700">
-                <span className="font-semibold text-ink-900">Prefer self-serve?</span> Start a free workspace in
-                minutes, no credit card required.
+                <span className="font-semibold text-ink-900">Prefer self-serve?</span> Get your own instance with
+                $10 free credits in minutes, no credit card required.
               </p>
               <div className="mt-3">
                 <Button to="/signup" variant="secondary" size="sm">
