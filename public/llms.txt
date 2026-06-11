@@ -21,14 +21,14 @@ This file follows the [llms.txt specification](https://llmstxt.org/). All URLs a
 
 - [Book a demo](https://ai-harness.com/demo): A 30-minute working session, not a pitch. The team maps AI-Harness to your organization with concrete examples and a draft rollout plan.
 - [Contact](https://ai-harness.com/contact): Reach sales, support, partners, or the security team. Responses within one business day.
-- [Sign up](https://ai-harness.com/signup): Create a free AI-Harness workspace and start orchestrating AI agents alongside your team. No credit card required.
+- [Sign up](https://ai-harness.com/signup): Create your AI-Harness workspace and start orchestrating AI agents alongside your team. New instances include $10 in free credits to start. No credit card required.
 
 ## Key Facts
 
 - Category: AI workforce / agent orchestration platform.
 - Deployment: Multi-tenant SaaS (US / EU regions), private cloud (AWS / Azure / GCP / VPC), and on-premises for Enterprise customers.
 - Model strategy: Bring-your-own-model. Compatible with OpenAI, Anthropic, Google, AWS Bedrock, Azure OpenAI, and self-hosted models.
-- Pricing tiers: Starter (free, up to 5 users / 3 agents), Business (per-user/month, unlimited agents), Enterprise (custom).
+- Pricing tiers: Starter (new instance with $10 free credits, up to 5 users / 3 agents), Business (per-user/month, unlimited agents), Enterprise (custom).
 - Governance features: role-based access control, SSO (SAML / OIDC), SCIM, approval workflows, cost & budget guardrails, immutable audit logs, and data residency controls.
 - Built for: financial services, retail, manufacturing, healthcare, technology, professional services, government, and media organizations operating AI agents alongside human teams.
 

@@ -20,6 +20,7 @@ const SignUp = lazy(() => import("./pages/SignUp"));
 const Login = lazy(() => import("./pages/Login"));
 const RequestDemo = lazy(() => import("./pages/RequestDemo"));
 const About = lazy(() => import("./pages/About"));
+const InternationalBusinesses = lazy(() => import("./pages/InternationalBusinesses"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function ScrollToTop() {
@@ -72,6 +73,7 @@ export default function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/demo" element={<RequestDemo />} />
               <Route path="/about" element={<About />} />
+              <Route path="/international-businesses" element={<InternationalBusinesses />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
