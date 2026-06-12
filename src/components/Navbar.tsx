@@ -21,17 +21,7 @@ const navItems: NavItem[] = [
   { label: "Platform", to: "/platform" },
   { label: "Solutions", to: "/solutions" },
   { label: "Industries", to: "/industries" },
-  {
-    label: "International Businesses",
-    to: "/international-businesses",
-    children: [
-      {
-        label: "Japan Desk",
-        to: "/international-businesses",
-        description: "US revenue team for Japanese companies",
-      },
-    ],
-  },
+  { label: "International Businesses", to: "/international-businesses" },
   { label: "Security", to: "/security" },
   { label: "Contact Us", to: "/contact" },
 ];
@@ -55,7 +45,9 @@ export default function Navbar() {
     setOpen(false);
     setOpenDropdown(null);
     setOpenMobileGroup(null);
-  }, [location.pathname]);
+    // Close on hash changes too (e.g. switching between desks via the
+    // International Businesses dropdown stays on the same pathname).
+  }, [location.pathname, location.hash]);
 
   const handleEnter = (label: string) => {
     if (dropdownTimer.current) {
