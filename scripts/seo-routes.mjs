@@ -40,6 +40,19 @@ export const SEO_ROUTES = [
   { path: "/about",      prerender: true, sitemap: { priority: 0.7, changefreq: "monthly" } },
   { path: "/contact",    prerender: true, sitemap: { priority: 0.7, changefreq: "monthly" } },
   { path: "/demo",       prerender: true, sitemap: { priority: 0.7, changefreq: "monthly" } },
+  // International Businesses: overview + per-country desk pages. Each gets a
+  // static snapshot so direct loads / reloads don't hit the SPA fallback.
+  // Country list is the public-facing subset of DESK_ORDER in src/lib/desks.ts;
+  // when adding a new desk there, mirror it here.
+  { path: "/international-businesses",                     prerender: true, sitemap: { priority: 0.8, changefreq: "monthly" } },
+  { path: "/international-businesses/taiwan",              prerender: true, sitemap: { priority: 0.7, changefreq: "monthly" } },
+  { path: "/international-businesses/china",               prerender: true, sitemap: { priority: 0.7, changefreq: "monthly" } },
+  { path: "/international-businesses/japan",               prerender: true, sitemap: { priority: 0.7, changefreq: "monthly" } },
+  // Consultation forms: prerender so reloads work, but keep them out of the
+  // sitemap (they're lead-capture forms, not landing pages crawlers should rank).
+  { path: "/international-businesses/taiwan/consultation", prerender: true, sitemap: false },
+  { path: "/international-businesses/china/consultation",  prerender: true, sitemap: false },
+  { path: "/international-businesses/japan/consultation",  prerender: true, sitemap: false },
   // Auth: prerender for share previews, exclude from sitemap (disallowed in robots.txt).
   { path: "/signup",     prerender: true, sitemap: false },
   { path: "/login",      prerender: true, sitemap: false },
