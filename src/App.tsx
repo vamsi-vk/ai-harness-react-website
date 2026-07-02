@@ -23,13 +23,15 @@ const About = lazy(() => import("./pages/About"));
 const InternationalBusinesses = lazy(() => import("./pages/InternationalBusinesses"));
 const InternationalCountry = lazy(() => import("./pages/InternationalCountry"));
 const InternationalConsultation = lazy(() => import("./pages/InternationalConsultation"));
+const AiAgents = lazy(() => import("./pages/AiAgents"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if (hash) return;
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 }
 
@@ -68,6 +70,7 @@ export default function App() {
               <Route path="/platform" element={<Platform />} />
               <Route path="/industries" element={<Industries />} />
               <Route path="/solutions" element={<UseCases />} />
+              <Route path="/ai-agents" element={<AiAgents />} />
               <Route path="/security" element={<Security />} />
               <Route path="/resources" element={<NotFound />} />
               <Route path="/contact" element={<Contact />} />

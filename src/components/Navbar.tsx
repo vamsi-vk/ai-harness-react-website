@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
 import Logo from "./Logo";
 import Button from "./Button";
+import AgentsNavMenu, { AGENT_NAV_ITEMS } from "./AgentsNavMenu";
 import { cn } from "../lib/cn";
 
 type DropdownItem = {
@@ -15,15 +16,26 @@ type NavItem = {
   label: string;
   to: string;
   children?: DropdownItem[];
+  megaMenu?: "agents";
 };
 
 const navItems: NavItem[] = [
   { label: "Platform", to: "/platform" },
   { label: "Solutions", to: "/solutions" },
+  {
+    label: "AI Agent workforce",
+    to: "/ai-agents",
+    megaMenu: "agents",
+    children: AGENT_NAV_ITEMS.map(({ label, to, description }) => ({
+      label,
+      to,
+      description,
+    })),
+  },
   { label: "Industries", to: "/industries" },
-  { label: "International Businesses", to: "/international-businesses" },
+  { label: "International", to: "/international-businesses" },
   { label: "Security", to: "/security" },
-  { label: "Contact Us", to: "/contact" },
+  { label: "Contact", to: "/contact" },
 ];
 
 export default function Navbar() {
@@ -86,51 +98,78 @@ export default function Navbar() {
                 onMouseEnter={() => handleEnter(item.label)}
                 onMouseLeave={handleLeave}
               >
-                <button
-                  type="button"
-                  onClick={() =>
-                    setOpenDropdown((cur) => (cur === item.label ? null : item.label))
-                  }
-                  aria-haspopup="menu"
-                  aria-expanded={openDropdown === item.label}
-                  className={cn(
-                    "inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-[14px] font-medium transition-colors",
-                    location.pathname.startsWith(item.to)
-                      ? "bg-ink-100 text-ink-900"
-                      : "text-ink-600 hover:bg-ink-50 hover:text-ink-900",
-                  )}
-                >
-                  {item.label}
-                  <ChevronDown
-                    className={cn(
-                      "h-3.5 w-3.5 transition-transform",
-                      openDropdown === item.label ? "rotate-180" : "",
-                    )}
-                  />
-                </button>
+                {(() => {
+                  const isActive = location.pathname.startsWith(item.to);
+                  return (
+                    <div
+                      className={cn(
+                        "inline-flex items-center rounded-full transition-colors",
+                        isActive
+                          ? "bg-ink-100 text-ink-900"
+                          : "text-ink-600 hover:bg-ink-50 hover:text-ink-900",
+                      )}
+                    >
+                      <Link
+                        to={item.to}
+                        onClick={() => setOpenDropdown(null)}
+                        className="rounded-l-full px-3.5 py-2 pr-1 text-[14px] font-medium"
+                      >
+                        {item.label}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setOpenDropdown((cur) => (cur === item.label ? null : item.label))
+                        }
+                        aria-haspopup="menu"
+                        aria-expanded={openDropdown === item.label}
+                        aria-label={`${item.label} menu`}
+                        className="inline-flex rounded-r-full py-2 pl-0.5 pr-2.5"
+                      >
+                        <ChevronDown
+                          className={cn(
+                            "h-3.5 w-3.5 transition-transform",
+                            openDropdown === item.label ? "rotate-180" : "",
+                          )}
+                        />
+                      </button>
+                    </div>
+                  );
+                })()}
                 {openDropdown === item.label && (
                   <div
                     role="menu"
-                    className="absolute left-1/2 top-full z-40 w-72 -translate-x-1/2 pt-3"
+                    className={cn(
+                      "absolute left-1/2 top-full z-40 -translate-x-1/2 pt-3",
+                      item.megaMenu === "agents" ? "w-[min(calc(100vw-2rem),38rem)]" : "w-72",
+                    )}
+                    onMouseEnter={() => handleEnter(item.label)}
+                    onMouseLeave={handleLeave}
                   >
-                    <div className="overflow-hidden rounded-2xl border border-ink-200 bg-white p-2 shadow-lift ring-1 ring-black/[0.02]">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.to + child.label}
-                          to={child.to}
-                          role="menuitem"
-                          className="flex flex-col gap-0.5 rounded-xl px-3 py-2.5 transition-colors hover:bg-brand-50"
-                        >
-                          <span className="text-[14px] font-semibold text-ink-900">
-                            {child.label}
-                          </span>
-                          {child.description && (
-                            <span className="text-[12.5px] leading-snug text-ink-500">
-                              {child.description}
-                            </span>
-                          )}
-                        </Link>
-                      ))}
+                    <div className="overflow-hidden rounded-none border border-ink-200 bg-white shadow-lift ring-1 ring-black/[0.02]">
+                      {item.megaMenu === "agents" ? (
+                        <AgentsNavMenu onNavigate={() => setOpenDropdown(null)} />
+                      ) : (
+                        <div className="p-2">
+                          {item.children?.map((child) => (
+                            <Link
+                              key={child.to + child.label}
+                              to={child.to}
+                              role="menuitem"
+                              className="flex flex-col gap-0.5 rounded-xl px-3 py-2.5 transition-colors hover:bg-brand-50"
+                            >
+                              <span className="text-[14px] font-semibold text-ink-900">
+                                {child.label}
+                              </span>
+                              {child.description && (
+                                <span className="text-[12.5px] leading-snug text-ink-500">
+                                  {child.description}
+                                </span>
+                              )}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}
@@ -179,41 +218,68 @@ export default function Navbar() {
               {navItems.map((item) =>
                 item.children ? (
                   <div key={item.to} className="flex flex-col">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setOpenMobileGroup((cur) =>
-                          cur === item.label ? null : item.label,
-                        )
-                      }
-                      className="flex items-center justify-between rounded-lg px-3 py-3 text-[15px] font-medium text-ink-700 hover:bg-ink-50"
-                    >
-                      {item.label}
-                      <ChevronDown
-                        className={cn(
-                          "h-4 w-4 transition-transform",
-                          openMobileGroup === item.label ? "rotate-180" : "",
-                        )}
-                      />
-                    </button>
+                    <div className="flex items-center rounded-lg hover:bg-ink-50">
+                      <NavLink
+                        to={item.to}
+                        onClick={() => {
+                          setOpen(false);
+                          setOpenMobileGroup(null);
+                        }}
+                        className={({ isActive }) =>
+                          cn(
+                            "flex-1 rounded-lg px-3 py-3 text-[15px] font-medium",
+                            isActive ? "text-ink-900" : "text-ink-700",
+                          )
+                        }
+                      >
+                        {item.label}
+                      </NavLink>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setOpenMobileGroup((cur) =>
+                            cur === item.label ? null : item.label,
+                          )
+                        }
+                        className="mr-2 grid h-9 w-9 shrink-0 place-items-center rounded-lg text-ink-600"
+                        aria-label={`Expand ${item.label} menu`}
+                        aria-expanded={openMobileGroup === item.label}
+                      >
+                        <ChevronDown
+                          className={cn(
+                            "h-4 w-4 transition-transform",
+                            openMobileGroup === item.label ? "rotate-180" : "",
+                          )}
+                        />
+                      </button>
+                    </div>
                     {openMobileGroup === item.label && (
                       <div className="pl-3">
-                        {item.children.map((child) => (
-                          <NavLink
-                            key={child.to + child.label}
-                            to={child.to}
-                            className={({ isActive }) =>
-                              cn(
-                                "block rounded-lg px-3 py-2.5 text-[14.5px]",
-                                isActive
-                                  ? "bg-brand-50 font-semibold text-brand-700"
-                                  : "text-ink-700 hover:bg-ink-50",
-                              )
-                            }
-                          >
-                            {child.label}
-                          </NavLink>
-                        ))}
+                        {item.megaMenu === "agents" ? (
+                          <AgentsNavMenu
+                            onNavigate={() => {
+                              setOpen(false);
+                              setOpenMobileGroup(null);
+                            }}
+                          />
+                        ) : (
+                          item.children?.map((child) => (
+                            <NavLink
+                              key={child.to + child.label}
+                              to={child.to}
+                              className={({ isActive }) =>
+                                cn(
+                                  "block rounded-lg px-3 py-2.5 text-[14.5px]",
+                                  isActive
+                                    ? "bg-brand-50 font-semibold text-brand-700"
+                                    : "text-ink-700 hover:bg-ink-50",
+                                )
+                              }
+                            >
+                              {child.label}
+                            </NavLink>
+                          ))
+                        )}
                       </div>
                     )}
                   </div>

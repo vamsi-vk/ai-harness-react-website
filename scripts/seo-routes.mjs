@@ -35,6 +35,7 @@ export const SEO_ROUTES = [
   { path: "/",           prerender: true, sitemap: { priority: 1.0, changefreq: "weekly"  } },
   { path: "/platform",   prerender: true, sitemap: { priority: 0.9, changefreq: "weekly"  } },
   { path: "/solutions",  prerender: true, sitemap: { priority: 0.9, changefreq: "weekly"  } },
+  { path: "/ai-agents",  prerender: true, sitemap: { priority: 0.9, changefreq: "weekly"  } },
   { path: "/industries", prerender: true, sitemap: { priority: 0.9, changefreq: "weekly"  } },
   { path: "/security",   prerender: true, sitemap: { priority: 0.8, changefreq: "monthly" } },
   { path: "/about",      prerender: true, sitemap: { priority: 0.7, changefreq: "monthly" } },

@@ -35,7 +35,7 @@ const columns: FooterColumn[] = [
     title: "Platform", links: [
       { label: "Overview", to: "/platform" }, { label: "AI Agents", to: "/platform#agents" }, { label: "Workflow Engine", to: "/platform#workflows" }, { label: "Governance", to: "/security" }, { label: "Integrations", to: "/platform#integrations" }, ], }, {
     title: "Solutions", links: [
-      { label: "By Use Case", to: "/solutions" }, { label: "By Industry", to: "/industries" }, { label: "For Operations", to: "/solutions#operations" }, { label: "For Engineering", to: "/solutions#engineering" }, { label: "For Customer Ops", to: "/solutions#customer" }, ], }, {
+      { label: "AI Agents", to: "/ai-agents" }, { label: "By Use Case", to: "/solutions" }, { label: "By Industry", to: "/industries" }, { label: "For Operations", to: "/solutions#operations" }, { label: "For Engineering", to: "/solutions#engineering" }, { label: "For Customer Ops", to: "/solutions#customer" }, ], }, {
     title: "Company", links: [
       { label: "About Us", to: "/about" }, { label: "Contact Us", to: "/contact" }, { label: "Security & Trust", to: "/security" }, ], },
 ];

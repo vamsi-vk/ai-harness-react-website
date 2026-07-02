@@ -1,0 +1,80 @@
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { cn } from "../lib/cn";
+import ScrollReveal from "./ScrollReveal";
+
+export type FaqAccordionItem = {
+  q: string;
+  a: string;
+};
+
+type Props = {
+  items: FaqAccordionItem[];
+};
+
+export default function FaqAccordion({ items }: Props) {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  return (
+    <div className="space-y-3">
+      {items.map((faq, index) => {
+        const isOpen = openIndex === index;
+
+        return (
+          <ScrollReveal key={faq.q} delay={index * 50}>
+            <div
+              className={cn(
+                "overflow-hidden rounded-2xl border bg-white transition-all duration-300",
+                isOpen
+                  ? "border-brand-200/80 shadow-[0_10px_40px_rgba(139,92,246,0.08)] ring-1 ring-brand-100/80"
+                  : "border-ink-200/70 shadow-[0_1px_2px_rgba(15,23,42,0.04)] hover:border-ink-300",
+              )}
+            >
+            <button
+              type="button"
+              onClick={() => setOpenIndex(isOpen ? null : index)}
+              className="flex w-full items-start gap-4 px-5 py-4 text-left sm:gap-5 sm:px-6 sm:py-5"
+              aria-expanded={isOpen}
+            >
+              <span
+                className={cn(
+                  "mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl font-mono text-[11px] font-semibold transition-colors duration-300",
+                  isOpen
+                    ? "bg-brand-500 text-white shadow-[0_4px_14px_rgba(139,92,246,0.35)]"
+                    : "bg-brand-50 text-brand-600",
+                )}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="min-w-0 flex-1 pt-1">
+                <h3 className="text-[15px] font-semibold leading-snug text-ink-900 sm:text-base">
+                  {faq.q}
+                </h3>
+              </span>
+              <ChevronDown
+                className={cn(
+                  "mt-1 h-5 w-5 shrink-0 transition-transform duration-300",
+                  isOpen ? "rotate-180 text-brand-500" : "text-ink-400",
+                )}
+                aria-hidden
+              />
+            </button>
+            <div
+              className={cn(
+                "grid transition-[grid-template-rows,opacity] duration-300 ease-out",
+                isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
+              )}
+            >
+              <div className="overflow-hidden">
+                <p className="px-5 pb-5 pl-[4.25rem] text-[15px] leading-relaxed text-ink-600 sm:px-6 sm:pb-6 sm:pl-[5.25rem]">
+                  {faq.a}
+                </p>
+              </div>
+            </div>
+            </div>
+          </ScrollReveal>
+        );
+      })}
+    </div>
+  );
+}

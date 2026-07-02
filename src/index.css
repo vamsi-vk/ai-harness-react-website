@@ -56,6 +56,61 @@ body {
   color: transparent;
 }
 
+/* Unified marketing typography */
+.type-display {
+  font-size: clamp(2.125rem, 4.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.type-section {
+  font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.type-subsection {
+  font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.type-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.type-body-lg {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+.type-body {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.type-caption {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.type-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.text-emphasis {
+  color: var(--color-brand-700);
+  font-weight: 600;
+}
+
 /* Subtle grid pattern background */
 .bg-grid {
   background-image:
@@ -74,6 +129,16 @@ body {
 /* Radial spotlight */
 .bg-spotlight {
   background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139, 92, 246, 0.18), transparent 60%);
+}
+
+/* Industries section — mesh gradient (no image) */
+.bg-industries-mesh {
+  background-color: #ffffff;
+  background-image:
+    radial-gradient(ellipse 55% 50% at 12% 45%, rgba(123, 63, 228, 0.14) 0%, transparent 72%),
+    radial-gradient(ellipse 42% 38% at 88% 22%, rgba(164, 229, 255, 0.22) 0%, transparent 68%),
+    radial-gradient(ellipse 70% 55% at 50% -5%, rgba(255, 255, 255, 1) 0%, transparent 72%),
+    linear-gradient(180deg, #ffffff 0%, #f5f3ff 42%, #eef2ff 100%);
 }
 
 /* Soft card shadow */
@@ -105,6 +170,30 @@ body {
 }
 .animate-fade-up {
   animation: fadeUp 0.6s ease-out both;
+}
+
+/* Scroll reveal — fade in up on enter viewport */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--scroll-reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Hero board: ticket entrance */

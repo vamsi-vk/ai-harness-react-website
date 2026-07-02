@@ -14,7 +14,7 @@ export default function FeatureCard({ icon, title, description, className, tone 
   return (
     <div
       className={cn(
-        "group relative flex flex-col gap-4 rounded-2xl p-6 transition-all duration-200", dark
+        "group relative flex flex-col gap-5 rounded-2xl p-7 transition-all duration-200", dark
           ? "border border-white/10 bg-white/[0.03] hover:bg-white/[0.05]"
           : "border border-ink-200 bg-white hover:-translate-y-0.5 hover:border-ink-300 hover:shadow-soft", className, )}
     >
@@ -27,10 +27,10 @@ export default function FeatureCard({ icon, title, description, className, tone 
         {icon}
       </div>
       <div>
-        <h3 className={cn("text-lg font-semibold tracking-tight", dark ? "text-white" : "text-ink-900")}>
+        <h3 className={cn("type-card-title", dark ? "text-white" : "text-ink-900")}>
           {title}
         </h3>
-        <p className={cn("mt-2 text-[15px] leading-relaxed", dark ? "text-ink-400" : "text-ink-600")}>
+        <p className={cn("type-body mt-3", dark ? "text-ink-400" : "text-ink-700")}>
           {description}
         </p>
       </div>
