@@ -38,20 +38,20 @@ const STEPS: {
 
 function SetupMockup() {
   return (
-    <div className="rounded-xl border border-ink-200/80 bg-white p-3 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
-      <p className="text-[11px] font-semibold text-ink-800">Let&apos;s get to know your business 👋</p>
-      <div className="mt-3 space-y-2">
+    <div className="rounded-xl border border-ink-200/80 bg-white p-4 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
+      <p className="text-sm font-medium text-ink-900">Let&apos;s get to know your business 👋</p>
+      <div className="mt-3 space-y-2.5">
         {["What does your business do?", "What are your hours?", "What services do you offer?"].map(
           (label) => (
-            <div key={label} className="rounded-lg border border-ink-200/80 bg-ink-50/80 px-2.5 py-2">
-              <p className="text-[9px] text-ink-400">{label}</p>
+            <div key={label} className="rounded-lg border border-ink-200/80 bg-ink-50/80 px-3 py-2.5">
+              <p className="text-xs font-normal text-ink-500 sm:text-sm">{label}</p>
             </div>
           ),
         )}
       </div>
-      <div className="mt-3 flex items-center justify-center gap-1 rounded-lg bg-brand-600 py-2 text-[10px] font-semibold text-white">
+      <div className="mt-3.5 flex items-center justify-center gap-1.5 rounded-lg bg-brand-600 py-2.5 text-xs font-medium text-white sm:text-sm">
         Continue
-        <ArrowRight className="h-3 w-3" />
+        <ArrowRight className="h-3.5 w-3.5" />
       </div>
     </div>
   );
@@ -65,19 +65,19 @@ function AgentsMockup() {
   ];
 
   return (
-    <div className="rounded-xl border border-ink-200/80 bg-white p-3 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
-      <p className="text-[11px] font-semibold text-ink-800">AI Agents</p>
-      <div className="mt-3 space-y-2">
+    <div className="rounded-xl border border-ink-200/80 bg-white p-4 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
+      <p className="text-sm font-medium text-ink-900">AI Agents</p>
+      <div className="mt-3 space-y-2.5">
         {agents.map((agent) => (
           <div
             key={agent.name}
-            className="flex items-center justify-between rounded-lg border border-ink-200/70 bg-ink-50/60 px-2.5 py-2"
+            className="flex items-center justify-between rounded-lg border border-ink-200/70 bg-ink-50/60 px-3 py-2.5"
           >
-            <div className="flex items-center gap-2">
-              <span className="grid h-5 w-5 place-items-center rounded-md bg-brand-100 text-brand-600">
-                <Bot className="h-3 w-3" />
+            <div className="flex items-center gap-2.5">
+              <span className="grid h-6 w-6 place-items-center rounded-md bg-brand-100 text-brand-600">
+                <Bot className="h-3.5 w-3.5" />
               </span>
-              <span className="text-[9px] font-medium text-ink-700">{agent.name}</span>
+              <span className="text-xs font-medium text-ink-800 sm:text-sm">{agent.name}</span>
             </div>
             <span
               className={`h-4 w-7 rounded-full p-0.5 ${agent.on ? "bg-brand-600" : "bg-ink-300"}`}
@@ -101,20 +101,20 @@ function PerformanceMockup() {
   ];
 
   return (
-    <div className="rounded-xl border border-ink-200/80 bg-white p-3 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
-      <p className="text-[11px] font-semibold text-ink-800">Performance Overview</p>
-      <div className="mt-3 grid grid-cols-3 gap-1.5">
+    <div className="rounded-xl border border-ink-200/80 bg-white p-4 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
+      <p className="text-sm font-medium text-ink-900">Performance Overview</p>
+      <div className="mt-3 grid grid-cols-3 gap-2">
         {metrics.map((m) => (
-          <div key={m.label} className="rounded-lg border border-ink-200/70 bg-ink-50/60 p-2 text-center">
-            <p className="text-[8px] text-ink-500">{m.label}</p>
-            <p className="text-[11px] font-bold text-ink-900">{m.value}</p>
-            <p className="text-[8px] font-semibold text-emerald-600">{m.change}</p>
+          <div key={m.label} className="rounded-lg border border-ink-200/70 bg-ink-50/60 p-2.5 text-center">
+            <p className="text-[10px] font-normal text-ink-600 sm:text-xs">{m.label}</p>
+            <p className="text-sm font-medium text-ink-900 sm:text-base">{m.value}</p>
+            <p className="text-[10px] font-medium text-emerald-600 sm:text-xs">{m.change}</p>
           </div>
         ))}
       </div>
-      <div className="mt-2 rounded-lg border border-brand-200/60 bg-brand-50/50 p-2">
-        <p className="text-[8px] text-ink-500">Revenue Generated</p>
-        <p className="text-sm font-bold text-brand-700">$12,480</p>
+      <div className="mt-2.5 rounded-lg border border-brand-200/60 bg-brand-50/50 p-3">
+        <p className="text-xs font-normal text-ink-600 sm:text-sm">Revenue Generated</p>
+        <p className="text-base font-medium text-brand-700 sm:text-lg">$12,480</p>
         <div className="mt-1.5 flex h-8 items-end gap-0.5">
           {[35, 50, 42, 68, 58, 82, 75].map((h, i) => (
             <span
@@ -140,7 +140,7 @@ function StepCard({ step, index }: { step: (typeof STEPS)[number]; index: number
 
   return (
     <ScrollReveal as="article" className="relative flex flex-col" delay={index * 80}>
-      <div className="relative flex flex-1 flex-col overflow-hidden rounded-3xl border border-white/70 bg-white/75 p-6 shadow-[0_20px_60px_-24px_rgba(124,58,237,0.18)] backdrop-blur-md sm:p-7">
+      <div className="relative flex flex-1 flex-col overflow-hidden rounded-3xl border border-white/70 bg-white/75 p-6 font-inter shadow-[0_20px_60px_-24px_rgba(124,58,237,0.18)] backdrop-blur-md sm:p-7">
         <span
           aria-hidden
           className="pointer-events-none absolute -left-1 -top-4 select-none text-[5.5rem] font-bold leading-none text-brand-200/50 sm:text-[6.5rem]"
@@ -152,8 +152,12 @@ function StepCard({ step, index }: { step: (typeof STEPS)[number]; index: number
           <div className="grid h-12 w-12 place-items-center rounded-full bg-brand-600 text-white shadow-[0_8px_24px_rgba(124,58,237,0.35)]">
             <Icon className="h-5 w-5" strokeWidth={2} />
           </div>
-          <h3 className="type-card-title mt-5 text-ink-900">{step.title}</h3>
-          <p className="type-body mt-3 text-ink-600">{step.description}</p>
+          <h3 className="mt-5 text-xl font-medium leading-snug tracking-[-0.015em] text-ink-900 sm:text-2xl">
+            {step.title}
+          </h3>
+          <p className="mt-3 text-base font-normal leading-[1.65] tracking-[-0.01em] text-ink-700 sm:text-lg">
+            {step.description}
+          </p>
         </div>
 
         <div className="mt-6 flex-1">
@@ -188,11 +192,11 @@ export default function HowItWorksSteps() {
       />
 
       <Container className="relative">
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <h2 className="type-section text-ink-900">
+        <ScrollReveal className="font-inter mx-auto max-w-3xl text-center">
+          <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-ink-900">
             How it works in <span className="text-gradient">3 simple steps</span>
           </h2>
-          <p className="type-body-lg mt-4 text-ink-600">No IT project, no setup fee.</p>
+          <p className="mt-4 text-lg font-normal text-ink-700 sm:text-xl">No IT project, no setup fee.</p>
         </ScrollReveal>
 
         <div className="relative mx-auto mt-14 max-w-6xl lg:mt-16">

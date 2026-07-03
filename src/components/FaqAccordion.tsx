@@ -16,7 +16,7 @@ export default function FaqAccordion({ items }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="space-y-3">
+    <div className="font-inter space-y-3">
       {items.map((faq, index) => {
         const isOpen = openIndex === index;
 
@@ -33,12 +33,12 @@ export default function FaqAccordion({ items }: Props) {
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="flex w-full items-start gap-4 px-5 py-4 text-left sm:gap-5 sm:px-6 sm:py-5"
+              className="flex w-full items-start gap-4 px-5 py-4.5 text-left sm:gap-5 sm:px-6 sm:py-5"
               aria-expanded={isOpen}
             >
               <span
                 className={cn(
-                  "mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl font-mono text-[11px] font-semibold transition-colors duration-300",
+                  "mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl font-mono text-xs font-medium transition-colors duration-300 sm:text-sm",
                   isOpen
                     ? "bg-brand-500 text-white shadow-[0_4px_14px_rgba(139,92,246,0.35)]"
                     : "bg-brand-50 text-brand-600",
@@ -47,7 +47,7 @@ export default function FaqAccordion({ items }: Props) {
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span className="min-w-0 flex-1 pt-1">
-                <h3 className="text-[15px] font-semibold leading-snug text-ink-900 sm:text-base">
+                <h3 className="text-lg font-medium leading-snug tracking-[-0.01em] text-ink-900 sm:text-xl">
                   {faq.q}
                 </h3>
               </span>
@@ -66,7 +66,7 @@ export default function FaqAccordion({ items }: Props) {
               )}
             >
               <div className="overflow-hidden">
-                <p className="px-5 pb-5 pl-[4.25rem] text-[15px] leading-relaxed text-ink-600 sm:px-6 sm:pb-6 sm:pl-[5.25rem]">
+                <p className="px-5 pb-5 pl-[4.5rem] text-base font-normal leading-[1.7] tracking-[-0.01em] text-ink-700 sm:px-6 sm:pb-6 sm:pl-[5.5rem] sm:text-lg">
                   {faq.a}
                 </p>
               </div>

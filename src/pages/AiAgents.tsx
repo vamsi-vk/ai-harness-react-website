@@ -5,7 +5,6 @@ import { scrollToHashWithRetry } from "../lib/scrollToHash";
 import { cn } from "../lib/cn";
 import Container from "../components/Container";
 import Button from "../components/Button";
-import SectionHeading from "../components/SectionHeading";
 import AgentBenefitsAccordion from "../components/AgentBenefitsAccordion";
 import CTASection from "../components/CTASection";
 import Seo from "../components/Seo";
@@ -16,7 +15,7 @@ import IndustriesGallery from "../components/IndustriesGallery";
 import WorkforceStickyScroll from "../components/WorkforceStickyScroll";
 import AgentProofAccordion from "../components/AgentProofAccordion";
 import HowItWorksSteps from "../components/HowItWorksSteps";
-import WhyChooseSection from "../components/WhyChooseSection";
+import { AdvantageCard, ADVANTAGES } from "../components/WhyChooseSection";
 import ScrollReveal from "../components/ScrollReveal";
 
 const FAQS = [
@@ -148,7 +147,7 @@ const AGENTS: AgentSection[] = [
       "A separate agent focused only on growing your reviews. It automatically asks every happy customer for a review at the right moment, by text and email.",
     icon: <Star className="h-6 w-6" strokeWidth={2} />,
     image: {
-      src: "/illustrations/custom/reviews-agent.png",
+      src: "/illustrations/custom/reviews-agent-detail.png",
       alt: "Grow your reviews with automated review requests and more five-star ratings",
     },
     benefits: [
@@ -309,9 +308,9 @@ function AgentTitleHead({ agent }: { agent: AgentSection }) {
         >
           {agent.icon}
         </span>
-        <span className="type-eyebrow tracking-[0.14em]">Agent</span>
+        <span className="text-sm font-medium tracking-[0.14em] uppercase sm:text-base">Agent</span>
       </div>
-      <h2 className="type-section">
+      <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.1] tracking-[-0.02em]">
         <span
           className={cn(
             "bg-gradient-to-r bg-clip-text text-transparent",
@@ -338,9 +337,9 @@ export default function AiAgents() {
     <>
       <Seo
         path="/ai-agents"
-        title="AI Workforce for Local & Mid-Size Businesses | AI-Harness"
+        title="AI Workforce for Small & Mid-Size Businesses | AI-Harness"
         description="AI-Harness gives your business a team of AI agents, each built for one job: leads, reviews, reputation, and proposals. Work keeps moving 24/7. Start free."
-        keywords="AI agents for small and mid-size businesses, AI workforce for local businesses, automate customer follow-up, get more reviews, AI sales assistant, never miss a lead, AI proposal writer"
+        keywords="AI agents for small and mid-size businesses, AI workforce for small businesses, automate customer follow-up, get more reviews, AI sales assistant, never miss a lead, AI proposal writer"
       />
       <FaqJsonLd faqs={FAQS} />
       <Hero />
@@ -349,8 +348,7 @@ export default function AiAgents() {
         <AgentDetail key={agent.id} agent={agent} index={index} />
       ))}
       <HowItWorksSteps />
-      <IndustriesSection />
-      <WhyChooseSection />
+      <IndustriesWhySection />
       <FaqSection />
       <ScrollReveal>
         <CTASection
@@ -372,17 +370,17 @@ function Hero() {
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-60 [mask-image:linear-gradient(to_bottom,white_0%,white_60%,transparent_100%)]" />
       <Container className="relative">
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 xl:gap-16">
-          <ScrollReveal className="flex flex-col lg:text-left">
+          <ScrollReveal className="font-inter flex flex-col lg:text-left">
             <h1 className="type-display text-ink-900">
               The AI Workforce Built for{" "}
-              <span className="text-gradient">Local & Mid-Size Businesses</span>
+              <span className="text-gradient">Small & Mid-Size Businesses</span>
             </h1>
-            <p className="type-body-lg mt-6 text-ink-600">
+            <p className="mt-6 max-w-2xl text-lg font-normal leading-[1.7] tracking-[-0.015em] text-ink-700 sm:text-[1.35rem] sm:leading-[1.65]">
               AI-Harness puts a team of AI agents to work across your marketing & sales pipelines, reviews
               management, reputation management, and proposals management, so no lead & operation is missed and
               work keeps moving 24/7.
             </p>
-            <p className="type-body mt-4 text-ink-500">
+            <p className="mt-5 text-base font-normal leading-[1.65] tracking-[-0.01em] text-ink-600 sm:text-lg">
               Each agent is a separate teammate with its own job. Turn on one, or run them together.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row lg:justify-start">
@@ -456,21 +454,34 @@ function AgentHeroBlock({ agent }: { agent: AgentSection }) {
             </div>
           </div>
         )}
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Button to="/demo" variant="secondary" size="lg">
+            Book a demo
+          </Button>
+          <Button to="/signup" size="lg">
+            Add this agent to your workflow
+            <ArrowRight className="h-4 w-4" />
+          </Button>
+        </div>
       </ScrollReveal>
 
       <ScrollReveal
-        className={cn("w-full max-w-xl", imageOnRight && "lg:order-1")}
+        className={cn("font-inter w-full max-w-2xl", imageOnRight && "lg:order-1")}
         delay={imageOnRight ? 0 : 80}
       >
         <AgentTitleHead agent={agent} />
-        <p className="type-body mt-4 text-ink-500">
+        <p className="mt-5 text-lg font-normal leading-[1.65] tracking-[-0.01em] text-ink-600 sm:text-xl">
           A distinct AI-Harness agent ·{" "}
-          <span className="text-ink-600">{agent.role}</span>
+          <span className="text-ink-800">{agent.role}</span>
         </p>
         {!agent.image && (
-          <h3 className="type-subsection mt-6 text-ink-900">{agent.headline}</h3>
+          <h3 className="mt-6 text-2xl font-medium leading-snug tracking-[-0.015em] text-ink-900 sm:text-[1.75rem]">
+            {agent.headline}
+          </h3>
         )}
-        <p className="type-body-lg mt-6 text-ink-700">{agent.intro}</p>
+        <p className="mt-6 text-lg font-normal leading-[1.7] tracking-[-0.01em] text-ink-800 sm:text-[1.3125rem]">
+          {agent.intro}
+        </p>
         <AgentBenefitsAccordion
           benefits={agent.benefits}
           accent={AGENT_ACCENTS[agent.id] ?? AGENT_ACCENTS["sales-pipeline"]}
@@ -522,25 +533,48 @@ function AgentDetail({ agent, index }: { agent: AgentSection; index: number }) {
   );
 }
 
-function IndustriesSection() {
+function IndustriesWhySection() {
   return (
-    <section className="relative overflow-hidden py-16 sm:py-20">
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-industries-mesh" />
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-60" />
-      <Container className="relative">
-        <ScrollReveal>
-          <SectionHeading
-            title={<>Built for <span className="text-gradient">businesses like yours</span></>}
-          />
-        </ScrollReveal>
-        <IndustriesGallery />
-        <ScrollReveal delay={80}>
-          <p className="type-body mx-auto mt-8 max-w-2xl text-center text-ink-600">
-            Don&apos;t see yours? If your business runs on leads, customers, reviews, and follow-ups, AI-Harness fits.
-          </p>
-        </ScrollReveal>
-      </Container>
-    </section>
+    <>
+      <section className="relative overflow-hidden bg-white py-16 sm:py-24">
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-industries-mesh" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-60" />
+        <Container className="relative">
+          <ScrollReveal className="font-inter mx-auto max-w-3xl text-center">
+            <h2 className="text-[clamp(1.75rem,3.2vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-ink-900">
+              Why small businesses choose{" "}
+              <span className="text-gradient">AI-Harness</span>
+            </h2>
+          </ScrollReveal>
+          <div className="mx-auto mt-12 max-w-6xl sm:mt-16">
+            <div className="grid gap-2 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-4">
+              {ADVANTAGES.map((item, index) => (
+                <AdvantageCard key={item.title} {...item} index={index} />
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="relative overflow-hidden py-16 sm:py-20">
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-industries-mesh" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-60" />
+        <Container className="relative">
+          <ScrollReveal className="font-inter mx-auto max-w-3xl text-center">
+            <h2 className="text-[clamp(1.75rem,3.2vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-ink-900">
+              Built for <span className="text-gradient">businesses like yours</span>
+            </h2>
+          </ScrollReveal>
+          <IndustriesGallery />
+          <ScrollReveal delay={80}>
+            <p className="font-inter mx-auto mt-8 max-w-2xl text-center text-base font-normal leading-relaxed text-ink-600 sm:text-lg">
+              Don&apos;t see yours? If your business runs on leads, customers, reviews, and follow-ups,
+              AI-Harness fits.
+            </p>
+          </ScrollReveal>
+        </Container>
+      </section>
+    </>
   );
 }
 
@@ -549,7 +583,11 @@ function FaqSection() {
     <section className="bg-ink-50/70 py-16 sm:py-20">
       <Container>
         <ScrollReveal>
-          <SectionHeading title={<>Frequently asked <span className="text-gradient">questions</span></>} />
+          <div className="font-inter mx-auto max-w-3xl text-center">
+            <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-ink-900">
+              Frequently asked <span className="text-gradient">questions</span>
+            </h2>
+          </div>
         </ScrollReveal>
         <div className="mx-auto mt-12 max-w-3xl">
           <FaqAccordion items={FAQS} />

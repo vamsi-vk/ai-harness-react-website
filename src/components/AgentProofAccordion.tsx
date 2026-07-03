@@ -33,7 +33,7 @@ export default function AgentProofAccordion({
   const [open, setOpen] = useState(false);
 
   return (
-    <ScrollReveal className={className}>
+    <ScrollReveal className={cn("font-inter", className)}>
       <div
         className={cn(
           "overflow-hidden rounded-2xl border transition-all duration-300",
@@ -57,10 +57,10 @@ export default function AgentProofAccordion({
             aria-hidden
           />
           <span className="min-w-0 flex-1 pt-0.5">
-            <span className="type-card-title text-ink-900">
+            <span className="text-lg font-medium leading-snug text-ink-900 sm:text-xl">
               Compare, impact & real results
             </span>
-            <span className="type-body mt-1 block text-ink-500">
+            <span className="mt-1.5 block text-base font-normal leading-relaxed text-ink-600 sm:text-lg">
               The old way vs with AI-Harness, what it means for revenue, and an illustrative case study.
             </span>
           </span>
@@ -84,14 +84,16 @@ export default function AgentProofAccordion({
               <AgentComparison rows={comparisons} />
 
               <div className="rounded-2xl border border-brand-200/80 bg-gradient-to-br from-brand-50/80 via-white to-brand-50/40 p-6 shadow-soft sm:p-7">
-                <h3 className="type-card-title text-ink-900">Impact & revenue</h3>
-                <p className="type-body-lg mt-4 text-ink-700">{outcome}</p>
+                <h3 className="text-lg font-medium text-ink-900 sm:text-xl">Impact & revenue</h3>
+                <p className="mt-4 text-base font-normal leading-[1.7] text-ink-800 sm:text-lg">{outcome}</p>
               </div>
 
               <div className="rounded-2xl border border-brand-200 bg-gradient-to-br from-brand-50 via-white to-brand-50/40 p-6 shadow-soft sm:p-7">
-                <p className="type-eyebrow text-brand-700">Real result (illustrative)</p>
-                <p className="type-card-title mt-4 text-ink-900">{caseStudy.company}</p>
-                <p className="type-body-lg mt-4 text-ink-700">{caseStudy.story}</p>
+                <p className="text-sm font-medium tracking-[0.14em] text-brand-700 uppercase sm:text-base">
+                  Real result (illustrative)
+                </p>
+                <p className="mt-4 text-lg font-medium text-ink-900 sm:text-xl">{caseStudy.company}</p>
+                <p className="mt-4 text-base font-normal leading-[1.7] text-ink-800 sm:text-lg">{caseStudy.story}</p>
               </div>
             </div>
           </div>

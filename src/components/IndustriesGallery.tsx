@@ -1,117 +1,178 @@
+import {
+  Briefcase,
+  Building2,
+  Car,
+  Coffee,
+  Monitor,
+  Scissors,
+  ShoppingBag,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react";
 import { cn } from "../lib/cn";
 import ScrollReveal from "./ScrollReveal";
-import { INDUSTRY_IMAGES } from "../data/industryImages";const INDUSTRY_CARDS = [
+
+type IndustryImage = {
+  src: string;
+  label: string;
+  alt: string;
+};
+
+type IndustryCardData = {
+  type: string;
+  summary: string;
+  icon: LucideIcon;
+  image: IndustryImage;
+};
+
+const INDUSTRY_CARDS: IndustryCardData[] = [
   {
     type: "Restaurants & cafes",
-    detail:
-      "The Automated Review Agent invites every happy diner to leave a review, and the Reputation & Sentiment Agent replies to each one in your voice.",
-    image: INDUSTRY_IMAGES[0],
-    size: "h-72 sm:h-80",
+    summary:
+      "Automatically collects reviews from happy customers and replies to every review using AI.",
+    icon: Coffee,
+    image: {
+      src: "/illustrations/custom/restaurants-cafe-card.png",
+      label: "Restaurants & cafes",
+      alt: "Stylized lavender coffee cup illustration for restaurants and cafes",
+    },
   },
   {
     type: "Home & field services",
-    detail:
-      "The Sales Pipeline & CRM Agent captures after-hours calls and web leads, sends quotes in minutes, and nudges quiet leads.",
-    image: INDUSTRY_IMAGES[4],
-    size: "h-52 sm:h-60",
+    summary:
+      "Captures after-hours calls and web leads, sends quotes in minutes, and nudges quiet leads automatically.",
+    icon: Wrench,
+    image: {
+      src: "/illustrations/custom/home-field-services-card.png",
+      label: "Home & field services",
+      alt: "Stylized purple house and toolbox illustration for home and field services",
+    },
   },
   {
     type: "Salons, spas & fitness",
-    detail:
-      "The Sales Pipeline & CRM Agent books appointments around the clock, and the Automated Review Agent asks for a review after each visit.",
-    image: INDUSTRY_IMAGES[2],
-    size: "h-64 sm:h-72",
+    summary:
+      "Books appointments around the clock and asks for a review after each visit.",
+    icon: Scissors,
+    image: {
+      src: "/illustrations/custom/salon-spa-card.png",
+      label: "Salons, spas & fitness",
+      alt: "Stylized purple salon chair and styling tools illustration",
+    },
   },
   {
     type: "Auto repair & dealerships",
-    detail:
-      "The Sales Pipeline & CRM Agent captures service requests and follows up on estimates, while the Automated Review Agent turns finished jobs into fresh 5-star reviews.",
+    summary:
+      "Captures service requests, follows up on estimates, and turns finished jobs into fresh 5-star reviews.",
+    icon: Car,
     image: {
       src: "/illustrations/custom/auto-repair-dealerships.png",
       label: "Auto repair & dealerships",
-      alt: "Auto repair shop team serving customers and working on vehicles in a professional garage",
+      alt: "Stylized purple auto repair garage with car and wrench emblem",
     },
-    size: "h-80 sm:h-[22rem]",
   },
   {
     type: "Professional & financial services",
-    detail:
-      "The Proposal Drafting Agent turns inquiries into same-day proposals and the Sales Pipeline & CRM Agent keeps every prospect warm.",
+    summary:
+      "Turns inquiries into same-day proposals and keeps every prospect warm until they are ready to buy.",
+    icon: Briefcase,
     image: {
       src: "/illustrations/custom/professional-financial-services.png",
       label: "Professional & financial services",
-      alt: "Financial professionals reviewing business data and growth metrics in a modern office",
+      alt: "Stylized purple classical bank building with gold accents",
     },
-    size: "h-48 sm:h-52",
   },
   {
     type: "Retail & e-commerce",
-    detail:
-      "The Sales Pipeline & CRM Agent answers product questions and recovers quiet leads, and the Reputation & Sentiment Agent keeps your ratings strong.",
-    image: INDUSTRY_IMAGES[1],
-    size: "h-56 sm:h-64",
+    summary:
+      "Answers product questions, recovers quiet leads, and keeps your ratings strong across every channel.",
+    icon: ShoppingBag,
+    image: {
+      src: "/illustrations/custom/retail-ecommerce-card.png",
+      label: "Retail & e-commerce",
+      alt: "Stylized purple mobile storefront with shopping bags and gift boxes",
+    },
   },
   {
     type: "Real estate",
-    detail:
-      "The Sales Pipeline & CRM Agent responds to listing inquiries in seconds and nurtures buyers until they tour.",
+    summary:
+      "Responds to listing inquiries in seconds and nurtures buyers until they book a tour.",
+    icon: Building2,
     image: {
       src: "/illustrations/custom/real-estate.png",
       label: "Real estate",
-      alt: "Real estate professional presenting a modern home model",
+      alt: "Stylized purple apartment buildings and location pin illustration",
     },
-    size: "h-60 sm:h-[17rem]",
   },
   {
     type: "IT & technology services",
-    detail:
-      "The Sales Pipeline & CRM Agent captures project inquiries and follows up fast, and the Proposal Drafting Agent turns scopes into ready-to-send proposals.",
+    summary:
+      "Captures project inquiries, follows up fast, and turns scopes into ready-to-send proposals.",
+    icon: Monitor,
     image: {
       src: "/illustrations/custom/it-services.png",
       label: "IT & technology services",
-      alt: "IT services team delivering cloud, software, cybersecurity, and consulting solutions",
+      alt: "Stylized purple monitor, servers, and cloud illustration for IT services",
     },
-    size: "h-64 sm:h-72",
   },
-] as const;
+];
 
-type IndustryCard = (typeof INDUSTRY_CARDS)[number];
+function IndustryCard({ item, index }: { item: IndustryCardData; index: number }) {
+  const CardIcon = item.icon;
 
-function IndustryCard({ item, index }: { item: IndustryCard; index: number }) {
   return (
     <ScrollReveal
       as="article"
       delay={index * 50}
-      className="group mb-3 break-inside-avoid overflow-hidden rounded-xl border border-ink-200/70 bg-white shadow-[0_2px_12px_rgba(15,23,42,0.04)] transition-[border-color,box-shadow] duration-200 hover:border-brand-300 hover:shadow-[0_12px_32px_rgba(124,58,237,0.12)]"
-    >      <div className={cn("relative w-full overflow-hidden", item.size)}>
-        <img
-          src={item.image.src}
-          alt={item.image.alt}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
-          loading="lazy"
-          decoding="async"
-        />
-        <div className="absolute inset-0 bg-brand-950/0 transition duration-300 group-hover:bg-brand-950/10" />
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-900/85 via-ink-900/35 to-transparent px-3 pb-3 pt-12">
-          <p className="text-sm font-semibold text-white">{item.type}</p>
+      className="group mb-4 break-inside-avoid overflow-hidden rounded-2xl border-2 border-white/30 bg-white shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition-[border-color,box-shadow] duration-200 hover:border-brand-300 hover:shadow-[0_20px_48px_rgba(124,58,237,0.28)]"
+    >
+      <div className="p-3 pb-0 sm:p-4 sm:pb-0">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-gradient-to-br from-brand-50 via-[#f7f4ff] to-brand-100/80">
+          <img
+            src={item.image.src}
+            alt={item.image.alt}
+            className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
-      <p className="border-t border-ink-100 bg-white px-3 py-3 text-xs leading-relaxed text-ink-600">
-        {item.detail}
-      </p>
+
+      <div className="px-4 pb-5 pt-4 sm:px-5 sm:pb-6 sm:pt-5">
+        <div className="flex items-start gap-3.5">
+          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-brand-100">
+            <CardIcon className="h-5 w-5" strokeWidth={1.75} />
+          </div>
+          <h3 className="font-inter pt-1 text-lg font-medium leading-snug tracking-[-0.02em] text-ink-900 sm:text-[1.35rem]">
+            {item.type}
+          </h3>
+        </div>
+
+        <p className="font-inter mt-4 text-base font-normal leading-[1.65] tracking-[-0.01em] text-ink-700 sm:text-[17px]">
+          {item.summary}
+        </p>
+      </div>
     </ScrollReveal>
   );
 }
-export default function IndustriesGallery() {
+
+export default function IndustriesGallery({ compact = false }: { compact?: boolean }) {
   return (
     <ScrollReveal>
       <div
-        className="relative mt-12 overflow-hidden rounded-3xl bg-[#000b5e] bg-cover bg-center bg-no-repeat p-3 sm:p-5"
+        className={cn(
+          "relative overflow-hidden rounded-3xl bg-[#000b5e] bg-cover bg-center bg-no-repeat p-3 sm:p-5",
+          compact ? "mt-8" : "mt-12",
+        )}
         style={{
           backgroundImage: "url('/illustrations/custom/industries-gallery-bg.png')",
         }}
       >
-        <div className="columns-2 gap-3 sm:columns-3 lg:columns-4 [column-gap:0.875rem]">
+        <div
+          className={cn(
+            "columns-1 gap-4 [column-gap:1rem]",
+            compact ? "sm:columns-2" : "sm:columns-2 lg:columns-3 xl:columns-4",
+          )}
+        >
           {INDUSTRY_CARDS.map((item, index) => (
             <IndustryCard key={item.type} item={item} index={index} />
           ))}

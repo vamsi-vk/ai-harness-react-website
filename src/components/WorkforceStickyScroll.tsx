@@ -19,6 +19,9 @@ type WorkforceCard = {
   image: string;
   imageAlt: string;
   imageFit?: "cover" | "contain";
+  imagePosition?: string;
+  layout?: "split" | "gradient-overlay" | "full-image";
+  imagePanelBg?: string;
   gradient: string;
   glow: string;
 };
@@ -32,6 +35,7 @@ const CARDS: WorkforceCard[] = [
     href: "#sales-pipeline",
     image: "/illustrations/custom/sales-pipeline-agent-slider.png",
     imageAlt: "Sales Pipeline and CRM Agent capturing leads and following up automatically",
+    layout: "full-image",
     gradient: "from-indigo-500 via-blue-600 to-violet-900",
     glow: "rgba(99,102,241,0.42)",
   },
@@ -43,7 +47,8 @@ const CARDS: WorkforceCard[] = [
     href: "#reputation",
     image: "/illustrations/custom/reputation-agent-slider.png",
     imageAlt: "Reputation and Sentiment Agent replying to reviews in your brand voice",
-    gradient: "from-rose-400 via-pink-600 to-rose-900",
+    layout: "full-image",
+    gradient: "from-[#c2185b] via-[#db2777] to-[#be185d]",
     glow: "rgba(244,63,94,0.38)",
   },
   {
@@ -52,9 +57,10 @@ const CARDS: WorkforceCard[] = [
     description: "Asks happy customers for reviews, automatically.",
     icon: <Star className="h-6 w-6" strokeWidth={2} />,
     href: "#reviews",
-    image: "/illustrations/custom/reviews-agent.png",
+    image: "/illustrations/custom/reviews-agent-slider.png",
     imageAlt: "Automated Review Agent growing five-star reviews",
-    gradient: "from-amber-400 via-orange-500 to-rose-600",
+    layout: "full-image",
+    gradient: "from-amber-500 via-orange-500 to-rose-600",
     glow: "rgba(251,146,60,0.4)",
   },
   {
@@ -63,8 +69,9 @@ const CARDS: WorkforceCard[] = [
     description: "Turns requests into ready-to-send proposals.",
     icon: <FileText className="h-6 w-6" strokeWidth={2} />,
     href: "#proposals",
-    image: "/illustrations/custom/proposals-agent.png",
+    image: "/illustrations/custom/proposals-agent-slider.png",
     imageAlt: "Proposal Drafting Agent turning requests into ready-to-send proposals",
+    layout: "full-image",
     gradient: "from-cyan-500 via-sky-600 to-blue-900",
     glow: "rgba(56,189,248,0.4)",
   },
@@ -97,19 +104,20 @@ function useCardMotion(cardRefs: React.MutableRefObject<(HTMLDivElement | null)[
       const vh = window.innerHeight;
       const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
       const focusY = vh * 0.42;
+      const baseSticky =
+        isDesktop && cards[0]
+          ? parseFloat(getComputedStyle(cards[0]).top) || 96
+          : 0;
 
       let bestIndex = 0;
-      let bestDistance = Infinity;
 
       const nextMotion = cards.map((el, index) => {
         if (!el) return { progress: 1, parallax: 0 };
 
         const rect = el.getBoundingClientRect();
-        const cardCenter = rect.top + rect.height * 0.5;
-        const distance = Math.abs(cardCenter - focusY);
+        const stickyTop = baseSticky + index * STICKY_STACK_STEP;
 
-        if (distance < bestDistance) {
-          bestDistance = distance;
+        if (rect.top <= stickyTop + 12) {
           bestIndex = index;
         }
 
@@ -146,6 +154,26 @@ function useCardMotion(cardRefs: React.MutableRefObject<(HTMLDivElement | null)[
 
 const STICKY_STACK_STEP = 14;
 
+function CardTextContent({ card }: { card: WorkforceCard }) {
+  return (
+    <>
+      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/15 text-white ring-1 ring-white/25 backdrop-blur-sm">
+        {card.icon}
+      </div>
+
+      <div>
+        <p className="type-eyebrow text-white/80">{card.job}</p>
+        <h3 className="type-card-title mt-2 max-w-md text-white">{card.agent}</h3>
+        <p className="type-body mt-3 max-w-md text-white/90">{card.description}</p>
+        <span className="type-caption mt-4 inline-flex items-center gap-2 font-semibold text-white/95 transition group-hover:gap-3">
+          Learn more
+          <ArrowRight className="h-4 w-4" />
+        </span>
+      </div>
+    </>
+  );
+}
+
 function WorkforceScrollCard({
   card,
   index,
@@ -173,10 +201,11 @@ function WorkforceScrollCard({
     : 0.95 + progress * 0.05;
   const opacity = isStacked || active ? 1 : isUpcoming ? 0.4 + progress * 0.6 : 1;
 
-  const style: CSSProperties = {
+  const motionStyle: CSSProperties = {
     opacity,
     transform: `scale(${scale})`,
-    transition: "box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
+    transformOrigin: "top center",
+    transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
     willChange: "transform, opacity",
   };
 
@@ -197,12 +226,60 @@ function WorkforceScrollCard({
       <a
         href={card.href}
         className={cn(
-          "group relative flex min-h-[min(52vh,460px)] flex-col overflow-hidden rounded-[28px] border border-white/10 bg-ink-900/80 p-5 shadow-[0_24px_80px_-24px_rgba(0,0,0,0.75)] backdrop-blur-sm sm:p-6",
-          "transition-[box-shadow,border-color] duration-500 ease-out hover:border-white/20",
-          active && "border-white/20 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.9)]",
+          "group relative flex min-h-[min(52vh,460px)] flex-col overflow-hidden rounded-[28px]",
+          card.layout === "gradient-overlay"
+            ? "min-h-[min(58vh,520px)] border border-white/10 bg-ink-900 p-0 shadow-[0_24px_80px_-24px_rgba(0,0,0,0.75)] backdrop-blur-sm"
+            : card.layout === "full-image"
+              ? "min-h-[min(58vh,520px)] border-0 bg-cover bg-center bg-no-repeat p-0 shadow-none"
+              : "border border-white/10 bg-ink-900/80 p-5 shadow-[0_24px_80px_-24px_rgba(0,0,0,0.75)] backdrop-blur-sm sm:p-6",
+          card.layout !== "full-image" &&
+            "transition-[box-shadow,border-color] duration-500 ease-out hover:border-white/20",
+          card.layout !== "full-image" &&
+            active &&
+            "border-white/20 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.9)]",
         )}
-        style={style}
+        style={{
+          ...motionStyle,
+          ...(card.layout === "full-image"
+            ? { backgroundImage: `url(${card.image})` }
+            : {}),
+        }}
       >
+        {card.layout === "full-image" ? (
+          <span className="sr-only">
+            {card.job}. {card.agent}. {card.description}
+          </span>
+        ) : card.layout === "gradient-overlay" ? (
+          <div className="relative flex min-h-[min(58vh,520px)] flex-1 flex-col lg:flex-row">
+            <div
+              className={cn(
+                "relative z-10 flex flex-col justify-end gap-5 bg-gradient-to-br p-5 sm:p-6 lg:w-[46%] lg:max-w-[46%] lg:shrink-0 lg:justify-center lg:py-8",
+                card.gradient,
+              )}
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 right-0 hidden w-16 bg-gradient-to-r from-transparent to-black/10 lg:block"
+              />
+              <CardTextContent card={card} />
+            </div>
+            <div
+              className={cn(
+                "relative min-h-[15rem] flex-1 lg:min-h-0",
+                card.imagePanelBg ?? "bg-ink-900/40",
+              )}
+            >
+              <img
+                src={card.image}
+                alt={card.imageAlt}
+                className="h-full w-full object-contain object-center p-2 sm:p-3 lg:p-4"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        ) : (
+          <>
         <div
           aria-hidden
           className={cn(
@@ -226,25 +303,7 @@ function WorkforceScrollCard({
 
         <div className="relative flex min-h-0 flex-1 flex-col gap-5 lg:flex-row lg:items-stretch lg:gap-6">
           <div className="flex flex-1 flex-col justify-center gap-5 lg:max-w-[52%] lg:py-1">
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/15 text-white ring-1 ring-white/25 backdrop-blur-sm">
-              {card.icon}
-            </div>
-
-            <div>
-              <p className="type-eyebrow text-white/75">
-                {card.job}
-              </p>
-              <h3 className="type-card-title mt-2 max-w-md text-white">
-                {card.agent}
-              </h3>
-              <p className="type-body mt-3 max-w-md text-white/85">
-                {card.description}
-              </p>
-              <span className="type-caption mt-4 inline-flex items-center gap-2 font-semibold text-white/90 transition group-hover:gap-3">
-                Learn more
-                <ArrowRight className="h-4 w-4" />
-              </span>
-            </div>
+            <CardTextContent card={card} />
           </div>
 
           <div className="relative min-h-[10.5rem] flex-1 overflow-hidden rounded-2xl border border-white/15 bg-black/20 sm:min-h-[12rem] lg:min-h-0">
@@ -255,7 +314,7 @@ function WorkforceScrollCard({
                 "absolute inset-0 h-full w-full transition-transform duration-300 ease-out will-change-transform group-hover:scale-[1.03]",
                 card.imageFit === "contain"
                   ? "object-contain object-center p-1"
-                  : "object-cover object-top",
+                  : cn("object-cover", card.imagePosition ?? "object-top"),
               )}
               style={{ transform: `translateY(${parallax}px) scale(1.02)` }}
               loading="lazy"
@@ -264,6 +323,8 @@ function WorkforceScrollCard({
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
           </div>
         </div>
+          </>
+        )}
       </a>
     </div>
   );
@@ -279,26 +340,26 @@ export default function WorkforceStickyScroll() {
 
   return (
     <section
-      className="relative bg-ink-950 text-white [--wf-sticky-base:6rem] xl:[--wf-sticky-base:7rem]"
+      className="relative bg-brand-50 text-ink-900 [--wf-sticky-base:6rem] xl:[--wf-sticky-base:7rem]"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 overflow-hidden bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(124,58,237,0.22),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 overflow-hidden bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(124,58,237,0.1),transparent_60%)]"
       />
-      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden bg-grid-dark opacity-[0.14]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden bg-grid opacity-50" />
 
       <Container className="relative">
         <div className="grid gap-10 lg:grid-cols-5 lg:gap-14 xl:gap-16">
-          <div className="lg:col-span-2">
-            <ScrollReveal className="lg:sticky lg:top-24 lg:h-fit lg:max-h-[calc(100vh-7rem)] lg:py-16 xl:top-28">
-          <p className="type-eyebrow text-brand-300">
+          <div className="relative z-10 lg:col-span-2">
+            <div className="font-inter lg:sticky lg:top-24 lg:h-fit lg:py-16 xl:top-28">
+              <p className="text-sm font-semibold tracking-[0.16em] text-brand-700 uppercase sm:text-base">
                 Your AI team
               </p>
-              <h2 className="type-section mt-4 text-white">
+              <h2 className="mt-5 text-[clamp(2.125rem,4.5vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.025em] text-ink-900">
                 Meet your{" "}
                 <span className="text-gradient">AI workforce</span>
               </h2>
-              <p className="type-body-lg mt-6 max-w-md text-white/75">
+              <p className="mt-6 max-w-xl text-xl font-medium leading-[1.65] tracking-[-0.01em] text-ink-900 sm:mt-7 sm:text-[1.375rem]">
                 AI-Harness is not one big automation. It is a set of distinct AI agents, each hired
                 for a specific job. Here is who does what.
               </p>
@@ -308,12 +369,12 @@ export default function WorkforceStickyScroll() {
                     key={card.agent}
                     className={cn(
                       "h-1.5 rounded-full transition-all duration-500 ease-out",
-                      activeIndex === index ? "w-8 bg-white" : "w-1.5 bg-white/25",
+                      activeIndex === index ? "w-8 bg-brand-600" : "w-1.5 bg-ink-300",
                     )}
                   />
                 ))}
               </div>
-            </ScrollReveal>
+            </div>
           </div>
 
           <div className="lg:col-span-3">

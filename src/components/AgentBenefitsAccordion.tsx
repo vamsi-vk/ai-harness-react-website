@@ -37,7 +37,7 @@ export default function AgentBenefitsAccordion({ benefits, accent, className }: 
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className={cn("space-y-2.5", className)}>
+    <div className={cn("font-inter space-y-2.5", className)}>
       {benefits.map((benefit, index) => {
         const { title, description } = parseLeadIn(benefit);
         const isOpen = openIndex === index;
@@ -65,7 +65,7 @@ export default function AgentBenefitsAccordion({ benefits, accent, className }: 
                 aria-hidden
               />
               <span className="min-w-0 flex-1 pt-0.5">
-                <span className="type-card-title text-ink-900">{title}</span>
+                <span className="text-lg font-medium leading-snug text-ink-900 sm:text-xl">{title}</span>
               </span>
               <ChevronDown
                 className={cn(
@@ -82,7 +82,7 @@ export default function AgentBenefitsAccordion({ benefits, accent, className }: 
               )}
             >
               <div className="overflow-hidden">
-                <p className="type-body px-4 pb-4 pl-12 text-ink-600 sm:px-5 sm:pb-5 sm:pl-[3.75rem]">
+                <p className="px-4 pb-4 pl-12 text-base font-normal leading-[1.65] text-ink-700 sm:px-5 sm:pb-5 sm:pl-[3.75rem] sm:text-lg">
                   {description}
                 </p>
               </div>

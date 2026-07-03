@@ -11,13 +11,13 @@ import Container from "./Container";
 import LineIcon from "./LineIcon";
 import ScrollReveal from "./ScrollReveal";
 
-const ADVANTAGES: {
+export const ADVANTAGES: {
   title: string;
   description: string;
   icon: LucideIcon;
 }[] = [
   {
-    title: "Built for local and mid-size businesses",
+    title: "Built for small and mid-size businesses",
     description:
       "Simple, affordable, and ready the day you sign up. No consultants, no complexity.",
     icon: Building2,
@@ -54,7 +54,7 @@ const ADVANTAGES: {
   },
 ];
 
-function AdvantageCard({
+export function AdvantageCard({
   title,
   description,
   icon,
@@ -80,7 +80,7 @@ export default function WhyChooseSection() {
         <ScrollReveal className="mx-auto max-w-3xl text-center">
           <p className="type-eyebrow text-ink-500">Why choose us</p>
           <h2 className="type-section mt-4 text-ink-900">
-            Why local businesses choose{" "}
+            Why small businesses choose{" "}
             <span className="text-gradient">AI-Harness</span>
           </h2>
         </ScrollReveal>

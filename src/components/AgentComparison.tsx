@@ -10,7 +10,7 @@ export default function AgentComparison({ rows }: { rows: ComparisonRow[] }) {
           <span className="grid h-7 w-7 place-items-center rounded-full bg-ink-100 text-ink-400 ring-1 ring-ink-200/80">
             <CircleX className="h-3.5 w-3.5" strokeWidth={2.25} />
           </span>
-          <p className="type-caption font-bold uppercase tracking-[0.14em] text-ink-500">
+          <p className="text-xs font-medium uppercase tracking-[0.14em] text-ink-500 sm:text-sm">
             The old way
           </p>
         </div>
@@ -24,7 +24,7 @@ export default function AgentComparison({ rows }: { rows: ComparisonRow[] }) {
           <span className="grid h-7 w-7 place-items-center rounded-full bg-brand-100 text-brand-600 ring-1 ring-brand-200/80">
             <CircleCheck className="h-3.5 w-3.5" strokeWidth={2.25} />
           </span>
-          <p className="type-caption font-bold uppercase tracking-[0.14em] text-brand-700">
+          <p className="text-xs font-medium uppercase tracking-[0.14em] text-brand-700 sm:text-sm">
             With AI-Harness
           </p>
         </div>
@@ -43,7 +43,7 @@ export default function AgentComparison({ rows }: { rows: ComparisonRow[] }) {
                   strokeWidth={2}
                   aria-hidden
                 />
-                <p className="type-body text-ink-600">{row.oldWay}</p>
+                <p className="text-base font-normal leading-[1.65] text-ink-700 sm:text-lg">{row.oldWay}</p>
               </div>
 
               <div
@@ -61,7 +61,7 @@ export default function AgentComparison({ rows }: { rows: ComparisonRow[] }) {
                   strokeWidth={2}
                   aria-hidden
                 />
-                <p className="type-body font-semibold text-ink-900">{row.withAgent}</p>
+                <p className="text-base font-normal leading-[1.65] text-ink-900 sm:text-lg">{row.withAgent}</p>
               </div>
             </div>
 
