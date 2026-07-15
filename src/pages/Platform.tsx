@@ -219,7 +219,7 @@ function IntegrationsSection() {
         <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {categories.map((c) => (
             <div key={c.title} className="rounded-2xl border border-ink-200 bg-white p-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-brand-700">{c.title}</p>
+              <p className="text-sm font-medium text-ink-500">{c.title}</p>
               <ul className="mt-4 space-y-2">
                 {c.tools.map((t) => (
                   <li key={t} className="flex items-center gap-3 text-[15px] text-ink-800">
@@ -265,7 +265,7 @@ function StackDiagram() {
                 style={{ marginLeft: `${i * 10}px`, marginRight: `${i * 10}px` }}
               >
                 <div>
-                  <p className={`text-xs font-semibold uppercase tracking-[0.14em] ${dark ? "text-brand-300" : "text-brand-700"}`}>
+                  <p className={`text-sm font-medium ${dark ? "text-ink-300" : "text-ink-500"}`}>
                     Layer {i + 1}
                   </p>
                   <p className={`mt-1 text-lg font-semibold ${dark ? "text-white" : "text-ink-900"}`}>{l.label}</p>
@@ -275,7 +275,7 @@ function StackDiagram() {
                   {l.icons.map((icon, idx) => (
                     <span
                       key={idx}
-                      className={`grid h-9 w-9 place-items-center rounded-xl ${dark ? "bg-white/10 text-white" : "bg-brand-50 text-brand-700"}`}
+                      className={`grid h-9 w-9 place-items-center rounded-xl ${dark ? "bg-white/10 text-white" : "bg-ink-100 text-ink-600"}`}
                     >
                       {icon}
                     </span>

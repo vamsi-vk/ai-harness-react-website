@@ -67,12 +67,12 @@ export default function LegalModal({ kind, onClose }: Props) {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/50 to-transparent" />
 
         {/* Header */}
-        <div className="flex items-start gap-4 border-b border-ink-200/80 bg-gradient-to-br from-brand-50/70 via-white to-indigo-50/60 px-7 py-6 sm:px-8">
-          <span className="mt-1 grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white text-brand-700 ring-1 ring-inset ring-brand-200/70 shadow-soft">
+        <div className="flex items-start gap-4 border-b border-ink-200/80 bg-gradient-to-br from-brand-50/70 via-white to-brand-50/60 px-7 py-6 sm:px-8">
+          <span className="mt-1 grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white text-ink-600 ring-1 ring-inset ring-ink-200/80 shadow-soft">
             {content.icon}
           </span>
           <div className="min-w-0 flex-1">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-700">
+            <p className="text-sm font-medium text-ink-500">
               {content.eyebrow}
             </p>
             <h2

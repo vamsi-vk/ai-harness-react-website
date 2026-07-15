@@ -484,7 +484,7 @@ function CheckboxGroup({
       )}
       <div className="mt-2.5 grid gap-2 sm:grid-cols-2">{children}</div>
       {error && (
-        <p className="mt-2 text-[12.5px] font-medium text-red-600">{error}</p>
+        <p className="mt-2 text-[12.5px] font-medium text-error-600">{error}</p>
       )}
     </fieldset>
   );

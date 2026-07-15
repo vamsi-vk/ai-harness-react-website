@@ -195,7 +195,7 @@ function Hero() {
               <Button
                 href="#country-selector"
                 size="md"
-                className="bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lift hover:from-brand-700 hover:to-indigo-700"
+                className="bg-gradient-to-r from-brand-600 to-brand-700 text-white shadow-lift hover:from-brand-700 hover:to-brand-800"
               >
                 Select your country
                 <ArrowRight className="h-4 w-4" />
@@ -229,16 +229,16 @@ function PlatformCard() {
     <div className="relative">
       <div
         aria-hidden
-        className="absolute -inset-6 rounded-[40px] bg-gradient-to-br from-brand-200/60 via-white to-indigo-200/60 opacity-80 blur-2xl"
+        className="absolute -inset-6 rounded-[40px] bg-gradient-to-br from-brand-200/60 via-white to-brand-200/60 opacity-80 blur-2xl"
       />
-      <div className="relative overflow-hidden rounded-[20px] border border-ink-900/80 bg-gradient-to-br from-ink-950 via-ink-900 to-indigo-950 shadow-lift">
+      <div className="relative overflow-hidden rounded-[20px] border border-ink-900/80 bg-gradient-to-br from-ink-950 via-ink-900 to-brand-950 shadow-lift">
         <div
           aria-hidden
           className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-brand-500/30 blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-16 -left-10 h-40 w-40 rounded-full bg-indigo-500/25 blur-3xl"
+          className="pointer-events-none absolute -bottom-16 -left-10 h-40 w-40 rounded-full bg-brand-500/25 blur-3xl"
         />
 
         <div className="relative flex items-center justify-between border-b border-white/10 px-4 py-2.5">
@@ -249,8 +249,8 @@ function PlatformCard() {
             <span className="text-ink-500">/</span>
             <span className="text-white">international</span>
           </div>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[9.5px] font-semibold uppercase tracking-[0.08em] text-emerald-300 ring-1 ring-inset ring-emerald-400/30">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-live-dot" />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-success-500/15 px-2 py-0.5 text-[9.5px] font-semibold uppercase tracking-[0.08em] text-success-300 ring-1 ring-inset ring-success-400/30">
+            <span className="h-1.5 w-1.5 rounded-full bg-success-400 animate-live-dot" />
             3 countries · Live
           </span>
         </div>
@@ -282,8 +282,8 @@ function PlatformCard() {
 
         <div className="relative flex items-center justify-between border-t border-white/10 px-4 py-2.5 text-[11px]">
           <span className="font-medium text-ink-400">Audit trail</span>
-          <span className="inline-flex items-center gap-1.5 font-semibold text-emerald-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-live-dot" />
+          <span className="inline-flex items-center gap-1.5 font-semibold text-success-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-success-400 animate-live-dot" />
             Active across every country
           </span>
         </div>
@@ -296,14 +296,14 @@ function StatsRow() {
   return (
     <section className="pb-14 sm:pb-20">
       <Container>
-        <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-br from-ink-950 via-ink-900 to-indigo-950 px-5 py-5 shadow-lift sm:px-7 sm:py-6">
+        <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-br from-ink-950 via-ink-900 to-brand-950 px-5 py-5 shadow-lift sm:px-7 sm:py-6">
           <div
             aria-hidden
             className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-brand-500/25 blur-3xl"
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute -bottom-24 -left-16 h-60 w-60 rounded-full bg-indigo-500/20 blur-3xl"
+            className="pointer-events-none absolute -bottom-24 -left-16 h-60 w-60 rounded-full bg-brand-500/20 blur-3xl"
           />
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid-dark opacity-50" />
 
@@ -470,7 +470,7 @@ function CountrySelector() {
                 >
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-gradient-to-br from-brand-100/0 to-indigo-100/0 blur-2xl transition-opacity duration-300 group-hover:from-brand-200/60 group-hover:to-indigo-200/50"
+                    className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-gradient-to-br from-brand-100/0 to-brand-100/0 blur-2xl transition-opacity duration-300 group-hover:from-brand-200/60 group-hover:to-brand-200/50"
                   />
 
                   <div className="relative flex items-start justify-between gap-3">
@@ -533,7 +533,7 @@ function BottomCTA() {
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute -bottom-28 right-0 h-[300px] w-[300px] rounded-full bg-indigo-500/20 blur-3xl"
+            className="pointer-events-none absolute -bottom-28 right-0 h-[300px] w-[300px] rounded-full bg-brand-500/20 blur-3xl"
           />
 
           <div className="relative z-10 mx-auto max-w-3xl text-center">
@@ -554,7 +554,7 @@ function BottomCTA() {
               <Button
                 to="/contact"
                 size="md"
-                className="bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lift hover:from-brand-700 hover:to-indigo-700"
+                className="bg-gradient-to-r from-brand-600 to-brand-700 text-white shadow-lift hover:from-brand-700 hover:to-brand-800"
               >
                 Contact us
                 <ArrowRight className="h-4 w-4" />

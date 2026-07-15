@@ -136,7 +136,7 @@ function Newsletter() {
   return (
     <section className="py-20">
       <Container>
-        <div className="mx-auto max-w-4xl rounded-[28px] border border-ink-200 bg-gradient-to-br from-brand-50 via-white to-indigo-50 p-10 sm:p-14">
+        <div className="mx-auto max-w-4xl rounded-[28px] border border-ink-200 bg-gradient-to-br from-brand-50 via-white to-brand-50 p-10 sm:p-14">
           <div className="grid gap-8 sm:grid-cols-[1.2fr_1fr] sm:items-center">
             <div>
               <Eyebrow>Newsletter</Eyebrow>

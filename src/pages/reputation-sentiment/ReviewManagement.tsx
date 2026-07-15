@@ -1,0 +1,435 @@
+import {
+  ArrowRight,
+  Globe2,
+  Languages,
+  ListTodo,
+  ShieldAlert,
+  Sparkles,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import Container from "../../components/Container";
+import Button from "../../components/Button";
+import Seo from "../../components/Seo";
+import FaqJsonLd from "../../components/FaqJsonLd";
+import FaqAccordion from "../../components/FaqAccordion";
+import CTASection from "../../components/CTASection";
+import ScrollReveal from "../../components/ScrollReveal";
+import {
+  REPUTATION_AGENT_BASE,
+  ReputationAgentChrome,
+} from "../../components/reputation-sentiment/ReputationAgentSubNav";
+
+const PATH = `${REPUTATION_AGENT_BASE}/review-management`;
+
+const FAQS = [
+  {
+    q: "Should a business respond to every review?",
+    a: "Yes. Responses signal to future customers, and to search and recommendation systems, that the business listens. The agent makes every-review coverage possible without giving your week to it.",
+  },
+  {
+    q: "How fast should review responses be?",
+    a: "Within hours, not days: the writer is most receptive early, and silent readers judge the speed. The agent drafts within minutes and posts as fast as your approval settings allow.",
+  },
+  {
+    q: "Can AI answer negative reviews safely?",
+    a: "Yes, with the right guardrails. The agent never argues, acknowledges the specific issue, offers a path forward, and routes anything critical to you first with a drafted reply, so nothing defensive ever posts in your name.",
+  },
+  {
+    q: "Do I stay in control of what gets posted?",
+    a: "Completely. You set which replies need approval, you can edit any draft, and a full record of every response exists whenever you want to review it.",
+  },
+];
+
+const FEATURES = [
+  {
+    id: "all-platforms",
+    eyebrow: "All Platforms, One Stream",
+    title: "It watches so you do not have to",
+    body: "Every new review across Google, Facebook, and the platforms your customers use flows into one stream the moment it posts, around the clock.",
+    icon: Globe2,
+  },
+  {
+    id: "replies-in-voice",
+    eyebrow: "Replies In Your Voice",
+    title: "Fast, specific, brand-safe",
+    body: "Within minutes, praise gets a warm, specific thank-you that invites the next visit, and criticism gets acknowledgment and a path forward, never an argument. A wrong-size complaint at the boutique gets an exchange path; a long-wait complaint at the restaurant gets an honest acknowledgment and what is changing.",
+    icon: Sparkles,
+    reverse: true,
+  },
+  {
+    id: "escalation",
+    eyebrow: "Escalation",
+    title: "The critical ones come to you first",
+    body: "Refund demands, safety claims, and anything sensitive route to your attention queue with full context and a drafted reply you can edit before it posts. Your judgment where it matters, the agent’s stamina everywhere else.",
+    icon: ShieldAlert,
+  },
+  {
+    id: "your-controls",
+    eyebrow: "Your Controls",
+    title: "Approve-first or automatic, and always on the record",
+    body: "Start with every reply awaiting your tap; grant autonomy for routine responses as trust builds. Every reply the agent has ever sent in your name sits in a searchable record.",
+    icon: ListTodo,
+    reverse: true,
+  },
+  {
+    id: "every-language",
+    eyebrow: "Every Language",
+    title: "It answers in the language of the review",
+    body: "A review written in Spanish or French gets a reply in kind, in the same brand voice, so no customer is left waiting on a translation.",
+    icon: Languages,
+  },
+];
+
+const FLOW_STEPS = [
+  {
+    number: "1",
+    title: "A hard review lands at 9:42 PM",
+    body: "Great food, forty-minute wait. The owner is closing; nobody is watching the review page. Except the agent.",
+  },
+  {
+    number: "2",
+    title: "It reads sentiment and tags the issue",
+    body: "Wait time, Friday service — within moments.",
+  },
+  {
+    number: "3",
+    title: "A calm reply drafts in the house voice",
+    body: "Thanks for the honesty, here is what is changing, come back and let us show you.",
+  },
+  {
+    number: "4",
+    title: "It waits in the attention queue",
+    body: "The owner approves with one tap before locking up, and the reply posts at 9:47.",
+  },
+  {
+    number: "5",
+    title: "The issue joins the pattern",
+    body: "If Friday waits keep appearing, next week’s report says so plainly. The same flow handles a boutique’s wrong-size review with an exchange link instead.",
+  },
+];
+
+const RELATED = [
+  {
+    label: "Review Generation",
+    body: "Keep fresh reviews flowing in the first place.",
+    to: `${REPUTATION_AGENT_BASE}/review-generation`,
+  },
+  {
+    label: "Review Analytics & Marketing",
+    body: "Measure the trend and put the proof to work.",
+    to: `${REPUTATION_AGENT_BASE}/review-analytics-marketing`,
+  },
+  {
+    label: "Reputation & Sentiment overview",
+    body: "Back to the full Reputation & Sentiment Agent.",
+    to: REPUTATION_AGENT_BASE,
+  },
+];
+
+function ProductSchema() {
+  const json = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        name: "Review Management",
+        description:
+          "AI-Harness Review Management: watches every platform, drafts brand-safe replies in your voice within minutes, and escalates critical feedback with a response ready to edit and approve.",
+        brand: { "@type": "Brand", name: "AI-Harness" },
+        url: `https://ai-harness.com${PATH}`,
+        category: "Review Management Software",
+        isPartOf: {
+          "@type": "SoftwareApplication",
+          name: "AI-Harness Reputation & Sentiment Agent",
+          url: `https://ai-harness.com${REPUTATION_AGENT_BASE}`,
+        },
+      },
+      {
+        "@type": "SoftwareApplication",
+        name: "AI-Harness Review Management",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        url: `https://ai-harness.com${PATH}`,
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+          description: "Start free with $10 in credits, no credit card required",
+        },
+        publisher: { "@type": "Organization", name: "AI-Harness" },
+      },
+    ],
+  });
+
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json }} />
+  );
+}
+
+export default function ReviewManagement() {
+  return (
+    <>
+      <Seo
+        path={PATH}
+        title="AI Review Management & Responses"
+        description="The agent watches every platform, drafts brand-safe replies in your voice within minutes, and escalates critical feedback to you with a response ready to edit and approve."
+        keywords="review management software, ai review responses, respond to reviews automatically, manage google reviews, negative review response, restaurant review replies, retail review replies, multilingual review responses"
+        breadcrumbs={[
+          { label: "AI Agents", path: "/ai-agents" },
+          { label: "Reputation & Sentiment Agent", path: REPUTATION_AGENT_BASE },
+          { label: "Review Management", path: PATH },
+        ]}
+      />
+      <FaqJsonLd faqs={FAQS} />
+      <ProductSchema />
+
+      <ReputationAgentChrome>
+        <Hero />
+        <ProblemSection />
+        <FeaturesSection />
+        <FlowSection />
+        <RelatedSection />
+        <FaqSection />
+        <div className="py-16 sm:py-20">
+          <CTASection
+            title="Your side of every public conversation, handled."
+            description="Turn on Review Management inside your Reputation & Sentiment Agent. Start free with $10 in credits."
+            primaryCta={{ label: "Start free", to: "/signup" }}
+            secondaryCta={{ label: "Talk to us", to: "/contact" }}
+            footnote="Free to start with $10 in credits · No credit card · Approve-first or automatic, your call"
+          />
+        </div>
+      </ReputationAgentChrome>
+    </>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="relative overflow-hidden bg-ink-50 pb-16 pt-12 sm:pb-20 sm:pt-16">
+
+      <Container className="relative">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+          <ScrollReveal className="max-w-xl">
+            <p className="text-sm font-medium text-ink-500">
+              Review Management
+            </p>
+            <h1 className="mt-4 text-[clamp(2rem,4.5vw,3.35rem)] font-medium leading-[1.08] tracking-[-0.025em] text-ink-900">
+              Every review answered well, even the ones that sting
+            </h1>
+            <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600 sm:text-xl">
+              A review is a public conversation with hundreds of silent readers. The agent makes
+              sure your side of it is fast, warm, on brand, and never defensive, and hands you the
+              few that genuinely need an owner.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Button to="/signup" size="lg">
+                Start free
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+              <Button to="/demo" variant="secondary" size="lg">
+                See a hard review handled
+              </Button>
+            </div>
+            <p className="mt-5 text-sm leading-relaxed text-ink-500">
+              Free to start with $10 in credits · No credit card · Approve-first or automatic, your
+              call
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={80}>
+            <div className="overflow-hidden rounded-[28px] border border-ink-200 bg-ink-100 shadow-lift ring-1 ring-ink-200/60">
+              <div className="flex aspect-[4/3] flex-col justify-between p-6 sm:p-8">
+                <div className="flex items-center gap-2 text-sm font-medium text-ink-700">
+                  <ShieldAlert className="h-4 w-4 text-brand-600" />
+                  Attention queue · 9:42 PM
+                </div>
+                <div className="space-y-3">
+                  <div className="rounded-2xl border border-ink-200/80 bg-white px-4 py-3 shadow-soft">
+                    <p className="text-xs font-medium text-ink-400">2★ · Wait time · Friday</p>
+                    <p className="mt-1 text-[15px] text-ink-700">
+                      Great food, forty-minute wait.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-brand-200/80 bg-brand-50/60 px-4 py-3">
+                    <p className="text-xs font-medium text-brand-700">Draft ready · awaiting you</p>
+                    <p className="mt-1 text-[15px] text-ink-700">
+                      Thanks for the honesty — here’s what is changing.
+                    </p>
+                  </div>
+                </div>
+                <p className="text-xs leading-relaxed text-ink-500">
+                  Product shot placeholder · approval posts at 9:47 in the story flow
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function ProblemSection() {
+  return (
+    <section className="border-y border-ink-100 bg-ink-50/60 py-16 sm:py-20">
+      <Container>
+        <ScrollReveal className="mx-auto max-w-3xl">
+          <p className="text-sm font-medium text-ink-500">
+            The problem
+          </p>
+          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
+            Every unanswered review costs twice
+          </h2>
+          <p className="mt-5 text-lg font-normal leading-[1.75] text-ink-700 sm:text-xl">
+            The customer who wrote it stays unhappy, and everyone who reads it afterward learns that
+            this business does not respond. But keeping up means checking several platforms daily and
+            writing careful, non-defensive replies under time pressure, a job that loses to the dinner
+            rush and the delivery schedule every single day. The agent does that job continuously,
+            and to a standard.
+          </p>
+        </ScrollReveal>
+      </Container>
+    </section>
+  );
+}
+
+function FeaturesSection() {
+  return (
+    <section className="bg-white py-16 sm:py-24">
+      <Container>
+        <ScrollReveal className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-medium text-ink-500">
+            What this page shows
+          </p>
+          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
+            Watch, reply, escalate, control — in every language
+          </h2>
+        </ScrollReveal>
+
+        <div className="mt-14 space-y-16 sm:mt-20 sm:space-y-24">
+          {FEATURES.map((feature, index) => {
+            const Icon = feature.icon;
+            const reverse = Boolean(feature.reverse);
+            return (
+              <ScrollReveal key={feature.id} delay={(index % 3) * 40}>
+                <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+                  <div className={reverse ? "order-2 lg:order-1" : "order-2 lg:order-2"}>
+                    <div className="overflow-hidden rounded-[28px] border border-ink-200/80 bg-ink-50 shadow-soft">
+                      <div className="flex aspect-[4/3] flex-col items-center justify-center gap-4 p-8 text-center">
+                        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-white text-ink-600 shadow-soft ring-1 ring-ink-200/80">
+                          <Icon className="h-6 w-6" strokeWidth={1.75} />
+                        </span>
+                        <p className="max-w-xs text-sm leading-relaxed text-ink-500">
+                          Product shot placeholder · {feature.eyebrow}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={reverse ? "order-1 lg:order-2" : "order-1 lg:order-1"}>
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-10 w-10 place-items-center rounded-xl bg-ink-100 text-ink-600 ring-1 ring-ink-200/80">
+                        <Icon className="h-5 w-5" strokeWidth={1.75} />
+                      </span>
+                      <p className="text-sm font-medium text-ink-500">
+                        {feature.eyebrow}
+                      </p>
+                    </div>
+                    <h3 className="mt-4 text-[clamp(1.5rem,2.5vw,2rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
+                      {feature.title}
+                    </h3>
+                    <p className="mt-4 text-lg font-normal leading-[1.7] text-ink-600">{feature.body}</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            );
+          })}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function FlowSection() {
+  return (
+    <section className="border-y border-ink-100 bg-ink-50 py-16 sm:py-20">
+      <Container>
+        <ScrollReveal className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-medium text-ink-500">The flow</p>
+          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
+            From a 9:42 PM two-star to a 9:47 reply
+          </h2>
+        </ScrollReveal>
+        <div className="mx-auto mt-12 max-w-4xl space-y-4 sm:mt-14">
+          {FLOW_STEPS.map((step, index) => (
+            <ScrollReveal key={step.number} delay={index * 40}>
+              <article className="rounded-3xl border border-ink-200/90 bg-white px-5 py-6 sm:px-8 sm:py-7">
+                <div className="flex gap-4 sm:gap-5">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink-100 text-sm font-medium text-ink-600 ring-1 ring-ink-200/80">
+                    {step.number}
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="text-xl font-medium tracking-tight text-ink-900">{step.title}</h3>
+                    <p className="mt-2.5 text-base font-normal leading-[1.7] text-ink-600 sm:text-lg">
+                      {step.body}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </ScrollReveal>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function RelatedSection() {
+  return (
+    <section className="bg-white py-16 sm:py-20">
+      <Container>
+        <ScrollReveal className="max-w-3xl">
+          <h2 className="text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
+            Do more with your Reputation & Sentiment Agent
+          </h2>
+        </ScrollReveal>
+        <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-3">
+          {RELATED.map((item, index) => (
+            <ScrollReveal key={item.to} delay={index * 50}>
+              <Link
+                to={item.to}
+                className="group flex h-full flex-col rounded-3xl border border-ink-200/90 bg-white p-6 transition hover:border-brand-200 hover:shadow-soft"
+              >
+                <p className="text-lg font-medium text-ink-900 group-hover:text-brand-700">
+                  {item.label}
+                </p>
+                <p className="mt-2 flex-1 text-[15px] leading-relaxed text-ink-600">{item.body}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-[15px] font-medium text-brand-700 transition group-hover:gap-2.5">
+                  Explore
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
+            </ScrollReveal>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function FaqSection() {
+  return (
+    <section className="border-t border-ink-100 bg-white py-20 sm:py-28">
+      <Container>
+        <ScrollReveal>
+          <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,3.5rem)] font-normal leading-[1.1] tracking-[-0.03em] text-ink-900">
+            Frequently Asked Questions
+          </h2>
+        </ScrollReveal>
+        <div className="mt-10 sm:mt-14">
+          <FaqAccordion items={FAQS} variant="lines" className="font-poppins" />
+        </div>
+      </Container>
+    </section>
+  );
+}

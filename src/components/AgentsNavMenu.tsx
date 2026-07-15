@@ -1,4 +1,4 @@
-import { FileText, MessageSquare, Star, TrendingUp, type LucideIcon } from "lucide-react";
+import { FileText, Megaphone, MessageSquare, Star, TrendingUp, type LucideIcon } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { cn } from "../lib/cn";
 import { scrollToHashWithRetry } from "../lib/scrollToHash";
@@ -17,28 +17,35 @@ export const AGENT_NAV_ITEMS: AgentNavItem[] = [
     to: "/ai-agents#sales-pipeline",
     description: "Captures leads, follows up, and keeps customers organized.",
     icon: TrendingUp,
-    accent: "from-indigo-500 to-violet-600",
+    accent: "from-brand-500 to-brand-600",
   },
   {
     label: "Reputation & Sentiment Agent",
-    to: "/ai-agents#reputation",
+    to: "/agents/reputation-sentiment",
     description: "Reads and replies to reviews in your voice.",
     icon: MessageSquare,
-    accent: "from-rose-400 to-pink-600",
+    accent: "from-error-400 to-brand-600",
   },
   {
     label: "Automated Review Agent",
-    to: "/ai-agents#reviews",
+    to: "/agents/automated-reviews",
     description: "Asks happy customers for reviews, automatically.",
     icon: Star,
-    accent: "from-amber-400 to-orange-500",
+    accent: "from-warning-400 to-warning-500",
   },
   {
     label: "Proposal Drafting Agent",
     to: "/ai-agents#proposals",
     description: "Turns requests into ready-to-send proposals.",
     icon: FileText,
-    accent: "from-cyan-400 to-sky-600",
+    accent: "from-brand-400 to-brand-600",
+  },
+  {
+    label: "Marketing Automation Agent",
+    to: "/agents/marketing-automation",
+    description: "Plans, publishes, replies, and reports — your always-on marketing teammate.",
+    icon: Megaphone,
+    accent: "from-success-400 to-success-600",
   },
 ];
 

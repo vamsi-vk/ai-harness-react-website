@@ -372,7 +372,7 @@ export default function DemoChatbot() {
           {!open ? (
             <span
               aria-hidden
-              className="absolute right-0 top-0 z-10 grid h-[18px] min-w-[18px] translate-x-1 -translate-y-1 place-items-center rounded-full bg-rose-500 px-1 text-[10px] font-bold leading-none text-white shadow-sm ring-2 ring-white"
+              className="absolute right-0 top-0 z-10 grid h-[18px] min-w-[18px] translate-x-1 -translate-y-1 place-items-center rounded-full bg-error-500 px-1 text-[10px] font-bold leading-none text-white shadow-sm ring-2 ring-white"
             >
               1
             </span>

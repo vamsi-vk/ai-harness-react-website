@@ -35,12 +35,12 @@ type Column = {
   tickets: Ticket[];
 };
 
-const AS = { initials: "AS", gradient: "from-emerald-500 to-teal-600" };
-const DE = { initials: "DE", gradient: "from-sky-500 to-blue-600" };
-const MO = { initials: "MO", gradient: "from-orange-500 to-rose-500" };
-const BA = { initials: "BA", gradient: "from-violet-500 to-fuchsia-500", isAi: true };
-const FS = { initials: "FS", gradient: "from-blue-500 to-indigo-600", isAi: true };
-const RV = { initials: "RV", gradient: "from-fuchsia-500 to-pink-500", isAi: true };
+const AS = { initials: "AS", gradient: "from-success-500 to-success-600" };
+const DE = { initials: "DE", gradient: "from-brand-500 to-brand-600" };
+const MO = { initials: "MO", gradient: "from-warning-500 to-error-500" };
+const BA = { initials: "BA", gradient: "from-brand-500 to-brand-600", isAi: true };
+const FS = { initials: "FS", gradient: "from-brand-500 to-brand-600", isAi: true };
+const RV = { initials: "RV", gradient: "from-brand-500 to-brand-600", isAi: true };
 
 const liveTicket: Ticket = {
   id: "AH-204",
@@ -77,7 +77,7 @@ const columns: Column[] = [
   {
     title: "IN PROGRESS",
     count: 7,
-    dot: "bg-amber-400",
+    dot: "bg-warning-400",
     tickets: [
       {
         id: "AH-198",
@@ -94,7 +94,7 @@ const columns: Column[] = [
   {
     title: "IN REVIEW",
     count: 8,
-    dot: "bg-violet-400",
+    dot: "bg-brand-400",
     tickets: [
       {
         id: "AH-181",
@@ -118,7 +118,7 @@ const columns: Column[] = [
   {
     title: "QA",
     count: 13,
-    dot: "bg-sky-400",
+    dot: "bg-brand-400",
     tickets: [
       {
         id: "AH-159",
@@ -141,7 +141,7 @@ const columns: Column[] = [
   {
     title: "BLOCKED",
     count: 4,
-    dot: "bg-rose-500",
+    dot: "bg-error-500",
     tickets: [
       {
         id: "AH-138",
@@ -155,18 +155,18 @@ const columns: Column[] = [
 
 const labelTone: Record<Tone, string> = {
   brand: "bg-brand-50 text-brand-700 ring-brand-200/60",
-  amber: "bg-amber-50 text-amber-700 ring-amber-200/60",
-  emerald: "bg-emerald-50 text-emerald-700 ring-emerald-200/60",
-  rose: "bg-rose-50 text-rose-700 ring-rose-200/60",
-  violet: "bg-violet-50 text-violet-700 ring-violet-200/60",
-  sky: "bg-sky-50 text-sky-700 ring-sky-200/60",
+  amber: "bg-warning-50 text-warning-700 ring-warning-200/60",
+  emerald: "bg-success-50 text-success-700 ring-success-200/60",
+  rose: "bg-error-50 text-error-700 ring-error-200/60",
+  violet: "bg-brand-50 text-brand-700 ring-brand-200/60",
+  sky: "bg-brand-50 text-brand-600 ring-brand-200/50",
 };
 
 const filterAvatars = [
-  { initials: "SO", gradient: "from-fuchsia-500 to-rose-500" },
-  { initials: "AB", gradient: "from-indigo-500 to-violet-600" },
-  { initials: "DE", gradient: "from-emerald-500 to-teal-600" },
-  { initials: "MO", gradient: "from-orange-500 to-rose-500" },
+  { initials: "SO", gradient: "from-brand-500 to-error-500" },
+  { initials: "AB", gradient: "from-brand-500 to-brand-600" },
+  { initials: "DE", gradient: "from-success-500 to-success-600" },
+  { initials: "MO", gradient: "from-warning-500 to-error-500" },
 ];
 
 function TicketCard({
@@ -256,7 +256,7 @@ export default function HeroBoard() {
               <Icon className="h-3.5 w-3.5 text-ink-500" />
               <span className="flex-1 truncate">{label}</span>
               {badge ? (
-                <span className="rounded-full bg-rose-100 px-1.5 text-[10px] font-semibold text-rose-700">
+                <span className="rounded-full bg-error-100 px-1.5 text-[10px] font-semibold text-error-700">
                   {badge}
                 </span>
               ) : null}
@@ -286,7 +286,7 @@ export default function HeroBoard() {
                     p.active ? "bg-brand-50 font-medium text-brand-700" : "text-ink-700"
                   }`}
                 >
-                  <Folder className={`h-3 w-3 ${p.active ? "text-emerald-500" : "text-ink-400"}`} />
+                  <Folder className={`h-3 w-3 ${p.active ? "text-success-500" : "text-ink-400"}`} />
                   <span className="truncate">{p.label}</span>
                 </div>
               </li>
@@ -304,7 +304,7 @@ export default function HeroBoard() {
             <li>
               <div className="flex items-center gap-2 rounded-md px-3 py-1.5 text-ink-700">
                 <ChevronDown className="h-3 w-3 text-ink-400" />
-                <Folder className="h-3 w-3 text-amber-400" />
+                <Folder className="h-3 w-3 text-warning-400" />
                 <span className="truncate font-medium">CEO</span>
               </div>
               <ul className="mt-0.5 space-y-0.5 pl-5">
@@ -343,17 +343,17 @@ export default function HeroBoard() {
             <span className="font-medium text-ink-900">MVP1</span>
           </div>
           <div className="flex items-center gap-3 text-ink-500">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2 py-0.5 text-[10.5px] font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-200/70">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-live-dot" />
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-success-50 px-2 py-0.5 text-[10.5px] font-semibold text-success-700 ring-1 ring-inset ring-success-200/70">
+              <span className="h-1.5 w-1.5 rounded-full bg-success-500 animate-live-dot" />
               Live
             </span>
             <span className="relative">
               <Bell className="h-4 w-4" />
-              <span className="absolute -right-1 -top-1 grid h-3 w-3 place-items-center rounded-full bg-rose-500 text-[8px] font-bold text-white">
+              <span className="absolute -right-1 -top-1 grid h-3 w-3 place-items-center rounded-full bg-error-500 text-[8px] font-bold text-white">
                 3
               </span>
             </span>
-            <span className="grid h-7 w-7 place-items-center rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 text-[11px] font-semibold text-white">
+            <span className="grid h-7 w-7 place-items-center rounded-full bg-gradient-to-br from-success-500 to-success-600 text-[11px] font-semibold text-white">
               V
             </span>
           </div>
@@ -362,7 +362,7 @@ export default function HeroBoard() {
         {/* Project header + tabs */}
         <div className="border-b border-ink-200 bg-white px-4 pt-3.5">
           <div className="flex items-center gap-2.5">
-            <span className="grid h-6 w-6 place-items-center rounded-md bg-emerald-500 text-white">
+            <span className="grid h-6 w-6 place-items-center rounded-md bg-success-500 text-white">
               <Sparkles className="h-3.5 w-3.5" />
             </span>
             <h2 className="text-[17px] font-semibold tracking-tight text-ink-900">MVP1</h2>

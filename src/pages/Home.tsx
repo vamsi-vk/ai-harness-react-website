@@ -116,7 +116,7 @@ function ExecutiveQuestionsPopup() {
         onClick={() => setIsOpen(true)}
         aria-hidden={footerVisible}
         tabIndex={footerVisible ? -1 : 0}
-        className={`fixed bottom-8 right-1/2 z-30 inline-flex -translate-x-1/2 items-center gap-2.5 rounded-full border-2 border-white/80 bg-gradient-to-r from-brand-700 via-brand-600 to-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_18px_44px_-14px_rgba(37,99,235,0.75)] ring-2 ring-brand-200/70 transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm:right-8 sm:translate-x-0 ${
+        className={`fixed bottom-8 right-1/2 z-30 inline-flex -translate-x-1/2 items-center gap-2.5 rounded-full border-2 border-white/80 bg-gradient-to-r from-brand-700 via-brand-600 to-brand-700 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_18px_44px_-14px_rgba(37,99,235,0.75)] ring-2 ring-brand-200/70 transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm:right-8 sm:translate-x-0 ${
           footerVisible
             ? "pointer-events-none translate-y-6 opacity-0"
             : "opacity-100"
@@ -137,7 +137,7 @@ function ExecutiveQuestionsPopup() {
           <div className="relative w-full max-w-3xl rounded-3xl border border-ink-200 bg-white p-6 shadow-lift sm:p-8">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">
+                <p className="text-sm font-medium text-ink-500">
                   Executive question guide
                 </p>
                 <h3 className="mt-2 text-2xl font-semibold tracking-tight text-ink-900">
@@ -226,9 +226,9 @@ function Hero() {
           <div aria-hidden className="absolute inset-x-8 -bottom-12 h-40 rounded-full bg-brand-500/30 blur-3xl" />
           <div className="relative overflow-hidden rounded-[28px] border border-ink-200/80 bg-white shadow-lift ring-1 ring-black/[0.02]">
             <div className="flex items-center gap-2 border-b border-ink-200/80 bg-ink-50/70 px-5 py-3">
-              <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
-              <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
-              <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
+              <span className="h-2.5 w-2.5 rounded-full bg-error-400/70" />
+              <span className="h-2.5 w-2.5 rounded-full bg-warning-400/70" />
+              <span className="h-2.5 w-2.5 rounded-full bg-success-400/70" />
               <span className="ml-3 text-xs font-medium text-ink-500">ai-harness.com / workspace / projects / MVP1</span>
             </div>
             <HeroBoard />
@@ -323,13 +323,13 @@ function ValueProps() {
             <FeatureCard key={item.title} {...item} />
           ))}
         </div>
-        <div className="relative mt-12 overflow-hidden rounded-3xl border border-ink-900 bg-gradient-to-br from-ink-950 via-ink-900 to-indigo-950 p-1">
+        <div className="relative mt-12 overflow-hidden rounded-3xl border border-ink-900 bg-gradient-to-br from-ink-950 via-ink-900 to-brand-950 p-1">
           <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-brand-500/30 blur-3xl" />
-          <div aria-hidden className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-indigo-500/25 blur-3xl" />
+          <div aria-hidden className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-brand-500/25 blur-3xl" />
           <div className="relative rounded-[22px] border border-white/10 bg-ink-950/70 p-6 sm:p-8">
             <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-300">Outcomes at a glance</p>
+                <p className="text-sm font-medium text-ink-300">Outcomes at a glance</p>
                 <h3 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
                   The metrics leaders care about most.
                 </h3>
@@ -541,7 +541,7 @@ function HowItWorks() {
             </div>
           </div>
           <div className="relative">
-            <div aria-hidden className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-brand-100 via-white to-indigo-100 blur-2xl opacity-60" />
+            <div aria-hidden className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-brand-100 via-white to-brand-100 blur-2xl opacity-60" />
             <div className="relative overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift">
               <PictureSet
                 base="/lifecycle"
@@ -715,18 +715,18 @@ function SolutionsPreview() {
   return (
     <section className="pb-8 sm:pb-12">
       <Container>
-        <div className="relative overflow-hidden rounded-3xl border border-ink-600/80 bg-gradient-to-br from-ink-800 via-ink-800 to-indigo-900 p-6 shadow-lift sm:p-8">
+        <div className="relative overflow-hidden rounded-3xl border border-ink-600/80 bg-gradient-to-br from-ink-800 via-ink-800 to-brand-900 p-6 shadow-lift sm:p-8">
           <div
             aria-hidden
             className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-brand-500/25 blur-3xl"
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute -bottom-24 -left-20 h-56 w-56 rounded-full bg-indigo-400/20 blur-3xl"
+            className="pointer-events-none absolute -bottom-24 -left-20 h-56 w-56 rounded-full bg-brand-400/20 blur-3xl"
           />
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-300">
+              <p className="text-sm font-medium text-ink-300">
                 Solutions Snapshot
               </p>
               <h2 className="mt-2 text-[30px] font-semibold leading-tight tracking-[-0.02em] text-white sm:text-[36px]">

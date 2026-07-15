@@ -26,9 +26,9 @@ const tones = {
     icon: "text-ink-400",
   },
   success: {
-    glow: "bg-brand-500/20",
-    ring: "bg-brand-50 ring-brand-300/80",
-    icon: "text-brand-600",
+    glow: "bg-success-500/20",
+    ring: "bg-success-50 ring-success-200/70",
+    icon: "text-success-500",
   },
 };
 

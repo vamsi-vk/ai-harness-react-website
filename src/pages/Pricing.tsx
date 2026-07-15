@@ -138,7 +138,7 @@ function PlansGrid({ billing }: { billing: "monthly" | "yearly" }) {
               >
                 {plan.highlight && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-white shadow-lift">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-brand-500 to-brand-600 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-white shadow-lift">
                       <Sparkles className="h-3 w-3" /> Most popular
                     </span>
                   </div>

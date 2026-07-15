@@ -22,7 +22,7 @@ const STEPS: {
     number: "02",
     title: "Turn on the agents you need",
     description:
-      "Start with one agent (sales, reputation, reviews, or proposals) and add more whenever you are ready. Each one works on its own.",
+      "Start with one agent (sales, reputation, reviews, proposals, or marketing) and add more whenever you are ready. Each one works on its own.",
     icon: Bot,
     mockup: "agents",
   },
@@ -108,7 +108,7 @@ function PerformanceMockup() {
           <div key={m.label} className="rounded-lg border border-ink-200/70 bg-ink-50/60 p-2.5 text-center">
             <p className="text-[10px] font-normal text-ink-600 sm:text-xs">{m.label}</p>
             <p className="text-sm font-medium text-ink-900 sm:text-base">{m.value}</p>
-            <p className="text-[10px] font-medium text-emerald-600 sm:text-xs">{m.change}</p>
+            <p className="text-[10px] font-medium text-success-600 sm:text-xs">{m.change}</p>
           </div>
         ))}
       </div>
@@ -168,7 +168,7 @@ function StepCard({ step, index }: { step: (typeof STEPS)[number]; index: number
       {index < STEPS.length - 1 && (
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-5 top-1/2 z-10 hidden h-3 w-3 -translate-y-1/2 rounded-full bg-brand-400 shadow-[0_0_12px_rgba(139,92,246,0.8)] lg:block"
+          className="pointer-events-none absolute -right-5 top-1/2 z-10 hidden h-3 w-3 -translate-y-1/2 rounded-full bg-brand-400 shadow-[0_0_12px_rgba(120, 57, 224,0.8)] lg:block"
         />
       )}
     </ScrollReveal>
@@ -184,11 +184,11 @@ export default function HowItWorksSteps() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute left-4 top-8 h-24 w-24 bg-[radial-gradient(circle,rgba(139,92,246,0.15)_1.5px,transparent_1.5px)] [background-size:10px_10px] opacity-60"
+        className="pointer-events-none absolute left-4 top-8 h-24 w-24 bg-[radial-gradient(circle,rgba(120, 57, 224,0.15)_1.5px,transparent_1.5px)] [background-size:10px_10px] opacity-60"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-8 right-4 h-24 w-24 bg-[radial-gradient(circle,rgba(139,92,246,0.15)_1.5px,transparent_1.5px)] [background-size:10px_10px] opacity-60"
+        className="pointer-events-none absolute bottom-8 right-4 h-24 w-24 bg-[radial-gradient(circle,rgba(120, 57, 224,0.15)_1.5px,transparent_1.5px)] [background-size:10px_10px] opacity-60"
       />
 
       <Container className="relative">

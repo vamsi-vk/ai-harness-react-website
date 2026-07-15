@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { Suspense, lazy, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -25,6 +25,27 @@ const InternationalBusinesses = lazy(() => import("./pages/InternationalBusiness
 const InternationalCountry = lazy(() => import("./pages/InternationalCountry"));
 const InternationalConsultation = lazy(() => import("./pages/InternationalConsultation"));
 const AiAgents = lazy(() => import("./pages/AiAgents"));
+const MarketingAutomationAgent = lazy(() => import("./pages/MarketingAutomationAgent"));
+const PostCreationPublishing = lazy(
+  () => import("./pages/marketing-automation/PostCreationPublishing"),
+);
+const SocialEngagement = lazy(
+  () => import("./pages/marketing-automation/SocialEngagement"),
+);
+const SocialAnalytics = lazy(
+  () => import("./pages/marketing-automation/SocialAnalytics"),
+);
+const ReputationSentimentAgent = lazy(() => import("./pages/ReputationSentimentAgent"));
+const ReviewGeneration = lazy(
+  () => import("./pages/reputation-sentiment/ReviewGeneration"),
+);
+const ReviewManagement = lazy(
+  () => import("./pages/reputation-sentiment/ReviewManagement"),
+);
+const ReviewAnalyticsMarketing = lazy(
+  () => import("./pages/reputation-sentiment/ReviewAnalyticsMarketing"),
+);
+const AutomatedReviewAgent = lazy(() => import("./pages/AutomatedReviewAgent"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function ScrollToTop() {
@@ -51,19 +72,11 @@ function RouteFallback() {
 
 export default function App() {
   return (
-    <div className="flex min-h-full flex-col bg-white text-ink-800">
+    <div className="flex min-h-full flex-col bg-ink-50 text-ink-800">
       <ScrollToTop />
       <VercelAnalytics />
       <Navbar />
       <main className="relative flex-1 overflow-x-clip">
-        <div aria-hidden className="pointer-events-none fixed inset-0 z-0">
-          <div className="absolute -left-20 top-[10%] h-72 w-72 rounded-full bg-brand-200/35 blur-3xl" />
-          <div className="absolute right-[-80px] top-[22%] h-80 w-80 rounded-full bg-indigo-200/30 blur-3xl" />
-          <div className="absolute left-[8%] top-[52%] h-56 w-56 rounded-full bg-sky-200/28 blur-3xl" />
-          <div className="absolute right-[12%] top-[68%] h-44 w-44 rounded-full bg-brand-200/26 blur-3xl" />
-          <div className="absolute bottom-10 right-8 h-20 w-20 rounded-lg border border-indigo-200/35 bg-white/35" />
-          <div className="absolute bottom-6 right-4 h-16 w-24 bg-[radial-gradient(circle,rgba(99,102,241,0.34)_1.2px,transparent_1.2px)] [background-size:10px_10px] opacity-50" />
-        </div>
         <div className="relative z-10">
           <Suspense fallback={<RouteFallback />}>
             <Routes>
@@ -72,6 +85,50 @@ export default function App() {
               <Route path="/industries" element={<Industries />} />
               <Route path="/solutions" element={<UseCases />} />
               <Route path="/ai-agents" element={<AiAgents />} />
+              <Route
+                path="/agents/marketing-automation"
+                element={<MarketingAutomationAgent />}
+              />
+              <Route
+                path="/agents/marketing-automation/post-creation-publishing"
+                element={<PostCreationPublishing />}
+              />
+              <Route
+                path="/agents/marketing-automation/social-engagement"
+                element={<SocialEngagement />}
+              />
+              <Route
+                path="/agents/marketing-automation/social-analytics"
+                element={<SocialAnalytics />}
+              />
+              <Route
+                path="/agents/reputation-sentiment"
+                element={<ReputationSentimentAgent />}
+              />
+              <Route
+                path="/agents/reputation-sentiment/review-generation"
+                element={<ReviewGeneration />}
+              />
+              <Route
+                path="/agents/reputation-sentiment/review-management"
+                element={<ReviewManagement />}
+              />
+              <Route
+                path="/agents/reputation-sentiment/review-analytics-marketing"
+                element={<ReviewAnalyticsMarketing />}
+              />
+              <Route
+                path="/agents/automated-reviews"
+                element={<AutomatedReviewAgent />}
+              />
+              <Route
+                path="/ai-agents/marketing-automation"
+                element={<Navigate to="/agents/marketing-automation" replace />}
+              />
+              <Route
+                path="/ai-agents/marketing-automation/*"
+                element={<Navigate to="/agents/marketing-automation" replace />}
+              />
               <Route path="/security" element={<Security />} />
               <Route path="/resources" element={<NotFound />} />
               <Route path="/contact" element={<Contact />} />

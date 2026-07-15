@@ -131,7 +131,7 @@ function UseCaseGrid({ highlightedId }: { highlightedId: string | null }) {
                 <div className="relative overflow-hidden rounded-xl border border-ink-800/70 bg-gradient-to-b from-ink-900 to-ink-950 px-4 py-2 text-right shadow-[0_8px_18px_-14px_rgba(15,23,42,0.9)]">
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.22),transparent_55%)]"
+                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(120, 57, 224,0.22),transparent_55%)]"
                   />
                   <div className="relative text-xl font-semibold leading-none tracking-tight text-white">
                     {u.kpi}

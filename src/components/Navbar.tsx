@@ -4,7 +4,15 @@ import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
 import Logo from "./Logo";
 import Button from "./Button";
 import AgentsNavMenu, { AGENT_NAV_ITEMS } from "./AgentsNavMenu";
+import PlatformNavMenu, {
+  PLATFORM_PRODUCTS,
+  PLATFORM_SIDEBAR_ITEMS,
+} from "./PlatformNavMenu";
 import { cn } from "../lib/cn";
+import {
+  isProductChromeCompact,
+  isProductChromePath,
+} from "../lib/productChrome";
 
 type DropdownItem = {
   label: string;
@@ -16,11 +24,27 @@ type NavItem = {
   label: string;
   to: string;
   children?: DropdownItem[];
-  megaMenu?: "agents";
+  megaMenu?: "agents" | "platform";
 };
 
 const navItems: NavItem[] = [
-  { label: "Platform", to: "/platform" },
+  {
+    label: "Platform",
+    to: "/platform",
+    megaMenu: "platform",
+    children: [
+      ...PLATFORM_SIDEBAR_ITEMS.map(({ label, to, description }) => ({
+        label,
+        to,
+        description,
+      })),
+      ...PLATFORM_PRODUCTS.map(({ label, to, description }) => ({
+        label,
+        to,
+        description,
+      })),
+    ],
+  },
   { label: "Solutions", to: "/solutions" },
   {
     label: "AI Agent workforce",
@@ -41,17 +65,26 @@ const navItems: NavItem[] = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [chromeCompact, setChromeCompact] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const location = useLocation();
   const dropdownTimer = useRef<number | null>(null);
+  const productChrome = isProductChromePath(location.pathname);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      if (productChrome) {
+        setChromeCompact(isProductChromeCompact(window.scrollY));
+      } else {
+        setChromeCompact(false);
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [productChrome]);
 
   useEffect(() => {
     setOpen(false);
@@ -75,16 +108,20 @@ export default function Navbar() {
     }
     dropdownTimer.current = window.setTimeout(() => {
       setOpenDropdown(null);
-    }, 120);
+    }, 180);
   };
 
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        scrolled
-          ? "border-b border-ink-200/70 bg-white/80 backdrop-blur-xl"
-          : "border-b border-transparent bg-white/0",
+        "z-50 w-full transition-all duration-300 ease-out",
+        productChrome ? "fixed inset-x-0 top-0" : "sticky top-0",
+        productChrome || scrolled
+          ? "border-b border-ink-200/70 bg-ink-50"
+          : "border-b border-transparent bg-ink-50",
+        productChrome && chromeCompact && !open
+          ? "pointer-events-none -translate-y-full"
+          : "translate-y-0",
       )}
     >
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-6 px-6 sm:px-8">
@@ -128,7 +165,7 @@ export default function Navbar() {
                       >
                         <ChevronDown
                           className={cn(
-                            "h-3.5 w-3.5 transition-transform",
+                            "h-3.5 w-3.5 transition-transform duration-300 ease-out",
                             openDropdown === item.label ? "rotate-180" : "",
                           )}
                         />
@@ -140,15 +177,26 @@ export default function Navbar() {
                   <div
                     role="menu"
                     className={cn(
-                      "absolute left-1/2 top-full z-40 -translate-x-1/2 pt-3",
-                      item.megaMenu === "agents" ? "w-[min(calc(100vw-2rem),38rem)]" : "w-72",
+                      "z-40 pt-3",
+                      item.megaMenu === "platform"
+                        ? "fixed left-1/2 top-16 w-[min(calc(100vw-2rem),72rem)] -translate-x-1/2"
+                        : item.megaMenu === "agents"
+                          ? "absolute top-full left-1/2 w-[min(calc(100vw-2rem),46rem)] -translate-x-1/2"
+                          : "absolute top-full left-1/2 w-72 -translate-x-1/2",
                     )}
                     onMouseEnter={() => handleEnter(item.label)}
                     onMouseLeave={handleLeave}
                   >
-                    <div className="overflow-hidden rounded-none border border-ink-200 bg-white shadow-lift ring-1 ring-black/[0.02]">
+                    <div
+                      className={cn(
+                        "overflow-hidden rounded-2xl border border-ink-200 bg-white shadow-[0_28px_80px_-24px_rgba(15,23,42,0.35)] ring-1 ring-black/[0.03]",
+                        "animate-nav-dropdown origin-top",
+                      )}
+                    >
                       {item.megaMenu === "agents" ? (
                         <AgentsNavMenu onNavigate={() => setOpenDropdown(null)} />
+                      ) : item.megaMenu === "platform" ? (
+                        <PlatformNavMenu onNavigate={() => setOpenDropdown(null)} />
                       ) : (
                         <div className="p-2">
                           {item.children?.map((child) => (
@@ -257,6 +305,14 @@ export default function Navbar() {
                       <div className="pl-3">
                         {item.megaMenu === "agents" ? (
                           <AgentsNavMenu
+                            onNavigate={() => {
+                              setOpen(false);
+                              setOpenMobileGroup(null);
+                            }}
+                          />
+                        ) : item.megaMenu === "platform" ? (
+                          <PlatformNavMenu
+                            className="w-full"
                             onNavigate={() => {
                               setOpen(false);
                               setOpenMobileGroup(null);
