@@ -24,7 +24,6 @@ const About = lazy(() => import("./pages/About"));
 const InternationalBusinesses = lazy(() => import("./pages/InternationalBusinesses"));
 const InternationalCountry = lazy(() => import("./pages/InternationalCountry"));
 const InternationalConsultation = lazy(() => import("./pages/InternationalConsultation"));
-const AiAgents = lazy(() => import("./pages/AiAgents"));
 const MarketingAutomationAgent = lazy(() => import("./pages/MarketingAutomationAgent"));
 const PostCreationPublishing = lazy(
   () => import("./pages/marketing-automation/PostCreationPublishing"),
@@ -84,7 +83,7 @@ export default function App() {
               <Route path="/platform" element={<Platform />} />
               <Route path="/industries" element={<Industries />} />
               <Route path="/solutions" element={<UseCases />} />
-              <Route path="/ai-agents" element={<AiAgents />} />
+              <Route path="/ai-agents" element={<Navigate to="/" replace />} />
               <Route
                 path="/agents/marketing-automation"
                 element={<MarketingAutomationAgent />}

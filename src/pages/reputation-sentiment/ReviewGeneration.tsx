@@ -168,7 +168,6 @@ export default function ReviewGeneration() {
         description="The agent notices new customers, picks the channel each one will answer, and times the invitation to the moment they are happiest, so fresh reviews keep arriving on their own."
         keywords="ai review generation, grow customer reviews, review generation for local businesses, get reviews without asking, review request timing, best channel for review requests, restaurant review growth, retail review growth"
         breadcrumbs={[
-          { label: "AI Agents", path: "/ai-agents" },
           { label: "Reputation & Sentiment Agent", path: REPUTATION_AGENT_BASE },
           { label: "Review Generation", path: PATH },
         ]}

@@ -1,4 +1,4 @@
-import { FileText, Megaphone, MessageSquare, Star, TrendingUp, type LucideIcon } from "lucide-react";
+import { Megaphone, MessageSquare, Star, type LucideIcon } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { cn } from "../lib/cn";
 import { scrollToHashWithRetry } from "../lib/scrollToHash";
@@ -13,13 +13,6 @@ export type AgentNavItem = {
 
 export const AGENT_NAV_ITEMS: AgentNavItem[] = [
   {
-    label: "Sales Pipeline & CRM Agent",
-    to: "/ai-agents#sales-pipeline",
-    description: "Captures leads, follows up, and keeps customers organized.",
-    icon: TrendingUp,
-    accent: "from-brand-500 to-brand-600",
-  },
-  {
     label: "Reputation & Sentiment Agent",
     to: "/agents/reputation-sentiment",
     description: "Reads and replies to reviews in your voice.",
@@ -32,13 +25,6 @@ export const AGENT_NAV_ITEMS: AgentNavItem[] = [
     description: "Asks happy customers for reviews, automatically.",
     icon: Star,
     accent: "from-warning-400 to-warning-500",
-  },
-  {
-    label: "Proposal Drafting Agent",
-    to: "/ai-agents#proposals",
-    description: "Turns requests into ready-to-send proposals.",
-    icon: FileText,
-    accent: "from-brand-400 to-brand-600",
   },
   {
     label: "Marketing Automation Agent",
@@ -111,18 +97,6 @@ export default function AgentsNavMenu({ onNavigate, className }: Props) {
             </button>
           );
         })}
-      </div>
-      <div className="mt-4 border-t border-ink-100 px-1 pb-1 pt-5">
-        <button
-          type="button"
-          onClick={() => {
-            onNavigate?.();
-            navigate("/ai-agents");
-          }}
-          className="text-[13.5px] font-semibold text-brand-600 transition hover:text-brand-700"
-        >
-          View all AI agents →
-        </button>
       </div>
     </div>
   );

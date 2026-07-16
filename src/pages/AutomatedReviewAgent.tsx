@@ -122,7 +122,6 @@ export default function AutomatedReviewAgent() {
         description="From the paid check or the picked-up order to a posted five-star review, automatically: honest, well-timed review requests by text and email, with no staff effort involved."
         keywords="get more google reviews, automated review requests, review request software, sms review request, email review request, review invitation timing, restaurant review requests, retail review requests"
         breadcrumbs={[
-          { label: "AI Agents", path: "/ai-agents" },
           { label: "Automated Review Agent", path: AUTOMATED_REVIEW_AGENT_BASE },
         ]}
       />

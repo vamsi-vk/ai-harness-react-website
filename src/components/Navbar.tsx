@@ -3,7 +3,6 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
 import Logo from "./Logo";
 import Button from "./Button";
-import AgentsNavMenu, { AGENT_NAV_ITEMS } from "./AgentsNavMenu";
 import PlatformNavMenu, {
   PLATFORM_PRODUCTS,
   PLATFORM_SIDEBAR_ITEMS,
@@ -24,7 +23,7 @@ type NavItem = {
   label: string;
   to: string;
   children?: DropdownItem[];
-  megaMenu?: "agents" | "platform";
+  megaMenu?: "platform";
 };
 
 const navItems: NavItem[] = [
@@ -46,16 +45,6 @@ const navItems: NavItem[] = [
     ],
   },
   { label: "Solutions", to: "/solutions" },
-  {
-    label: "AI Agent workforce",
-    to: "/ai-agents",
-    megaMenu: "agents",
-    children: AGENT_NAV_ITEMS.map(({ label, to, description }) => ({
-      label,
-      to,
-      description,
-    })),
-  },
   { label: "Industries", to: "/industries" },
   { label: "International", to: "/international-businesses" },
   { label: "Security", to: "/security" },
@@ -180,9 +169,7 @@ export default function Navbar() {
                       "z-40 pt-3",
                       item.megaMenu === "platform"
                         ? "fixed left-1/2 top-16 w-[min(calc(100vw-2rem),72rem)] -translate-x-1/2"
-                        : item.megaMenu === "agents"
-                          ? "absolute top-full left-1/2 w-[min(calc(100vw-2rem),46rem)] -translate-x-1/2"
-                          : "absolute top-full left-1/2 w-72 -translate-x-1/2",
+                        : "absolute top-full left-1/2 w-72 -translate-x-1/2",
                     )}
                     onMouseEnter={() => handleEnter(item.label)}
                     onMouseLeave={handleLeave}
@@ -193,9 +180,7 @@ export default function Navbar() {
                         "animate-nav-dropdown origin-top",
                       )}
                     >
-                      {item.megaMenu === "agents" ? (
-                        <AgentsNavMenu onNavigate={() => setOpenDropdown(null)} />
-                      ) : item.megaMenu === "platform" ? (
+                      {item.megaMenu === "platform" ? (
                         <PlatformNavMenu onNavigate={() => setOpenDropdown(null)} />
                       ) : (
                         <div className="p-2">
@@ -303,14 +288,7 @@ export default function Navbar() {
                     </div>
                     {openMobileGroup === item.label && (
                       <div className="pl-3">
-                        {item.megaMenu === "agents" ? (
-                          <AgentsNavMenu
-                            onNavigate={() => {
-                              setOpen(false);
-                              setOpenMobileGroup(null);
-                            }}
-                          />
-                        ) : item.megaMenu === "platform" ? (
+                        {item.megaMenu === "platform" ? (
                           <PlatformNavMenu
                             className="w-full"
                             onNavigate={() => {

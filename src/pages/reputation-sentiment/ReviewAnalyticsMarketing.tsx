@@ -174,7 +174,6 @@ export default function ReviewAnalyticsMarketing() {
         description="Track rating trends, response speed, and sentiment per location, benchmark against nearby competition, and turn your best reviews into ready-to-post social proof."
         keywords="reputation analytics, review insights, competitor reputation benchmarking, review marketing, share reviews on social media, reputation trends by location, sentiment report, customer proof marketing"
         breadcrumbs={[
-          { label: "AI Agents", path: "/ai-agents" },
           { label: "Reputation & Sentiment Agent", path: REPUTATION_AGENT_BASE },
           { label: "Review Analytics & Marketing", path: PATH },
         ]}

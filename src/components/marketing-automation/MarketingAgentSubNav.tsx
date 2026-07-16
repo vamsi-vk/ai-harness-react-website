@@ -4,6 +4,10 @@ import { Megaphone } from "lucide-react";
 import Container from "../Container";
 import { cn } from "../../lib/cn";
 import { isProductChromeCompact } from "../../lib/productChrome";
+import {
+  MarketingPalettePicker,
+  MarketingPaletteProvider,
+} from "./MarketingPalette";
 
 export const MARKETING_AGENT_BASE = "/agents/marketing-automation";
 
@@ -51,12 +55,12 @@ export function MarketingAgentSubNav() {
       )}
     >
       <Container>
-        <div className="flex h-14 items-center justify-between gap-4 lg:gap-8">
+        <div className="flex h-14 items-center justify-between gap-3 lg:gap-6">
           <Link
             to={MARKETING_AGENT_BASE}
             className="inline-flex shrink-0 items-center gap-2.5 text-ink-900"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-50 text-brand-700 ring-1 ring-brand-200/70">
+            <span className="grid h-8 w-8 place-items-center rounded-lg bg-[color-mix(in_srgb,var(--marketing-accent)_12%,white)] text-[var(--marketing-accent)] ring-1 ring-[color-mix(in_srgb,var(--marketing-accent)_25%,transparent)]">
               <Megaphone className="h-4 w-4" strokeWidth={2} />
             </span>
             <span className="hidden text-[15px] font-medium tracking-tight sm:inline">
@@ -67,38 +71,42 @@ export function MarketingAgentSubNav() {
             </span>
           </Link>
 
-          <nav
-            aria-label="Marketing Automation Agent sections"
-            className="flex items-center gap-0.5 overflow-x-auto"
-          >
-            {MARKETING_AGENT_TABS.map((tab) => {
-              const active =
-                tab.to === MARKETING_AGENT_BASE
-                  ? location.pathname === MARKETING_AGENT_BASE
-                  : location.pathname.startsWith(tab.to);
-              return (
-                <Link
-                  key={tab.id}
-                  to={tab.to}
-                  className={cn(
-                    "relative shrink-0 px-2.5 py-4 text-[13px] transition-colors duration-200 sm:px-3.5 sm:text-[14px]",
-                    active
-                      ? "font-medium text-ink-900"
-                      : "font-normal text-ink-500 hover:text-ink-800",
-                  )}
-                >
-                  {tab.label}
-                  <span
-                    aria-hidden
+          <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-3">
+            <nav
+              aria-label="Marketing Automation Agent sections"
+              className="flex items-center gap-0.5 overflow-x-auto"
+            >
+              {MARKETING_AGENT_TABS.map((tab) => {
+                const active =
+                  tab.to === MARKETING_AGENT_BASE
+                    ? location.pathname === MARKETING_AGENT_BASE
+                    : location.pathname.startsWith(tab.to);
+                return (
+                  <Link
+                    key={tab.id}
+                    to={tab.to}
                     className={cn(
-                      "absolute inset-x-2.5 bottom-0 h-[3px] rounded-full bg-brand-600 transition-opacity duration-200 sm:inset-x-3.5",
-                      active ? "opacity-100" : "opacity-0",
+                      "relative shrink-0 px-2.5 py-4 text-[13px] transition-colors duration-200 sm:px-3.5 sm:text-[14px]",
+                      active
+                        ? "font-medium text-ink-900"
+                        : "font-normal text-ink-500 hover:text-ink-800",
                     )}
-                  />
-                </Link>
-              );
-            })}
-          </nav>
+                  >
+                    {tab.label}
+                    <span
+                      aria-hidden
+                      className={cn(
+                        "absolute inset-x-2.5 bottom-0 h-[3px] rounded-full bg-[linear-gradient(90deg,var(--marketing-p1),var(--marketing-p2),var(--marketing-p3),var(--marketing-p4))] transition-opacity duration-200 sm:inset-x-3.5",
+                        active ? "opacity-100" : "opacity-0",
+                      )}
+                    />
+                  </Link>
+                );
+              })}
+            </nav>
+
+            <MarketingPalettePicker />
+          </div>
         </div>
       </Container>
     </div>
@@ -107,10 +115,12 @@ export function MarketingAgentSubNav() {
 
 export function MarketingAgentChrome({ children }: { children: ReactNode }) {
   return (
-    <div className="font-poppins">
-      <div aria-hidden className="h-16 shrink-0" />
-      <MarketingAgentSubNav />
-      {children}
-    </div>
+    <MarketingPaletteProvider>
+      <div className="font-inter">
+        <div aria-hidden className="h-16 shrink-0" />
+        <MarketingAgentSubNav />
+        {children}
+      </div>
+    </MarketingPaletteProvider>
   );
 }

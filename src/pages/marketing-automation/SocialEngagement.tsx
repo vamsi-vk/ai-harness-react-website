@@ -103,7 +103,7 @@ const FLOW_STEPS = [
   },
   {
     number: "4",
-    title: "It sends — or waits for you",
+    title: "It sends, or waits for you",
     body: "Within moments, or in your queue if the topic is sensitive or you have kept approvals on.",
   },
   {
@@ -205,7 +205,7 @@ function FeatureVisual({
                 <Icon className="h-3.5 w-3.5" strokeWidth={2} />
                 <p className="text-[11px] font-medium tracking-wide uppercase">{label}</p>
               </div>
-              <p className="mt-1 text-xl font-medium tracking-tight text-ink-900">—</p>
+              <p className="mt-1 text-xl font-medium tracking-tight text-ink-900">-</p>
             </div>
           ))}
         </div>
@@ -243,7 +243,6 @@ export default function SocialEngagement() {
         description="Every comment, DM, and question answered in your brand voice within moments, with buying questions routed to bookings and checkout, and the sensitive ones brought to you."
         keywords="social media engagement software, ai comment replies, respond to social media messages, social media inbox for SMBs, restaurant social media engagement, retail customer questions, turn comments into sales, dm automation"
         breadcrumbs={[
-          { label: "AI Agents", path: "/ai-agents" },
           { label: "Marketing Automation Agent", path: MARKETING_AGENT_BASE },
           { label: "Social Engagement", path: PATH },
         ]}
@@ -322,7 +321,7 @@ function Hero() {
                   <div className="rounded-2xl border border-brand-200/80 bg-brand-50/60 px-4 py-3">
                     <p className="text-xs font-medium text-brand-700">9:41 PM · Agent reply</p>
                     <p className="mt-1 text-[15px] text-ink-700">
-                      We do — grab a table here and we’ll have you set.
+                      We do. Grab a table here and we’ll have you set.
                     </p>
                   </div>
                 </div>
@@ -371,7 +370,7 @@ function FeaturesSection() {
             What this page shows
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
-            Watching, answering, escalating, and measuring — without you living in the inbox
+            Watching, answering, escalating, and measuring, without you living in the inbox
           </h2>
         </ScrollReveal>
 
@@ -506,7 +505,7 @@ function FaqSection() {
           </h2>
         </ScrollReveal>
         <div className="mt-10 sm:mt-14">
-          <FaqAccordion items={FAQS} variant="lines" className="font-poppins" />
+          <FaqAccordion items={FAQS} variant="lines" className="font-inter" />
         </div>
       </Container>
     </section>

@@ -136,7 +136,6 @@ export default function ReputationSentimentAgent() {
         description="Grow reviews, answer every one in your voice, read the patterns inside them, and turn the best into marketing. AI reputation care for restaurants, retail, and SMBs."
         keywords="ai reputation management, online reputation management for local businesses, customer sentiment analysis, review platform for SMBs, restaurant reputation management, retail review management, respond to google reviews, reputation monitoring"
         breadcrumbs={[
-          { label: "AI Agents", path: "/ai-agents" },
           { label: "Reputation & Sentiment Agent", path: REPUTATION_AGENT_BASE },
         ]}
       />

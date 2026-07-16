@@ -175,7 +175,6 @@ export default function ReviewManagement() {
         description="The agent watches every platform, drafts brand-safe replies in your voice within minutes, and escalates critical feedback to you with a response ready to edit and approve."
         keywords="review management software, ai review responses, respond to reviews automatically, manage google reviews, negative review response, restaurant review replies, retail review replies, multilingual review responses"
         breadcrumbs={[
-          { label: "AI Agents", path: "/ai-agents" },
           { label: "Reputation & Sentiment Agent", path: REPUTATION_AGENT_BASE },
           { label: "Review Management", path: PATH },
         ]}

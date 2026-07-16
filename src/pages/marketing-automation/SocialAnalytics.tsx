@@ -198,7 +198,7 @@ function FeatureVisual({
                   className="rounded-2xl border border-ink-200/80 bg-white px-3 py-3"
                 >
                   <p className="text-[10px] font-medium text-ink-400 uppercase">{label}</p>
-                  <p className="mt-1 text-lg font-medium text-ink-900">—</p>
+                  <p className="mt-1 text-lg font-medium text-ink-900">-</p>
                 </div>
               ))}
             </div>
@@ -214,7 +214,7 @@ function FeatureVisual({
                   className="rounded-2xl border border-ink-200/80 bg-white px-3 py-3"
                 >
                   <p className="text-[10px] font-medium text-ink-400 uppercase">{label}</p>
-                  <p className="mt-1 text-lg font-medium text-ink-900">—</p>
+                  <p className="mt-1 text-lg font-medium text-ink-900">-</p>
                 </div>
               ))}
             </div>
@@ -254,7 +254,6 @@ export default function SocialAnalytics() {
         description="One dashboard for Scheduled, Published, Views, Likes, Comments, and Clicks, and a plain-English monthly report that ties your posts to bookings, walk-ins, and sales."
         keywords="social media analytics dashboard, social media reporting software, measure social media performance, social media roi for local businesses, restaurant social analytics, retail campaign reporting, monthly marketing report"
         breadcrumbs={[
-          { label: "AI Agents", path: "/ai-agents" },
           { label: "Marketing Automation Agent", path: MARKETING_AGENT_BASE },
           { label: "Social Analytics & Reporting", path: PATH },
         ]}
@@ -504,7 +503,7 @@ function FaqSection() {
           </h2>
         </ScrollReveal>
         <div className="mt-10 sm:mt-14">
-          <FaqAccordion items={FAQS} variant="lines" className="font-poppins" />
+          <FaqAccordion items={FAQS} variant="lines" className="font-inter" />
         </div>
       </Container>
     </section>

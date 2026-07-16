@@ -1,12 +1,19 @@
 import {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import {
   ArrowRight,
   CalendarDays,
   CheckCircle2,
   Clock3,
+  Link2,
   Megaphone,
   PenLine,
   ShieldCheck,
   Sparkles,
+  Target,
   Wand2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -21,6 +28,7 @@ import {
   MARKETING_AGENT_BASE,
   MarketingAgentChrome,
 } from "../../components/marketing-automation/MarketingAgentSubNav";
+import { cn } from "../../lib/cn";
 
 const PATH = `${MARKETING_AGENT_BASE}/post-creation-publishing`;
 
@@ -247,7 +255,7 @@ function FeatureVisual({
                 className="rounded-2xl border border-ink-200/80 bg-white px-4 py-3 shadow-soft"
               >
                 <p className="text-xs font-medium tracking-wide text-ink-400 uppercase">{label}</p>
-                <p className="mt-1 text-xl font-medium tracking-tight text-ink-900">—</p>
+                <p className="mt-1 text-xl font-medium tracking-tight text-ink-900">-</p>
               </div>
             ))}
           </div>
@@ -284,7 +292,6 @@ export default function PostCreationPublishing() {
         description="Create posts in one screen, generate full campaigns in one click, and publish to Facebook, Instagram, LinkedIn, X, TikTok, and YouTube on a calendar that fills itself."
         keywords="ai social media post generator, social media publishing software, ai content calendar, schedule social media posts, social media campaign generator, create posts with ai, restaurant social media posts, retail product launch posts"
         breadcrumbs={[
-          { label: "AI Agents", path: "/ai-agents" },
           { label: "Marketing Automation Agent", path: MARKETING_AGENT_BASE },
           { label: "Post Creation & Publishing", path: PATH },
         ]}
@@ -455,40 +462,371 @@ function FeaturesSection() {
   );
 }
 
+const FLOW_VISUALS: {
+  icon: typeof Link2;
+  panelTitle: string;
+  panelHint: string;
+  chips: string[];
+}[] = [
+  {
+    icon: Link2,
+    panelTitle: "Connect channels",
+    panelHint: "Outreach · one-time setup",
+    chips: ["Instagram", "Facebook", "LinkedIn", "TikTok"],
+  },
+  {
+    icon: Target,
+    panelTitle: "Set the goal",
+    panelHint: "One line is enough",
+    chips: ["Fill Tuesdays", "Summer drop", "Brunch rush"],
+  },
+  {
+    icon: PenLine,
+    panelTitle: "Review drafts",
+    panelHint: "Caption · creative · timing",
+    chips: ["Draft ready", "Edit", "Approve"],
+  },
+  {
+    icon: CalendarDays,
+    panelTitle: "Schedule & publish",
+    panelHint: "Best Time to Post",
+    chips: ["Mon 12:15", "Wed 7:40", "Publish now"],
+  },
+  {
+    icon: Sparkles,
+    panelTitle: "Calendar stays full",
+    panelHint: "Next week already drafted",
+    chips: ["Week view", "Campaigns", "Recurring"],
+  },
+];
+
+function FlowStepVisualCard({ index }: { index: number }) {
+  const visual = FLOW_VISUALS[index] ?? FLOW_VISUALS[0];
+  const Icon = visual.icon;
+
+  return (
+    <div className="flex h-full flex-col justify-between rounded-[28px] border border-ink-200 bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 p-6 text-white shadow-lift sm:p-8">
+      <div>
+        <p className="text-xs font-medium tracking-[0.14em] text-white/55 uppercase">
+          {visual.panelHint}
+        </p>
+        <div className="mt-5 flex items-center gap-3">
+          <span className="grid h-11 w-11 place-items-center rounded-xl bg-white/10 ring-1 ring-white/15">
+            <Icon className="h-5 w-5" strokeWidth={1.85} />
+          </span>
+          <p className="text-lg font-semibold tracking-tight sm:text-xl">{visual.panelTitle}</p>
+        </div>
+      </div>
+
+      <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+        <div className="flex flex-wrap gap-2">
+          {visual.chips.map((chip) => (
+            <span
+              key={chip}
+              className="rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90 ring-1 ring-white/10"
+            >
+              {chip}
+            </span>
+          ))}
+        </div>
+        <div className="mt-4 space-y-2">
+          <div className="h-2.5 w-[80%] rounded-full bg-white/15" />
+          <div className="h-2.5 w-[60%] rounded-full bg-white/10" />
+          <div className="h-2.5 w-[66%] rounded-full bg-white/10" />
+        </div>
+      </div>
+
+      <p className="mt-6 text-sm leading-relaxed text-white/65">
+        Step {String(index + 1).padStart(2, "0")} of {String(FLOW_STEPS.length).padStart(2, "0")}
+      </p>
+    </div>
+  );
+}
+
+function FlowVisualSlider({
+  activeIndex,
+  reduceMotion,
+}: {
+  activeIndex: number;
+  reduceMotion: boolean;
+}) {
+  return (
+    <div className="relative h-full overflow-hidden rounded-[28px]">
+      <div
+        className={cn(
+          "flex h-full will-change-transform",
+          reduceMotion ? "" : "transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+        )}
+        style={{ transform: `translate3d(-${activeIndex * 100}%, 0, 0)` }}
+      >
+        {FLOW_STEPS.map((_, index) => (
+          <div key={FLOW_STEPS[index].number} className="h-full w-full shrink-0 px-0.5">
+            <FlowStepVisualCard index={index} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function FlowCopySlider({
+  activeIndex,
+  reduceMotion,
+}: {
+  activeIndex: number;
+  reduceMotion: boolean;
+}) {
+  return (
+    <div className="relative h-full overflow-hidden">
+      <div
+        className={cn(
+          "flex h-full will-change-transform",
+          reduceMotion ? "" : "transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+        )}
+        style={{ transform: `translate3d(-${activeIndex * 100}%, 0, 0)` }}
+      >
+        {FLOW_STEPS.map((step, index) => {
+          const Icon = FLOW_VISUALS[index]?.icon ?? Link2;
+          return (
+            <div
+              key={step.number}
+              className="flex h-full w-full shrink-0 flex-col justify-center pr-2"
+            >
+              <span className="grid h-11 w-11 place-items-center rounded-xl bg-ink-100 text-ink-600 ring-1 ring-ink-200/80">
+                <Icon className="h-5 w-5" strokeWidth={1.85} />
+              </span>
+              <p className="mt-5 text-sm font-medium tabular-nums text-ink-400">
+                Step {String(index + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mt-2 text-[clamp(1.5rem,2.2vw,2rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
+                {step.title}
+              </h3>
+              <p className="mt-4 text-lg font-normal leading-[1.7] text-ink-600">{step.body}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function FlowSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [reduceMotion, setReduceMotion] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const markerRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const motionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktopMedia = window.matchMedia("(min-width: 1024px)");
+
+    const sync = () => {
+      setReduceMotion(motionMedia.matches);
+      setIsDesktop(desktopMedia.matches);
+    };
+    sync();
+
+    motionMedia.addEventListener("change", sync);
+    desktopMedia.addEventListener("change", sync);
+    return () => {
+      motionMedia.removeEventListener("change", sync);
+      desktopMedia.removeEventListener("change", sync);
+    };
+  }, []);
+
+  const useSticky = isDesktop && !reduceMotion;
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let raf = 0;
+
+    const update = () => {
+      const markers = markerRefs.current;
+      const focusY = window.innerHeight * 0.4;
+      let best = 0;
+      let bestDist = Number.POSITIVE_INFINITY;
+
+      markers.forEach((el, index) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const mid = rect.top + rect.height / 2;
+        const dist = Math.abs(mid - focusY);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = index;
+        }
+      });
+
+      setActiveIndex(best);
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [useSticky]);
+
+  const scrollToStep = (index: number) => {
+    const el = markerRefs.current[index];
+    if (!el) return;
+    el.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "center",
+    });
+  };
+
   return (
     <section className="border-y border-ink-100 bg-ink-50 py-16 sm:py-20">
       <Container>
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-ink-500">
-            The flow
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Step by step, from connect to a calendar that stays full
-          </h2>
-        </ScrollReveal>
-
-        <div className="mx-auto mt-12 max-w-4xl space-y-4 sm:mt-14">
-          {FLOW_STEPS.map((step, index) => (
-            <ScrollReveal key={step.number} delay={index * 40}>
-              <article className="rounded-3xl border border-ink-200/90 bg-white px-5 py-6 sm:px-8 sm:py-7">
-                <div className="flex gap-4 sm:gap-5">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink-100 text-sm font-medium text-ink-600 ring-1 ring-ink-200/80">
-                    {step.number}
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="text-xl font-medium tracking-tight text-ink-900 sm:text-[1.35rem]">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2.5 text-base font-normal leading-[1.7] text-ink-600 sm:text-lg">
-                      {step.body}
-                    </p>
-                  </div>
-                </div>
-              </article>
+        {!useSticky ? (
+          <div>
+            <ScrollReveal className="mx-auto max-w-3xl text-center">
+              <p className="text-sm font-medium text-ink-500">The flow</p>
+              <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
+                Step by step, from connect to a calendar that stays full
+              </h2>
             </ScrollReveal>
-          ))}
-        </div>
+
+            <div className="mx-auto mt-12 max-w-4xl space-y-4">
+              {FLOW_STEPS.map((step, index) => {
+                const isActive = activeIndex === index;
+                return (
+                  <div
+                    key={step.number}
+                    ref={(el) => {
+                      markerRefs.current[index] = el;
+                    }}
+                    className="scroll-mt-28"
+                  >
+                    <article
+                      className={cn(
+                        "rounded-3xl border bg-white px-5 py-6 transition-all duration-300 sm:px-8 sm:py-7",
+                        isActive
+                          ? "border-ink-800 shadow-soft ring-1 ring-ink-200"
+                          : "border-ink-200/90 opacity-70",
+                      )}
+                    >
+                      <div className="flex gap-4 sm:gap-5">
+                        <span
+                          className={cn(
+                            "grid h-10 w-10 shrink-0 place-items-center rounded-full text-sm font-medium ring-1",
+                            isActive
+                              ? "bg-ink-800 text-white ring-ink-800"
+                              : "bg-ink-100 text-ink-600 ring-ink-200/80",
+                          )}
+                        >
+                          {step.number}
+                        </span>
+                        <div className="min-w-0">
+                          <h3 className="text-xl font-medium tracking-tight text-ink-900 sm:text-[1.35rem]">
+                            {step.title}
+                          </h3>
+                          <p className="mt-2.5 text-base font-normal leading-[1.7] text-ink-600 sm:text-lg">
+                            {step.body}
+                          </p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className="relative">
+            <div className="sticky top-24 z-10 grid h-[min(82vh,720px)] grid-cols-12 items-stretch gap-8 xl:gap-10">
+              <div className="col-span-3 flex flex-col justify-center">
+                <p className="text-sm font-medium text-ink-500">The flow</p>
+                <h2 className="mt-4 text-[clamp(1.6rem,2.4vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
+                  Step by step, from connect to a calendar that stays full
+                </h2>
+                <div className="mt-8 flex flex-col gap-2.5">
+                  {FLOW_STEPS.map((step, index) => {
+                    const isActive = activeIndex === index;
+                    return (
+                      <button
+                        key={step.number}
+                        type="button"
+                        onClick={() => scrollToStep(index)}
+                        className={cn(
+                          "group flex items-center justify-between gap-3 rounded-full border px-4 py-2.5 text-left transition-all duration-300",
+                          isActive
+                            ? "border-ink-900 bg-ink-900 text-white shadow-soft"
+                            : "border-ink-200 bg-white text-ink-700 hover:border-ink-300 hover:bg-ink-50",
+                        )}
+                        aria-current={isActive ? "step" : undefined}
+                      >
+                        <span className="text-sm font-medium">
+                          <span
+                            className={cn(
+                              "mr-2 tabular-nums",
+                              isActive ? "text-white/70" : "text-ink-400",
+                            )}
+                          >
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          {step.title}
+                        </span>
+                        <ArrowRight
+                          className={cn(
+                            "h-3.5 w-3.5 shrink-0 transition",
+                            isActive ? "text-white/80" : "text-ink-300 group-hover:text-ink-500",
+                          )}
+                          strokeWidth={2}
+                        />
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="mt-8 flex items-center gap-2" aria-hidden>
+                  {FLOW_STEPS.map((step, index) => (
+                    <span
+                      key={`dot-${step.number}`}
+                      className={cn(
+                        "h-1.5 rounded-full transition-all duration-500 ease-out",
+                        activeIndex === index ? "w-8 bg-ink-800" : "w-1.5 bg-ink-300",
+                      )}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div className="col-span-5 min-h-0">
+                <FlowVisualSlider activeIndex={activeIndex} reduceMotion={reduceMotion} />
+              </div>
+
+              <div className="col-span-4 min-h-0">
+                <FlowCopySlider activeIndex={activeIndex} reduceMotion={reduceMotion} />
+              </div>
+            </div>
+
+            <div className="-mt-[min(82vh,720px)]" aria-hidden>
+              {FLOW_STEPS.map((step, index) => (
+                <div
+                  key={`marker-${step.number}`}
+                  ref={(el) => {
+                    markerRefs.current[index] = el;
+                  }}
+                  className="h-[75vh]"
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </Container>
     </section>
   );
@@ -537,7 +875,7 @@ function FaqSection() {
           </h2>
         </ScrollReveal>
         <div className="mt-10 sm:mt-14">
-          <FaqAccordion items={FAQS} variant="lines" className="font-poppins" />
+          <FaqAccordion items={FAQS} variant="lines" className="font-inter" />
         </div>
       </Container>
     </section>
