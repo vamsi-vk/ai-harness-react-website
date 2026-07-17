@@ -1,10 +1,10 @@
 import {
   ArrowRight,
   CheckCircle2,
-  MessageSquare,
   type LucideIcon,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import type { ReactNode } from "react";
 import Container from "../components/Container";
 import Button from "../components/Button";
 import Seo from "../components/Seo";
@@ -18,6 +18,9 @@ import {
   AutomatedReviewAgentChrome,
 } from "../components/automated-reviews/AutomatedReviewAgentSubNav";
 import { REPUTATION_AGENT_BASE } from "../components/reputation-sentiment/ReputationAgentSubNav";
+import SoftPastelBackdrop from "../components/marketing-automation/SoftPastelBackdrop";
+import { MarketingHeroImage } from "../components/marketing-automation/MarketingHeroImage";
+import { TITLE_HL_BRAND as HL } from "../components/agent-title-highlight";
 
 const FAQS = [
   {
@@ -40,7 +43,7 @@ const FAQS = [
 
 type Step = {
   number: string;
-  title: string;
+  title: ReactNode;
   body: string;
   icon?: LucideIcon;
 };
@@ -48,32 +51,56 @@ type Step = {
 const STEPS: Step[] = [
   {
     number: "1",
-    title: "The visit ends",
+    title: (
+      <>
+        The visit <span className={HL}>Ends</span>
+      </>
+    ),
     body: "A table pays the check; an online order is marked picked up or delivered. The agent knows your point of sale, bookings, and connected tools.",
   },
   {
     number: "2",
-    title: "The right moment is chosen",
+    title: (
+      <>
+        The right <span className={HL}>Moment</span> is chosen
+      </>
+    ),
     body: "Not during dessert and not three days later: the window when the experience is still warm and the phone is already in hand.",
   },
   {
     number: "3",
-    title: "One invitation goes out",
+    title: (
+      <>
+        One <span className={HL}>Invitation</span> goes out
+      </>
+    ),
     body: "A text to the guest who booked by phone, an email to the shopper with a receipt in the inbox. Short, warm, in your voice, one tap to the review box.",
   },
   {
     number: "4",
-    title: "The review posts",
+    title: (
+      <>
+        The review <span className={HL}>Posts</span>
+      </>
+    ),
     body: "The customer writes while the memory is fresh, which is when reviews are specific, and specific reviews persuade.",
   },
   {
     number: "5",
-    title: "The hand-off happens automatically",
+    title: (
+      <>
+        The hand-off happens <span className={HL}>Automatically</span>
+      </>
+    ),
     body: "The new review flows to your Reputation & Sentiment Agent: a same-day thank-you through Review Management, a data point in your sentiment themes, and a candidate for review marketing.",
   },
   {
     number: "6",
-    title: "The tally shows up where you plan",
+    title: (
+      <>
+        The tally shows up where you <span className={HL}>Plan</span>
+      </>
+    ),
     body: "At month end, your reporting shows invitations sent, reviews earned, and rating movement, so the growth is measured, not felt.",
   },
 ];
@@ -152,15 +179,18 @@ export default function AutomatedReviewAgent() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-ink-50 pb-16 pt-12 sm:pb-20 sm:pt-16">
-      <Container className="relative">
+    <section className="relative overflow-hidden border-b border-ink-100/70 pb-16 pt-12 sm:pb-20 sm:pt-16">
+      <SoftPastelBackdrop side="left" />
+
+      <Container className="relative z-10">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
-          <ScrollReveal className="max-w-xl">
+          <ScrollReveal className="relative z-10 max-w-xl min-w-0">
             <p className="text-sm font-medium text-ink-500">
               Automated Review Agent
             </p>
             <h1 className="mt-4 text-[clamp(2rem,4.5vw,3.35rem)] font-medium leading-[1.08] tracking-[-0.025em] text-ink-900">
-              Get more Google reviews without asking a single customer yourself
+              Get more <span className={HL}>Google Reviews</span> without asking a single customer
+              yourself
             </h1>
             <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600 sm:text-xl">
               Happy customers leave every day without saying a word online. This agent notices each
@@ -183,32 +213,11 @@ function Hero() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={80} className="relative">
-            <div className="overflow-hidden rounded-[28px] border border-ink-200 bg-ink-100 shadow-lift ring-1 ring-ink-200/60">
-              <div className="flex aspect-[4/3] flex-col justify-between p-6 sm:p-8">
-                <div className="flex items-center gap-2 text-sm font-medium text-ink-700">
-                  <MessageSquare className="h-4 w-4 text-brand-600" />
-                  Invitation flow · Checkout → review
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  {["Invites sent", "Reviews earned", "Avg. rating", "Open rate"].map((label) => (
-                    <div
-                      key={label}
-                      className="rounded-2xl border border-ink-200/80 bg-white px-4 py-3 shadow-soft"
-                    >
-                      <p className="text-xs font-medium tracking-wide text-ink-400 uppercase">
-                        {label}
-                      </p>
-                      <p className="mt-1 text-2xl font-medium tracking-tight text-ink-900">—</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs leading-relaxed text-ink-500">
-                  Product shot placeholder · add the invitation-flow screenshot when the capture
-                  exists
-                </p>
-              </div>
-            </div>
+          <ScrollReveal delay={80} className="relative min-w-0">
+            <MarketingHeroImage
+              src="/illustrations/custom/automated-reviews-hero-main.png"
+              alt="Retail owner sending automated Google review invitations after checkout"
+            />
           </ScrollReveal>
         </div>
       </Container>
@@ -225,7 +234,7 @@ function ProblemSection() {
             The problem
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            The math of reviews is unfair by default
+            The math of reviews is <span className={HL}>Unfair By Default</span>
           </h2>
           <p className="mt-5 text-lg font-normal leading-[1.75] text-ink-700 sm:text-xl">
             Delighted customers rarely write unless invited, while the disappointed need no prompt.
@@ -243,7 +252,7 @@ function ProblemSection() {
 function StepVisual({ step }: { step: Step }) {
   return (
     <div
-      aria-label={`Image placeholder for step ${step.number}: ${step.title}`}
+      aria-label={`Image placeholder for step ${step.number}`}
       className="aspect-[4/3] overflow-hidden rounded-[28px] border border-dashed border-ink-300 bg-ink-100 ring-1 ring-ink-200/50"
     />
   );
@@ -258,7 +267,7 @@ function HowItWorksSection() {
             How it works
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
-            From checkout to posted review
+            From checkout to <span className={HL}>Posted Review</span>
           </h2>
         </ScrollReveal>
 
@@ -299,7 +308,7 @@ function BusinessImpactSection() {
             What this means
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            What this means for the business
+            What this means for the <span className={HL}>Business</span>
           </h2>
           <p className="mt-5 text-lg font-normal leading-[1.75] text-ink-700 sm:text-xl">
             The asking never depends on a human remembering again. Your rating starts reflecting the
@@ -321,7 +330,7 @@ function ReputationSystemSection() {
             Part of one reputation system
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            This agent executes the growth side of your reputation
+            This agent executes the <span className={HL}>Growth</span> side of your reputation
           </h2>
           <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-700 sm:text-xl">
             Pair it with Review Management for the answering and Review Analytics &amp; Marketing for
@@ -350,7 +359,8 @@ function DashboardSection() {
               On your AI-Harness dashboard
             </p>
             <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-              Invitations, deliveries, and earned reviews, tracked end to end
+              Invitations, deliveries, and earned reviews, tracked{" "}
+              <span className={HL}>End To End</span>
             </h2>
             <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600">
               Visible in your workspace, counted in your reporting, and recorded end to end, with

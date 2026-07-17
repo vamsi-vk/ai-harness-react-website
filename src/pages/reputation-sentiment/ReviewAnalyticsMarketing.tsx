@@ -2,11 +2,15 @@ import {
   ArrowRight,
   BarChart3,
   FileText,
+  LayoutDashboard,
   LineChart,
   Megaphone,
+  Share2,
+  Tags,
   TrendingUp,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import type { ReactNode } from "react";
 import Container from "../../components/Container";
 import Button from "../../components/Button";
 import Seo from "../../components/Seo";
@@ -14,10 +18,14 @@ import FaqJsonLd from "../../components/FaqJsonLd";
 import FaqAccordion from "../../components/FaqAccordion";
 import CTASection from "../../components/CTASection";
 import ScrollReveal from "../../components/ScrollReveal";
+import AgentFlowStepsSection from "../../components/AgentFlowStepsSection";
 import {
   REPUTATION_AGENT_BASE,
   ReputationAgentChrome,
 } from "../../components/reputation-sentiment/ReputationAgentSubNav";
+import SoftPastelBackdrop from "../../components/marketing-automation/SoftPastelBackdrop";
+import { MarketingHeroImage } from "../../components/marketing-automation/MarketingHeroImage";
+import { TITLE_HL_BRAND as HL } from "../../components/agent-title-highlight";
 
 const PATH = `${REPUTATION_AGENT_BASE}/review-analytics-marketing`;
 
@@ -40,18 +48,34 @@ const FAQS = [
   },
 ];
 
-const FEATURES = [
+const FEATURES: {
+  id: string;
+  eyebrow: string;
+  title: ReactNode;
+  body: string;
+  icon: typeof TrendingUp;
+  reverse?: boolean;
+  link?: { label: string; to: string };
+}[] = [
   {
     id: "trends",
     eyebrow: "Trends, Not Snapshots",
-    title: "Your reputation as a moving picture",
+    title: (
+      <>
+        Your reputation as a <span className={HL}>Moving Picture</span>
+      </>
+    ),
     body: "Rating trend, review volume, and response speed tracked over time and per location, so a slow drift gets caught in week two instead of month six.",
     icon: TrendingUp,
   },
   {
     id: "benchmarked",
     eyebrow: "Benchmarked",
-    title: "Measured against the street",
+    title: (
+      <>
+        Measured against the <span className={HL}>Street</span>
+      </>
+    ),
     body: "See how your rating, review volume, and responsiveness compare with nearby businesses in your category, the same side-by-side a customer silently runs when choosing between you.",
     icon: BarChart3,
     reverse: true,
@@ -59,14 +83,23 @@ const FEATURES = [
   {
     id: "sentiment",
     eyebrow: "Sentiment Themes",
-    title: "What to fix, and what to double down on",
+    title: (
+      <>
+        What to <span className={HL}>Fix</span>, and what to <span className={HL}>Double Down</span>{" "}
+        on
+      </>
+    ),
     body: "Recurring praise and recurring complaints grouped from real customer language: the dish everyone photographs, the checkout line at noon, the sizing note that keeps appearing. One fixed cause outperforms a hundred polite apologies.",
     icon: LineChart,
   },
   {
     id: "review-marketing",
     eyebrow: "Review Marketing",
-    title: "Your best stories, published",
+    title: (
+      <>
+        Your best stories, <span className={HL}>Published</span>
+      </>
+    ),
     body: "The agent hands winning reviews to your Marketing Automation Agent as designed, ready-to-approve social posts, so real customers do the persuading on your feed.",
     icon: Megaphone,
     reverse: true,
@@ -78,32 +111,83 @@ const FEATURES = [
   {
     id: "reports",
     eyebrow: "Reports",
-    title: "A reputation report your whole team reads",
+    title: (
+      <>
+        A reputation report your whole team <span className={HL}>Reads</span>
+      </>
+    ),
     body: "Monthly, plain-English, per location: what moved, why it moved, and what to do next, in the same voice as the rest of your AI-Harness reporting.",
     icon: FileText,
   },
 ];
 
-const FLOW_STEPS = [
+const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: string }[] = [
   {
     number: "1",
-    title: "Everything is captured",
+    title: (
+      <>
+        Everything is <span className={HL}>Captured</span>
+      </>
+    ),
+    railLabel: "Everything is captured",
     body: "Every review, reply, and rating movement as it happens, per platform and per location.",
   },
   {
     number: "2",
-    title: "Themes and benchmarks land",
+    title: (
+      <>
+        Themes and <span className={HL}>Benchmarks</span> land
+      </>
+    ),
+    railLabel: "Themes and benchmarks",
     body: "Sentiment grouping turns words into themes; benchmarks put your numbers next to the local field.",
   },
   {
     number: "3",
-    title: "Standout reviews become posts",
+    title: (
+      <>
+        Standout reviews become <span className={HL}>Posts</span>
+      </>
+    ),
+    railLabel: "Standout reviews become posts",
     body: "Drafted into social posts and queued for your approval.",
   },
   {
     number: "4",
-    title: "The monthly report arrives",
+    title: (
+      <>
+        The monthly report <span className={HL}>Arrives</span>
+      </>
+    ),
+    railLabel: "Monthly report arrives",
     body: "The trend, the causes, the comparison, and the next moves.",
+  },
+];
+
+const FLOW_VISUALS = [
+  {
+    icon: LayoutDashboard,
+    panelTitle: "Everything captured",
+    panelHint: "Per platform · per location",
+    chips: ["Reviews", "Replies", "Ratings"],
+  },
+  {
+    icon: Tags,
+    panelTitle: "Themes & benchmarks",
+    panelHint: "Words become signal",
+    chips: ["Sentiment", "Local field", "Gaps"],
+  },
+  {
+    icon: Share2,
+    panelTitle: "Reviews to posts",
+    panelHint: "Queued for approval",
+    chips: ["Draft post", "Approve", "Publish"],
+  },
+  {
+    icon: FileText,
+    panelTitle: "Monthly report",
+    panelHint: "Trend · cause · next moves",
+    chips: ["What moved", "Why", "Do next"],
   },
 ];
 
@@ -185,7 +269,15 @@ export default function ReviewAnalyticsMarketing() {
         <Hero />
         <ProblemSection />
         <FeaturesSection />
-        <FlowSection />
+        <AgentFlowStepsSection
+          title={
+            <>
+              From live capture to next month&apos;s <span className={HL}>Moves</span>
+            </>
+          }
+          steps={FLOW_STEPS}
+          visuals={FLOW_VISUALS}
+        />
         <RelatedSection />
         <FaqSection />
         <div className="py-16 sm:py-20">
@@ -204,16 +296,18 @@ export default function ReviewAnalyticsMarketing() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-ink-50 pb-16 pt-12 sm:pb-20 sm:pt-16">
+    <section className="relative overflow-hidden border-b border-ink-100/70 pb-16 pt-12 sm:pb-20 sm:pt-16">
+      <SoftPastelBackdrop side="left" />
 
-      <Container className="relative">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-          <ScrollReveal className="max-w-xl">
+      <Container className="relative z-10">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+          <ScrollReveal className="relative z-10 max-w-xl min-w-0">
             <p className="text-sm font-medium text-ink-500">
               Review Analytics & Marketing
             </p>
             <h1 className="mt-4 text-[clamp(2rem,4.5vw,3.35rem)] font-medium leading-[1.08] tracking-[-0.025em] text-ink-900">
-              Measure your reputation. Then make it sell.
+              Measure your <span className={HL}>Reputation</span>. Then make it{" "}
+              <span className={HL}>Sell</span>.
             </h1>
             <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600 sm:text-xl">
               A rating without context is just a number. The agent turns your reviews into a managed
@@ -234,31 +328,11 @@ function Hero() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={80}>
-            <div className="overflow-hidden rounded-[28px] border border-ink-200 bg-ink-100 shadow-lift ring-1 ring-ink-200/60">
-              <div className="flex aspect-[4/3] flex-col justify-between p-6 sm:p-8">
-                <div className="flex items-center gap-2 text-sm font-medium text-ink-700">
-                  <LineChart className="h-4 w-4 text-brand-600" />
-                  Reputation report · Monthly
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  {["Rating trend", "Volume", "Response speed", "vs Nearby"].map((label) => (
-                    <div
-                      key={label}
-                      className="rounded-2xl border border-ink-200/80 bg-white px-4 py-3 shadow-soft"
-                    >
-                      <p className="text-xs font-medium tracking-wide text-ink-400 uppercase">
-                        {label}
-                      </p>
-                      <p className="mt-1 text-xl font-medium tracking-tight text-ink-900">—</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs leading-relaxed text-ink-500">
-                  Product shot placeholder · re-capture report + review-to-post flow
-                </p>
-              </div>
-            </div>
+          <ScrollReveal delay={80} className="relative min-w-0">
+            <MarketingHeroImage
+              src="/illustrations/custom/reputation-hero-review-analytics.png"
+              alt="Café owner reviewing reputation trends and turning top reviews into marketing"
+            />
           </ScrollReveal>
         </div>
       </Container>
@@ -275,7 +349,8 @@ function ProblemSection() {
             The problem
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Most owners know their star rating and nothing underneath it
+            Most owners know their star rating and nothing{" "}
+            <span className={HL}>Underneath It</span>
           </h2>
           <p className="mt-5 text-lg font-normal leading-[1.75] text-ink-700 sm:text-xl">
             Which way it is trending, which location is drifting, how you compare to the competitors
@@ -298,7 +373,7 @@ function FeaturesSection() {
             What this page shows
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
-            Trends, benchmarks, themes, marketing, and reports
+            Trends, benchmarks, themes, <span className={HL}>Marketing</span>, and reports
           </h2>
         </ScrollReveal>
 
@@ -354,47 +429,13 @@ function FeaturesSection() {
   );
 }
 
-function FlowSection() {
-  return (
-    <section className="border-y border-ink-100 bg-ink-50 py-16 sm:py-20">
-      <Container>
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-ink-500">The flow</p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            From live capture to next month’s moves
-          </h2>
-        </ScrollReveal>
-        <div className="mx-auto mt-12 max-w-4xl space-y-4 sm:mt-14">
-          {FLOW_STEPS.map((step, index) => (
-            <ScrollReveal key={step.number} delay={index * 40}>
-              <article className="rounded-3xl border border-ink-200/90 bg-white px-5 py-6 sm:px-8 sm:py-7">
-                <div className="flex gap-4 sm:gap-5">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink-100 text-sm font-medium text-ink-600 ring-1 ring-ink-200/80">
-                    {step.number}
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="text-xl font-medium tracking-tight text-ink-900">{step.title}</h3>
-                    <p className="mt-2.5 text-base font-normal leading-[1.7] text-ink-600 sm:text-lg">
-                      {step.body}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            </ScrollReveal>
-          ))}
-        </div>
-      </Container>
-    </section>
-  );
-}
-
 function RelatedSection() {
   return (
     <section className="bg-white py-16 sm:py-20">
       <Container>
         <ScrollReveal className="max-w-3xl">
           <h2 className="text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Do more with your Reputation & Sentiment Agent
+            Do more with your <span className={HL}>Reputation &amp; Sentiment</span> Agent
           </h2>
         </ScrollReveal>
         <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-3">

@@ -7,6 +7,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import type { ReactNode } from "react";
 import Container from "../components/Container";
 import Button from "../components/Button";
 import Seo from "../components/Seo";
@@ -18,6 +19,9 @@ import {
   REPUTATION_AGENT_BASE,
   ReputationAgentChrome,
 } from "../components/reputation-sentiment/ReputationAgentSubNav";
+import SoftPastelBackdrop from "../components/marketing-automation/SoftPastelBackdrop";
+import { MarketingHeroImage } from "../components/marketing-automation/MarketingHeroImage";
+import { TITLE_HL_BRAND as HL } from "../components/agent-title-highlight";
 
 const FAQS = [
   {
@@ -42,10 +46,19 @@ const FAQS = [
   },
 ];
 
-const STEPS = [
+const STEPS: {
+  number: string;
+  title: ReactNode;
+  body: string;
+  link?: { label: string; page: string; to: string };
+}[] = [
   {
     number: "1",
-    title: "It keeps fresh reviews flowing",
+    title: (
+      <>
+        It keeps <span className={HL}>Fresh Reviews</span> flowing
+      </>
+    ),
     body: "The agent notices recent customers through your bookings, orders, and connected tools, and invites the happy ones to share, on the channel each person actually answers, at the moment they are most likely to say yes. A steady stream of recent reviews is the strongest trust signal a local business can hold.",
     link: {
       label: "See how review growth works",
@@ -55,7 +68,11 @@ const STEPS = [
   },
   {
     number: "2",
-    title: "It answers everything, quickly and in your voice",
+    title: (
+      <>
+        It <span className={HL}>Answers Everything</span>, quickly and in your voice
+      </>
+    ),
     body: "New reviews across Google, Facebook, and the platforms your customers use get a considered, brand-safe reply within minutes. Praise gets gratitude that invites a return visit. Criticism gets acknowledgment without argument. Anything critical routes to you first, with a drafted response attached.",
     link: {
       label: "See how responses and escalation work",
@@ -65,17 +82,29 @@ const STEPS = [
   },
   {
     number: "3",
-    title: "It hears the pattern behind the words",
+    title: (
+      <>
+        It hears the <span className={HL}>Pattern</span> behind the words
+      </>
+    ),
     body: "Sentiment analysis groups what customers keep praising and what they keep flagging, wait times at the restaurant, sizing at the boutique, so you fix the cause once instead of apologizing for it forever.",
   },
   {
     number: "4",
-    title: "It measures reputation like the business metric it is",
+    title: (
+      <>
+        It measures <span className={HL}>Reputation</span> like the business metric it is
+      </>
+    ),
     body: "Rating trend, review volume, and response speed, tracked over time, per location, and against nearby competition, on one dashboard your whole team can read.",
   },
   {
     number: "5",
-    title: "It turns your best reviews into your best marketing",
+    title: (
+      <>
+        It turns your best reviews into your best <span className={HL}>Marketing</span>
+      </>
+    ),
     body: "Five-star stories flow to your Marketing Automation Agent as ready-to-approve social posts, so real customers do the persuading.",
     link: {
       label: "Explore reputation analytics and review marketing",
@@ -165,15 +194,17 @@ export default function ReputationSentimentAgent() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-ink-50 pb-16 pt-12 sm:pb-20 sm:pt-16">
-      <Container className="relative">
+    <section className="relative overflow-hidden border-b border-ink-100/70 pb-16 pt-12 sm:pb-20 sm:pt-16">
+      <SoftPastelBackdrop side="left" />
+
+      <Container className="relative z-10">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
-          <ScrollReveal className="max-w-xl">
+          <ScrollReveal className="relative z-10 max-w-xl min-w-0">
             <p className="text-sm font-medium text-ink-500">
               Reputation & Sentiment Agent
             </p>
             <h1 className="mt-4 text-[clamp(2rem,4.5vw,3.35rem)] font-medium leading-[1.08] tracking-[-0.025em] text-ink-900">
-              Your reputation, looked after around the clock
+              Your <span className={HL}>Reputation</span>, looked after around the clock
             </h1>
             <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600 sm:text-xl">
               Reviews decide who walks in next. Your agent keeps new ones coming, answers every
@@ -196,34 +227,11 @@ function Hero() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={80} className="relative">
-            <div className="overflow-hidden rounded-[28px] border border-ink-200 bg-ink-100 shadow-lift ring-1 ring-ink-200/60">
-              <div className="flex aspect-[4/3] flex-col justify-between p-6 sm:p-8">
-                <div className="flex items-center gap-2 text-sm font-medium text-ink-700">
-                  <MessageSquare className="h-4 w-4 text-brand-600" />
-                  Reputation · Attention queue
-                </div>
-                <div className="space-y-3">
-                  {[
-                    { label: "New reviews", value: "—" },
-                    { label: "Needs your judgment", value: "—" },
-                    { label: "Avg response time", value: "—" },
-                    { label: "Rating trend", value: "—" },
-                  ].map((item) => (
-                    <div
-                      key={item.label}
-                      className="flex items-center justify-between rounded-2xl border border-ink-200/80 bg-white px-4 py-3 shadow-soft"
-                    >
-                      <p className="text-sm text-ink-600">{item.label}</p>
-                      <p className="text-lg font-medium tracking-tight text-ink-900">{item.value}</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs leading-relaxed text-ink-500">
-                  Product shot placeholder · review inbox and attention-queue screenshots pending
-                </p>
-              </div>
-            </div>
+          <ScrollReveal delay={80} className="relative min-w-0">
+            <MarketingHeroImage
+              src="/illustrations/custom/reputation-hero-main.png"
+              alt="Salon owner monitoring star reviews, attention queue, and rating trends"
+            />
           </ScrollReveal>
         </div>
       </Container>
@@ -240,7 +248,8 @@ function ProblemSection() {
             The problem
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Your reputation is working for you or against you every hour you are open
+            Your <span className={HL}>Reputation</span> is working for you or against you every hour
+            you are open
           </h2>
           <p className="mt-5 text-lg font-normal leading-[1.75] text-ink-700 sm:text-xl">
             Most of that work happens where you cannot see it. New reviews land during the dinner
@@ -265,7 +274,7 @@ function HowItWorksSection() {
             How it works
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
-            How the agent cares for your reputation, end to end
+            How the agent cares for your <span className={HL}>Reputation</span>, end to end
           </h2>
         </ScrollReveal>
 
@@ -311,7 +320,7 @@ function BusinessMeaningSection() {
         <ScrollReveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">
             <h2 className="text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-              What this means for the business
+              What this means for the <span className={HL}>Business</span>
             </h2>
             <p className="mt-4 text-base font-normal leading-relaxed text-ink-600 sm:text-lg">
               The asking, answering, listening, and measuring run continuously without you. Your
@@ -375,7 +384,8 @@ function DashboardSection() {
               On your AI-Harness dashboard
             </p>
             <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-              Reputation work lives in the same workspace as the rest of your AI team
+              <span className={HL}>Reputation</span> work lives in the same workspace as the rest of
+              your AI team
             </h2>
             <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600">
               An attention queue surfaces the few reviews that need your judgment, approvals sit

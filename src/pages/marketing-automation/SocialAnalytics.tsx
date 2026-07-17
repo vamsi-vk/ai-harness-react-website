@@ -1,6 +1,7 @@
 import {
   ArrowRight,
   BarChart3,
+  CalendarDays,
   CheckCircle2,
   FileText,
   LayoutDashboard,
@@ -9,6 +10,7 @@ import {
   Share2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import type { ReactNode } from "react";
 import Container from "../../components/Container";
 import Button from "../../components/Button";
 import Seo from "../../components/Seo";
@@ -16,10 +18,16 @@ import FaqJsonLd from "../../components/FaqJsonLd";
 import FaqAccordion from "../../components/FaqAccordion";
 import CTASection from "../../components/CTASection";
 import ScrollReveal from "../../components/ScrollReveal";
+import AgentFlowStepsSection from "../../components/AgentFlowStepsSection";
 import {
   MARKETING_AGENT_BASE,
   MarketingAgentChrome,
 } from "../../components/marketing-automation/MarketingAgentSubNav";
+import SoftPastelBackdrop from "../../components/marketing-automation/SoftPastelBackdrop";
+import { MarketingHeroImage } from "../../components/marketing-automation/MarketingHeroImage";
+import { CapsuleFeatureImage } from "../../components/marketing-automation/CapsuleFeatureImage";
+import { TITLE_HL as HL } from "../../components/agent-title-highlight";
+import { cn } from "../../lib/cn";
 
 const PATH = `${MARKETING_AGENT_BASE}/social-analytics`;
 
@@ -42,70 +50,164 @@ const FAQS = [
   },
 ];
 
-const FEATURES = [
+const FEATURES: {
+  id: string;
+  eyebrow: string;
+  title: ReactNode;
+  body: string;
+  caption?: string;
+  buildNote?: string;
+  icon: typeof LayoutDashboard;
+  imageSrc: string;
+  imageAlt: string;
+  reverse?: boolean;
+  dashboard?: boolean;
+}[] = [
   {
     id: "one-dashboard",
     eyebrow: "One Dashboard",
-    title: "The whole picture at a glance",
+    title: (
+      <>
+        The whole picture at a <span className={HL}>Glance</span>
+      </>
+    ),
     body: "Post Overview shows Scheduled, Published, Drafts, and Failed; Engagement shows Total Views, Likes, Comments, and Clicks across published posts, with movement against the previous week. Two seconds tells you whether the machine is running.",
     caption: "Post Overview and Engagement on the Outreach dashboard.",
     buildNote:
       "On the live page, animate the counters and link each card to its filtered view. Re-capture on a branded demo workspace before publish.",
     icon: LayoutDashboard,
+    imageSrc: "/illustrations/custom/marketing-analytics-dashboard.png",
+    imageAlt:
+      "Outreach dashboard with Post Overview and Engagement cards showing scheduled, published, views, likes, comments, and clicks",
     dashboard: true,
   },
   {
     id: "metrics-to-meaning",
     eyebrow: "From Metrics to Meaning",
-    title: "A report written in plain English",
+    title: (
+      <>
+        A report written in <span className={HL}>Plain English</span>
+      </>
+    ),
     body: "At month end the agent explains which posts drove bookings, calls, walk-ins, and sales, which flopped and probably why, and which themes deserve a bigger slot next month. Read it in five minutes; act on it in one.",
     icon: FileText,
+    imageSrc: "/illustrations/custom/marketing-analytics-report.png",
+    imageAlt:
+      "Plain-English monthly marketing report summarizing top posts, misses, and next-month themes",
     reverse: true,
   },
   {
     id: "campaign-scorecards",
     eyebrow: "Campaign Scorecards",
-    title: "Every campaign gets its own readout",
+    title: (
+      <>
+        Every campaign gets its own <span className={HL}>Readout</span>
+      </>
+    ),
     body: "Each Run Campaign arc reports against the goal it was built for, with reach, engagement, and clicks per post, so a weekend-offer push and a product-drop launch are judged on their own terms.",
     icon: BarChart3,
+    imageSrc: "/illustrations/custom/marketing-analytics-campaign-scorecard.png",
+    imageAlt:
+      "Campaign scorecards comparing reach, engagement, and clicks against each campaign goal",
   },
   {
     id: "loop-closes",
     eyebrow: "The Loop Closes",
-    title: "Next month drafts itself",
+    title: (
+      <>
+        Next month <span className={HL}>Drafts Itself</span>
+      </>
+    ),
     body: "Findings become the next plan automatically: winning themes rebooked, weak slots reworked, and the drafted calendar waiting for your twenty-minute approval. Reporting that ends in action, not in a spreadsheet.",
     icon: RefreshCw,
+    imageSrc: "/illustrations/custom/marketing-analytics-loop-closes.png",
+    imageAlt:
+      "Monthly report insights flowing into a drafted next-month content calendar",
     reverse: true,
   },
   {
     id: "numbers-that-travel",
     eyebrow: "Numbers That Travel",
-    title: "Proof you can show anyone",
+    title: (
+      <>
+        Proof you can <span className={HL}>Show Anyone</span>
+      </>
+    ),
     body: "Clean summaries you can hand a partner, a bookkeeper, or your own team, so marketing spend gets defended with evidence instead of feelings.",
     icon: Share2,
+    imageSrc: "/illustrations/custom/marketing-analytics-shareable.png",
+    imageAlt:
+      "Shareable marketing results summary with key metrics and export options",
   },
 ];
 
-const FLOW_STEPS = [
+const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: string }[] = [
   {
     number: "1",
-    title: "Everything is tracked",
+    title: (
+      <>
+        Everything is <span className={HL}>Tracked</span>
+      </>
+    ),
+    railLabel: "Everything is tracked",
     body: "Every post, comment, and click from the moment it happens.",
   },
   {
     number: "2",
-    title: "The dashboard keeps score",
+    title: (
+      <>
+        The dashboard keeps <span className={HL}>Score</span>
+      </>
+    ),
+    railLabel: "Dashboard keeps score",
     body: "In real time, across every connected channel.",
   },
   {
     number: "3",
-    title: "The agent writes the report",
+    title: (
+      <>
+        The agent writes the <span className={HL}>Report</span>
+      </>
+    ),
+    railLabel: "Agent writes the report",
     body: "At month end: what worked, what did not, and what changes.",
   },
   {
     number: "4",
-    title: "Next month arrives pre-drafted",
+    title: (
+      <>
+        Next month arrives <span className={HL}>Pre-Drafted</span>
+      </>
+    ),
+    railLabel: "Next month pre-drafted",
     body: "Built from those findings, waiting for your approval.",
+  },
+];
+
+const FLOW_VISUALS = [
+  {
+    icon: LineChart,
+    panelTitle: "Live tracking",
+    panelHint: "Posts · comments · clicks",
+    chips: ["Published", "Engagement", "Clicks"],
+  },
+  {
+    icon: LayoutDashboard,
+    panelTitle: "Outreach scoreboard",
+    panelHint: "Real-time across channels",
+    chips: ["Views", "Likes", "Comments", "Clicks"],
+  },
+  {
+    icon: FileText,
+    panelTitle: "Month-end report",
+    panelHint: "Plain English · actionable",
+    chips: ["Winners", "Misses", "Next themes"],
+  },
+  {
+    icon: CalendarDays,
+    panelTitle: "Next calendar drafted",
+    panelHint: "Findings become the plan",
+    chips: ["Rebook winners", "Rework weak", "Approve"],
   },
 ];
 
@@ -176,9 +278,21 @@ function ProductSchema() {
 
 function FeatureVisual({
   feature,
+  pillSide,
 }: {
   feature: (typeof FEATURES)[number];
+  pillSide: "left" | "right";
 }) {
+  if ("imageSrc" in feature && feature.imageSrc) {
+    return (
+      <CapsuleFeatureImage
+        src={feature.imageSrc}
+        alt={feature.imageAlt ?? ""}
+        pillSide={pillSide}
+      />
+    );
+  }
+
   if (feature.dashboard) {
     return (
       <div className="overflow-hidden rounded-[28px] border border-ink-200/80 bg-white shadow-lift">
@@ -265,17 +379,29 @@ export default function SocialAnalytics() {
         <Hero />
         <ProblemSection />
         <FeaturesSection />
-        <FlowSection />
+        <AgentFlowStepsSection
+          title={
+            <>
+              Tracked live, explained at month end, drafted for{" "}
+              <span className={HL}>Next Month</span>
+            </>
+          }
+          steps={FLOW_STEPS}
+          visuals={FLOW_VISUALS}
+        />
         <RelatedSection />
         <FaqSection />
-        <div className="py-16 sm:py-20">
-          <CTASection
-            title="Marketing that reports to you."
-            description="Explore Social Analytics & Reporting inside your Marketing Automation Agent. Start free with $10 in credits."
-            primaryCta={{ label: "Start free", to: "/signup" }}
-            secondaryCta={{ label: "Talk to us", to: "/contact" }}
-            footnote="Free to start with $10 in credits · No credit card · Part of the Marketing Automation Agent"
-          />
+        <div className="relative overflow-hidden border-t border-ink-100/70 py-16 sm:py-20">
+          <SoftPastelBackdrop side="right" />
+          <div className="relative z-10">
+            <CTASection
+              title="Marketing that reports to you."
+              description="Explore Social Analytics & Reporting inside your Marketing Automation Agent. Start free with $10 in credits."
+              primaryCta={{ label: "Start free", to: "/signup" }}
+              secondaryCta={{ label: "Talk to us", to: "/contact" }}
+              footnote="Free to start with $10 in credits · No credit card · Part of the Marketing Automation Agent"
+            />
+          </div>
         </div>
       </MarketingAgentChrome>
     </>
@@ -284,16 +410,18 @@ export default function SocialAnalytics() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-ink-50 pb-16 pt-12 sm:pb-20 sm:pt-16">
+    <section className="relative overflow-hidden border-b border-ink-100/70 pb-16 pt-12 sm:pb-20 sm:pt-16">
+      <SoftPastelBackdrop side="left" />
 
-      <Container className="relative">
+      <Container className="relative z-10">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
-          <ScrollReveal className="max-w-xl">
+          <ScrollReveal className="relative z-10 max-w-xl min-w-0">
             <p className="text-sm font-medium text-ink-500">
               Social Analytics & Reporting
             </p>
             <h1 className="mt-4 text-[clamp(2rem,4.5vw,3.35rem)] font-medium leading-[1.08] tracking-[-0.025em] text-ink-900">
-              Know what your marketing did for revenue, not just for likes
+              Know what your marketing did for <span className={HL}>Revenue</span>, not just for
+              likes
             </h1>
             <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600 sm:text-xl">
               Numbers are easy to collect and hard to use. Your agent turns views, likes, comments,
@@ -315,33 +443,11 @@ function Hero() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={80} className="relative">
-            <div className="overflow-hidden rounded-[28px] border border-ink-200 bg-ink-100 shadow-lift ring-1 ring-ink-200/60">
-              <div className="flex aspect-[4/3] flex-col justify-between p-6 sm:p-8">
-                <div className="flex items-center gap-2 text-sm font-medium text-ink-700">
-                  <LineChart className="h-4 w-4 text-brand-600" />
-                  Monthly report · Summary
-                </div>
-                <div className="space-y-3">
-                  {[
-                    "Top posts that drove bookings",
-                    "Campaigns scored against goals",
-                    "Next month plan, already drafted",
-                  ].map((line) => (
-                    <div
-                      key={line}
-                      className="flex items-start gap-3 rounded-2xl border border-ink-200/80 bg-white px-4 py-3 shadow-soft"
-                    >
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
-                      <p className="text-[15px] text-ink-700">{line}</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs leading-relaxed text-ink-500">
-                  Product shot placeholder · re-capture report view on a branded demo
-                </p>
-              </div>
-            </div>
+          <ScrollReveal delay={80} className="relative min-w-0">
+            <MarketingHeroImage
+              src="/illustrations/custom/marketing-hero-social-analytics.png"
+              alt="Café owner reviewing revenue impact, monthly reports, and campaign scorecards"
+            />
           </ScrollReveal>
         </div>
       </Container>
@@ -351,14 +457,14 @@ function Hero() {
 
 function ProblemSection() {
   return (
-    <section className="border-y border-ink-100 bg-ink-50/60 py-16 sm:py-20">
-      <Container>
+    <section className="relative overflow-hidden border-y border-ink-100 bg-white py-16 sm:py-20">
+      <Container className="relative z-10">
         <ScrollReveal className="mx-auto max-w-3xl">
           <p className="text-sm font-medium text-ink-500">
             The problem
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Most local businesses market blind
+            Most local businesses market <span className={HL}>Blind</span>
           </h2>
           <p className="mt-5 text-lg font-normal leading-[1.75] text-ink-700 sm:text-xl">
             The platforms hand back metrics, but nobody has time to stitch five analytics tabs into
@@ -374,26 +480,44 @@ function ProblemSection() {
 
 function FeaturesSection() {
   return (
-    <section className="bg-white py-16 sm:py-24">
-      <Container>
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-ink-500">
-            What this page shows
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
-            From live dashboard to month-end decisions that draft next month’s plan
-          </h2>
-        </ScrollReveal>
+    <section className="relative overflow-hidden border-b border-ink-100/70">
+      <div className="relative overflow-hidden py-16 sm:pb-12 sm:pt-24">
+        <SoftPastelBackdrop side="right" />
+        <Container className="relative z-10">
+          <ScrollReveal className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-medium text-ink-500">
+              What this page shows
+            </p>
+            <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
+              From live dashboard to month-end decisions that draft next{" "}
+              <span className={HL}>Month&apos;s Plan</span>
+            </h2>
+          </ScrollReveal>
+        </Container>
+      </div>
 
-        <div className="mt-14 space-y-16 sm:mt-20 sm:space-y-24">
-          {FEATURES.map((feature, index) => {
-            const Icon = feature.icon;
-            const reverse = Boolean(feature.reverse);
-            return (
-              <ScrollReveal key={feature.id} delay={(index % 3) * 40}>
+      {FEATURES.map((feature, index) => {
+        const Icon = feature.icon;
+        const reverse = Boolean(feature.reverse);
+        const softBand = index % 2 === 1;
+
+        return (
+          <div
+            key={feature.id}
+            className={cn(
+              "relative overflow-hidden py-16 sm:py-24",
+              softBand ? undefined : "bg-white",
+            )}
+          >
+            {softBand ? (
+              <SoftPastelBackdrop side={index % 4 === 1 ? "left" : "right"} />
+            ) : null}
+
+            <Container className="relative z-10">
+              <ScrollReveal delay={(index % 3) * 40}>
                 <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
                   <div className={reverse ? "order-2 lg:order-1" : "order-2 lg:order-2"}>
-                    <FeatureVisual feature={feature} />
+                    <FeatureVisual feature={feature} pillSide={reverse ? "left" : "right"} />
                   </div>
                   <div className={reverse ? "order-1 lg:order-2" : "order-1 lg:order-1"}>
                     <div className="flex items-center gap-3">
@@ -413,60 +537,21 @@ function FeaturesSection() {
                   </div>
                 </div>
               </ScrollReveal>
-            );
-          })}
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-function FlowSection() {
-  return (
-    <section className="border-y border-ink-100 bg-ink-50 py-16 sm:py-20">
-      <Container>
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-ink-500">
-            The flow
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Tracked live, explained at month end, drafted for next month
-          </h2>
-        </ScrollReveal>
-
-        <div className="mx-auto mt-12 max-w-4xl space-y-4 sm:mt-14">
-          {FLOW_STEPS.map((step, index) => (
-            <ScrollReveal key={step.number} delay={index * 40}>
-              <article className="rounded-3xl border border-ink-200/90 bg-white px-5 py-6 sm:px-8 sm:py-7">
-                <div className="flex gap-4 sm:gap-5">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink-100 text-sm font-medium text-ink-600 ring-1 ring-ink-200/80">
-                    {step.number}
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="text-xl font-medium tracking-tight text-ink-900 sm:text-[1.35rem]">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2.5 text-base font-normal leading-[1.7] text-ink-600 sm:text-lg">
-                      {step.body}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            </ScrollReveal>
-          ))}
-        </div>
-      </Container>
+            </Container>
+          </div>
+        );
+      })}
     </section>
   );
 }
 
 function RelatedSection() {
   return (
-    <section className="bg-white py-16 sm:py-20">
-      <Container>
+    <section className="relative overflow-hidden border-b border-ink-100 bg-white py-16 sm:py-20">
+      <Container className="relative z-10">
         <ScrollReveal className="max-w-3xl">
           <h2 className="text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Do more with your Marketing Automation Agent
+            Do more with your <span className={HL}>Marketing Automation</span> Agent
           </h2>
         </ScrollReveal>
         <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-3">

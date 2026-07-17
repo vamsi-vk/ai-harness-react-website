@@ -1,12 +1,16 @@
 import {
   ArrowRight,
+  CheckCircle2,
   Clock3,
+  Inbox,
   Mail,
   MessageCircle,
   ShieldCheck,
+  Sparkles,
   UserRound,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import type { ReactNode } from "react";
 import Container from "../../components/Container";
 import Button from "../../components/Button";
 import Seo from "../../components/Seo";
@@ -14,10 +18,14 @@ import FaqJsonLd from "../../components/FaqJsonLd";
 import FaqAccordion from "../../components/FaqAccordion";
 import CTASection from "../../components/CTASection";
 import ScrollReveal from "../../components/ScrollReveal";
+import AgentFlowStepsSection from "../../components/AgentFlowStepsSection";
 import {
   REPUTATION_AGENT_BASE,
   ReputationAgentChrome,
 } from "../../components/reputation-sentiment/ReputationAgentSubNav";
+import SoftPastelBackdrop from "../../components/marketing-automation/SoftPastelBackdrop";
+import { MarketingHeroImage } from "../../components/marketing-automation/MarketingHeroImage";
+import { TITLE_HL_BRAND as HL } from "../../components/agent-title-highlight";
 
 const PATH = `${REPUTATION_AGENT_BASE}/review-generation`;
 
@@ -40,18 +48,33 @@ const FAQS = [
   },
 ];
 
-const FEATURES = [
+const FEATURES: {
+  id: string;
+  eyebrow: string;
+  title: ReactNode;
+  body: string;
+  icon: typeof UserRound;
+  reverse?: boolean;
+}[] = [
   {
     id: "customer-detection",
     eyebrow: "Customer Detection",
-    title: "It notices new customers as they happen",
+    title: (
+      <>
+        It notices new customers as they <span className={HL}>Happen</span>
+      </>
+    ),
     body: "Through your bookings, orders, point of sale, and connected tools, the agent knows who just finished dinner, picked up an order, or checked out, without anyone keeping a list.",
     icon: UserRound,
   },
   {
     id: "channel-choice",
     eyebrow: "Channel Choice",
-    title: "It picks the channel each customer answers",
+    title: (
+      <>
+        It picks the <span className={HL}>Channel</span> each customer answers
+      </>
+    ),
     body: "A text for the diner who booked by phone. An email for the online shopper with a receipt in the inbox. One invitation per customer, matched to how they already talk to you, never a blast.",
     icon: Mail,
     reverse: true,
@@ -59,45 +82,111 @@ const FEATURES = [
   {
     id: "perfect-timing",
     eyebrow: "Perfect Timing",
-    title: "It asks at the moment of the smile",
+    title: (
+      <>
+        It asks at the moment of the <span className={HL}>Smile</span>
+      </>
+    ),
     body: "The invitation lands while the experience is still warm: after dessert settles, after the package arrives and fits. One tap takes the customer straight to the review box.",
     icon: Clock3,
   },
   {
     id: "honest-by-design",
     eyebrow: "Honest By Design",
-    title: "Every ask follows the rules",
+    title: (
+      <>
+        Every ask follows the <span className={HL}>Rules</span>
+      </>
+    ),
     body: "Invitations go to every customer, with no gating and no incentives, in line with platform guidelines. The rating you build is one you can stand behind in public.",
     icon: ShieldCheck,
     reverse: true,
   },
 ];
 
-const FLOW_STEPS = [
+const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: string }[] = [
   {
     number: "1",
-    title: "A customer finishes",
+    title: (
+      <>
+        A customer <span className={HL}>Finishes</span>
+      </>
+    ),
+    railLabel: "Customer finishes",
     body: "Pays the check, picks up the order, or walks out with the bag.",
   },
   {
     number: "2",
-    title: "The agent detects the visit",
+    title: (
+      <>
+        The agent <span className={HL}>Detects</span> the visit
+      </>
+    ),
+    railLabel: "Agent detects the visit",
     body: "Through your connected tools.",
   },
   {
     number: "3",
-    title: "It selects text or email",
+    title: (
+      <>
+        It selects <span className={HL}>Text Or Email</span>
+      </>
+    ),
+    railLabel: "Selects text or email",
     body: "Based on how that customer reached you.",
   },
   {
     number: "4",
-    title: "The invitation lands warm",
+    title: (
+      <>
+        The invitation lands <span className={HL}>Warm</span>
+      </>
+    ),
+    railLabel: "Invitation lands warm",
     body: "One tap from the review box.",
   },
   {
     number: "5",
-    title: "The new review flows in",
+    title: (
+      <>
+        The new review <span className={HL}>Flows In</span>
+      </>
+    ),
+    railLabel: "Review flows in",
     body: "Straight into Review Management for a same-day thank-you, and into your analytics as fresh proof.",
+  },
+];
+
+const FLOW_VISUALS = [
+  {
+    icon: CheckCircle2,
+    panelTitle: "Visit complete",
+    panelHint: "Checkout · pickup · walk-out",
+    chips: ["Paid", "Picked up", "Left happy"],
+  },
+  {
+    icon: UserRound,
+    panelTitle: "Visit detected",
+    panelHint: "Connected tools",
+    chips: ["POS", "Booking", "CRM"],
+  },
+  {
+    icon: Mail,
+    panelTitle: "Channel chosen",
+    panelHint: "Text or email",
+    chips: ["SMS", "Email", "Right tone"],
+  },
+  {
+    icon: Sparkles,
+    panelTitle: "Warm invite",
+    panelHint: "One tap to review",
+    chips: ["Thank you", "Review link", "Same day"],
+  },
+  {
+    icon: Inbox,
+    panelTitle: "Review arrives",
+    panelHint: "Into management + analytics",
+    chips: ["Thank-you queue", "Fresh proof", "Tracked"],
   },
 ];
 
@@ -180,7 +269,15 @@ export default function ReviewGeneration() {
         <ProblemSection />
         <FeaturesSection />
         <PoweredBySection />
-        <FlowSection />
+        <AgentFlowStepsSection
+          title={
+            <>
+              From checkout to a <span className={HL}>Same-Day Thank-You</span>
+            </>
+          }
+          steps={FLOW_STEPS}
+          visuals={FLOW_VISUALS}
+        />
         <RelatedSection />
         <FaqSection />
         <div className="py-16 sm:py-20">
@@ -199,16 +296,17 @@ export default function ReviewGeneration() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-ink-50 pb-16 pt-12 sm:pb-20 sm:pt-16">
+    <section className="relative overflow-hidden border-b border-ink-100/70 pb-16 pt-12 sm:pb-20 sm:pt-16">
+      <SoftPastelBackdrop side="left" />
 
-      <Container className="relative">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-          <ScrollReveal className="max-w-xl">
+      <Container className="relative z-10">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+          <ScrollReveal className="relative z-10 max-w-xl min-w-0">
             <p className="text-sm font-medium text-ink-500">
               Review Generation
             </p>
             <h1 className="mt-4 text-[clamp(2rem,4.5vw,3.35rem)] font-medium leading-[1.08] tracking-[-0.025em] text-ink-900">
-              A steady stream of new reviews, without you asking
+              A steady stream of <span className={HL}>New Reviews</span>, without you asking
             </h1>
             <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600 sm:text-xl">
               Your happiest customers walk out every day without saying a word online. The agent
@@ -230,30 +328,11 @@ function Hero() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={80}>
-            <div className="overflow-hidden rounded-[28px] border border-ink-200 bg-ink-100 shadow-lift ring-1 ring-ink-200/60">
-              <div className="flex aspect-[4/3] flex-col justify-between p-6 sm:p-8">
-                <div className="flex items-center gap-2 text-sm font-medium text-ink-700">
-                  <MessageCircle className="h-4 w-4 text-brand-600" />
-                  Invitation · Warm moment
-                </div>
-                <div className="space-y-3">
-                  <div className="rounded-2xl border border-ink-200/80 bg-white px-4 py-3 shadow-soft">
-                    <p className="text-xs font-medium text-ink-400">Detected · Phone booking</p>
-                    <p className="mt-1 text-[15px] text-ink-700">Channel: text · Timing: after dessert</p>
-                  </div>
-                  <div className="rounded-2xl border border-brand-200/80 bg-brand-50/60 px-4 py-3">
-                    <p className="text-xs font-medium text-brand-700">Ask sent</p>
-                    <p className="mt-1 text-[15px] text-ink-700">
-                      One tap to the review box — no blast, no incentive.
-                    </p>
-                  </div>
-                </div>
-                <p className="text-xs leading-relaxed text-ink-500">
-                  Product shot placeholder · re-capture on a branded demo workspace
-                </p>
-              </div>
-            </div>
+          <ScrollReveal delay={80} className="relative min-w-0">
+            <MarketingHeroImage
+              src="/illustrations/custom/reputation-hero-review-generation.png"
+              alt="Restaurant manager sending well-timed review invitations after each visit"
+            />
           </ScrollReveal>
         </div>
       </Container>
@@ -270,7 +349,7 @@ function ProblemSection() {
             The problem
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Ratings undersell most good businesses for one simple reason
+            Ratings <span className={HL}>Undersell</span> most good businesses for one simple reason
           </h2>
           <p className="mt-5 text-lg font-normal leading-[1.75] text-ink-700 sm:text-xl">
             Satisfied customers rarely review unless invited, while the annoyed need no invitation.
@@ -294,7 +373,7 @@ function FeaturesSection() {
             What this page shows
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
-            Detect, choose channel, time the ask, stay honest
+            Detect, choose channel, time the ask, stay <span className={HL}>Honest</span>
           </h2>
         </ScrollReveal>
 
@@ -350,7 +429,7 @@ function PoweredBySection() {
             Powered by
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            The Automated Review Agent does the sending
+            The <span className={HL}>Automated Review Agent</span> does the sending
           </h2>
           <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-700 sm:text-xl">
             Inside your reputation system, this capability runs on the Automated Review Agent, the
@@ -369,47 +448,13 @@ function PoweredBySection() {
   );
 }
 
-function FlowSection() {
-  return (
-    <section className="bg-white py-16 sm:py-20">
-      <Container>
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-ink-500">The flow</p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            From checkout to a same-day thank-you
-          </h2>
-        </ScrollReveal>
-        <div className="mx-auto mt-12 max-w-4xl space-y-4 sm:mt-14">
-          {FLOW_STEPS.map((step, index) => (
-            <ScrollReveal key={step.number} delay={index * 40}>
-              <article className="rounded-3xl border border-ink-200/90 bg-white px-5 py-6 sm:px-8 sm:py-7">
-                <div className="flex gap-4 sm:gap-5">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink-100 text-sm font-medium text-ink-600 ring-1 ring-ink-200/80">
-                    {step.number}
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="text-xl font-medium tracking-tight text-ink-900">{step.title}</h3>
-                    <p className="mt-2.5 text-base font-normal leading-[1.7] text-ink-600 sm:text-lg">
-                      {step.body}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            </ScrollReveal>
-          ))}
-        </div>
-      </Container>
-    </section>
-  );
-}
-
 function RelatedSection() {
   return (
     <section className="border-t border-ink-100 bg-ink-50 py-16 sm:py-20">
       <Container>
         <ScrollReveal className="max-w-3xl">
           <h2 className="text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Do more with your Reputation & Sentiment Agent
+            Do more with your <span className={HL}>Reputation &amp; Sentiment</span> Agent
           </h2>
         </ScrollReveal>
         <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-3">

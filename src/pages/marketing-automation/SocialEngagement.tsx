@@ -9,6 +9,7 @@ import {
   ThumbsUp,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import type { ReactNode } from "react";
 import Container from "../../components/Container";
 import Button from "../../components/Button";
 import Seo from "../../components/Seo";
@@ -16,10 +17,16 @@ import FaqJsonLd from "../../components/FaqJsonLd";
 import FaqAccordion from "../../components/FaqAccordion";
 import CTASection from "../../components/CTASection";
 import ScrollReveal from "../../components/ScrollReveal";
+import AgentFlowStepsSection from "../../components/AgentFlowStepsSection";
 import {
   MARKETING_AGENT_BASE,
   MarketingAgentChrome,
 } from "../../components/marketing-automation/MarketingAgentSubNav";
+import SoftPastelBackdrop from "../../components/marketing-automation/SoftPastelBackdrop";
+import { MarketingHeroImage } from "../../components/marketing-automation/MarketingHeroImage";
+import { CapsuleFeatureImage } from "../../components/marketing-automation/CapsuleFeatureImage";
+import { TITLE_HL as HL } from "../../components/agent-title-highlight";
+import { cn } from "../../lib/cn";
 
 const PATH = `${MARKETING_AGENT_BASE}/social-engagement`;
 
@@ -42,20 +49,47 @@ const FAQS = [
   },
 ];
 
-const FEATURES = [
+const FEATURES: {
+  id: string;
+  eyebrow: string;
+  title: ReactNode;
+  body: string;
+  caption?: string;
+  buildNote?: string;
+  icon: typeof Eye;
+  imageSrc: string;
+  imageAlt: string;
+  reverse?: boolean;
+  bullets?: string[];
+  metrics?: boolean;
+}[] = [
   {
     id: "always-watching",
     eyebrow: "Always Watching",
-    title: "Nothing slips past the agent",
+    title: (
+      <>
+        Nothing slips past the <span className={HL}>Agent</span>
+      </>
+    ),
     body: "Comments, message requests, and DMs across every connected channel, monitored around the clock. The 9:40 PM question gets a 9:41 PM answer, not a next-morning apology.",
     icon: Eye,
+    imageSrc: "/illustrations/custom/marketing-engagement-watching.png",
+    imageAlt:
+      "Restaurant owner after hours while an AI agent monitors social comments and DMs across channels",
   },
   {
     id: "answers-that-sell",
     eyebrow: "Answers That Sell",
-    title: "Replies in your voice, pointed at revenue",
+    title: (
+      <>
+        Replies in your voice, pointed at <span className={HL}>Revenue</span>
+      </>
+    ),
     body: "A do-you-take-reservations gets a warm answer and the booking link. A got-this-in-size-nine gets stock status and the checkout or the right location. A compliment gets the kind of thanks that keeps the thread, and the algorithm, warm.",
     icon: Sparkles,
+    imageSrc: "/illustrations/custom/marketing-engagement-replies.png",
+    imageAlt:
+      "AI agent reply to a reservation question with a warm answer and booking link",
     reverse: true,
     bullets: [
       "Reservation questions → booking link",
@@ -66,50 +100,122 @@ const FEATURES = [
   {
     id: "knows-limits",
     eyebrow: "Knows Its Limits",
-    title: "The judgment calls come to you",
+    title: (
+      <>
+        The <span className={HL}>Judgment Calls</span> come to you
+      </>
+    ),
     body: "Complaints, refund requests, and anything sensitive escalate with full context and a drafted reply you can edit before anything posts. Your attention goes only where an owner is actually needed.",
     icon: ShieldAlert,
+    imageSrc: "/illustrations/custom/marketing-engagement-escalation.png",
+    imageAlt:
+      "Sensitive customer complaint escalated to the owner with full context and a draft reply",
   },
   {
     id: "measured",
     eyebrow: "Measured, Not Guessed",
-    title: "Engagement you can see move",
+    title: (
+      <>
+        Engagement you can <span className={HL}>See Move</span>
+      </>
+    ),
     body: "Total Views, Likes, Comments, and Clicks roll up on the Outreach dashboard across your published posts, so rising interest is visible the day it starts, and the month-end report shows which conversations turned into customers.",
     caption:
       "Engagement cards on the Outreach dashboard: Views, Likes, Comments, and Clicks across published posts.",
     buildNote:
       "The live page should also show the reply-thread view once it is captured on a branded demo workspace.",
     icon: ThumbsUp,
+    imageSrc: "/illustrations/custom/marketing-engagement-metrics.png",
+    imageAlt:
+      "Outreach engagement dashboard showing views, likes, comments, and clicks with growth trends",
     reverse: true,
     metrics: true,
   },
 ];
 
-const FLOW_STEPS = [
+const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: string }[] = [
   {
     number: "1",
-    title: "A comment or DM lands",
+    title: (
+      <>
+        A <span className={HL}>Comment Or DM</span> lands
+      </>
+    ),
+    railLabel: "Comment or DM lands",
     body: "On any connected channel, at any hour.",
   },
   {
     number: "2",
-    title: "The agent reads the intent",
+    title: (
+      <>
+        The agent reads the <span className={HL}>Intent</span>
+      </>
+    ),
+    railLabel: "Reads the intent",
     body: "Question, buying signal, praise, or complaint.",
   },
   {
     number: "3",
-    title: "A reply drafts in your voice",
+    title: (
+      <>
+        A reply drafts in your <span className={HL}>Voice</span>
+      </>
+    ),
+    railLabel: "Reply drafts in your voice",
     body: "With the right link attached: booking for the bistro, checkout or the downtown store for the boutique.",
   },
   {
     number: "4",
-    title: "It sends, or waits for you",
+    title: (
+      <>
+        It sends, or <span className={HL}>Waits For You</span>
+      </>
+    ),
+    railLabel: "Sends or waits for you",
     body: "Within moments, or in your queue if the topic is sensitive or you have kept approvals on.",
   },
   {
     number: "5",
-    title: "The interaction is logged",
+    title: (
+      <>
+        The interaction is <span className={HL}>Logged</span>
+      </>
+    ),
+    railLabel: "Interaction is logged",
     body: "Counted so the month-end report can tie conversations to outcomes.",
+  },
+];
+
+const FLOW_VISUALS = [
+  {
+    icon: MessageCircle,
+    panelTitle: "Inbox lights up",
+    panelHint: "Any channel · any hour",
+    chips: ["Comments", "DMs", "Requests"],
+  },
+  {
+    icon: Eye,
+    panelTitle: "Intent detected",
+    panelHint: "Question · buy · praise · risk",
+    chips: ["Buying signal", "Praise", "Complaint"],
+  },
+  {
+    icon: Sparkles,
+    panelTitle: "Reply in your voice",
+    panelHint: "Revenue-ready answer",
+    chips: ["Booking link", "Checkout", "Store"],
+  },
+  {
+    icon: ShieldAlert,
+    panelTitle: "Send or escalate",
+    panelHint: "Auto · or your queue",
+    chips: ["Send now", "Approve", "Edit draft"],
+  },
+  {
+    icon: ThumbsUp,
+    panelTitle: "Logged for reporting",
+    panelHint: "Tied to outcomes",
+    chips: ["Views", "Replies", "Conversions"],
   },
 ];
 
@@ -180,9 +286,21 @@ function ProductSchema() {
 
 function FeatureVisual({
   feature,
+  pillSide,
 }: {
   feature: (typeof FEATURES)[number];
+  pillSide: "left" | "right";
 }) {
+  if ("imageSrc" in feature && feature.imageSrc) {
+    return (
+      <CapsuleFeatureImage
+        src={feature.imageSrc}
+        alt={feature.imageAlt ?? ""}
+        pillSide={pillSide}
+      />
+    );
+  }
+
   if (feature.metrics) {
     return (
       <div className="overflow-hidden rounded-[28px] border border-ink-200/80 bg-white shadow-lift">
@@ -254,17 +372,28 @@ export default function SocialEngagement() {
         <Hero />
         <ProblemSection />
         <FeaturesSection />
-        <FlowSection />
+        <AgentFlowStepsSection
+          title={
+            <>
+              From comment to <span className={HL}>Customer</span>, step by step
+            </>
+          }
+          steps={FLOW_STEPS}
+          visuals={FLOW_VISUALS}
+        />
         <RelatedSection />
         <FaqSection />
-        <div className="py-16 sm:py-20">
-          <CTASection
-            title="The conversation never waits for you again."
-            description="See Social Engagement working inside your Marketing Automation Agent. Start free with $10 in credits."
-            primaryCta={{ label: "Start free", to: "/signup" }}
-            secondaryCta={{ label: "Talk to us", to: "/contact" }}
-            footnote="Free to start with $10 in credits · No credit card · Part of the Marketing Automation Agent"
-          />
+        <div className="relative overflow-hidden border-t border-ink-100/70 py-16 sm:py-20">
+          <SoftPastelBackdrop side="right" />
+          <div className="relative z-10">
+            <CTASection
+              title="The conversation never waits for you again."
+              description="See Social Engagement working inside your Marketing Automation Agent. Start free with $10 in credits."
+              primaryCta={{ label: "Start free", to: "/signup" }}
+              secondaryCta={{ label: "Talk to us", to: "/contact" }}
+              footnote="Free to start with $10 in credits · No credit card · Part of the Marketing Automation Agent"
+            />
+          </div>
         </div>
       </MarketingAgentChrome>
     </>
@@ -273,16 +402,18 @@ export default function SocialEngagement() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-ink-50 pb-16 pt-12 sm:pb-20 sm:pt-16">
+    <section className="relative overflow-hidden border-b border-ink-100/70 pb-16 pt-12 sm:pb-20 sm:pt-16">
+      <SoftPastelBackdrop side="left" />
 
-      <Container className="relative">
+      <Container className="relative z-10">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
-          <ScrollReveal className="max-w-xl">
+          <ScrollReveal className="relative z-10 max-w-xl min-w-0">
             <p className="text-sm font-medium text-ink-500">
               Social Engagement
             </p>
             <h1 className="mt-4 text-[clamp(2rem,4.5vw,3.35rem)] font-medium leading-[1.08] tracking-[-0.025em] text-ink-900">
-              Every comment answered. Every question turned into a customer.
+              Every <span className={HL}>Comment Answered</span>. Every question turned into a{" "}
+              <span className={HL}>Customer</span>.
             </h1>
             <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600 sm:text-xl">
               Interest shows up as a comment at 9:40 PM and becomes a customer, or a missed one, by
@@ -304,32 +435,11 @@ function Hero() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={80} className="relative">
-            <div className="overflow-hidden rounded-[28px] border border-ink-200 bg-ink-100 shadow-lift ring-1 ring-ink-200/60">
-              <div className="flex aspect-[4/3] flex-col justify-between p-6 sm:p-8">
-                <div className="flex items-center gap-2 text-sm font-medium text-ink-700">
-                  <MessageCircle className="h-4 w-4 text-brand-600" />
-                  Inbox · Reply thread
-                </div>
-                <div className="space-y-3">
-                  <div className="rounded-2xl border border-ink-200/80 bg-white px-4 py-3 shadow-soft">
-                    <p className="text-xs font-medium text-ink-400">9:40 PM · Comment</p>
-                    <p className="mt-1 text-[15px] text-ink-700">
-                      Do you take reservations for eight tonight?
-                    </p>
-                  </div>
-                  <div className="rounded-2xl border border-brand-200/80 bg-brand-50/60 px-4 py-3">
-                    <p className="text-xs font-medium text-brand-700">9:41 PM · Agent reply</p>
-                    <p className="mt-1 text-[15px] text-ink-700">
-                      We do. Grab a table here and we’ll have you set.
-                    </p>
-                  </div>
-                </div>
-                <p className="text-xs leading-relaxed text-ink-500">
-                  Product shot placeholder · re-capture reply-thread view on a branded demo
-                </p>
-              </div>
-            </div>
+          <ScrollReveal delay={80} className="relative min-w-0">
+            <MarketingHeroImage
+              src="/illustrations/custom/marketing-hero-social-engagement.png"
+              alt="Bistro owner reviewing an AI reply draft for a reservation question, engagement overview, and approval queue"
+            />
           </ScrollReveal>
         </div>
       </Container>
@@ -339,15 +449,15 @@ function Hero() {
 
 function ProblemSection() {
   return (
-    <section className="border-y border-ink-100 bg-ink-50/60 py-16 sm:py-20">
-      <Container>
+    <section className="relative overflow-hidden border-y border-ink-100 bg-white py-16 sm:py-20">
+      <Container className="relative z-10">
         <ScrollReveal className="mx-auto max-w-3xl">
           <p className="text-sm font-medium text-ink-500">
             The problem
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Engagement is where marketing becomes revenue, and it runs on a clock most owners cannot
-            work
+            Engagement is where marketing becomes <span className={HL}>Revenue</span>, and it runs
+            on a clock most owners cannot work
           </h2>
           <p className="mt-5 text-lg font-normal leading-[1.75] text-ink-700 sm:text-xl">
             A reservation question, a size check, a where-are-you-located: each is a buying signal
@@ -363,26 +473,44 @@ function ProblemSection() {
 
 function FeaturesSection() {
   return (
-    <section className="bg-white py-16 sm:py-24">
-      <Container>
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-ink-500">
-            What this page shows
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
-            Watching, answering, escalating, and measuring, without you living in the inbox
-          </h2>
-        </ScrollReveal>
+    <section className="relative overflow-hidden border-b border-ink-100/70">
+      <div className="relative overflow-hidden py-16 sm:pb-12 sm:pt-24">
+        <SoftPastelBackdrop side="right" />
+        <Container className="relative z-10">
+          <ScrollReveal className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-medium text-ink-500">
+              What this page shows
+            </p>
+            <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
+              Watching, answering, escalating, and measuring, without you living in the{" "}
+              <span className={HL}>Inbox</span>
+            </h2>
+          </ScrollReveal>
+        </Container>
+      </div>
 
-        <div className="mt-14 space-y-16 sm:mt-20 sm:space-y-24">
-          {FEATURES.map((feature, index) => {
-            const Icon = feature.icon;
-            const reverse = Boolean(feature.reverse);
-            return (
-              <ScrollReveal key={feature.id} delay={(index % 3) * 40}>
+      {FEATURES.map((feature, index) => {
+        const Icon = feature.icon;
+        const reverse = Boolean(feature.reverse);
+        const softBand = index % 2 === 1;
+
+        return (
+          <div
+            key={feature.id}
+            className={cn(
+              "relative overflow-hidden py-16 sm:py-24",
+              softBand ? undefined : "bg-white",
+            )}
+          >
+            {softBand ? (
+              <SoftPastelBackdrop side={index % 4 === 1 ? "left" : "right"} />
+            ) : null}
+
+            <Container className="relative z-10">
+              <ScrollReveal delay={(index % 3) * 40}>
                 <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
                   <div className={reverse ? "order-2 lg:order-1" : "order-2 lg:order-2"}>
-                    <FeatureVisual feature={feature} />
+                    <FeatureVisual feature={feature} pillSide={reverse ? "left" : "right"} />
                   </div>
                   <div className={reverse ? "order-1 lg:order-2" : "order-1 lg:order-1"}>
                     <div className="flex items-center gap-3">
@@ -415,60 +543,22 @@ function FeaturesSection() {
                   </div>
                 </div>
               </ScrollReveal>
-            );
-          })}
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-function FlowSection() {
-  return (
-    <section className="border-y border-ink-100 bg-ink-50 py-16 sm:py-20">
-      <Container>
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-ink-500">
-            The flow
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            From comment to customer, step by step
-          </h2>
-        </ScrollReveal>
-
-        <div className="mx-auto mt-12 max-w-4xl space-y-4 sm:mt-14">
-          {FLOW_STEPS.map((step, index) => (
-            <ScrollReveal key={step.number} delay={index * 40}>
-              <article className="rounded-3xl border border-ink-200/90 bg-white px-5 py-6 sm:px-8 sm:py-7">
-                <div className="flex gap-4 sm:gap-5">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink-100 text-sm font-medium text-ink-600 ring-1 ring-ink-200/80">
-                    {step.number}
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="text-xl font-medium tracking-tight text-ink-900 sm:text-[1.35rem]">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2.5 text-base font-normal leading-[1.7] text-ink-600 sm:text-lg">
-                      {step.body}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            </ScrollReveal>
-          ))}
-        </div>
-      </Container>
+            </Container>
+          </div>
+        );
+      })}
     </section>
   );
 }
 
 function RelatedSection() {
   return (
-    <section className="bg-white py-16 sm:py-20">
-      <Container>
+    <section className="relative overflow-hidden border-b border-ink-100/70 py-16 sm:py-20">
+      <SoftPastelBackdrop side="left" />
+      <Container className="relative z-10">
         <ScrollReveal className="max-w-3xl">
           <h2 className="text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Do more with your Marketing Automation Agent
+            Do more with your <span className={HL}>Marketing Automation</span> Agent
           </h2>
         </ScrollReveal>
         <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-3">

@@ -1,12 +1,17 @@
 import {
   ArrowRight,
+  Clock3,
   Globe2,
   Languages,
   ListTodo,
+  MessageCircleWarning,
+  PenLine,
   ShieldAlert,
   Sparkles,
+  Tags,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import type { ReactNode } from "react";
 import Container from "../../components/Container";
 import Button from "../../components/Button";
 import Seo from "../../components/Seo";
@@ -14,10 +19,14 @@ import FaqJsonLd from "../../components/FaqJsonLd";
 import FaqAccordion from "../../components/FaqAccordion";
 import CTASection from "../../components/CTASection";
 import ScrollReveal from "../../components/ScrollReveal";
+import AgentFlowStepsSection from "../../components/AgentFlowStepsSection";
 import {
   REPUTATION_AGENT_BASE,
   ReputationAgentChrome,
 } from "../../components/reputation-sentiment/ReputationAgentSubNav";
+import SoftPastelBackdrop from "../../components/marketing-automation/SoftPastelBackdrop";
+import { MarketingHeroImage } from "../../components/marketing-automation/MarketingHeroImage";
+import { TITLE_HL_BRAND as HL } from "../../components/agent-title-highlight";
 
 const PATH = `${REPUTATION_AGENT_BASE}/review-management`;
 
@@ -40,18 +49,33 @@ const FAQS = [
   },
 ];
 
-const FEATURES = [
+const FEATURES: {
+  id: string;
+  eyebrow: string;
+  title: ReactNode;
+  body: string;
+  icon: typeof Globe2;
+  reverse?: boolean;
+}[] = [
   {
     id: "all-platforms",
     eyebrow: "All Platforms, One Stream",
-    title: "It watches so you do not have to",
+    title: (
+      <>
+        It watches so you <span className={HL}>Do Not Have To</span>
+      </>
+    ),
     body: "Every new review across Google, Facebook, and the platforms your customers use flows into one stream the moment it posts, around the clock.",
     icon: Globe2,
   },
   {
     id: "replies-in-voice",
     eyebrow: "Replies In Your Voice",
-    title: "Fast, specific, brand-safe",
+    title: (
+      <>
+        Fast, specific, <span className={HL}>Brand-Safe</span>
+      </>
+    ),
     body: "Within minutes, praise gets a warm, specific thank-you that invites the next visit, and criticism gets acknowledgment and a path forward, never an argument. A wrong-size complaint at the boutique gets an exchange path; a long-wait complaint at the restaurant gets an honest acknowledgment and what is changing.",
     icon: Sparkles,
     reverse: true,
@@ -59,14 +83,22 @@ const FEATURES = [
   {
     id: "escalation",
     eyebrow: "Escalation",
-    title: "The critical ones come to you first",
+    title: (
+      <>
+        The critical ones come to you <span className={HL}>First</span>
+      </>
+    ),
     body: "Refund demands, safety claims, and anything sensitive route to your attention queue with full context and a drafted reply you can edit before it posts. Your judgment where it matters, the agent’s stamina everywhere else.",
     icon: ShieldAlert,
   },
   {
     id: "your-controls",
     eyebrow: "Your Controls",
-    title: "Approve-first or automatic, and always on the record",
+    title: (
+      <>
+        Approve-first or automatic, and always on the <span className={HL}>Record</span>
+      </>
+    ),
     body: "Start with every reply awaiting your tap; grant autonomy for routine responses as trust builds. Every reply the agent has ever sent in your name sits in a searchable record.",
     icon: ListTodo,
     reverse: true,
@@ -74,37 +106,99 @@ const FEATURES = [
   {
     id: "every-language",
     eyebrow: "Every Language",
-    title: "It answers in the language of the review",
+    title: (
+      <>
+        It answers in the <span className={HL}>Language</span> of the review
+      </>
+    ),
     body: "A review written in Spanish or French gets a reply in kind, in the same brand voice, so no customer is left waiting on a translation.",
     icon: Languages,
   },
 ];
 
-const FLOW_STEPS = [
+const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: string }[] = [
   {
     number: "1",
-    title: "A hard review lands at 9:42 PM",
+    title: (
+      <>
+        A hard review lands at <span className={HL}>9:42 PM</span>
+      </>
+    ),
+    railLabel: "Hard review lands",
     body: "Great food, forty-minute wait. The owner is closing; nobody is watching the review page. Except the agent.",
   },
   {
     number: "2",
-    title: "It reads sentiment and tags the issue",
+    title: (
+      <>
+        It reads <span className={HL}>Sentiment</span> and tags the issue
+      </>
+    ),
+    railLabel: "Reads sentiment",
     body: "Wait time, Friday service — within moments.",
   },
   {
     number: "3",
-    title: "A calm reply drafts in the house voice",
+    title: (
+      <>
+        A calm reply drafts in the <span className={HL}>House Voice</span>
+      </>
+    ),
+    railLabel: "Reply drafts in house voice",
     body: "Thanks for the honesty, here is what is changing, come back and let us show you.",
   },
   {
     number: "4",
-    title: "It waits in the attention queue",
+    title: (
+      <>
+        It waits in the <span className={HL}>Attention Queue</span>
+      </>
+    ),
+    railLabel: "Attention queue",
     body: "The owner approves with one tap before locking up, and the reply posts at 9:47.",
   },
   {
     number: "5",
-    title: "The issue joins the pattern",
+    title: (
+      <>
+        The issue joins the <span className={HL}>Pattern</span>
+      </>
+    ),
+    railLabel: "Issue joins the pattern",
     body: "If Friday waits keep appearing, next week’s report says so plainly. The same flow handles a boutique’s wrong-size review with an exchange link instead.",
+  },
+];
+
+const FLOW_VISUALS = [
+  {
+    icon: MessageCircleWarning,
+    panelTitle: "Review lands late",
+    panelHint: "9:42 PM · owner closing",
+    chips: ["Two-star", "After hours", "Unwatched"],
+  },
+  {
+    icon: Tags,
+    panelTitle: "Sentiment tagged",
+    panelHint: "Issue in moments",
+    chips: ["Wait time", "Friday", "Service"],
+  },
+  {
+    icon: PenLine,
+    panelTitle: "Calm reply drafted",
+    panelHint: "House voice",
+    chips: ["Thanks", "What changes", "Come back"],
+  },
+  {
+    icon: Clock3,
+    panelTitle: "Attention queue",
+    panelHint: "One-tap approve",
+    chips: ["Edit", "Approve", "Post"],
+  },
+  {
+    icon: Sparkles,
+    panelTitle: "Pattern captured",
+    panelHint: "Feeds next week's report",
+    chips: ["Themes", "Trends", "Actions"],
   },
 ];
 
@@ -186,7 +280,15 @@ export default function ReviewManagement() {
         <Hero />
         <ProblemSection />
         <FeaturesSection />
-        <FlowSection />
+        <AgentFlowStepsSection
+          title={
+            <>
+              From a 9:42 PM two-star to a <span className={HL}>9:47 Reply</span>
+            </>
+          }
+          steps={FLOW_STEPS}
+          visuals={FLOW_VISUALS}
+        />
         <RelatedSection />
         <FaqSection />
         <div className="py-16 sm:py-20">
@@ -205,16 +307,17 @@ export default function ReviewManagement() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-ink-50 pb-16 pt-12 sm:pb-20 sm:pt-16">
+    <section className="relative overflow-hidden border-b border-ink-100/70 pb-16 pt-12 sm:pb-20 sm:pt-16">
+      <SoftPastelBackdrop side="left" />
 
-      <Container className="relative">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-          <ScrollReveal className="max-w-xl">
+      <Container className="relative z-10">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+          <ScrollReveal className="relative z-10 max-w-xl min-w-0">
             <p className="text-sm font-medium text-ink-500">
               Review Management
             </p>
             <h1 className="mt-4 text-[clamp(2rem,4.5vw,3.35rem)] font-medium leading-[1.08] tracking-[-0.025em] text-ink-900">
-              Every review answered well, even the ones that sting
+              Every review <span className={HL}>Answered Well</span>, even the ones that sting
             </h1>
             <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600 sm:text-xl">
               A review is a public conversation with hundreds of silent readers. The agent makes
@@ -236,32 +339,11 @@ function Hero() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={80}>
-            <div className="overflow-hidden rounded-[28px] border border-ink-200 bg-ink-100 shadow-lift ring-1 ring-ink-200/60">
-              <div className="flex aspect-[4/3] flex-col justify-between p-6 sm:p-8">
-                <div className="flex items-center gap-2 text-sm font-medium text-ink-700">
-                  <ShieldAlert className="h-4 w-4 text-brand-600" />
-                  Attention queue · 9:42 PM
-                </div>
-                <div className="space-y-3">
-                  <div className="rounded-2xl border border-ink-200/80 bg-white px-4 py-3 shadow-soft">
-                    <p className="text-xs font-medium text-ink-400">2★ · Wait time · Friday</p>
-                    <p className="mt-1 text-[15px] text-ink-700">
-                      Great food, forty-minute wait.
-                    </p>
-                  </div>
-                  <div className="rounded-2xl border border-brand-200/80 bg-brand-50/60 px-4 py-3">
-                    <p className="text-xs font-medium text-brand-700">Draft ready · awaiting you</p>
-                    <p className="mt-1 text-[15px] text-ink-700">
-                      Thanks for the honesty — here’s what is changing.
-                    </p>
-                  </div>
-                </div>
-                <p className="text-xs leading-relaxed text-ink-500">
-                  Product shot placeholder · approval posts at 9:47 in the story flow
-                </p>
-              </div>
-            </div>
+          <ScrollReveal delay={80} className="relative min-w-0">
+            <MarketingHeroImage
+              src="/illustrations/custom/reputation-hero-review-management.png"
+              alt="Boutique owner replying to reviews with AI drafts and fast response metrics"
+            />
           </ScrollReveal>
         </div>
       </Container>
@@ -278,7 +360,7 @@ function ProblemSection() {
             The problem
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Every unanswered review costs twice
+            Every unanswered review <span className={HL}>Costs Twice</span>
           </h2>
           <p className="mt-5 text-lg font-normal leading-[1.75] text-ink-700 sm:text-xl">
             The customer who wrote it stays unhappy, and everyone who reads it afterward learns that
@@ -302,7 +384,7 @@ function FeaturesSection() {
             What this page shows
           </p>
           <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
-            Watch, reply, escalate, control — in every language
+            Watch, reply, escalate, control — in every <span className={HL}>Language</span>
           </h2>
         </ScrollReveal>
 
@@ -349,47 +431,13 @@ function FeaturesSection() {
   );
 }
 
-function FlowSection() {
-  return (
-    <section className="border-y border-ink-100 bg-ink-50 py-16 sm:py-20">
-      <Container>
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-ink-500">The flow</p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            From a 9:42 PM two-star to a 9:47 reply
-          </h2>
-        </ScrollReveal>
-        <div className="mx-auto mt-12 max-w-4xl space-y-4 sm:mt-14">
-          {FLOW_STEPS.map((step, index) => (
-            <ScrollReveal key={step.number} delay={index * 40}>
-              <article className="rounded-3xl border border-ink-200/90 bg-white px-5 py-6 sm:px-8 sm:py-7">
-                <div className="flex gap-4 sm:gap-5">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink-100 text-sm font-medium text-ink-600 ring-1 ring-ink-200/80">
-                    {step.number}
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="text-xl font-medium tracking-tight text-ink-900">{step.title}</h3>
-                    <p className="mt-2.5 text-base font-normal leading-[1.7] text-ink-600 sm:text-lg">
-                      {step.body}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            </ScrollReveal>
-          ))}
-        </div>
-      </Container>
-    </section>
-  );
-}
-
 function RelatedSection() {
   return (
     <section className="bg-white py-16 sm:py-20">
       <Container>
         <ScrollReveal className="max-w-3xl">
           <h2 className="text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Do more with your Reputation & Sentiment Agent
+            Do more with your <span className={HL}>Reputation &amp; Sentiment</span> Agent
           </h2>
         </ScrollReveal>
         <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-3">

@@ -4,10 +4,7 @@ import { Megaphone } from "lucide-react";
 import Container from "../Container";
 import { cn } from "../../lib/cn";
 import { isProductChromeCompact } from "../../lib/productChrome";
-import {
-  MarketingPalettePicker,
-  MarketingPaletteProvider,
-} from "./MarketingPalette";
+import { MarketingPaletteProvider } from "./MarketingPalette";
 
 export const MARKETING_AGENT_BASE = "/agents/marketing-automation";
 
@@ -60,7 +57,7 @@ export function MarketingAgentSubNav() {
             to={MARKETING_AGENT_BASE}
             className="inline-flex shrink-0 items-center gap-2.5 text-ink-900"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-[color-mix(in_srgb,var(--marketing-accent)_12%,white)] text-[var(--marketing-accent)] ring-1 ring-[color-mix(in_srgb,var(--marketing-accent)_25%,transparent)]">
+            <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-50 text-brand-600 ring-1 ring-brand-200/80">
               <Megaphone className="h-4 w-4" strokeWidth={2} />
             </span>
             <span className="hidden text-[15px] font-medium tracking-tight sm:inline">
@@ -96,7 +93,7 @@ export function MarketingAgentSubNav() {
                     <span
                       aria-hidden
                       className={cn(
-                        "absolute inset-x-2.5 bottom-0 h-[3px] rounded-full bg-[linear-gradient(90deg,var(--marketing-p1),var(--marketing-p2),var(--marketing-p3),var(--marketing-p4))] transition-opacity duration-200 sm:inset-x-3.5",
+                        "absolute inset-x-2.5 bottom-0 h-[3px] rounded-full bg-brand-600 transition-opacity duration-200 sm:inset-x-3.5",
                         active ? "opacity-100" : "opacity-0",
                       )}
                     />
@@ -104,8 +101,6 @@ export function MarketingAgentSubNav() {
                 );
               })}
             </nav>
-
-            <MarketingPalettePicker />
           </div>
         </div>
       </Container>

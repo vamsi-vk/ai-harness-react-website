@@ -23,14 +23,14 @@ import {
   MARKETING_AGENT_BASE,
   MarketingAgentChrome,
 } from "../components/marketing-automation/MarketingAgentSubNav";
+import SoftPastelBackdrop from "../components/marketing-automation/SoftPastelBackdrop";
+import { MarketingHeroImage } from "../components/marketing-automation/MarketingHeroImage";
+import { TITLE_HL as HL } from "../components/agent-title-highlight";
 import { Link } from "react-router-dom";
 import { cn } from "../lib/cn";
 
-/** Dynamic palette tokens — set by MarketingPaletteProvider CSS vars */
-const PALETTE_HIGHLIGHT =
-  "bg-[linear-gradient(105deg,var(--marketing-p1)_0%,var(--marketing-p2)_38%,var(--marketing-p3)_70%,var(--marketing-p4)_100%)] bg-clip-text text-transparent";
-const PALETTE_EYEBROW = "text-[color-mix(in_srgb,var(--marketing-accent)_80%,transparent)]";
-const PALETTE_ACCENT = "text-[var(--marketing-accent)]";
+const PALETTE_EYEBROW = "text-brand-600";
+const PALETTE_ACCENT = "text-brand-600";
 
 /** Fixed brand CTAs for this page — do not follow the palette picker */
 const MARKETING_BTN_PRIMARY =
@@ -79,8 +79,8 @@ const STEPS: Step[] = [
     number: "1",
     title: (
       <>
-        Connect your <span className={PALETTE_HIGHLIGHT}>Channels</span> and teach it your{" "}
-        <span className={PALETTE_HIGHLIGHT}>Voice</span>
+        Connect your <span className={HL}>Channels</span> and teach it your{" "}
+        <span className={HL}>Voice</span>
       </>
     ),
     body: "Link Facebook, Instagram, LinkedIn, X, TikTok, and YouTube once from the Outreach tab. The agent studies what you have already published, your menu or catalog, your offers, and how you talk to customers, so the bistro sounds like the bistro and the boutique sounds like the boutique.",
@@ -94,7 +94,7 @@ const STEPS: Step[] = [
     number: "2",
     title: (
       <>
-        It <span className={PALETTE_HIGHLIGHT}>Plans the Month</span> before you ask
+        It <span className={HL}>Plans the Month</span> before you ask
       </>
     ),
     body: "Give it a goal in one line (fill Tuesday nights, sell through the summer line) and the agent drafts a themed plan: posts, campaign arcs, offers, and publish times matched to when your customers actually decide. Lunch scrollers pick tonight’s table; weekend browsers pick Saturday’s errand.",
@@ -108,8 +108,8 @@ const STEPS: Step[] = [
     number: "3",
     title: (
       <>
-        You approve in <span className={PALETTE_HIGHLIGHT}>Minutes</span>, not{" "}
-        <span className={PALETTE_HIGHLIGHT}>Evenings</span>
+        You approve in <span className={HL}>Minutes</span>, not{" "}
+        <span className={HL}>Evenings</span>
       </>
     ),
     body: "Everything lands as drafts on your calendar. The bistro owner swaps one photo and one price; the boutique owner reorders the launch sequence. Tap approve, and that is the marketing work for the month, about twenty minutes of it.",
@@ -123,7 +123,7 @@ const STEPS: Step[] = [
     number: "4",
     title: (
       <>
-        Posts <span className={PALETTE_HIGHLIGHT}>Publish Themselves</span> at the right time
+        Posts <span className={HL}>Publish Themselves</span> at the right time
       </>
     ),
     body: "Approved posts flow to the Content Calendar and go out across every connected channel automatically, with Best Time to Post choosing the slot when you have not. Nothing depends on anyone remembering.",
@@ -131,7 +131,7 @@ const STEPS: Step[] = [
     visual: "image",
     imageSrc: "/illustrations/custom/marketing-publish-calendar.png",
     imageAlt:
-      "Content calendar with scheduled publish dates marked, showing posts going out at the right time",
+      "Desk calendar with scheduled social posts and a paper airplane publishing to Instagram, Facebook, X, LinkedIn, and YouTube",
     link: {
       label: "See exactly how posts get made, scheduled, and published",
       to: `${MARKETING_AGENT_BASE}/post-creation-publishing`,
@@ -143,7 +143,7 @@ const STEPS: Step[] = [
     title: (
       <>
         Every comment, question, and DM gets{" "}
-        <span className={PALETTE_HIGHLIGHT}>Answered</span>
+        <span className={HL}>Answered</span>
       </>
     ),
     body: "Do you take reservations for eight? Is this in a size nine downtown? The agent replies in moments, in your voice, and routes buying questions to your booking link, your checkout, or the right location. Anything sensitive comes to you first with a drafted reply.",
@@ -162,8 +162,8 @@ const STEPS: Step[] = [
     number: "6",
     title: (
       <>
-        <span className={PALETTE_HIGHLIGHT}>Campaigns</span> run as{" "}
-        <span className={PALETTE_HIGHLIGHT}>One Motion</span>
+        <span className={HL}>Campaigns</span> run as{" "}
+        <span className={HL}>One Motion</span>
       </>
     ),
     body: "A weekend special, a product drop, a festival promo: the agent generates the whole arc (teasers, countdowns, launch posts, and reminders) and schedules it across the calendar in a single pass.",
@@ -177,7 +177,7 @@ const STEPS: Step[] = [
     number: "7",
     title: (
       <>
-        You see what <span className={PALETTE_HIGHLIGHT}>Grew Revenue</span>
+        You see what <span className={HL}>Grew Revenue</span>
       </>
     ),
     body: "Views, likes, comments, and clicks roll into a plain-English report: which posts drove bookings, calls, and walk-ins, what flopped, and next month’s plan already drafted from what worked.",
@@ -185,7 +185,7 @@ const STEPS: Step[] = [
     visual: "image",
     imageSrc: "/illustrations/custom/marketing-grew-revenue.png",
     imageAlt:
-      "Team reviewing a sales and performance report that shows which activity grew revenue",
+      "Team collaborating in a bright workspace, planning the next month from what drove revenue",
     link: {
       label: "Explore the reporting that closes the loop",
       to: `${MARKETING_AGENT_BASE}/social-analytics`,
@@ -200,7 +200,7 @@ const MONTH_POINTS = [
     icon: Clock3,
     label: (
       <>
-        Your <span className={PALETTE_HIGHLIGHT}>Time</span>
+        Your <span className={HL}>Time</span>
       </>
     ),
     body: "About twenty minutes to approve the month, plus any moment you choose to step in.",
@@ -210,7 +210,7 @@ const MONTH_POINTS = [
     icon: CalendarDays,
     label: (
       <>
-        Your <span className={PALETTE_HIGHLIGHT}>Agent</span>
+        Your <span className={HL}>Agent</span>
       </>
     ),
     body: "The calendar planned and filled, every post published on schedule, every comment and DM answered, and a report that ties the activity back to bookings, walk-ins, and sales.",
@@ -220,7 +220,7 @@ const MONTH_POINTS = [
     icon: MessageCircle,
     label: (
       <>
-        Your <span className={PALETTE_HIGHLIGHT}>Customers</span>
+        Your <span className={HL}>Customers</span>
       </>
     ),
     body: "A brand that shows up every single day, answers within moments, and always knows what is on this weekend.",
@@ -296,15 +296,15 @@ function Hero() {
       <SoftPastelBackdrop side="left" />
 
       <Container className="relative z-10">
-        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)] lg:gap-8 xl:gap-10">
-          <ScrollReveal className="min-w-0">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
+          <ScrollReveal className="relative z-10 max-w-xl min-w-0">
             <p className={cn("text-sm font-medium", PALETTE_EYEBROW)}>
               Marketing Automation Agent
             </p>
             <h1 className="mt-4 text-[clamp(2rem,4.5vw,3.35rem)] font-medium leading-[1.08] tracking-[-0.025em] text-ink-900">
               The AI agent that runs your{" "}
-              <span className={PALETTE_HIGHLIGHT}>Marketing</span> while you run the{" "}
-              <span className={PALETTE_HIGHLIGHT}>Business</span>
+              <span className={HL}>Marketing</span> while you run the{" "}
+              <span className={HL}>Business</span>
             </h1>
             <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600 sm:text-xl">
               Planning, posting, replying, and reporting, handled end to end by an agent that learns
@@ -326,319 +326,16 @@ function Hero() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={80} className="relative mx-auto w-full min-w-0 max-w-lg lg:mx-0 lg:max-w-none">
-            <HeroOverlapVisual />
+          <ScrollReveal delay={80} className="relative min-w-0 lg:-ml-4 xl:-ml-6">
+            <MarketingHeroImage
+              src="/illustrations/custom/marketing-hero-main.png"
+              alt="Café owner managing social marketing with AI-powered calendar, campaign suggestions, and post previews"
+              className="aspect-[5/4] h-auto min-h-[15rem] w-full object-cover object-[40%_center] sm:min-h-[17rem] lg:aspect-[4/3] lg:min-h-[20rem] xl:min-h-[22rem]"
+            />
           </ScrollReveal>
         </div>
       </Container>
     </section>
-  );
-}
-
-function HeroOverlapVisual() {
-  return (
-    <div className="relative mx-auto w-full max-w-[34rem] lg:max-w-none">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-6 left-2 h-40 w-40 rounded-full blur-3xl sm:-top-8 sm:left-4 sm:h-52 sm:w-52"
-        style={{ background: "color-mix(in srgb, var(--marketing-p1) 8%, transparent)" }}
-      />
-
-      {/* Main photo with status band */}
-      <div className="relative z-0 ml-[12%] mt-10 sm:ml-[14%] sm:mt-12">
-        <SoftGradientFrame>
-          <div>
-            <div className="overflow-hidden">
-              <img
-                src="/illustrations/custom/marketing-collage-main-top.jpg"
-                alt="Running marketing from laptop and phone while managing the business"
-                className="aspect-[16/10] h-auto w-full object-cover object-[center_40%]"
-                loading="eager"
-                decoding="async"
-              />
-            </div>
-
-            <div className="flex items-center gap-3 bg-white px-4 py-2.5 sm:gap-3.5 sm:px-5 sm:py-3">
-              <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,var(--marketing-p1),var(--marketing-p3))] text-white sm:h-7 sm:w-7">
-                <CheckCircle2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={2.5} />
-              </span>
-              <span className="h-1.5 flex-1 rounded-full bg-[linear-gradient(90deg,color-mix(in_srgb,var(--marketing-p1)_18%,white),color-mix(in_srgb,var(--marketing-p3)_18%,white))]" />
-            </div>
-          </div>
-        </SoftGradientFrame>
-      </div>
-
-      {/* Top-left floating photo */}
-      <div className="absolute top-0 left-0 z-20 w-[min(48%,13.5rem)] sm:w-[min(44%,14.5rem)] lg:w-[min(40%,15.5rem)]">
-        <SoftGradientFrame
-          className="rounded-2xl shadow-[0_18px_40px_-18px_rgba(129,140,248,0.45)]"
-          innerClassName="rounded-[calc(1rem-2px)]"
-        >
-          <div className="p-1.5 sm:p-2">
-            <div className="overflow-hidden rounded-lg sm:rounded-xl">
-              <img
-                src="/illustrations/custom/marketing-collage-float.jpg"
-                alt=""
-                aria-hidden
-                className="aspect-[5/4] h-auto w-full object-cover object-[center_30%]"
-                loading="eager"
-                decoding="async"
-              />
-            </div>
-          </div>
-        </SoftGradientFrame>
-      </div>
-
-      {/* Bottom-left circular inset — local cafe / SMB */}
-      <div
-        className="absolute bottom-2 left-[2%] z-20 h-[4.75rem] w-[4.75rem] rounded-full p-[2px] sm:bottom-3 sm:left-[4%] sm:h-[5.75rem] sm:w-[5.75rem] sm:p-[3px]"
-        style={{
-          background:
-            "linear-gradient(to bottom right, color-mix(in srgb, var(--marketing-p1) 40%, transparent), color-mix(in srgb, var(--marketing-p2) 35%, transparent), color-mix(in srgb, var(--marketing-p4) 40%, transparent))",
-          boxShadow:
-            "0 12px 24px -14px color-mix(in srgb, var(--marketing-accent) 22%, transparent)",
-        }}
-      >
-        <div className="h-full w-full overflow-hidden rounded-full ring-2 ring-white">
-          <img
-            src="/illustrations/custom/hero-cafe.png"
-            alt=""
-            aria-hidden
-            className="h-full w-full object-cover object-center"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function BusinessGrowthVisual({ compact = false }: { compact?: boolean }) {
-  return (
-    <div
-      className={cn(
-        "overflow-hidden bg-white",
-        compact
-          ? "rounded-[calc(1.75rem-4px)]"
-          : "rounded-[28px] border-2 border-ink-200 bg-ink-50 p-5 shadow-soft ring-1 ring-ink-100 sm:p-7",
-      )}
-    >
-      <figure
-        className={cn(
-          "overflow-hidden bg-white",
-          compact
-            ? "rounded-[calc(1.75rem-4px)] px-2.5 py-3 sm:px-3 sm:py-3.5"
-            : "rounded-2xl border border-ink-100 px-4 py-6 shadow-soft sm:px-6 sm:py-7",
-        )}
-        aria-label="Business growth over time chart"
-      >
-        <figcaption
-          className={cn(
-            "text-center font-semibold tracking-[-0.02em] text-ink-900",
-            compact ? "text-xs sm:text-sm" : "text-[1.05rem] sm:text-lg",
-          )}
-        >
-          Business Growth Over Time
-        </figcaption>
-
-        <div
-          className={cn(
-            "grid grid-cols-2",
-            compact ? "mt-2.5 gap-2" : "mt-5 gap-3 sm:mt-6 sm:gap-4",
-          )}
-        >
-          <div className="text-left">
-            <p
-              className={cn(
-                "font-semibold text-ink-900",
-                compact ? "text-[10px] leading-tight sm:text-[11px]" : "text-sm sm:text-[0.95rem]",
-              )}
-            >
-              Inconsistent Marketing
-            </p>
-            <p
-              className={cn(
-                "leading-snug text-ink-500",
-                compact ? "mt-0.5 text-[9px] sm:text-[10px]" : "mt-0.5 text-xs sm:text-sm",
-              )}
-            >
-              Lost reach, missed opportunities
-            </p>
-          </div>
-          <div className="text-right">
-            <p
-              className={cn(
-                "font-semibold text-sky-500",
-                compact ? "text-[10px] leading-tight sm:text-[11px]" : "text-sm sm:text-[0.95rem]",
-              )}
-            >
-              With Marketing Automation Agent
-            </p>
-            <p
-              className={cn(
-                "leading-snug text-ink-500",
-                compact ? "mt-0.5 text-[9px] sm:text-[10px]" : "mt-0.5 text-xs sm:text-sm",
-              )}
-            >
-              Consistent action, growth on autopilot
-            </p>
-          </div>
-        </div>
-
-        <svg
-          viewBox="0 0 560 220"
-          className={cn("h-auto w-full", compact ? "mt-2" : "mt-4 sm:mt-5")}
-          role="img"
-          aria-hidden
-        >
-          <defs>
-            <linearGradient id="growth-fill" x1="296" y1="40" x2="296" y2="200" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.24" />
-              <stop offset="55%" stopColor="#3B82F6" stopOpacity="0.09" />
-              <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-
-          {/* Dotted divider */}
-          <line
-            x1="296"
-            y1="18"
-            x2="296"
-            y2="198"
-            stroke="#D1D5DB"
-            strokeWidth="2"
-            strokeDasharray="3 7"
-            strokeLinecap="round"
-          />
-
-          {/* Rising area fill (right side) */}
-          <path
-            d="M296 160
-               C316 158 326 138 342 122
-               C360 100 374 86 394 76
-               C420 62 440 50 464 42
-               L520 28
-               L520 200
-               L296 200
-               Z"
-            fill="url(#growth-fill)"
-          />
-
-          {/* Declining curve (left) */}
-          <path
-            d="M36 78
-               C58 58 78 96 98 88
-               C118 80 132 118 152 108
-               C172 98 186 132 206 128
-               C226 124 248 158 272 160
-               C284 161 290 160 296 160"
-            fill="none"
-            stroke="#9CA3AF"
-            strokeWidth="5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* Rising curve (right) */}
-          <path
-            d="M296 160
-               C316 158 326 138 342 122
-               C360 100 374 86 394 76
-               C420 62 440 50 464 42
-               L508 30"
-            fill="none"
-            stroke="#2563EB"
-            strokeWidth="5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* Arrow head */}
-          <path
-            d="M500 20 L528 26 L505 44 Z"
-            fill="#2563EB"
-          />
-
-          {/* Turning-point badge */}
-          <circle cx="296" cy="160" r="22" fill="#6B7280" />
-          <circle cx="296" cy="160" r="22" fill="none" stroke="#fff" strokeWidth="3" />
-          <text
-            x="296"
-            y="168"
-            textAnchor="middle"
-            fill="#fff"
-            fontSize="26"
-            fontWeight="700"
-            fontFamily="Poppins, system-ui, sans-serif"
-          >
-            !
-          </text>
-        </svg>
-      </figure>
-    </div>
-  );
-}
-
-function SoftPastelBackdrop({ side = "left" }: { side?: "left" | "right" }) {
-  const primaryGlow =
-    side === "right"
-      ? "right-[-12%] left-auto top-[8%]"
-      : "left-[-10%] top-[6%]";
-  const secondaryGlow =
-    side === "right"
-      ? "left-[-6%] right-auto bottom-[8%]"
-      : "right-[-8%] bottom-[10%]";
-  const tertiaryGlow =
-    side === "right"
-      ? "right-[18%] top-[42%]"
-      : "left-[22%] top-[38%]";
-
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      {/* AI-Harness theme ground */}
-      <div className="absolute inset-0 bg-ink-50" />
-      <div className="absolute inset-0 bg-brand-50/40" />
-
-      {/* Dot grid — ink neutrals */}
-      <div
-        className="absolute inset-0 opacity-[0.5]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, color-mix(in srgb, var(--color-ink-300) 55%, transparent) 1px, transparent 1.2px)",
-          backgroundSize: "22px 22px",
-        }}
-      />
-
-      {/* Soft brand purple glows only */}
-      <div
-        className={cn("absolute h-[70%] w-[55%] rounded-full blur-3xl", primaryGlow)}
-        style={{
-          background:
-            "radial-gradient(circle, color-mix(in srgb, var(--color-brand-200) 45%, transparent) 0%, color-mix(in srgb, var(--color-brand-100) 30%, transparent) 40%, transparent 72%)",
-        }}
-      />
-      <div
-        className={cn("absolute h-[55%] w-[48%] rounded-full blur-3xl", secondaryGlow)}
-        style={{
-          background:
-            "radial-gradient(circle, color-mix(in srgb, var(--color-brand-100) 50%, transparent) 0%, color-mix(in srgb, var(--color-brand-50) 35%, transparent) 45%, transparent 70%)",
-        }}
-      />
-      <div
-        className={cn("absolute h-[36%] w-[32%] rounded-full blur-2xl", tertiaryGlow)}
-        style={{
-          background:
-            "radial-gradient(circle, color-mix(in srgb, var(--color-brand-200) 28%, transparent) 0%, transparent 68%)",
-        }}
-      />
-
-      {/* Tiny sparkle accents — brand */}
-      <span className="absolute top-[14%] left-[8%] h-1.5 w-1.5 rotate-45 rounded-[1px] bg-brand-300/50" />
-      <span className="absolute top-[22%] right-[12%] h-1 w-1 rotate-45 rounded-[0.5px] bg-brand-200/45" />
-      <span className="absolute bottom-[18%] left-[18%] h-1 w-1 rotate-45 rounded-[0.5px] bg-brand-300/35" />
-      <span className="absolute right-[22%] bottom-[28%] h-1.5 w-1.5 rotate-45 rounded-[1px] bg-brand-200/50" />
-    </div>
   );
 }
 
@@ -721,8 +418,8 @@ function ProblemSection() {
                 The problem
               </p>
               <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-                <span className={PALETTE_HIGHLIGHT}>Marketing</span> is the{" "}
-                <span className={PALETTE_HIGHLIGHT}>Growth Engine</span> most local
+                <span className={HL}>Marketing</span> is the{" "}
+                <span className={HL}>Growth Engine</span> most local
                 businesses cannot keep running
               </h2>
               <p className="mt-5 text-lg font-normal leading-[1.75] text-ink-700 sm:text-xl">
@@ -742,32 +439,13 @@ function ProblemSection() {
 
 function ProblemCollageVisual() {
   return (
-    <div className="relative mx-auto w-full max-w-xl pb-16 lg:max-w-none sm:pb-20">
-      {/* Soft white stage card */}
-      <div className="absolute inset-x-0 top-4 bottom-8 rounded-[2rem] bg-white/70 shadow-[0_25px_60px_-30px_rgba(129,140,248,0.45)] ring-1 ring-white/80 backdrop-blur-sm sm:top-6 sm:bottom-10 sm:rounded-[2.25rem]" />
-
-      {/* Main — social media marketing graphic */}
-      <div className="relative z-0 ml-[4%] mt-8 sm:ml-[6%] sm:mt-10">
-        <SoftGradientFrame>
-          <div className="overflow-hidden rounded-[calc(1.75rem-2px)]">
-            <img
-              src="/illustrations/custom/marketing-problem-social.png"
-              alt="Social media marketing across Instagram, Facebook, LinkedIn, TikTok, YouTube, and more"
-              className="aspect-[5/6] h-auto w-full object-cover object-[center_12%] sm:aspect-[4/5]"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </SoftGradientFrame>
-      </div>
-
-      {/* Business Growth chart — further outside so more bg photo shows */}
-      <div className="absolute bottom-[10%] left-[-20%] z-20 w-[min(72%,18.5rem)] sm:bottom-[14%] sm:left-[-24%] sm:w-[min(68%,20rem)] lg:left-[-26%] lg:w-[min(64%,21.5rem)]">
-        <SoftGradientFrame>
-          <BusinessGrowthVisual compact />
-        </SoftGradientFrame>
-      </div>
-    </div>
+    <img
+      src="/illustrations/custom/marketing-problem-hero.png"
+      alt="Café owner juggling a quiet social calendar, unanswered comments, and the growth that marketing automation restores"
+      className="aspect-[4/3] h-auto w-full object-cover object-center"
+      loading="lazy"
+      decoding="async"
+    />
   );
 }
 
@@ -1199,7 +877,7 @@ function HowItWorksSection() {
             <p className={cn("text-sm font-medium", PALETTE_EYEBROW)}>How it works</p>
             <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
               How the agent runs your{" "}
-              <span className={PALETTE_HIGHLIGHT}>Marketing</span>, start to finish
+              <span className={HL}>Marketing</span>, start to finish
             </h2>
             <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600">
               One agent, one connected workflow, from the first idea to the revenue report. A
@@ -1287,7 +965,7 @@ function MonthLookSection() {
             <p className={cn("text-sm font-medium", PALETTE_EYEBROW)}>A typical month</p>
             <h2 className="mt-3 max-w-xl text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
               What a month looks like with the{" "}
-              <span className={PALETTE_HIGHLIGHT}>Agent</span> on the team
+              <span className={HL}>Agent</span> on the team
             </h2>
           </div>
           <Link to="/demo" className={MARKETING_BTN_OUTLINE}>
@@ -1334,7 +1012,7 @@ function DashboardSection() {
               On your AI-Harness dashboard
             </p>
             <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-              Marketing lives under the <span className={PALETTE_HIGHLIGHT}>Outreach</span>{" "}
+              Marketing lives under the <span className={HL}>Outreach</span>{" "}
               tab
             </h2>
             <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600">
@@ -1356,51 +1034,16 @@ function DashboardSection() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-sm leading-relaxed text-ink-500">
-              Build note: use this as the hero-adjacent product shot and annotate the three zones
-              before publish. Re-capture on a branded demo workspace; current capture shows
-              placeholder metrics.
-            </p>
           </ScrollReveal>
 
           <ScrollReveal delay={80} className="order-1 lg:order-2">
-            <SoftGradientFrame>
-              <div className="overflow-hidden rounded-[calc(1.75rem-2px)] bg-ink-50/80">
-                <div className="border-b border-ink-100 bg-white/90 px-5 py-4">
-                  <p className="text-sm font-medium text-ink-800">Outreach</p>
-                  <p className="mt-1 text-xs text-ink-500">
-                    Post Overview · Engagement · Content Calendar
-                  </p>
-                </div>
-                <div className="space-y-4 p-5">
-                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                    {["Scheduled", "Published", "Drafts", "Failed"].map((label) => (
-                      <div
-                        key={label}
-                        className="rounded-2xl border border-violet-100/80 bg-white px-3 py-3 shadow-[0_8px_20px_-16px_rgba(129,140,248,0.45)]"
-                      >
-                        <p className="text-[11px] font-medium text-ink-400 uppercase">{label}</p>
-                        <p className="mt-1 text-xl font-medium text-ink-900">-</p>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                    {["Views", "Likes", "Comments", "Clicks"].map((label) => (
-                      <div
-                        key={label}
-                        className="rounded-2xl border border-sky-100/80 bg-white px-3 py-3 shadow-[0_8px_20px_-16px_rgba(56,189,248,0.35)]"
-                      >
-                        <p className="text-[11px] font-medium text-ink-400 uppercase">{label}</p>
-                        <p className="mt-1 text-xl font-medium text-ink-900">-</p>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex h-40 items-center justify-center rounded-2xl border border-dashed border-violet-200/80 bg-gradient-to-br from-[#F5F3FF] via-white to-[#EFF6FF] text-sm text-ink-500">
-                    Content Calendar preview
-                  </div>
-                </div>
-              </div>
-            </SoftGradientFrame>
+            <img
+              src="/illustrations/custom/marketing-outreach-dashboard.png"
+              alt="Café owner reviewing Outreach Post Overview, engagement metrics, and content calendar"
+              className="aspect-[4/3] h-auto w-full object-cover object-center"
+              loading="lazy"
+              decoding="async"
+            />
           </ScrollReveal>
         </div>
       </Container>
@@ -1447,7 +1090,7 @@ function SoftCtaSection() {
             <div className="relative z-10 mx-auto max-w-3xl text-center">
               <p className={cn("text-sm font-medium", PALETTE_EYEBROW)}>Ready when you are</p>
               <h2 className="mt-3 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-                Your <span className={PALETTE_HIGHLIGHT}>Marketing</span>, running every
+                Your <span className={HL}>Marketing</span>, running every
                 day. Your evenings, back.
               </h2>
               <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600">
