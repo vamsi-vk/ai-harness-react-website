@@ -339,34 +339,6 @@ function FeatureVisual({
     );
   }
 
-  if (feature.placeholder) {
-    return (
-      <div className="overflow-hidden rounded-[28px] border border-ink-200 bg-ink-100 shadow-lift ring-1 ring-ink-200/60">
-        <div className="flex aspect-[4/3] flex-col justify-between p-6 sm:p-8">
-          <div className="flex items-center gap-2 text-sm font-medium text-ink-700">
-            <Sparkles className="h-4 w-4 text-brand-600" />
-            Create Post · Composer
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            {feature.placeholder.map((label) => (
-              <div
-                key={label}
-                className="rounded-2xl border border-ink-200/80 bg-white px-4 py-3 shadow-soft"
-              >
-                <p className="text-xs font-medium tracking-wide text-ink-400 uppercase">{label}</p>
-                <p className="mt-1 text-xl font-medium tracking-tight text-ink-900">-</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-xs leading-relaxed text-ink-500">
-            {feature.caption ? <p>{feature.caption}</p> : null}
-            {feature.buildNote ? <p className="mt-1.5">{feature.buildNote}</p> : null}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   const Icon = feature.icon;
   return (
     <div className="overflow-hidden rounded-[28px] border border-ink-200/80 bg-ink-50 shadow-soft">
