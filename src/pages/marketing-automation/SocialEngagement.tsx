@@ -17,7 +17,7 @@ import FaqJsonLd from "../../components/FaqJsonLd";
 import FaqAccordion from "../../components/FaqAccordion";
 import CTASection from "../../components/CTASection";
 import ScrollReveal from "../../components/ScrollReveal";
-import AgentFlowStepsSection from "../../components/AgentFlowStepsSection";
+import AgentFlowStepsSection, { type AgentFlowStep } from "../../components/AgentFlowStepsSection";
 import {
   MARKETING_AGENT_BASE,
   MarketingAgentChrome,
@@ -133,7 +133,7 @@ const FEATURES: {
   },
 ];
 
-const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: string }[] = [
+const FLOW_STEPS: AgentFlowStep[] = [
   {
     number: "1",
     title: (
@@ -143,6 +143,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Comment or DM lands",
     body: "On any connected channel, at any hour.",
+    imageSrc: "/illustrations/custom/marketing-social-engagement-flow-01.png",
+    imageAlt: "New comment or DM arrives in the social inbox",
+    accent: "violet",
   },
   {
     number: "2",
@@ -153,6 +156,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Reads the intent",
     body: "Question, buying signal, praise, or complaint.",
+    imageSrc: "/illustrations/custom/marketing-social-engagement-flow-02.png",
+    imageAlt: "Intent detection for questions, buying signals, praise, or complaints",
+    accent: "sky",
   },
   {
     number: "3",
@@ -163,6 +169,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Reply drafts in your voice",
     body: "With the right link attached: booking for the bistro, checkout or the downtown store for the boutique.",
+    imageSrc: "/illustrations/custom/marketing-social-engagement-flow-03.png",
+    imageAlt: "On-brand reply draft with booking or checkout link",
+    accent: "emerald",
   },
   {
     number: "4",
@@ -173,6 +182,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Sends or waits for you",
     body: "Within moments, or in your queue if the topic is sensitive or you have kept approvals on.",
+    imageSrc: "/illustrations/custom/marketing-social-engagement-flow-04.png",
+    imageAlt: "Auto-send or approval queue for sensitive replies",
+    accent: "amber",
   },
   {
     number: "5",
@@ -183,6 +195,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Interaction is logged",
     body: "Counted so the month-end report can tie conversations to outcomes.",
+    imageSrc: "/illustrations/custom/marketing-social-engagement-flow-05.png",
+    imageAlt: "Engagement logged for month-end reporting",
+    accent: "fuchsia",
   },
 ];
 
@@ -373,6 +388,8 @@ export default function SocialEngagement() {
         <ProblemSection />
         <FeaturesSection />
         <AgentFlowStepsSection
+          eyebrow="The flow"
+          sectionId="social-engagement-flow"
           title={
             <>
               From comment to <span className={HL}>Customer</span>, step by step

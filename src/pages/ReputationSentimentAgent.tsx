@@ -1,11 +1,15 @@
 import {
   ArrowRight,
+  BarChart3,
   CheckCircle2,
   LayoutDashboard,
+  Megaphone,
   MessageSquare,
   ShieldCheck,
   Sparkles,
+  Tags,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { ReactNode } from "react";
 import Container from "../components/Container";
@@ -21,7 +25,9 @@ import {
 } from "../components/reputation-sentiment/ReputationAgentSubNav";
 import SoftPastelBackdrop from "../components/marketing-automation/SoftPastelBackdrop";
 import { MarketingHeroImage } from "../components/marketing-automation/MarketingHeroImage";
+import { CapsuleFeatureImage } from "../components/marketing-automation/CapsuleFeatureImage";
 import { TITLE_HL_BRAND as HL } from "../components/agent-title-highlight";
+import { cn } from "../lib/cn";
 
 const FAQS = [
   {
@@ -50,6 +56,9 @@ const STEPS: {
   number: string;
   title: ReactNode;
   body: string;
+  icon: LucideIcon;
+  imageSrc: string;
+  imageAlt: string;
   link?: { label: string; page: string; to: string };
 }[] = [
   {
@@ -60,6 +69,10 @@ const STEPS: {
       </>
     ),
     body: "The agent notices recent customers through your bookings, orders, and connected tools, and invites the happy ones to share, on the channel each person actually answers, at the moment they are most likely to say yes. A steady stream of recent reviews is the strongest trust signal a local business can hold.",
+    icon: Sparkles,
+    imageSrc: "/illustrations/custom/reputation-step-fresh-reviews.png",
+    imageAlt:
+      "Cafe owner with tablet and automated review invitation after a customer visit",
     link: {
       label: "See how review growth works",
       page: "Review Generation",
@@ -74,6 +87,10 @@ const STEPS: {
       </>
     ),
     body: "New reviews across Google, Facebook, and the platforms your customers use get a considered, brand-safe reply within minutes. Praise gets gratitude that invites a return visit. Criticism gets acknowledgment without argument. Anything critical routes to you first, with a drafted response attached.",
+    icon: MessageSquare,
+    imageSrc: "/illustrations/custom/reputation-step-review-replies.png",
+    imageAlt:
+      "Owner on phone with AI-drafted review reply and escalation workflow",
     link: {
       label: "See how responses and escalation work",
       page: "Review Management",
@@ -88,6 +105,9 @@ const STEPS: {
       </>
     ),
     body: "Sentiment analysis groups what customers keep praising and what they keep flagging, wait times at the restaurant, sizing at the boutique, so you fix the cause once instead of apologizing for it forever.",
+    icon: Tags,
+    imageSrc: "/illustrations/custom/reputation-step-sentiment-patterns.png",
+    imageAlt: "Sentiment themes grouped from customer reviews into actionable patterns",
   },
   {
     number: "4",
@@ -97,6 +117,10 @@ const STEPS: {
       </>
     ),
     body: "Rating trend, review volume, and response speed, tracked over time, per location, and against nearby competition, on one dashboard your whole team can read.",
+    icon: BarChart3,
+    imageSrc: "/illustrations/custom/reputation-step-reputation-metrics.png",
+    imageAlt:
+      "Reputation report with rating trend, review volume, response speed, and local benchmarks",
   },
   {
     number: "5",
@@ -106,6 +130,10 @@ const STEPS: {
       </>
     ),
     body: "Five-star stories flow to your Marketing Automation Agent as ready-to-approve social posts, so real customers do the persuading.",
+    icon: Megaphone,
+    imageSrc: "/illustrations/custom/reputation-step-review-to-marketing.png",
+    imageAlt:
+      "Five-star review turned into a ready-to-approve social post in Marketing Automation",
     link: {
       label: "Explore reputation analytics and review marketing",
       page: "Review Analytics & Marketing",
@@ -230,7 +258,7 @@ function Hero() {
           <ScrollReveal delay={80} className="relative min-w-0">
             <MarketingHeroImage
               src="/illustrations/custom/reputation-hero-main.png"
-              alt="Salon owner monitoring star reviews, attention queue, and rating trends"
+              alt="Owner monitoring a new Google review, rating trend, and attention queue on phone"
             />
           </ScrollReveal>
         </div>
@@ -267,36 +295,70 @@ function ProblemSection() {
 
 function HowItWorksSection() {
   return (
-    <section className="bg-white py-16 sm:py-24">
-      <Container>
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-ink-500">
-            How it works
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
-            How the agent cares for your <span className={HL}>Reputation</span>, end to end
-          </h2>
-        </ScrollReveal>
+    <section className="relative overflow-hidden border-b border-ink-100/70">
+      <div className="relative overflow-hidden py-16 sm:pb-12 sm:pt-24">
+        <SoftPastelBackdrop side="right" />
+        <Container className="relative z-10">
+          <ScrollReveal className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-medium text-ink-500">How it works</p>
+            <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
+              How the agent cares for your <span className={HL}>Reputation</span>, end to end
+            </h2>
+          </ScrollReveal>
+        </Container>
+      </div>
 
-        <div className="mx-auto mt-12 max-w-4xl space-y-4 sm:mt-16">
-          {STEPS.map((step, index) => (
-            <ScrollReveal key={step.number} delay={index * 40}>
-              <article className="rounded-3xl border border-ink-200/90 bg-white px-5 py-6 sm:px-8 sm:py-7">
-                <div className="flex gap-4 sm:gap-5">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink-100 text-sm font-medium text-ink-600 ring-1 ring-ink-200/80">
-                    {step.number}
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="text-xl font-medium tracking-tight text-ink-900 sm:text-[1.35rem]">
+      {STEPS.map((step, index) => {
+        const Icon = step.icon;
+        const reverse = index % 2 === 1;
+        const softBand = index % 2 === 1;
+
+        return (
+          <div
+            key={step.number}
+            className={cn(
+              "relative overflow-hidden py-16 sm:py-24",
+              softBand ? undefined : "bg-white",
+            )}
+          >
+            {softBand ? (
+              <SoftPastelBackdrop side={index % 4 === 1 ? "left" : "right"} />
+            ) : null}
+
+            <Container className="relative z-10">
+              <ScrollReveal delay={(index % 3) * 40}>
+                <div
+                  className={cn(
+                    "grid items-center gap-10 lg:gap-12 xl:gap-14",
+                    reverse
+                      ? "lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.9fr)]"
+                      : "lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)]",
+                  )}
+                >
+                  <div className={cn(reverse ? "order-2 lg:order-1" : "order-2 lg:order-2")}>
+                    <CapsuleFeatureImage
+                      src={step.imageSrc}
+                      alt={step.imageAlt}
+                      pillSide={reverse ? "right" : "left"}
+                    />
+                  </div>
+                  <div className={cn(reverse ? "order-1 lg:order-2" : "order-1 lg:order-1")}>
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-10 w-10 place-items-center rounded-full bg-ink-100 text-sm font-medium text-ink-600 ring-1 ring-ink-200/80">
+                        {step.number}
+                      </span>
+                      <span className="grid h-10 w-10 place-items-center rounded-xl bg-white text-brand-600 shadow-soft ring-1 ring-ink-200/80">
+                        <Icon className="h-5 w-5" strokeWidth={1.75} />
+                      </span>
+                    </div>
+                    <h3 className="mt-4 text-[clamp(1.5rem,2.5vw,2rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
                       {step.title}
                     </h3>
-                    <p className="mt-2.5 text-base font-normal leading-[1.7] text-ink-600 sm:text-lg">
-                      {step.body}
-                    </p>
+                    <p className="mt-4 text-lg font-normal leading-[1.7] text-ink-600">{step.body}</p>
                     {step.link ? (
                       <Link
                         to={step.link.to}
-                        className="mt-4 inline-flex items-center gap-2 text-[15px] font-medium text-brand-700 transition hover:gap-2.5 hover:text-brand-800"
+                        className="mt-6 inline-flex items-center gap-2 text-[15px] font-medium text-brand-700 transition hover:gap-2.5 hover:text-brand-800"
                       >
                         {step.link.label}
                         <ArrowRight className="h-4 w-4" />
@@ -304,11 +366,11 @@ function HowItWorksSection() {
                     ) : null}
                   </div>
                 </div>
-              </article>
-            </ScrollReveal>
-          ))}
-        </div>
-      </Container>
+              </ScrollReveal>
+            </Container>
+          </div>
+        );
+      })}
     </section>
   );
 }

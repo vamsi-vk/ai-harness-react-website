@@ -18,14 +18,16 @@ import FaqJsonLd from "../../components/FaqJsonLd";
 import FaqAccordion from "../../components/FaqAccordion";
 import CTASection from "../../components/CTASection";
 import ScrollReveal from "../../components/ScrollReveal";
-import AgentFlowStepsSection from "../../components/AgentFlowStepsSection";
+import AgentFlowStepsSection, { type AgentFlowStep } from "../../components/AgentFlowStepsSection";
 import {
   REPUTATION_AGENT_BASE,
   ReputationAgentChrome,
 } from "../../components/reputation-sentiment/ReputationAgentSubNav";
 import SoftPastelBackdrop from "../../components/marketing-automation/SoftPastelBackdrop";
 import { MarketingHeroImage } from "../../components/marketing-automation/MarketingHeroImage";
+import { CapsuleFeatureImage } from "../../components/marketing-automation/CapsuleFeatureImage";
 import { TITLE_HL_BRAND as HL } from "../../components/agent-title-highlight";
+import { cn } from "../../lib/cn";
 
 const PATH = `${REPUTATION_AGENT_BASE}/review-analytics-marketing`;
 
@@ -54,6 +56,8 @@ const FEATURES: {
   title: ReactNode;
   body: string;
   icon: typeof TrendingUp;
+  imageSrc: string;
+  imageAlt: string;
   reverse?: boolean;
   link?: { label: string; to: string };
 }[] = [
@@ -67,6 +71,8 @@ const FEATURES: {
     ),
     body: "Rating trend, review volume, and response speed tracked over time and per location, so a slow drift gets caught in week two instead of month six.",
     icon: TrendingUp,
+    imageSrc: "/illustrations/custom/reputation-analytics-trends.png",
+    imageAlt: "Rating trend, review volume, and response speed charts per location over time",
   },
   {
     id: "benchmarked",
@@ -78,6 +84,8 @@ const FEATURES: {
     ),
     body: "See how your rating, review volume, and responsiveness compare with nearby businesses in your category, the same side-by-side a customer silently runs when choosing between you.",
     icon: BarChart3,
+    imageSrc: "/illustrations/custom/reputation-analytics-benchmarked.png",
+    imageAlt: "Reputation benchmarks comparing your business to nearby competitors",
     reverse: true,
   },
   {
@@ -91,6 +99,8 @@ const FEATURES: {
     ),
     body: "Recurring praise and recurring complaints grouped from real customer language: the dish everyone photographs, the checkout line at noon, the sizing note that keeps appearing. One fixed cause outperforms a hundred polite apologies.",
     icon: LineChart,
+    imageSrc: "/illustrations/custom/reputation-analytics-sentiment.png",
+    imageAlt: "Sentiment themes grouped from recurring praise and complaints in reviews",
   },
   {
     id: "review-marketing",
@@ -102,6 +112,8 @@ const FEATURES: {
     ),
     body: "The agent hands winning reviews to your Marketing Automation Agent as designed, ready-to-approve social posts, so real customers do the persuading on your feed.",
     icon: Megaphone,
+    imageSrc: "/illustrations/custom/reputation-analytics-review-marketing.png",
+    imageAlt: "Top review handed off as a ready-to-approve social post",
     reverse: true,
     link: {
       label: "See the Marketing Automation Agent",
@@ -118,10 +130,12 @@ const FEATURES: {
     ),
     body: "Monthly, plain-English, per location: what moved, why it moved, and what to do next, in the same voice as the rest of your AI-Harness reporting.",
     icon: FileText,
+    imageSrc: "/illustrations/custom/reputation-analytics-reports.png",
+    imageAlt: "Plain-English monthly reputation report per location with recommended actions",
   },
 ];
 
-const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: string }[] = [
+const FLOW_STEPS: AgentFlowStep[] = [
   {
     number: "1",
     title: (
@@ -131,6 +145,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Everything is captured",
     body: "Every review, reply, and rating movement as it happens, per platform and per location.",
+    imageSrc: "/illustrations/custom/reputation-analytics-flow-01.png",
+    imageAlt: "Reviews, replies, and ratings captured per location",
+    accent: "violet",
   },
   {
     number: "2",
@@ -141,6 +158,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Themes and benchmarks",
     body: "Sentiment grouping turns words into themes; benchmarks put your numbers next to the local field.",
+    imageSrc: "/illustrations/custom/reputation-analytics-flow-02.png",
+    imageAlt: "Sentiment themes and local benchmarks",
+    accent: "sky",
   },
   {
     number: "3",
@@ -151,6 +171,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Standout reviews become posts",
     body: "Drafted into social posts and queued for your approval.",
+    imageSrc: "/illustrations/custom/reputation-analytics-flow-03.png",
+    imageAlt: "Best reviews drafted into social posts",
+    accent: "emerald",
   },
   {
     number: "4",
@@ -161,6 +184,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Monthly report arrives",
     body: "The trend, the causes, the comparison, and the next moves.",
+    imageSrc: "/illustrations/custom/reputation-analytics-flow-04.png",
+    imageAlt: "Monthly reputation report with next moves",
+    accent: "fuchsia",
   },
 ];
 
@@ -270,6 +296,8 @@ export default function ReviewAnalyticsMarketing() {
         <ProblemSection />
         <FeaturesSection />
         <AgentFlowStepsSection
+          eyebrow="The flow"
+          sectionId="review-analytics-flow"
           title={
             <>
               From live capture to next month&apos;s <span className={HL}>Moves</span>
@@ -331,7 +359,7 @@ function Hero() {
           <ScrollReveal delay={80} className="relative min-w-0">
             <MarketingHeroImage
               src="/illustrations/custom/reputation-hero-review-analytics.png"
-              alt="Café owner reviewing reputation trends and turning top reviews into marketing"
+              alt="Café owner with reputation report, top theme insights, and review-to-social-post draft"
             />
           </ScrollReveal>
         </div>
@@ -364,46 +392,66 @@ function ProblemSection() {
   );
 }
 
+function FeatureVisual({
+  feature,
+  pillSide,
+}: {
+  feature: (typeof FEATURES)[number];
+  pillSide: "left" | "right";
+}) {
+  return (
+    <CapsuleFeatureImage
+      src={feature.imageSrc}
+      alt={feature.imageAlt}
+      pillSide={pillSide}
+    />
+  );
+}
+
 function FeaturesSection() {
   return (
-    <section className="bg-white py-16 sm:py-24">
-      <Container>
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-ink-500">
-            What this page shows
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
-            Trends, benchmarks, themes, <span className={HL}>Marketing</span>, and reports
-          </h2>
-        </ScrollReveal>
+    <section className="relative overflow-hidden border-b border-ink-100/70">
+      <div className="relative overflow-hidden py-16 sm:pb-12 sm:pt-24">
+        <SoftPastelBackdrop side="right" />
+        <Container className="relative z-10">
+          <ScrollReveal className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-medium text-ink-500">What this page shows</p>
+            <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
+              Trends, benchmarks, themes, <span className={HL}>Marketing</span>, and reports
+            </h2>
+          </ScrollReveal>
+        </Container>
+      </div>
 
-        <div className="mt-14 space-y-16 sm:mt-20 sm:space-y-24">
-          {FEATURES.map((feature, index) => {
-            const Icon = feature.icon;
-            const reverse = Boolean(feature.reverse);
-            return (
-              <ScrollReveal key={feature.id} delay={(index % 3) * 40}>
+      {FEATURES.map((feature, index) => {
+        const Icon = feature.icon;
+        const reverse = Boolean(feature.reverse);
+        const softBand = index % 2 === 1;
+
+        return (
+          <div
+            key={feature.id}
+            className={cn(
+              "relative overflow-hidden py-16 sm:py-24",
+              softBand ? undefined : "bg-white",
+            )}
+          >
+            {softBand ? (
+              <SoftPastelBackdrop side={index % 4 === 1 ? "left" : "right"} />
+            ) : null}
+
+            <Container className="relative z-10">
+              <ScrollReveal delay={(index % 3) * 40}>
                 <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
                   <div className={reverse ? "order-2 lg:order-1" : "order-2 lg:order-2"}>
-                    <div className="overflow-hidden rounded-[28px] border border-ink-200/80 bg-ink-50 shadow-soft">
-                      <div className="flex aspect-[4/3] flex-col items-center justify-center gap-4 p-8 text-center">
-                        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-white text-ink-600 shadow-soft ring-1 ring-ink-200/80">
-                          <Icon className="h-6 w-6" strokeWidth={1.75} />
-                        </span>
-                        <p className="max-w-xs text-sm leading-relaxed text-ink-500">
-                          Product shot placeholder · {feature.eyebrow}
-                        </p>
-                      </div>
-                    </div>
+                    <FeatureVisual feature={feature} pillSide={reverse ? "left" : "right"} />
                   </div>
                   <div className={reverse ? "order-1 lg:order-2" : "order-1 lg:order-1"}>
                     <div className="flex items-center gap-3">
                       <span className="grid h-10 w-10 place-items-center rounded-xl bg-ink-100 text-ink-600 ring-1 ring-ink-200/80">
                         <Icon className="h-5 w-5" strokeWidth={1.75} />
                       </span>
-                      <p className="text-sm font-medium text-ink-500">
-                        {feature.eyebrow}
-                      </p>
+                      <p className="text-sm font-medium text-ink-500">{feature.eyebrow}</p>
                     </div>
                     <h3 className="mt-4 text-[clamp(1.5rem,2.5vw,2rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
                       {feature.title}
@@ -412,7 +460,7 @@ function FeaturesSection() {
                     {feature.link ? (
                       <Link
                         to={feature.link.to}
-                        className="mt-5 inline-flex items-center gap-2 text-[15px] font-medium text-brand-700 transition hover:gap-2.5 hover:text-brand-800"
+                        className="mt-6 inline-flex items-center gap-2 text-[15px] font-medium text-brand-700 transition hover:gap-2.5 hover:text-brand-800"
                       >
                         {feature.link.label}
                         <ArrowRight className="h-4 w-4" />
@@ -421,10 +469,10 @@ function FeaturesSection() {
                   </div>
                 </div>
               </ScrollReveal>
-            );
-          })}
-        </div>
-      </Container>
+            </Container>
+          </div>
+        );
+      })}
     </section>
   );
 }

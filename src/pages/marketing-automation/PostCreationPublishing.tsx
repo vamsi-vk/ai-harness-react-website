@@ -20,7 +20,7 @@ import FaqJsonLd from "../../components/FaqJsonLd";
 import FaqAccordion from "../../components/FaqAccordion";
 import CTASection from "../../components/CTASection";
 import ScrollReveal from "../../components/ScrollReveal";
-import AgentFlowStepsSection from "../../components/AgentFlowStepsSection";
+import AgentFlowStepsSection, { type AgentFlowStep } from "../../components/AgentFlowStepsSection";
 import {
   MARKETING_AGENT_BASE,
   MarketingAgentChrome,
@@ -169,31 +169,51 @@ const FEATURES: {
   },
 ];
 
-const FLOW_STEPS = [
+const FLOW_STEPS: AgentFlowStep[] = [
   {
     number: "1",
     title: "Connect once",
+    railLabel: "Connect once",
     body: "Link your channels in the Outreach tab; the agent learns your voice from what you have already published.",
+    imageSrc: "/illustrations/custom/marketing-flow-step-01-connect.png",
+    imageAlt: "Connect Instagram, Facebook, LinkedIn, and TikTok in Outreach",
+    accent: "violet",
   },
   {
     number: "2",
     title: "Say what you want",
+    railLabel: "Say what you want",
     body: "One line, a set of photos from the stockroom, or just a theme chip.",
+    imageSrc: "/illustrations/custom/marketing-flow-step-02-goal.png",
+    imageAlt: "Set campaign goal and theme chips for the agent",
+    accent: "sky",
   },
   {
     number: "3",
     title: "Review the drafts",
+    railLabel: "Review drafts",
     body: "Captions, creative, and suggested times land ready for your edits or your approval.",
+    imageSrc: "/illustrations/custom/marketing-flow-step-03-drafts.png",
+    imageAlt: "Review post drafts with caption, creative, and timing",
+    accent: "emerald",
   },
   {
     number: "4",
     title: "Schedule or publish",
+    railLabel: "Schedule or publish",
     body: "Best Time to Post fills the calendar; Publish Now handles the urgent ones.",
+    imageSrc: "/illustrations/custom/marketing-flow-step-04-schedule.png",
+    imageAlt: "Schedule posts with best time slots or publish now",
+    accent: "amber",
   },
   {
     number: "5",
     title: "Watch the calendar stay full",
+    railLabel: "Calendar stays full",
     body: "Campaigns and recurring themes keep next week drafted before you ask for it.",
+    imageSrc: "/illustrations/custom/marketing-flow-step-05-calendar.png",
+    imageAlt: "Content calendar with campaigns keeping the week full",
+    accent: "fuchsia",
   },
 ];
 
@@ -375,6 +395,8 @@ export default function PostCreationPublishing() {
         <ProblemSection />
         <FeaturesSection />
         <AgentFlowStepsSection
+          eyebrow="The flow"
+          sectionId="post-creation-flow"
           title={
             <>
               Step by step, from connect to a calendar that stays <span className={HL}>Full</span>

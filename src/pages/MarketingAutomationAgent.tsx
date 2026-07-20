@@ -1000,6 +1000,35 @@ function MonthLookSection() {
   );
 }
 
+function OutreachDashboardVisual() {
+  return (
+    <div className="relative pb-2 pr-2 sm:pb-3 sm:pr-3">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-[#7C3AED]/12 via-[#9A6FF0]/8 to-[#C4A1FF]/15"
+      />
+      <div
+        className="relative overflow-hidden rounded-2xl p-[2px]"
+        style={{
+          background:
+            "linear-gradient(to bottom right, rgba(124,58,237,0.35), rgba(154,111,240,0.3), rgba(196,161,255,0.35))",
+          boxShadow: "0 24px 48px -28px rgba(124,58,237,0.22)",
+        }}
+      >
+        <div className="overflow-hidden rounded-[calc(1rem-2px)] bg-white ring-1 ring-ink-100">
+          <img
+            src="/illustrations/custom/marketing-outreach-tab-overview.png"
+            alt="Outreach dashboard in AI-Harness violet theme with Post Overview, engagement, and calendar"
+            className="aspect-[4/3] h-auto w-full object-cover object-center bg-white"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function DashboardSection() {
   return (
     <section className="relative overflow-hidden border-y border-ink-100/70 py-16 sm:py-24">
@@ -1037,13 +1066,7 @@ function DashboardSection() {
           </ScrollReveal>
 
           <ScrollReveal delay={80} className="order-1 lg:order-2">
-            <img
-              src="/illustrations/custom/marketing-outreach-dashboard.png"
-              alt="Café owner reviewing Outreach Post Overview, engagement metrics, and content calendar"
-              className="aspect-[4/3] h-auto w-full object-cover object-center"
-              loading="lazy"
-              decoding="async"
-            />
+            <OutreachDashboardVisual />
           </ScrollReveal>
         </div>
       </Container>

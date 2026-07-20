@@ -20,6 +20,7 @@ import {
 import { REPUTATION_AGENT_BASE } from "../components/reputation-sentiment/ReputationAgentSubNav";
 import SoftPastelBackdrop from "../components/marketing-automation/SoftPastelBackdrop";
 import { MarketingHeroImage } from "../components/marketing-automation/MarketingHeroImage";
+import { CapsuleFeatureImage } from "../components/marketing-automation/CapsuleFeatureImage";
 import { TITLE_HL_BRAND as HL } from "../components/agent-title-highlight";
 
 const FAQS = [
@@ -46,6 +47,8 @@ type Step = {
   title: ReactNode;
   body: string;
   icon?: LucideIcon;
+  imageSrc: string;
+  imageAlt: string;
 };
 
 const STEPS: Step[] = [
@@ -57,6 +60,8 @@ const STEPS: Step[] = [
       </>
     ),
     body: "A table pays the check; an online order is marked picked up or delivered. The agent knows your point of sale, bookings, and connected tools.",
+    imageSrc: "/illustrations/custom/automated-review-step-visit-ends.png",
+    imageAlt: "Point of sale check paid and online order delivered status connected to the agent",
   },
   {
     number: "2",
@@ -66,6 +71,8 @@ const STEPS: Step[] = [
       </>
     ),
     body: "Not during dessert and not three days later: the window when the experience is still warm and the phone is already in hand.",
+    imageSrc: "/illustrations/custom/automated-review-step-right-moment.png",
+    imageAlt: "Timing scheduler highlighting the sweet spot after a visit ends",
   },
   {
     number: "3",
@@ -75,6 +82,8 @@ const STEPS: Step[] = [
       </>
     ),
     body: "A text to the guest who booked by phone, an email to the shopper with a receipt in the inbox. Short, warm, in your voice, one tap to the review box.",
+    imageSrc: "/illustrations/custom/automated-review-step-invitation.png",
+    imageAlt: "SMS and email review invitation with one-tap link to leave a review",
   },
   {
     number: "4",
@@ -84,6 +93,8 @@ const STEPS: Step[] = [
       </>
     ),
     body: "The customer writes while the memory is fresh, which is when reviews are specific, and specific reviews persuade.",
+    imageSrc: "/illustrations/custom/automated-review-step-review-posts.png",
+    imageAlt: "Google review submitted with five stars and a fresh specific review snippet",
   },
   {
     number: "5",
@@ -93,6 +104,8 @@ const STEPS: Step[] = [
       </>
     ),
     body: "The new review flows to your Reputation & Sentiment Agent: a same-day thank-you through Review Management, a data point in your sentiment themes, and a candidate for review marketing.",
+    imageSrc: "/illustrations/custom/automated-review-step-handoff.png",
+    imageAlt: "New review flowing to Review Management, sentiment themes, and review marketing",
   },
   {
     number: "6",
@@ -102,6 +115,8 @@ const STEPS: Step[] = [
       </>
     ),
     body: "At month end, your reporting shows invitations sent, reviews earned, and rating movement, so the growth is measured, not felt.",
+    imageSrc: "/illustrations/custom/automated-review-step-monthly-tally.png",
+    imageAlt: "Monthly report with invitations sent, reviews earned, and rating trend",
   },
 ];
 
@@ -216,7 +231,7 @@ function Hero() {
           <ScrollReveal delay={80} className="relative min-w-0">
             <MarketingHeroImage
               src="/illustrations/custom/automated-reviews-hero-main.png"
-              alt="Retail owner sending automated Google review invitations after checkout"
+              alt="Shop owner after a visit with automated review invite sent and Google star rating flow"
             />
           </ScrollReveal>
         </div>
@@ -249,36 +264,53 @@ function ProblemSection() {
   );
 }
 
-function StepVisual({ step }: { step: Step }) {
-  return (
-    <div
-      aria-label={`Image placeholder for step ${step.number}`}
-      className="aspect-[4/3] overflow-hidden rounded-[28px] border border-dashed border-ink-300 bg-ink-100 ring-1 ring-ink-200/50"
-    />
-  );
-}
-
 function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="scroll-mt-28 bg-ink-50 py-16 sm:py-24">
-      <Container>
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-ink-500">
-            How it works
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
-            From checkout to <span className={HL}>Posted Review</span>
-          </h2>
-        </ScrollReveal>
+    <section id="how-it-works" className="relative scroll-mt-28 overflow-hidden border-b border-ink-100/70">
+      <div className="relative overflow-hidden py-16 sm:pb-12 sm:pt-24">
+        <SoftPastelBackdrop side="right" />
+        <Container className="relative z-10">
+          <ScrollReveal className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-medium text-ink-500">How it works</p>
+            <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
+              From checkout to <span className={HL}>Posted Review</span>
+            </h2>
+          </ScrollReveal>
+        </Container>
+      </div>
 
-        <div className="mt-14 space-y-16 sm:mt-20 sm:space-y-24">
-          {STEPS.map((step, index) => {
-            const reverse = index % 2 === 1;
-            return (
-              <ScrollReveal key={step.number} delay={(index % 3) * 40}>
-                <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      {STEPS.map((step, index) => {
+        const reverse = index % 2 === 1;
+        const softBand = index % 2 === 1;
+
+        return (
+          <div
+            key={step.number}
+            className={cn(
+              "relative overflow-hidden py-16 sm:py-24",
+              softBand ? undefined : "bg-white",
+            )}
+          >
+            {softBand ? (
+              <SoftPastelBackdrop side={index % 4 === 1 ? "left" : "right"} />
+            ) : null}
+
+            <Container className="relative z-10">
+              <ScrollReveal delay={(index % 3) * 40}>
+                <div
+                  className={cn(
+                    "grid items-center gap-10 lg:gap-12 xl:gap-14",
+                    reverse
+                      ? "lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.9fr)]"
+                      : "lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)]",
+                  )}
+                >
                   <div className={cn(reverse ? "order-2 lg:order-1" : "order-2 lg:order-2")}>
-                    <StepVisual step={step} />
+                    <CapsuleFeatureImage
+                      src={step.imageSrc}
+                      alt={step.imageAlt}
+                      pillSide={reverse ? "right" : "left"}
+                    />
                   </div>
                   <div className={cn(reverse ? "order-1 lg:order-2" : "order-1 lg:order-1")}>
                     <span className="grid h-10 w-10 place-items-center rounded-full bg-ink-100 text-sm font-medium text-ink-600 ring-1 ring-ink-200/80">
@@ -291,10 +323,10 @@ function HowItWorksSection() {
                   </div>
                 </div>
               </ScrollReveal>
-            );
-          })}
-        </div>
-      </Container>
+            </Container>
+          </div>
+        );
+      })}
     </section>
   );
 }

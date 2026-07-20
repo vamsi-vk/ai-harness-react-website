@@ -18,7 +18,7 @@ import FaqJsonLd from "../../components/FaqJsonLd";
 import FaqAccordion from "../../components/FaqAccordion";
 import CTASection from "../../components/CTASection";
 import ScrollReveal from "../../components/ScrollReveal";
-import AgentFlowStepsSection from "../../components/AgentFlowStepsSection";
+import AgentFlowStepsSection, { type AgentFlowStep } from "../../components/AgentFlowStepsSection";
 import {
   MARKETING_AGENT_BASE,
   MarketingAgentChrome,
@@ -141,7 +141,7 @@ const FEATURES: {
   },
 ];
 
-const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: string }[] = [
+const FLOW_STEPS: AgentFlowStep[] = [
   {
     number: "1",
     title: (
@@ -151,6 +151,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Everything is tracked",
     body: "Every post, comment, and click from the moment it happens.",
+    imageSrc: "/illustrations/custom/marketing-social-analytics-flow-01.png",
+    imageAlt: "Live tracking of posts, comments, and clicks",
+    accent: "violet",
   },
   {
     number: "2",
@@ -161,6 +164,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Dashboard keeps score",
     body: "In real time, across every connected channel.",
+    imageSrc: "/illustrations/custom/marketing-social-analytics-flow-02.png",
+    imageAlt: "Outreach scoreboard with views, likes, comments, and clicks",
+    accent: "sky",
   },
   {
     number: "3",
@@ -171,6 +177,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Agent writes the report",
     body: "At month end: what worked, what did not, and what changes.",
+    imageSrc: "/illustrations/custom/marketing-social-analytics-flow-03.png",
+    imageAlt: "Plain-English month-end marketing report",
+    accent: "emerald",
   },
   {
     number: "4",
@@ -181,6 +190,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Next month pre-drafted",
     body: "Built from those findings, waiting for your approval.",
+    imageSrc: "/illustrations/custom/marketing-social-analytics-flow-04.png",
+    imageAlt: "Next month's calendar pre-drafted from analytics",
+    accent: "fuchsia",
   },
 ];
 
@@ -380,6 +392,8 @@ export default function SocialAnalytics() {
         <ProblemSection />
         <FeaturesSection />
         <AgentFlowStepsSection
+          eyebrow="The flow"
+          sectionId="social-analytics-flow"
           title={
             <>
               Tracked live, explained at month end, drafted for{" "}

@@ -4,7 +4,6 @@ import {
   Clock3,
   Inbox,
   Mail,
-  MessageCircle,
   ShieldCheck,
   Sparkles,
   UserRound,
@@ -18,14 +17,16 @@ import FaqJsonLd from "../../components/FaqJsonLd";
 import FaqAccordion from "../../components/FaqAccordion";
 import CTASection from "../../components/CTASection";
 import ScrollReveal from "../../components/ScrollReveal";
-import AgentFlowStepsSection from "../../components/AgentFlowStepsSection";
+import AgentFlowStepsSection, { type AgentFlowStep } from "../../components/AgentFlowStepsSection";
 import {
   REPUTATION_AGENT_BASE,
   ReputationAgentChrome,
 } from "../../components/reputation-sentiment/ReputationAgentSubNav";
 import SoftPastelBackdrop from "../../components/marketing-automation/SoftPastelBackdrop";
 import { MarketingHeroImage } from "../../components/marketing-automation/MarketingHeroImage";
+import { CapsuleFeatureImage } from "../../components/marketing-automation/CapsuleFeatureImage";
 import { TITLE_HL_BRAND as HL } from "../../components/agent-title-highlight";
+import { cn } from "../../lib/cn";
 
 const PATH = `${REPUTATION_AGENT_BASE}/review-generation`;
 
@@ -54,6 +55,8 @@ const FEATURES: {
   title: ReactNode;
   body: string;
   icon: typeof UserRound;
+  imageSrc: string;
+  imageAlt: string;
   reverse?: boolean;
 }[] = [
   {
@@ -66,6 +69,9 @@ const FEATURES: {
     ),
     body: "Through your bookings, orders, point of sale, and connected tools, the agent knows who just finished dinner, picked up an order, or checked out, without anyone keeping a list.",
     icon: UserRound,
+    imageSrc: "/illustrations/custom/reputation-gen-customer-detection.png",
+    imageAlt:
+      "Team at checkout with connected tools detecting a new customer visit",
   },
   {
     id: "channel-choice",
@@ -77,6 +83,8 @@ const FEATURES: {
     ),
     body: "A text for the diner who booked by phone. An email for the online shopper with a receipt in the inbox. One invitation per customer, matched to how they already talk to you, never a blast.",
     icon: Mail,
+    imageSrc: "/illustrations/custom/reputation-gen-channel-choice.png",
+    imageAlt: "Text versus email review invitation matched to how each customer reached you",
     reverse: true,
   },
   {
@@ -89,6 +97,8 @@ const FEATURES: {
     ),
     body: "The invitation lands while the experience is still warm: after dessert settles, after the package arrives and fits. One tap takes the customer straight to the review box.",
     icon: Clock3,
+    imageSrc: "/illustrations/custom/reputation-gen-perfect-timing.png",
+    imageAlt: "Review invitation sent while the customer experience is still warm",
   },
   {
     id: "honest-by-design",
@@ -100,11 +110,13 @@ const FEATURES: {
     ),
     body: "Invitations go to every customer, with no gating and no incentives, in line with platform guidelines. The rating you build is one you can stand behind in public.",
     icon: ShieldCheck,
+    imageSrc: "/illustrations/custom/reputation-gen-honest-by-design.png",
+    imageAlt: "Platform-compliant review invites with no gating and no incentives",
     reverse: true,
   },
 ];
 
-const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: string }[] = [
+const FLOW_STEPS: AgentFlowStep[] = [
   {
     number: "1",
     title: (
@@ -114,6 +126,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Customer finishes",
     body: "Pays the check, picks up the order, or walks out with the bag.",
+    imageSrc: "/illustrations/custom/reputation-gen-journey-01-finish.png",
+    imageAlt: "Customer completes a visit after paying or picking up an order",
+    accent: "amber",
   },
   {
     number: "2",
@@ -122,8 +137,11 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
         The agent <span className={HL}>Detects</span> the visit
       </>
     ),
-    railLabel: "Agent detects the visit",
+    railLabel: "Agent detects",
     body: "Through your connected tools.",
+    imageSrc: "/illustrations/custom/reputation-gen-journey-02-detect.png",
+    imageAlt: "New visit detected from POS, bookings, and connected tools",
+    accent: "sky",
   },
   {
     number: "3",
@@ -132,8 +150,11 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
         It selects <span className={HL}>Text Or Email</span>
       </>
     ),
-    railLabel: "Selects text or email",
+    railLabel: "Text or email",
     body: "Based on how that customer reached you.",
+    imageSrc: "/illustrations/custom/reputation-gen-journey-03-channel.png",
+    imageAlt: "Review invitation channel chosen as SMS or email per customer",
+    accent: "violet",
   },
   {
     number: "4",
@@ -142,8 +163,11 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
         The invitation lands <span className={HL}>Warm</span>
       </>
     ),
-    railLabel: "Invitation lands warm",
+    railLabel: "Invitation lands",
     body: "One tap from the review box.",
+    imageSrc: "/illustrations/custom/reputation-gen-journey-04-invite.png",
+    imageAlt: "Warm review invitation notification with one tap to leave a review",
+    accent: "emerald",
   },
   {
     number: "5",
@@ -152,8 +176,11 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
         The new review <span className={HL}>Flows In</span>
       </>
     ),
-    railLabel: "Review flows in",
+    railLabel: "Thank-you & proof",
     body: "Straight into Review Management for a same-day thank-you, and into your analytics as fresh proof.",
+    imageSrc: "/illustrations/custom/reputation-gen-journey-05-thankyou.png",
+    imageAlt: "New review with same-day thank-you and analytics tracking",
+    accent: "rose",
   },
 ];
 
@@ -270,11 +297,9 @@ export default function ReviewGeneration() {
         <FeaturesSection />
         <PoweredBySection />
         <AgentFlowStepsSection
-          title={
-            <>
-              From checkout to a <span className={HL}>Same-Day Thank-You</span>
-            </>
-          }
+          sectionId="review-journey"
+          eyebrow="The flow"
+          title={<>From checkout to a <span className={HL}>Same-Day Thank-You</span></>}
           steps={FLOW_STEPS}
           visuals={FLOW_VISUALS}
         />
@@ -318,7 +343,7 @@ function Hero() {
                 Start free
                 <ArrowRight className="h-4 w-4" />
               </Button>
-              <Button to="/demo" variant="secondary" size="lg">
+              <Button href="#review-journey" variant="secondary" size="lg">
                 Watch one review get earned
               </Button>
             </div>
@@ -331,7 +356,7 @@ function Hero() {
           <ScrollReveal delay={80} className="relative min-w-0">
             <MarketingHeroImage
               src="/illustrations/custom/reputation-hero-review-generation.png"
-              alt="Restaurant manager sending well-timed review invitations after each visit"
+              alt="Restaurant owner with automated review text after a visit and reviews earned this month"
             />
           </ScrollReveal>
         </div>
@@ -364,46 +389,66 @@ function ProblemSection() {
   );
 }
 
+function FeatureVisual({
+  feature,
+  pillSide,
+}: {
+  feature: (typeof FEATURES)[number];
+  pillSide: "left" | "right";
+}) {
+  return (
+    <CapsuleFeatureImage
+      src={feature.imageSrc}
+      alt={feature.imageAlt}
+      pillSide={pillSide}
+    />
+  );
+}
+
 function FeaturesSection() {
   return (
-    <section className="bg-white py-16 sm:py-24">
-      <Container>
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-ink-500">
-            What this page shows
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
-            Detect, choose channel, time the ask, stay <span className={HL}>Honest</span>
-          </h2>
-        </ScrollReveal>
+    <section className="relative overflow-hidden border-b border-ink-100/70">
+      <div className="relative overflow-hidden py-16 sm:pb-12 sm:pt-24">
+        <SoftPastelBackdrop side="right" />
+        <Container className="relative z-10">
+          <ScrollReveal className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-medium text-ink-500">What this page shows</p>
+            <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
+              Detect, choose channel, time the ask, stay <span className={HL}>Honest</span>
+            </h2>
+          </ScrollReveal>
+        </Container>
+      </div>
 
-        <div className="mt-14 space-y-16 sm:mt-20 sm:space-y-24">
-          {FEATURES.map((feature, index) => {
-            const Icon = feature.icon;
-            const reverse = Boolean(feature.reverse);
-            return (
-              <ScrollReveal key={feature.id} delay={(index % 3) * 40}>
+      {FEATURES.map((feature, index) => {
+        const Icon = feature.icon;
+        const reverse = Boolean(feature.reverse);
+        const softBand = index % 2 === 1;
+
+        return (
+          <div
+            key={feature.id}
+            className={cn(
+              "relative overflow-hidden py-16 sm:py-24",
+              softBand ? undefined : "bg-white",
+            )}
+          >
+            {softBand ? (
+              <SoftPastelBackdrop side={index % 4 === 1 ? "left" : "right"} />
+            ) : null}
+
+            <Container className="relative z-10">
+              <ScrollReveal delay={(index % 3) * 40}>
                 <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
                   <div className={reverse ? "order-2 lg:order-1" : "order-2 lg:order-2"}>
-                    <div className="overflow-hidden rounded-[28px] border border-ink-200/80 bg-ink-50 shadow-soft">
-                      <div className="flex aspect-[4/3] flex-col items-center justify-center gap-4 p-8 text-center">
-                        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-white text-ink-600 shadow-soft ring-1 ring-ink-200/80">
-                          <Icon className="h-6 w-6" strokeWidth={1.75} />
-                        </span>
-                        <p className="max-w-xs text-sm leading-relaxed text-ink-500">
-                          Product shot placeholder · {feature.eyebrow}
-                        </p>
-                      </div>
-                    </div>
+                    <FeatureVisual feature={feature} pillSide={reverse ? "left" : "right"} />
                   </div>
                   <div className={reverse ? "order-1 lg:order-2" : "order-1 lg:order-1"}>
                     <div className="flex items-center gap-3">
                       <span className="grid h-10 w-10 place-items-center rounded-xl bg-ink-100 text-ink-600 ring-1 ring-ink-200/80">
                         <Icon className="h-5 w-5" strokeWidth={1.75} />
                       </span>
-                      <p className="text-sm font-medium text-ink-500">
-                        {feature.eyebrow}
-                      </p>
+                      <p className="text-sm font-medium text-ink-500">{feature.eyebrow}</p>
                     </div>
                     <h3 className="mt-4 text-[clamp(1.5rem,2.5vw,2rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
                       {feature.title}
@@ -412,10 +457,10 @@ function FeaturesSection() {
                   </div>
                 </div>
               </ScrollReveal>
-            );
-          })}
-        </div>
-      </Container>
+            </Container>
+          </div>
+        );
+      })}
     </section>
   );
 }

@@ -19,14 +19,16 @@ import FaqJsonLd from "../../components/FaqJsonLd";
 import FaqAccordion from "../../components/FaqAccordion";
 import CTASection from "../../components/CTASection";
 import ScrollReveal from "../../components/ScrollReveal";
-import AgentFlowStepsSection from "../../components/AgentFlowStepsSection";
+import AgentFlowStepsSection, { type AgentFlowStep } from "../../components/AgentFlowStepsSection";
 import {
   REPUTATION_AGENT_BASE,
   ReputationAgentChrome,
 } from "../../components/reputation-sentiment/ReputationAgentSubNav";
 import SoftPastelBackdrop from "../../components/marketing-automation/SoftPastelBackdrop";
 import { MarketingHeroImage } from "../../components/marketing-automation/MarketingHeroImage";
+import { CapsuleFeatureImage } from "../../components/marketing-automation/CapsuleFeatureImage";
 import { TITLE_HL_BRAND as HL } from "../../components/agent-title-highlight";
+import { cn } from "../../lib/cn";
 
 const PATH = `${REPUTATION_AGENT_BASE}/review-management`;
 
@@ -55,6 +57,8 @@ const FEATURES: {
   title: ReactNode;
   body: string;
   icon: typeof Globe2;
+  imageSrc: string;
+  imageAlt: string;
   reverse?: boolean;
 }[] = [
   {
@@ -67,6 +71,8 @@ const FEATURES: {
     ),
     body: "Every new review across Google, Facebook, and the platforms your customers use flows into one stream the moment it posts, around the clock.",
     icon: Globe2,
+    imageSrc: "/illustrations/custom/reputation-mgmt-all-platforms.png",
+    imageAlt: "Unified review inbox streaming new reviews from Google, Facebook, and other platforms",
   },
   {
     id: "replies-in-voice",
@@ -78,6 +84,8 @@ const FEATURES: {
     ),
     body: "Within minutes, praise gets a warm, specific thank-you that invites the next visit, and criticism gets acknowledgment and a path forward, never an argument. A wrong-size complaint at the boutique gets an exchange path; a long-wait complaint at the restaurant gets an honest acknowledgment and what is changing.",
     icon: Sparkles,
+    imageSrc: "/illustrations/custom/reputation-mgmt-replies-voice.png",
+    imageAlt: "AI-drafted praise and criticism replies ready to approve in brand voice",
     reverse: true,
   },
   {
@@ -90,6 +98,8 @@ const FEATURES: {
     ),
     body: "Refund demands, safety claims, and anything sensitive route to your attention queue with full context and a drafted reply you can edit before it posts. Your judgment where it matters, the agent’s stamina everywhere else.",
     icon: ShieldAlert,
+    imageSrc: "/illustrations/custom/reputation-mgmt-escalation.png",
+    imageAlt: "Sensitive review in the attention queue with context and an editable draft reply",
   },
   {
     id: "your-controls",
@@ -101,6 +111,8 @@ const FEATURES: {
     ),
     body: "Start with every reply awaiting your tap; grant autonomy for routine responses as trust builds. Every reply the agent has ever sent in your name sits in a searchable record.",
     icon: ListTodo,
+    imageSrc: "/illustrations/custom/reputation-mgmt-your-controls.png",
+    imageAlt: "Approve-first settings and searchable history of every reply sent",
     reverse: true,
   },
   {
@@ -113,10 +125,12 @@ const FEATURES: {
     ),
     body: "A review written in Spanish or French gets a reply in kind, in the same brand voice, so no customer is left waiting on a translation.",
     icon: Languages,
+    imageSrc: "/illustrations/custom/reputation-mgmt-every-language.png",
+    imageAlt: "Spanish and French reviews with matching reply drafts in the same brand voice",
   },
 ];
 
-const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: string }[] = [
+const FLOW_STEPS: AgentFlowStep[] = [
   {
     number: "1",
     title: (
@@ -126,6 +140,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Hard review lands",
     body: "Great food, forty-minute wait. The owner is closing; nobody is watching the review page. Except the agent.",
+    imageSrc: "/illustrations/custom/reputation-mgmt-flow-01.png",
+    imageAlt: "Critical review arrives after hours",
+    accent: "rose",
   },
   {
     number: "2",
@@ -136,6 +153,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Reads sentiment",
     body: "Wait time, Friday service — within moments.",
+    imageSrc: "/illustrations/custom/reputation-mgmt-flow-02.png",
+    imageAlt: "Sentiment and issue tags on the review",
+    accent: "violet",
   },
   {
     number: "3",
@@ -146,6 +166,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Reply drafts in house voice",
     body: "Thanks for the honesty, here is what is changing, come back and let us show you.",
+    imageSrc: "/illustrations/custom/reputation-mgmt-flow-03.png",
+    imageAlt: "Calm on-brand reply draft",
+    accent: "sky",
   },
   {
     number: "4",
@@ -156,6 +179,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Attention queue",
     body: "The owner approves with one tap before locking up, and the reply posts at 9:47.",
+    imageSrc: "/illustrations/custom/reputation-mgmt-flow-04.png",
+    imageAlt: "Attention queue with one-tap approve",
+    accent: "amber",
   },
   {
     number: "5",
@@ -166,6 +192,9 @@ const FLOW_STEPS: { number: string; title: ReactNode; body: string; railLabel: s
     ),
     railLabel: "Issue joins the pattern",
     body: "If Friday waits keep appearing, next week’s report says so plainly. The same flow handles a boutique’s wrong-size review with an exchange link instead.",
+    imageSrc: "/illustrations/custom/reputation-mgmt-flow-05.png",
+    imageAlt: "Issue captured in sentiment patterns for reporting",
+    accent: "emerald",
   },
 ];
 
@@ -281,6 +310,8 @@ export default function ReviewManagement() {
         <ProblemSection />
         <FeaturesSection />
         <AgentFlowStepsSection
+          eyebrow="The flow"
+          sectionId="review-management-flow"
           title={
             <>
               From a 9:42 PM two-star to a <span className={HL}>9:47 Reply</span>
@@ -342,7 +373,7 @@ function Hero() {
           <ScrollReveal delay={80} className="relative min-w-0">
             <MarketingHeroImage
               src="/illustrations/custom/reputation-hero-review-management.png"
-              alt="Boutique owner replying to reviews with AI drafts and fast response metrics"
+              alt="Owner drafting an AI reply to a 2-star review, with content calendar and engagement metrics nearby"
             />
           </ScrollReveal>
         </div>
@@ -375,46 +406,66 @@ function ProblemSection() {
   );
 }
 
+function FeatureVisual({
+  feature,
+  pillSide,
+}: {
+  feature: (typeof FEATURES)[number];
+  pillSide: "left" | "right";
+}) {
+  return (
+    <CapsuleFeatureImage
+      src={feature.imageSrc}
+      alt={feature.imageAlt}
+      pillSide={pillSide}
+    />
+  );
+}
+
 function FeaturesSection() {
   return (
-    <section className="bg-white py-16 sm:py-24">
-      <Container>
-        <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-ink-500">
-            What this page shows
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
-            Watch, reply, escalate, control — in every <span className={HL}>Language</span>
-          </h2>
-        </ScrollReveal>
+    <section className="relative overflow-hidden border-b border-ink-100/70">
+      <div className="relative overflow-hidden py-16 sm:pb-12 sm:pt-24">
+        <SoftPastelBackdrop side="right" />
+        <Container className="relative z-10">
+          <ScrollReveal className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-medium text-ink-500">What this page shows</p>
+            <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink-900">
+              Watch, reply, escalate, control — in every <span className={HL}>Language</span>
+            </h2>
+          </ScrollReveal>
+        </Container>
+      </div>
 
-        <div className="mt-14 space-y-16 sm:mt-20 sm:space-y-24">
-          {FEATURES.map((feature, index) => {
-            const Icon = feature.icon;
-            const reverse = Boolean(feature.reverse);
-            return (
-              <ScrollReveal key={feature.id} delay={(index % 3) * 40}>
+      {FEATURES.map((feature, index) => {
+        const Icon = feature.icon;
+        const reverse = Boolean(feature.reverse);
+        const softBand = index % 2 === 1;
+
+        return (
+          <div
+            key={feature.id}
+            className={cn(
+              "relative overflow-hidden py-16 sm:py-24",
+              softBand ? undefined : "bg-white",
+            )}
+          >
+            {softBand ? (
+              <SoftPastelBackdrop side={index % 4 === 1 ? "left" : "right"} />
+            ) : null}
+
+            <Container className="relative z-10">
+              <ScrollReveal delay={(index % 3) * 40}>
                 <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
                   <div className={reverse ? "order-2 lg:order-1" : "order-2 lg:order-2"}>
-                    <div className="overflow-hidden rounded-[28px] border border-ink-200/80 bg-ink-50 shadow-soft">
-                      <div className="flex aspect-[4/3] flex-col items-center justify-center gap-4 p-8 text-center">
-                        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-white text-ink-600 shadow-soft ring-1 ring-ink-200/80">
-                          <Icon className="h-6 w-6" strokeWidth={1.75} />
-                        </span>
-                        <p className="max-w-xs text-sm leading-relaxed text-ink-500">
-                          Product shot placeholder · {feature.eyebrow}
-                        </p>
-                      </div>
-                    </div>
+                    <FeatureVisual feature={feature} pillSide={reverse ? "left" : "right"} />
                   </div>
                   <div className={reverse ? "order-1 lg:order-2" : "order-1 lg:order-1"}>
                     <div className="flex items-center gap-3">
                       <span className="grid h-10 w-10 place-items-center rounded-xl bg-ink-100 text-ink-600 ring-1 ring-ink-200/80">
                         <Icon className="h-5 w-5" strokeWidth={1.75} />
                       </span>
-                      <p className="text-sm font-medium text-ink-500">
-                        {feature.eyebrow}
-                      </p>
+                      <p className="text-sm font-medium text-ink-500">{feature.eyebrow}</p>
                     </div>
                     <h3 className="mt-4 text-[clamp(1.5rem,2.5vw,2rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
                       {feature.title}
@@ -423,10 +474,10 @@ function FeaturesSection() {
                   </div>
                 </div>
               </ScrollReveal>
-            );
-          })}
-        </div>
-      </Container>
+            </Container>
+          </div>
+        );
+      })}
     </section>
   );
 }
