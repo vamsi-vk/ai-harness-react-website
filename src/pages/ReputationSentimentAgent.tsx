@@ -2,12 +2,16 @@ import {
   ArrowRight,
   BarChart3,
   CheckCircle2,
+  Clock3,
   LayoutDashboard,
   Megaphone,
+  MessageCircle,
+  MessageCircleWarning,
   MessageSquare,
   ShieldCheck,
   Sparkles,
   Tags,
+  Unplug,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -267,26 +271,150 @@ function Hero() {
   );
 }
 
+function ReputationProblemVisual() {
+  return (
+    <div className="relative pb-2 pr-2 sm:pb-3 sm:pr-3">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-[1.65rem] bg-gradient-to-br from-[#7C3AED]/10 via-[#9A6FF0]/6 to-rose-400/8"
+      />
+      <div
+        className="relative overflow-hidden rounded-[1.5rem] p-[2px] shadow-[0_28px_56px_-32px_rgba(124,58,237,0.28)]"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(124,58,237,0.4), rgba(154,111,240,0.25), rgba(244,63,94,0.2))",
+        }}
+      >
+        <div className="overflow-hidden rounded-[calc(1.5rem-2px)] bg-white">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-ink-100 bg-gradient-to-r from-brand-50/80 to-white px-4 py-3 sm:px-5">
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-rose-400 opacity-40" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-rose-500" />
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-wide text-ink-500">While you&apos;re open</p>
+            </div>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-ink-900 px-3 py-1 text-[11px] font-medium text-white">
+              <Clock3 className="h-3.5 w-3.5" strokeWidth={2} />
+              Sat register line · 9:42 PM
+            </span>
+          </div>
+
+          <div className="space-y-3 p-4 sm:p-5">
+            <div className="rounded-2xl border border-rose-200/90 bg-gradient-to-br from-rose-50/90 to-white p-4 shadow-sm ring-1 ring-rose-100">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex gap-3">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-rose-600 shadow-sm ring-1 ring-rose-100">
+                    <MessageCircleWarning className="h-5 w-5" strokeWidth={1.75} />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-ink-900">New Google review · 2★</p>
+                    <p className="mt-1 text-[13px] leading-snug text-ink-600">
+                      &ldquo;Great food — waited forty minutes.&rdquo;
+                    </p>
+                  </div>
+                </div>
+                <span className="shrink-0 rounded-full bg-rose-600 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+                  Unread
+                </span>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-amber-200/80 bg-gradient-to-br from-amber-50/70 to-white p-4 shadow-sm ring-1 ring-amber-100/80">
+              <div className="flex items-start gap-3">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-amber-700 shadow-sm ring-1 ring-amber-100">
+                  <MessageCircle className="h-5 w-5" strokeWidth={1.75} />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-semibold text-ink-900">Yelp · still no reply</p>
+                  <p className="mt-1 text-[13px] text-ink-600">Future customers see the silence — 12 days.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-dashed border-brand-200/90 bg-brand-50/40 p-4">
+              <div className="flex items-center gap-2 text-brand-800">
+                <Unplug className="h-4 w-4 shrink-0" strokeWidth={2} />
+                <p className="text-xs font-semibold uppercase tracking-wide">Patterns never connected</p>
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {["Slow Tuesday waits", "Sizing runs small", "Friday service"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center gap-1 rounded-full border border-brand-200/80 bg-white px-3 py-1 text-xs font-medium text-brand-900"
+                  >
+                    <Tags className="h-3 w-3 text-brand-500" strokeWidth={2} />
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <p className="mt-3 text-[12px] leading-relaxed text-ink-500">
+                Scattered across Google, Yelp, and Facebook — never one picture.
+              </p>
+            </div>
+          </div>
+
+          <div className="border-t border-brand-100 bg-gradient-to-r from-[#7C3AED] to-[#9A6FF0] px-4 py-3.5 sm:px-5">
+            <div className="flex items-center gap-3 text-white">
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/15 ring-1 ring-white/25">
+                <Sparkles className="h-4 w-4" strokeWidth={2} />
+              </span>
+              <div>
+                <p className="text-sm font-semibold">Reputation &amp; Sentiment Agent</p>
+                <p className="text-xs text-white/85">Grow · answer · understand · market — you approve what matters.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ProblemSection() {
   return (
-    <section className="border-y border-ink-100 bg-ink-50/60 py-16 sm:py-20">
-      <Container>
-        <ScrollReveal className="mx-auto max-w-3xl">
-          <p className="text-sm font-medium text-ink-500">
-            The problem
-          </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
-            Your <span className={HL}>Reputation</span> is working for you or against you every hour
-            you are open
-          </h2>
-          <p className="mt-5 text-lg font-normal leading-[1.75] text-ink-700 sm:text-xl">
-            Most of that work happens where you cannot see it. New reviews land during the dinner
-            rush or the Saturday register line. Old ones sit unanswered while hundreds of future
-            customers read the silence. The pattern hiding across platforms, the slow-Tuesday
-            complaints, the sizing-runs-small refrain, never gets connected. The agent takes over
-            that whole job: growing reviews, answering them, understanding them, and turning them
-            into growth, with you approving only what deserves an owner’s judgment.
-          </p>
+    <section className="relative overflow-hidden border-y border-ink-100/80 bg-white py-16 sm:py-24">
+      <SoftPastelBackdrop side="left" />
+      <Container className="relative z-10">
+        <ScrollReveal>
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+            <div className="order-2 lg:order-1">
+              <ReputationProblemVisual />
+            </div>
+            <div className="order-1 lg:order-2 min-w-0">
+              <p className="text-sm font-medium text-brand-600">The problem</p>
+              <h2 className="mt-4 text-[clamp(1.75rem,3.2vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-ink-900">
+                Your <span className={HL}>Reputation</span> is working for you or against you every hour
+                you are open
+              </h2>
+              <p className="mt-5 text-lg font-normal leading-[1.75] text-ink-700 sm:text-xl">
+                Most of that work happens where you cannot see it. New reviews land during the dinner
+                rush or the Saturday register line. Old ones sit unanswered while hundreds of future
+                customers read the silence.
+              </p>
+              <p className="mt-4 text-lg font-normal leading-[1.75] text-ink-700 sm:text-xl">
+                The pattern hiding across platforms — the slow-Tuesday complaints, the sizing-runs-small
+                refrain — never gets connected. The agent takes over that whole job: growing reviews,
+                answering them, understanding them, and turning them into growth, with you approving only
+                what deserves an owner&apos;s judgment.
+              </p>
+              <ul className="mt-8 grid gap-3 sm:grid-cols-3">
+                {[
+                  { label: "After-hours reviews", sub: "Land when you're closed" },
+                  { label: "Public silence", sub: "Unanswered = trust lost" },
+                  { label: "Hidden patterns", sub: "Never stitched together" },
+                ].map((item) => (
+                  <li
+                    key={item.label}
+                    className="rounded-2xl border border-brand-100/90 bg-brand-50/50 px-4 py-3 ring-1 ring-brand-100/60"
+                  >
+                    <p className="text-sm font-semibold text-ink-900">{item.label}</p>
+                    <p className="mt-0.5 text-xs leading-snug text-ink-600">{item.sub}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </ScrollReveal>
       </Container>
     </section>

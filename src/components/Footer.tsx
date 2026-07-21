@@ -32,12 +32,51 @@ const socials: Array<{ label: string; href: string; Icon: (props: { className?: 
 
 const columns: FooterColumn[] = [
   {
-    title: "Platform", links: [
-      { label: "Overview", to: "/platform" }, { label: "AI Agents", to: "/platform#agents" }, { label: "Workflow Engine", to: "/platform#workflows" }, { label: "Governance", to: "/security" }, { label: "Integrations", to: "/platform#integrations" }, ], }, {
-    title: "Solutions", links: [
-      { label: "By Use Case", to: "/solutions" }, { label: "By Industry", to: "/industries" }, { label: "For Operations", to: "/solutions#operations" }, { label: "For Engineering", to: "/solutions#engineering" }, { label: "For Customer Ops", to: "/solutions#customer" }, ], }, {
-    title: "Company", links: [
-      { label: "About Us", to: "/about" }, { label: "Contact Us", to: "/contact" }, { label: "Security & Trust", to: "/security" }, ], },
+    title: "Your AI workforce",
+    links: [
+      { label: "Get seen & win customers", to: "/ai-agents" },
+      { label: "Protect your reputation", to: "/agents/reputation-sentiment" },
+      { label: "Run the business", to: "/ai-agents" },
+      { label: "All agents", to: "/ai-agents" },
+    ],
+  },
+  {
+    title: "Industries",
+    links: [
+      { label: "Restaurants", to: "/industries" },
+      { label: "Retail", to: "/industries" },
+      { label: "Real Estate", to: "/industries" },
+      { label: "Dental & Medical", to: "/industries" },
+      { label: "Home & Professional Services", to: "/industries" },
+      { label: "Beauty & Wellness", to: "/industries" },
+    ],
+  },
+  {
+    title: "Product",
+    links: [
+      { label: "How it works", to: "/#how-it-works" },
+      { label: "Pricing", to: "/contact" },
+      { label: "Integrations", to: "/platform#integrations" },
+      { label: "Start free", to: "/signup" },
+    ],
+  },
+  {
+    title: "For enterprise",
+    links: [
+      { label: "Platform", to: "/platform" },
+      { label: "Governance & Security", to: "/security" },
+      { label: "Multi-location", to: "/platform" },
+      { label: "Book a demo", to: "/demo" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", to: "/about" },
+      { label: "Contact", to: "/contact" },
+      { label: "AI Agents", to: "/ai-agents" },
+    ],
+  },
 ];
 
 export default function Footer() {
@@ -54,7 +93,7 @@ export default function Footer() {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ink-600 to-transparent" />
 
       <Container className="relative py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(4,1fr)] xl:grid-cols-[1.4fr_repeat(5,1fr)]">
           <div>
             <Logo dark />
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-ink-400">
