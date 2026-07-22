@@ -11,7 +11,7 @@ import ScrollReveal from "../../components/ScrollReveal";
 import { TITLE_HL as HL } from "../../components/agent-title-highlight";
 import { HOME_AGENT_GROUPS, HOME_FAQS } from "../../data/homeContent";
 import { HOME_INDUSTRY_SLIDES } from "../../data/homeIndustrySlides";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, startTransition } from "react";
 import { cn } from "../../lib/cn";
 
 /**
@@ -173,6 +173,13 @@ function Agents() {
     setOpenAgent(0);
   }, [mission]);
 
+  const selectMission = (index: number) => {
+    if (index === mission) return;
+    startTransition(() => {
+      setMission(index);
+    });
+  };
+
   return (
     <section className="relative overflow-hidden bg-[#F3F1EC] py-20 sm:py-28">
       <div
@@ -194,7 +201,8 @@ function Agents() {
               visibility, reputation, and the ops that fill your calendar.
             </p>
           </ScrollReveal>
-          <ScrollReveal delay={80} className="lg:pb-2">
+          {/* Tabs stay outside ScrollReveal — Safari hit-testing breaks on transformed parents */}
+          <div className="relative z-10 lg:pb-2">
             <p className="text-sm font-medium text-ink-500">Start with a mission</p>
             <div
               role="tablist"
@@ -209,9 +217,10 @@ function Agents() {
                     type="button"
                     role="tab"
                     aria-selected={selected}
-                    onClick={() => setMission(index)}
+                    aria-controls="home-mission-panel"
+                    onClick={() => selectMission(index)}
                     className={cn(
-                      "flex items-center justify-between gap-4 rounded-2xl px-4 py-3.5 text-left transition duration-300",
+                      "flex items-center justify-between gap-4 rounded-2xl px-4 py-3.5 text-left transition-colors duration-200",
                       selected
                         ? "bg-ink-950 text-white shadow-lift"
                         : "bg-white/70 text-ink-700 hover:bg-white",
@@ -227,37 +236,48 @@ function Agents() {
                     </span>
                     <ArrowRight
                       className={cn(
-                        "h-4 w-4 shrink-0 transition",
-                        selected ? "translate-x-0 opacity-100" : "-translate-x-1 opacity-0",
+                        "h-4 w-4 shrink-0 transition-opacity duration-200",
+                        selected ? "opacity-100" : "opacity-0",
                       )}
                     />
                   </button>
                 );
               })}
             </div>
-          </ScrollReveal>
+          </div>
         </div>
 
-        <div className="mt-12 grid overflow-hidden rounded-[1.75rem] bg-ink-950 lg:mt-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+        <div
+          id="home-mission-panel"
+          role="tabpanel"
+          className="mt-12 grid overflow-hidden rounded-[1.75rem] bg-ink-950 lg:mt-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
+        >
           <div className="relative min-h-[280px] sm:min-h-[360px] lg:min-h-[560px]">
-            {WORKFORCE_MISSIONS.map((item, index) => (
-              <img
-                key={item.image}
-                src={item.image}
-                alt={index === mission ? item.imageAlt : ""}
-                width={1200}
-                height={800}
-                loading={index === 0 ? "eager" : "lazy"}
-                decoding="async"
-                className={cn(
-                  "absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out",
-                  index === mission ? "scale-100 opacity-100" : "scale-105 opacity-0",
-                )}
-              />
-            ))}
+            {WORKFORCE_MISSIONS.map((item, index) => {
+              const active = index === mission;
+              return (
+                <img
+                  key={item.image}
+                  src={item.image}
+                  alt={active ? item.imageAlt : ""}
+                  width={1200}
+                  height={800}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                  aria-hidden={!active}
+                  className={cn(
+                    "absolute inset-0 h-full w-full object-cover",
+                    "transition-opacity duration-300 ease-out",
+                    active
+                      ? "pointer-events-none z-[1] opacity-100"
+                      : "pointer-events-none z-0 opacity-0",
+                  )}
+                />
+              );
+            })}
             <div
               aria-hidden
-              className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/40 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-ink-950/20 lg:to-ink-950"
+              className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-ink-950 via-ink-950/40 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-ink-950/20 lg:to-ink-950"
             />
             <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8 lg:hidden">
               <p className="font-serif text-2xl text-white">{agentGroupTitle(group.title)}</p>
@@ -286,7 +306,7 @@ function Agents() {
                       aria-expanded={open}
                       onClick={() => setOpenAgent(open ? -1 : index)}
                       className={cn(
-                        "w-full rounded-2xl border px-4 py-4 text-left transition duration-300 sm:px-5",
+                        "w-full rounded-2xl border px-4 py-4 text-left transition-colors duration-200 sm:px-5",
                         open
                           ? "border-brand-400/50 bg-white/[0.08]"
                           : "border-white/10 bg-transparent hover:border-white/20 hover:bg-white/[0.04]",
@@ -309,13 +329,8 @@ function Agents() {
                               </span>
                             )}
                           </div>
-                          <div
-                            className={cn(
-                              "grid transition-all duration-300 ease-out",
-                              open ? "mt-3 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
-                            )}
-                          >
-                            <div className="overflow-hidden">
+                          {open ? (
+                            <div className="mt-3">
                               <p className="text-[15px] leading-relaxed text-white/70">
                                 {agent.outcome}
                               </p>
@@ -330,11 +345,11 @@ function Agents() {
                                 </Link>
                               ) : null}
                             </div>
-                          </div>
+                          ) : null}
                         </div>
                         <span
                           className={cn(
-                            "mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/15 text-white/70 transition",
+                            "mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/15 text-white/70 transition-transform duration-200",
                             open && "rotate-90 border-brand-300/40 text-brand-200",
                           )}
                         >
@@ -364,6 +379,7 @@ function Agents() {
 
 function Industries() {
   const [active, setActive] = useState(0);
+  const [pauseToken, setPauseToken] = useState(0);
   const tablistId = useId();
   const progressRef = useRef<HTMLSpanElement>(null);
   const slide = HOME_INDUSTRY_SLIDES[active];
@@ -371,7 +387,11 @@ function Industries() {
   const AUTO_MS = 6000;
 
   const goTo = (index: number) => {
-    setActive(((index % count) + count) % count);
+    const next = ((index % count) + count) % count;
+    startTransition(() => {
+      setActive(next);
+    });
+    setPauseToken((t) => t + 1);
   };
 
   useEffect(() => {
@@ -386,17 +406,18 @@ function Industries() {
     }
     bar.style.transition = `transform ${AUTO_MS}ms linear`;
     bar.style.transform = "scaleX(1)";
-  }, [active]);
+  }, [active, pauseToken]);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = window.setInterval(() => {
-      setActive((i) => (i + 1) % count);
+      startTransition(() => {
+        setActive((i) => (i + 1) % count);
+      });
     }, AUTO_MS);
     return () => window.clearInterval(id);
-  }, [count]);
+  }, [count, pauseToken]);
 
-  // Keep progress bar ref on the active row even when React remounts the span
   const setProgressNode = (node: HTMLSpanElement | null) => {
     progressRef.current = node;
     if (!node) return;
@@ -447,7 +468,7 @@ function Industries() {
                     id={`${tablistId}-tab-${index}`}
                     aria-selected={selected}
                     aria-controls={`${tablistId}-panel`}
-                    tabIndex={selected ? 0 : -1}
+                    tabIndex={0}
                     onClick={() => goTo(index)}
                     onKeyDown={(e) => {
                       if (e.key === "ArrowDown" || e.key === "ArrowRight") {
@@ -459,7 +480,7 @@ function Industries() {
                       }
                     }}
                     className={cn(
-                      "relative shrink-0 text-left transition duration-300 lg:w-full",
+                      "relative shrink-0 text-left transition-colors duration-200 lg:w-full",
                       "rounded-full px-5 py-3 lg:rounded-none lg:px-8 lg:py-5",
                       selected
                         ? "bg-white text-ink-950 lg:bg-white/[0.07] lg:text-white"
@@ -475,12 +496,7 @@ function Industries() {
                       >
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <span
-                        className={cn(
-                          "block text-[15px] font-semibold tracking-tight sm:text-base lg:text-[1.35rem] lg:leading-tight",
-                          selected && "lg:translate-x-1",
-                        )}
-                      >
+                      <span className="block text-[15px] font-semibold tracking-tight sm:text-base lg:text-[1.35rem] lg:leading-tight">
                         {item.tabLabel}
                       </span>
                     </span>
@@ -512,23 +528,27 @@ function Industries() {
             aria-labelledby={`${tablistId}-tab-${active}`}
             className="relative min-h-[420px] overflow-hidden sm:min-h-[520px] lg:min-h-[640px]"
           >
-            {HOME_INDUSTRY_SLIDES.map((item, index) => (
-              <img
-                key={item.image}
-                src={item.image}
-                alt={index === active ? item.imageAlt : ""}
-                width={1400}
-                height={900}
-                loading={index === 0 ? "eager" : "lazy"}
-                decoding="async"
-                className={cn(
-                  "absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out",
-                  index === active
-                    ? "scale-100 opacity-100"
-                    : "scale-105 opacity-0",
-                )}
-              />
-            ))}
+            {HOME_INDUSTRY_SLIDES.map((item, index) => {
+              const isActive = index === active;
+              return (
+                <img
+                  key={item.image}
+                  src={item.image}
+                  alt={isActive ? item.imageAlt : ""}
+                  width={1400}
+                  height={900}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                  aria-hidden={!isActive}
+                  className={cn(
+                    "absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ease-out",
+                    isActive
+                      ? "pointer-events-none z-[1] opacity-100"
+                      : "pointer-events-none z-0 opacity-0",
+                  )}
+                />
+              );
+            })}
             <div
               aria-hidden
               className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/35 to-transparent"

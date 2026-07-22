@@ -327,12 +327,13 @@ body {
     opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--scroll-reveal-delay, 0ms);
-  will-change: opacity, transform;
+  pointer-events: none;
 }
 
 .scroll-reveal-visible {
   opacity: 1;
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -340,6 +341,7 @@ body {
     opacity: 1;
     transform: none;
     transition: none;
+    pointer-events: auto;
   }
 }
 
