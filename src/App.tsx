@@ -14,7 +14,6 @@ import Home from "./pages/Home";
 // the matching vendor chunking strategy.
 const Platform = lazy(() => import("./pages/Platform"));
 const Industries = lazy(() => import("./pages/Industries"));
-const UseCases = lazy(() => import("./pages/UseCases"));
 const Security = lazy(() => import("./pages/Security"));
 const Contact = lazy(() => import("./pages/Contact"));
 const SignUp = lazy(() => import("./pages/SignUp"));
@@ -45,6 +44,19 @@ const ReviewAnalyticsMarketing = lazy(
   () => import("./pages/reputation-sentiment/ReviewAnalyticsMarketing"),
 );
 const AutomatedReviewAgent = lazy(() => import("./pages/AutomatedReviewAgent"));
+const VisibilityListingAgent = lazy(() => import("./pages/VisibilityListingAgent"));
+const ListingsPublishing = lazy(
+  () => import("./pages/visibility-listing/ListingsPublishing"),
+);
+const SearchOptimization = lazy(
+  () => import("./pages/visibility-listing/SearchOptimization"),
+);
+const VisibilityAnalytics = lazy(
+  () => import("./pages/visibility-listing/VisibilityAnalytics"),
+);
+const Enterprise = lazy(() => import("./pages/Enterprise"));
+const SolutionsPage = lazy(() => import("./pages/SolutionsPage"));
+const SolutionEnterprise = lazy(() => import("./pages/SolutionEnterprise"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function ScrollToTop() {
@@ -80,9 +92,16 @@ export default function App() {
           <Suspense fallback={<RouteFallback />}>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/enterprise" element={<Enterprise />} />
+              <Route path="/solutions" element={<SolutionsPage />} />
+              <Route path="/solutions/enterprise" element={<SolutionEnterprise />} />
+              <Route path="/x" element={<Navigate to="/solutions" replace />} />
+              <Route
+                path="/x/solution-enterprise"
+                element={<Navigate to="/solutions/enterprise" replace />}
+              />
               <Route path="/platform" element={<Platform />} />
               <Route path="/industries" element={<Industries />} />
-              <Route path="/solutions" element={<UseCases />} />
               <Route path="/ai-agents" element={<Navigate to="/" replace />} />
               <Route
                 path="/agents/marketing-automation"
@@ -119,6 +138,22 @@ export default function App() {
               <Route
                 path="/agents/automated-reviews"
                 element={<AutomatedReviewAgent />}
+              />
+              <Route
+                path="/agents/visibility-listing"
+                element={<VisibilityListingAgent />}
+              />
+              <Route
+                path="/agents/visibility-listing/listings-publishing"
+                element={<ListingsPublishing />}
+              />
+              <Route
+                path="/agents/visibility-listing/search-optimization"
+                element={<SearchOptimization />}
+              />
+              <Route
+                path="/agents/visibility-listing/visibility-analytics"
+                element={<VisibilityAnalytics />}
               />
               <Route
                 path="/ai-agents/marketing-automation"

@@ -1,0 +1,16 @@
+---
+description: All marketing photos and generated imagery must use North American (US/Canada) people and settings only, with client casting rules
+alwaysApply: true
+---
+
+# North American imagery only
+
+When generating, selecting, or prompting **any** website image (hero, industry cards, galleries, agent pages, posters):
+
+- **People / casting (client requirement)**: Adults who clearly read as living in the **United States or Canada**. Use **White American and/or Hispanic/Latino American** adults only. **Do not depict Black people** in marketing imagery for this site.
+- **Setting**: North American small-business environments (suburban/urban US/Canada). English signage where visible. North American architecture and interiors.
+- **Do not use**: Imagery whose primary read is South Asia, Middle East, Africa, Latin America (non-US), Europe-only, or other non–North American locales; avoid reusing legacy `hero-*.png` stock set for new pages.
+
+Reference: `src/data/imageAssetGuidelines.ts` → `NORTH_AMERICAN_PHOTO_PROMPT_SUFFIX`, `CLIENT_PHOTO_CAST_PROMPT`, `HOME_INDUSTRY_PHOTO_CAST`.
+
+Before shipping new image paths, confirm they are **not** duplicated elsewhere on the site unless intentional.

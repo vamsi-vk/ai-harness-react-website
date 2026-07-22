@@ -7,6 +7,7 @@ import PlatformNavMenu, {
   PLATFORM_PRODUCTS,
   PLATFORM_SIDEBAR_ITEMS,
 } from "./PlatformNavMenu";
+import SolutionsNavMenu, { SOLUTIONS_MENU_ITEMS } from "./SolutionsNavMenu";
 import { cn } from "../lib/cn";
 import {
   isProductChromeCompact,
@@ -23,7 +24,7 @@ type NavItem = {
   label: string;
   to: string;
   children?: DropdownItem[];
-  megaMenu?: "platform";
+  megaMenu?: "platform" | "solutions";
 };
 
 const navItems: NavItem[] = [
@@ -44,26 +45,39 @@ const navItems: NavItem[] = [
       })),
     ],
   },
-  { label: "Solutions", to: "/solutions" },
+  {
+    label: "Solutions",
+    to: "/solutions",
+    megaMenu: "solutions",
+    children: SOLUTIONS_MENU_ITEMS.map(({ label, to, description }) => ({
+      label,
+      to,
+      description,
+    })),
+  },
   { label: "Industries", to: "/industries" },
   { label: "International", to: "/international-businesses" },
   { label: "Security", to: "/security" },
   { label: "Contact", to: "/contact" },
 ];
 
+function isNavPathActive(pathname: string, to: string) {
+  if (to === "/") return pathname === "/";
+  return pathname === to || pathname.startsWith(`${to}/`);
+}
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [chromeCompact, setChromeCompact] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const location = useLocation();
   const dropdownTimer = useRef<number | null>(null);
   const productChrome = isProductChromePath(location.pathname);
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 8);
       if (productChrome) {
         setChromeCompact(isProductChromeCompact(window.scrollY));
       } else {
@@ -74,14 +88,6 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [productChrome]);
-
-  useEffect(() => {
-    setOpen(false);
-    setOpenDropdown(null);
-    setOpenMobileGroup(null);
-    // Close on hash changes too (e.g. switching between desks via the
-    // International Businesses dropdown stays on the same pathname).
-  }, [location.pathname, location.hash]);
 
   const handleEnter = (label: string) => {
     if (dropdownTimer.current) {
@@ -100,14 +106,25 @@ export default function Navbar() {
     }, 180);
   };
 
+  useEffect(() => {
+    setOpen(false);
+    setOpenDropdown(null);
+    setOpenMobileGroup(null);
+    // Close on hash changes too (e.g. switching between desks via the
+    // International Businesses dropdown stays on the same pathname).
+  }, [location.pathname, location.hash]);
+
+  const navOnHome = isHome && !productChrome;
+  const headerFixed = productChrome || navOnHome;
+
+  const navLinkIdle = "text-ink-600 hover:bg-ink-50 hover:text-ink-900";
+  const navLinkActive = "bg-ink-100 text-ink-900";
+
   return (
     <header
       className={cn(
-        "z-50 w-full transition-all duration-300 ease-out",
-        productChrome ? "fixed inset-x-0 top-0" : "sticky top-0",
-        productChrome || scrolled
-          ? "border-b border-ink-200/70 bg-ink-50"
-          : "border-b border-transparent bg-ink-50",
+        "z-50 w-full border-b border-ink-200/80 bg-white transition-all duration-300 ease-out",
+        headerFixed ? "fixed inset-x-0 top-0" : "sticky top-0",
         productChrome && chromeCompact && !open
           ? "pointer-events-none -translate-y-full"
           : "translate-y-0",
@@ -125,14 +142,17 @@ export default function Navbar() {
                 onMouseLeave={handleLeave}
               >
                 {(() => {
-                  const isActive = location.pathname.startsWith(item.to);
+                  const isActive =
+                    isNavPathActive(location.pathname, item.to) ||
+                    (item.children?.some((child) =>
+                      isNavPathActive(location.pathname, child.to),
+                    ) ??
+                      false);
                   return (
                     <div
                       className={cn(
                         "inline-flex items-center rounded-full transition-colors",
-                        isActive
-                          ? "bg-ink-100 text-ink-900"
-                          : "text-ink-600 hover:bg-ink-50 hover:text-ink-900",
+                        isActive ? navLinkActive : navLinkIdle,
                       )}
                     >
                       <Link
@@ -169,7 +189,9 @@ export default function Navbar() {
                       "z-40 pt-3",
                       item.megaMenu === "platform"
                         ? "fixed left-1/2 top-16 w-[min(calc(100vw-2rem),72rem)] -translate-x-1/2"
-                        : "absolute top-full left-1/2 w-72 -translate-x-1/2",
+                        : item.megaMenu === "solutions"
+                          ? "fixed left-1/2 top-16 w-[min(calc(100vw-2rem),42rem)] -translate-x-1/2"
+                          : "absolute top-full left-1/2 w-72 -translate-x-1/2",
                     )}
                     onMouseEnter={() => handleEnter(item.label)}
                     onMouseLeave={handleLeave}
@@ -182,6 +204,8 @@ export default function Navbar() {
                     >
                       {item.megaMenu === "platform" ? (
                         <PlatformNavMenu onNavigate={() => setOpenDropdown(null)} />
+                      ) : item.megaMenu === "solutions" ? (
+                        <SolutionsNavMenu onNavigate={() => setOpenDropdown(null)} />
                       ) : (
                         <div className="p-2">
                           {item.children?.map((child) => (
@@ -214,9 +238,7 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   cn(
                     "rounded-full px-3.5 py-2 text-[14px] font-medium transition-colors",
-                    isActive
-                      ? "bg-ink-100 text-ink-900"
-                      : "text-ink-600 hover:bg-ink-50 hover:text-ink-900",
+                    isActive ? navLinkActive : navLinkIdle,
                   )
                 }
               >
@@ -261,7 +283,12 @@ export default function Navbar() {
                         className={({ isActive }) =>
                           cn(
                             "flex-1 rounded-lg px-3 py-3 text-[15px] font-medium",
-                            isActive ? "text-ink-900" : "text-ink-700",
+                            isActive ||
+                              item.children?.some((child) =>
+                                isNavPathActive(location.pathname, child.to),
+                              )
+                              ? "text-ink-900"
+                              : "text-ink-700",
                           )
                         }
                       >
@@ -296,11 +323,20 @@ export default function Navbar() {
                               setOpenMobileGroup(null);
                             }}
                           />
+                        ) : item.megaMenu === "solutions" ? (
+                          <SolutionsNavMenu
+                            className="w-full"
+                            onNavigate={() => {
+                              setOpen(false);
+                              setOpenMobileGroup(null);
+                            }}
+                          />
                         ) : (
                           item.children?.map((child) => (
                             <NavLink
                               key={child.to + child.label}
                               to={child.to}
+                              end={child.to === "/"}
                               className={({ isActive }) =>
                                 cn(
                                   "block rounded-lg px-3 py-2.5 text-[14.5px]",

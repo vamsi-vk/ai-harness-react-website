@@ -33,8 +33,10 @@ export const SITE_URL = "https://ai-harness.com";
 /** @type {SeoRoute[]} */
 export const SEO_ROUTES = [
   { path: "/",           prerender: true, sitemap: { priority: 1.0, changefreq: "weekly"  } },
-  { path: "/platform",   prerender: true, sitemap: { priority: 0.9, changefreq: "weekly"  } },
+  { path: "/enterprise", prerender: true, sitemap: { priority: 0.9, changefreq: "weekly"  } },
   { path: "/solutions",  prerender: true, sitemap: { priority: 0.9, changefreq: "weekly"  } },
+  { path: "/solutions/enterprise", prerender: true, sitemap: { priority: 0.85, changefreq: "weekly" } },
+  { path: "/platform",   prerender: true, sitemap: { priority: 0.9, changefreq: "weekly"  } },
   { path: "/ai-agents",  prerender: false, sitemap: false },
   { path: "/agents/marketing-automation", prerender: true, sitemap: { priority: 0.85, changefreq: "weekly" } },
   { path: "/agents/marketing-automation/post-creation-publishing", prerender: true, sitemap: { priority: 0.7, changefreq: "weekly" } },
@@ -45,6 +47,10 @@ export const SEO_ROUTES = [
   { path: "/agents/reputation-sentiment/review-management", prerender: true, sitemap: { priority: 0.7, changefreq: "weekly" } },
   { path: "/agents/reputation-sentiment/review-analytics-marketing", prerender: true, sitemap: { priority: 0.7, changefreq: "weekly" } },
   { path: "/agents/automated-reviews", prerender: true, sitemap: { priority: 0.85, changefreq: "weekly" } },
+  { path: "/agents/visibility-listing", prerender: true, sitemap: { priority: 0.85, changefreq: "weekly" } },
+  { path: "/agents/visibility-listing/listings-publishing", prerender: true, sitemap: { priority: 0.7, changefreq: "weekly" } },
+  { path: "/agents/visibility-listing/search-optimization", prerender: true, sitemap: { priority: 0.7, changefreq: "weekly" } },
+  { path: "/agents/visibility-listing/visibility-analytics", prerender: true, sitemap: { priority: 0.7, changefreq: "weekly" } },
   { path: "/industries", prerender: true, sitemap: { priority: 0.9, changefreq: "weekly"  } },
   { path: "/security",   prerender: true, sitemap: { priority: 0.8, changefreq: "monthly" } },
   { path: "/about",      prerender: true, sitemap: { priority: 0.7, changefreq: "monthly" } },

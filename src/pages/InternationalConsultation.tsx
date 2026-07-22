@@ -66,7 +66,7 @@ export default function InternationalConsultation() {
         description={`Book a 45-minute consultation with the ${desk.name}. In English or ${desk.language}, at ${desk.timezoneAbbr} or Pacific hours. An honest read on your US readiness, whether or not you work with us.`}
         keywords={`${desk.name}, consultation, US market entry, ${desk.countryAdjective} companies, AI-Harness`}
         breadcrumbs={[
-          { label: "Solutions", path: "/solutions" },
+          { label: "Solutions", path: "/solutions/enterprise" },
           { label: "International Businesses", path: "/international-businesses" },
           { label: desk.name, path: `/international-businesses/${desk.id}` },
           { label: "Consultation", path: seoPath },
@@ -114,7 +114,7 @@ function Breadcrumb({ desk }: { desk: DeskConfig }) {
       aria-label="Breadcrumb"
       className="flex flex-wrap items-center gap-1.5 text-[12.5px] font-medium text-ink-500"
     >
-      <Link to="/solutions" className="hover:text-ink-700">
+      <Link to="/solutions/enterprise" className="hover:text-ink-700">
         Solutions
       </Link>
       <span className="text-ink-300">/</span>

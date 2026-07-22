@@ -139,7 +139,7 @@ export default function InternationalBusinesses() {
         description="AI-Harness helps international companies enter the US market with bilingual account directors and governed AI agents. Country-specific teams for Japan, China, and Taiwan."
         keywords="US market entry, international businesses, Japan Desk, China Desk, Taiwan Desk, bilingual account director, AI-Harness"
         breadcrumbs={[
-          { label: "Solutions", path: "/solutions" },
+          { label: "Solutions", path: "/solutions/enterprise" },
           { label: "International Businesses", path: "/international-businesses" },
         ]}
       />

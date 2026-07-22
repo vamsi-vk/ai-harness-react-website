@@ -1,6 +1,7 @@
 import {
   ArrowRight,
   Bot,
+  MapPinned,
   Megaphone,
   MessageSquare,
   Network,
@@ -101,10 +102,11 @@ export const PLATFORM_PRODUCTS: PlatformProduct[] = [
     badge: "NEW",
   },
   {
-    label: "Product four",
-    description: "Placeholder description for the fourth platform product card.",
-    to: "/platform",
-    icon: Workflow,
+    label: "Visibility and Listing AI Agent",
+    description: "Lists your business everywhere customers search and works to rank you first.",
+    to: "/agents/visibility-listing",
+    icon: MapPinned,
+    badge: "NEW",
   },
   {
     label: "Product five",
@@ -169,7 +171,7 @@ export default function PlatformNavMenu({ onNavigate, className }: Props) {
               })}
             </div>
 
-            {/* Mid links + promo skeleton */}
+            {/* Mid links */}
             <div className="flex flex-col gap-5 px-5 py-5">
               <div className="space-y-1.5">
                 {PLATFORM_LINKS.map((link) => {
@@ -186,26 +188,6 @@ export default function PlatformNavMenu({ onNavigate, className }: Props) {
                     </Link>
                   );
                 })}
-              </div>
-
-              <div className="mt-auto overflow-hidden rounded-2xl bg-gradient-to-br from-brand-600 via-brand-700 to-brand-800 p-5 text-white shadow-soft">
-                <p className="text-[11px] font-semibold tracking-[0.16em] text-white/70 uppercase">
-                  Spotlight
-                </p>
-                <p className="mt-2.5 text-[16px] font-semibold leading-snug">
-                  Placeholder promo card title
-                </p>
-                <p className="mt-2 text-[13px] leading-relaxed text-white/75">
-                  Short supporting line for an event, webinar, or feature highlight.
-                </p>
-                <Link
-                  to="/demo"
-                  onClick={onNavigate}
-                  className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-[13px] font-semibold text-brand-800 transition duration-200 hover:bg-brand-50"
-                >
-                  Register now
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
               </div>
             </div>
           </div>

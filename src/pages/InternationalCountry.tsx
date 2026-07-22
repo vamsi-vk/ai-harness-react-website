@@ -214,7 +214,7 @@ export default function InternationalCountry() {
         description={`${desk.name} helps ${desk.countryAdjective} companies build US pipeline through bilingual account directors and governed AI agents: qualified meetings, channel partners, and monthly reporting in ${desk.language}, all on one platform.`}
         keywords={`${desk.name}, AI managed service, US revenue, bilingual account director, AI agents ${desk.countryAdjective}, AI-Harness international`}
         breadcrumbs={[
-          { label: "Solutions", path: "/solutions" },
+          { label: "Solutions", path: "/solutions/enterprise" },
           { label: "International Businesses", path: "/international-businesses" },
           { label: desk.name, path: `/international-businesses/${desk.id}` },
         ]}

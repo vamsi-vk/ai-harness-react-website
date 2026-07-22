@@ -30,9 +30,12 @@ export const HOME_FAQS = [
 ];
 
 export type HomeAgentCard = {
+  headline?: string;
+  headlinePrefix?: string;
+  headlineHighlight?: string;
+  headlineSuffix?: string;
   outcome: string;
   name: string;
-  seeLabel: string;
   seeTo: string;
   live: boolean;
 };
@@ -45,15 +48,13 @@ export const HOME_AGENT_GROUPS: { title: string; agents: HomeAgentCard[] }[] = [
         outcome:
           "Your business gets listed and stays accurate everywhere, so you are the answer customers find on search and when they ask AI.",
         name: "Listings & Search Visibility Agent",
-        seeLabel: "See the Listings & Search Visibility Agent",
-        seeTo: "/ai-agents",
-        live: false,
+        seeTo: "/agents/visibility-listing",
+        live: true,
       },
       {
         outcome:
           "Your brand stays alive across every channel, with campaigns built for each location and content aimed at the audience most likely to buy.",
         name: "Social Media Agent",
-        seeLabel: "See the Marketing Automation Agent",
         seeTo: "/agents/marketing-automation",
         live: true,
       },
@@ -61,7 +62,6 @@ export const HOME_AGENT_GROUPS: { title: string; agents: HomeAgentCard[] }[] = [
         outcome:
           "Every lead gets caught, qualified, and followed up until it books or buys, so fewer opportunities turn into lost revenue.",
         name: "Sales Pipeline & CRM Agent",
-        seeLabel: "See the Sales Pipeline & CRM Agent",
         seeTo: "/ai-agents#sales-pipeline",
         live: true,
       },
@@ -74,7 +74,6 @@ export const HOME_AGENT_GROUPS: { title: string; agents: HomeAgentCard[] }[] = [
         outcome:
           "Reviews come in, and your Reputation Agent answers every one in your voice, even the hard ones, so trust keeps building instead of leaking away.",
         name: "Reputation & Sentiment Agent",
-        seeLabel: "See the Reputation & Sentiment Agent",
         seeTo: "/agents/reputation-sentiment",
         live: true,
       },
@@ -82,7 +81,6 @@ export const HOME_AGENT_GROUPS: { title: string; agents: HomeAgentCard[] }[] = [
         outcome:
           "A steady stream of fresh reviews arrives on its own, the strongest signal on who chooses you next.",
         name: "Automated Review Agent",
-        seeLabel: "See the Automated Review Agent",
         seeTo: "/agents/automated-reviews",
         live: true,
       },
@@ -94,28 +92,24 @@ export const HOME_AGENT_GROUPS: { title: string; agents: HomeAgentCard[] }[] = [
       {
         outcome: "The calendar fills itself, no-shows drop.",
         name: "Appointment & Booking Agent",
-        seeLabel: "See the Appointment & Booking Agent",
         seeTo: "/ai-agents",
         live: false,
       },
       {
         outcome: "Quotes and proposals out the door same day.",
         name: "Proposal Drafting Agent",
-        seeLabel: "See the Proposal Drafting Agent",
         seeTo: "/ai-agents#proposals",
         live: true,
       },
       {
         outcome: "Money in, without the chasing.",
         name: "Payments & Invoicing Agent",
-        seeLabel: "See the Payments & Invoicing Agent",
         seeTo: "/ai-agents",
         live: false,
       },
       {
         outcome: "Your best customers, bringing you more.",
         name: "Referral Agent",
-        seeLabel: "See the Referral Agent",
         seeTo: "/ai-agents",
         live: false,
       },

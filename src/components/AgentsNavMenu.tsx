@@ -1,4 +1,4 @@
-import { Megaphone, MessageSquare, Star, type LucideIcon } from "lucide-react";
+import { MapPinned, Megaphone, MessageSquare, Star, type LucideIcon } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { cn } from "../lib/cn";
 import { scrollToHashWithRetry } from "../lib/scrollToHash";
@@ -12,6 +12,13 @@ export type AgentNavItem = {
 };
 
 export const AGENT_NAV_ITEMS: AgentNavItem[] = [
+  {
+    label: "Visibility and Listing AI Agent",
+    to: "/agents/visibility-listing",
+    description: "Lists your business everywhere customers search and ranks you higher.",
+    icon: MapPinned,
+    accent: "from-brand-400 to-brand-700",
+  },
   {
     label: "Reputation & Sentiment Agent",
     to: "/agents/reputation-sentiment",
@@ -29,7 +36,7 @@ export const AGENT_NAV_ITEMS: AgentNavItem[] = [
   {
     label: "Marketing Automation Agent",
     to: "/agents/marketing-automation",
-    description: "Plans, publishes, replies, and reports — your always-on marketing teammate.",
+    description: "Plans, publishes, replies, and reports. Your always-on marketing teammate.",
     icon: Megaphone,
     accent: "from-success-400 to-success-600",
   },

@@ -560,11 +560,6 @@ function IndustriesWhySection() {
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-industries-mesh" />
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-60" />
         <Container className="relative">
-          <ScrollReveal className="font-inter mx-auto max-w-3xl text-center">
-            <h2 className="text-[clamp(1.75rem,3.2vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-ink-900">
-              Built for <span className="text-gradient">businesses like yours</span>
-            </h2>
-          </ScrollReveal>
           <IndustriesGallery />
           <ScrollReveal delay={80}>
             <p className="font-inter mx-auto mt-8 max-w-2xl text-center text-base font-normal leading-relaxed text-ink-600 sm:text-lg">
@@ -580,17 +575,15 @@ function IndustriesWhySection() {
 
 function FaqSection() {
   return (
-    <section className="bg-ink-50/70 py-16 sm:py-20">
+    <section className="border-t border-ink-100 bg-white py-20 sm:py-28">
       <Container>
         <ScrollReveal>
-          <div className="font-inter mx-auto max-w-3xl text-center">
-            <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-ink-900">
-              Frequently asked <span className="text-gradient">questions</span>
-            </h2>
-          </div>
+          <h2 className="max-w-4xl text-[clamp(2.25rem,5vw,3.5rem)] font-normal leading-[1.1] tracking-[-0.03em] text-ink-900">
+            Frequently Asked Questions
+          </h2>
         </ScrollReveal>
-        <div className="mx-auto mt-12 max-w-3xl">
-          <FaqAccordion items={FAQS} />
+        <div className="mt-10 sm:mt-14">
+          <FaqAccordion items={FAQS} variant="lines" className="font-inter" />
         </div>
       </Container>
     </section>

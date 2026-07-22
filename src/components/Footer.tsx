@@ -63,6 +63,7 @@ const columns: FooterColumn[] = [
   {
     title: "For enterprise",
     links: [
+      { label: "Enterprise", to: "/enterprise" },
       { label: "Platform", to: "/platform" },
       { label: "Governance & Security", to: "/security" },
       { label: "Multi-location", to: "/platform" },
@@ -89,7 +90,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="site-footer" className="relative mt-16 overflow-hidden border-t border-ink-200 bg-ink-950 text-ink-300">
+    <footer id="site-footer" className="relative z-20 mt-16 overflow-hidden border-t border-ink-200 bg-ink-950 text-ink-300">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ink-600 to-transparent" />
 
       <Container className="relative py-16">
