@@ -5,6 +5,7 @@ import Button from "../../components/Button";
 import Seo from "../../components/Seo";
 import FaqJsonLd from "../../components/FaqJsonLd";
 import HomeHeroMosaic from "../../components/home/HomeHeroMosaic";
+import LightPillar from "../../components/backgrounds/LightPillar";
 import FaqAccordion from "../../components/FaqAccordion";
 import ScrollReveal from "../../components/ScrollReveal";
 import { TITLE_HL as HL } from "../../components/agent-title-highlight";
@@ -30,7 +31,6 @@ export default function HomePage() {
       <HomeSchema />
 
       <Hero />
-      <Shift />
       <Agents />
       <Industries />
       <HowItWorks />
@@ -71,19 +71,22 @@ function HomeSchema() {
 
 function Hero() {
   return (
-    <section className="relative isolate min-h-[100svh] overflow-hidden bg-white">
+    <section className="relative isolate min-h-[100svh] overflow-hidden bg-ink-950">
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <LightPillar className="h-full w-full" pillarRotation={30} />
+        {/* Soft left veil so headline stays readable */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/70 via-ink-950/35 to-transparent" />
+      </div>
       <HomeHeroMosaic />
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-r from-white from-[38%] via-white/85 via-[50%] to-transparent lg:from-[36%] lg:via-[48%]"
-      />
 
       <Container className="relative z-10 flex min-h-[100svh] flex-col justify-center py-28 pt-32 sm:pt-36 lg:pb-28">
-        <ScrollReveal className="max-w-xl text-left lg:max-w-2xl">
-          <h1 className="text-[clamp(1.85rem,3.8vw,3.15rem)] font-medium leading-[1.12] tracking-[-0.03em] text-ink-900">
-            Your AI workforce, running the busy work while you run the business.
+        <ScrollReveal className="max-w-xl text-left lg:max-w-[28rem] xl:max-w-xl">
+          <h1 className="text-[clamp(1.85rem,3.8vw,3.15rem)] font-medium leading-[1.12] tracking-[-0.03em] text-white">
+            Your <span className={HL}>AI workforce</span>, running the{" "}
+            <span className={HL}>busy work</span> while you run the{" "}
+            <span className={HL}>business</span>.
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-600 sm:text-lg sm:leading-[1.75]">
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg sm:leading-[1.75]">
             A team of AI agents that make your brand more visible, turn attention into customers,
             and put more revenue on the board, getting you found, winning your reviews, following up
             your leads, booking your appointments, and getting you paid. You set the direction and
@@ -93,60 +96,17 @@ function Hero() {
             <Button to="/signup" size="lg">
               Start free
             </Button>
-            <Link
+            <Button
               to="/demo"
-              className="inline-flex items-center gap-2 text-[15px] font-semibold text-ink-800 underline decoration-ink-300 underline-offset-8 transition hover:text-brand-700 hover:decoration-brand-400"
+              size="lg"
+              variant="white"
+              className="bg-white text-brand-600 hover:bg-white hover:text-brand-700"
             >
               See it in action
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </Button>
           </div>
-          <p className="mt-5 text-sm text-ink-500">$10 free credits · No credit card</p>
-        </ScrollReveal>
-      </Container>
-    </section>
-  );
-}
-
-function Shift() {
-  return (
-    <section className="relative overflow-hidden bg-[#F7F6F4] py-20 sm:py-28">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-brand-200/30 blur-3xl"
-      />
-      <Container>
-        <div className="grid gap-14 lg:grid-cols-2 lg:items-end lg:gap-20">
-          <ScrollReveal>
-            <p className="text-xs font-semibold tracking-[0.2em] text-ink-500 uppercase">
-              Not another chatbot
-            </p>
-            <h2 className="mt-5 text-[clamp(2rem,4.2vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.03em] text-ink-900">
-              A chatbot answers.
-              <br />
-              An <span className={HL}>AI agent</span> does the job.
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal delay={80}>
-            <p className="text-lg leading-[1.75] text-ink-700">
-              Customers ask AI where to go, judge you by reviews, and message after you close. Most
-              tools give you another screen. AI-Harness gives you agents that own real jobs, finish
-              them, and report back so you approve outcomes instead of operating software.
-            </p>
-          </ScrollReveal>
-        </div>
-
-        <ScrollReveal delay={120} className="mt-16 border-t border-ink-900/10 pt-10 sm:mt-20">
-          <div className="grid gap-10 sm:grid-cols-2 sm:gap-16">
-            <div>
-              <p className="font-serif text-3xl text-ink-400">Chatbot</p>
-              <p className="mt-3 text-xl font-medium text-ink-800">Answers a question</p>
-            </div>
-            <div>
-              <p className="font-serif text-3xl text-brand-600">AI agent</p>
-              <p className="mt-3 text-xl font-medium text-ink-900">Does the job</p>
-            </div>
-          </div>
+          <p className="mt-5 text-sm text-white/50">$10 free credits · No credit card</p>
         </ScrollReveal>
       </Container>
     </section>
@@ -828,27 +788,34 @@ function FinalCta() {
         decoding="async"
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
-      <div aria-hidden className="absolute inset-0 bg-ink-950/55" />
+      {/* Cool brand wash — kills residual warm cast */}
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-r from-brand-950/75 via-ink-950/55 to-brand-900/40 mix-blend-multiply"
+      />
+      <div aria-hidden className="absolute inset-0 bg-ink-950/35" />
       <Container className="relative z-10 flex min-h-[min(70vh,560px)] items-center py-20">
         <ScrollReveal className="max-w-xl">
           <h2 className="text-[clamp(2rem,4vw,3.25rem)] font-medium leading-[1.1] tracking-[-0.03em] text-white">
             Your business, running every day.
             <span className="mt-2 block font-serif italic text-white/90">Your evenings, back.</span>
           </h2>
-          <p className="mt-5 text-lg text-white/80">
+          <p className="mt-5 text-lg text-white/85">
             Hire your first AI agent in minutes. Start free, no credit card, no consultants.
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
-            <Button to="/signup" variant="white" size="lg">
+            <Button to="/signup" size="lg">
               Start free
             </Button>
-            <Link
+            <Button
               to="/contact"
-              className="inline-flex items-center gap-2 text-[15px] font-semibold text-white underline decoration-white/40 underline-offset-8 hover:decoration-white"
+              size="lg"
+              variant="white"
+              className="bg-white text-brand-600 hover:bg-white hover:text-brand-700"
             >
               Talk to us
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </Button>
           </div>
         </ScrollReveal>
       </Container>

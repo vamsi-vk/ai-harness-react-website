@@ -188,15 +188,17 @@ export default function DemoChatbot() {
     }, 650);
   };
 
-  const shown = visible && !footerVisible;
+  const shown = visible;
+  const nearFooter = footerVisible;
 
   return (
     <div
       className={cn(
-        "fixed bottom-6 right-6 z-40 flex flex-col items-end sm:bottom-8 sm:right-8",
-        shown ? "pointer-events-auto" : "pointer-events-none",
+        "fixed bottom-6 right-6 z-50 flex flex-col items-end sm:bottom-8 sm:right-8",
+        nearFooter && "bottom-24 sm:bottom-28",
+        shown || open || teaserOpen ? "pointer-events-auto" : "pointer-events-none",
       )}
-      aria-hidden={!shown}
+      aria-hidden={!shown && !open && !teaserOpen}
     >
       {open ? (
       <div
@@ -222,8 +224,12 @@ export default function DemoChatbot() {
           </button>
           <button
             type="button"
-            onClick={() => setOpen(false)}
-            className="grid h-8 w-8 place-items-center rounded-full text-white/50 transition hover:bg-white/10 hover:text-white"
+            onClick={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              setOpen(false);
+            }}
+            className="relative z-10 grid h-8 w-8 place-items-center rounded-full text-white/50 transition hover:bg-white/10 hover:text-white"
             aria-label="Close chat"
           >
             <X className="h-4 w-4" />
@@ -316,8 +322,12 @@ export default function DemoChatbot() {
           <p className="text-sm leading-relaxed text-white/90">{TEASER_MESSAGE}</p>
           <button
             type="button"
-            onClick={() => setTeaserOpen(false)}
-            className="grid h-6 w-6 shrink-0 place-items-center rounded-full text-white/40 transition hover:bg-white/10 hover:text-white"
+            onClick={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              setTeaserOpen(false);
+            }}
+            className="relative z-10 grid h-7 w-7 shrink-0 place-items-center rounded-full text-white/50 transition hover:bg-white/10 hover:text-white"
             aria-label="Dismiss message"
           >
             <X className="h-3.5 w-3.5" />
