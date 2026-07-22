@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Container from "../../components/Container";
 import Button from "../../components/Button";
@@ -11,7 +11,7 @@ import ScrollReveal from "../../components/ScrollReveal";
 import { TITLE_HL as HL } from "../../components/agent-title-highlight";
 import { HOME_AGENT_GROUPS, HOME_FAQS } from "../../data/homeContent";
 import { HOME_INDUSTRY_SLIDES } from "../../data/homeIndustrySlides";
-import { useEffect, useId, useRef, useState, startTransition } from "react";
+import { useEffect, useId, useState } from "react";
 import { cn } from "../../lib/cn";
 
 /**
@@ -73,7 +73,7 @@ function Hero() {
   return (
     <section className="relative isolate min-h-[100svh] overflow-hidden bg-ink-950">
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <LightPillar className="h-full w-full" pillarRotation={30} />
+        <LightPillar className="h-full w-full" pillarRotation={30} quality="medium" />
         {/* Soft left veil so headline stays readable */}
         <div className="absolute inset-0 bg-gradient-to-r from-ink-950/70 via-ink-950/35 to-transparent" />
       </div>
@@ -175,10 +175,25 @@ function Agents() {
 
   const selectMission = (index: number) => {
     if (index === mission) return;
-    startTransition(() => {
-      setMission(index);
-    });
+    setMission(index);
   };
+
+  useEffect(() => {
+    const run = () => {
+      WORKFORCE_MISSIONS.forEach((item, index) => {
+        if (index === mission) return;
+        const img = new Image();
+        img.decoding = "async";
+        img.src = item.image;
+      });
+    };
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(run, { timeout: 2000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = window.setTimeout(run, 400);
+    return () => window.clearTimeout(t);
+  }, [mission]);
 
   return (
     <section className="relative overflow-hidden bg-[#F3F1EC] py-20 sm:py-28">
@@ -220,7 +235,7 @@ function Agents() {
                     aria-controls="home-mission-panel"
                     onClick={() => selectMission(index)}
                     className={cn(
-                      "flex items-center justify-between gap-4 rounded-2xl px-4 py-3.5 text-left transition-colors duration-200",
+                      "flex items-center justify-between gap-4 rounded-2xl px-4 py-3.5 text-left",
                       selected
                         ? "bg-ink-950 text-white shadow-lift"
                         : "bg-white/70 text-ink-700 hover:bg-white",
@@ -236,7 +251,7 @@ function Agents() {
                     </span>
                     <ArrowRight
                       className={cn(
-                        "h-4 w-4 shrink-0 transition-opacity duration-200",
+                        "h-4 w-4 shrink-0",
                         selected ? "opacity-100" : "opacity-0",
                       )}
                     />
@@ -252,29 +267,18 @@ function Agents() {
           role="tabpanel"
           className="mt-12 grid overflow-hidden rounded-[1.75rem] bg-ink-950 lg:mt-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
         >
-          <div className="relative min-h-[280px] sm:min-h-[360px] lg:min-h-[560px]">
-            {WORKFORCE_MISSIONS.map((item, index) => {
-              const active = index === mission;
-              return (
-                <img
-                  key={item.image}
-                  src={item.image}
-                  alt={active ? item.imageAlt : ""}
-                  width={1200}
-                  height={800}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                  aria-hidden={!active}
-                  className={cn(
-                    "absolute inset-0 h-full w-full object-cover",
-                    "transition-opacity duration-300 ease-out",
-                    active
-                      ? "pointer-events-none z-[1] opacity-100"
-                      : "pointer-events-none z-0 opacity-0",
-                  )}
-                />
-              );
-            })}
+          <div className="relative min-h-[280px] bg-ink-900 sm:min-h-[360px] lg:min-h-[560px]">
+            <img
+              key={activeMission.image}
+              src={activeMission.image}
+              alt={activeMission.imageAlt}
+              width={1200}
+              height={800}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-ink-950 via-ink-950/40 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-ink-950/20 lg:to-ink-950"
@@ -379,58 +383,32 @@ function Agents() {
 
 function Industries() {
   const [active, setActive] = useState(0);
-  const [pauseToken, setPauseToken] = useState(0);
   const tablistId = useId();
-  const progressRef = useRef<HTMLSpanElement>(null);
   const slide = HOME_INDUSTRY_SLIDES[active];
   const count = HOME_INDUSTRY_SLIDES.length;
-  const AUTO_MS = 6000;
 
   const goTo = (index: number) => {
     const next = ((index % count) + count) % count;
-    startTransition(() => {
-      setActive(next);
-    });
-    setPauseToken((t) => t + 1);
+    if (next === active) return;
+    setActive(next);
   };
 
   useEffect(() => {
-    const bar = progressRef.current;
-    if (!bar) return;
-    bar.style.transition = "none";
-    bar.style.transform = "scaleX(0)";
-    void bar.offsetWidth;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      bar.style.transform = "scaleX(1)";
-      return;
-    }
-    bar.style.transition = `transform ${AUTO_MS}ms linear`;
-    bar.style.transform = "scaleX(1)";
-  }, [active, pauseToken]);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = window.setInterval(() => {
-      startTransition(() => {
-        setActive((i) => (i + 1) % count);
+    const run = () => {
+      HOME_INDUSTRY_SLIDES.forEach((item, index) => {
+        if (index === active) return;
+        const img = new Image();
+        img.decoding = "async";
+        img.src = item.image;
       });
-    }, AUTO_MS);
-    return () => window.clearInterval(id);
-  }, [count, pauseToken]);
-
-  const setProgressNode = (node: HTMLSpanElement | null) => {
-    progressRef.current = node;
-    if (!node) return;
-    node.style.transition = "none";
-    node.style.transform = "scaleX(0)";
-    void node.offsetWidth;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      node.style.transform = "scaleX(1)";
-      return;
+    };
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(run, { timeout: 2500 });
+      return () => window.cancelIdleCallback(id);
     }
-    node.style.transition = `transform ${AUTO_MS}ms linear`;
-    node.style.transform = "scaleX(1)";
-  };
+    const t = window.setTimeout(run, 500);
+    return () => window.clearTimeout(t);
+  }, [active]);
 
   return (
     <section className="bg-ink-950 text-white">
@@ -447,8 +425,7 @@ function Industries() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto grid max-w-[1400px] lg:grid-cols-[minmax(280px,0.38fr)_minmax(0,0.62fr)]">
-          {/* Industry rail: primary interactive control */}
-          <div className="relative flex flex-col border-b border-white/10 lg:border-r lg:border-b-0">
+          <div className="relative z-10 flex flex-col border-b border-white/10 lg:border-r lg:border-b-0">
             <p className="px-6 pt-6 text-xs font-semibold tracking-[0.18em] text-white/45 uppercase sm:px-8">
               Choose an industry
             </p>
@@ -480,7 +457,7 @@ function Industries() {
                       }
                     }}
                     className={cn(
-                      "relative shrink-0 text-left transition-colors duration-200 lg:w-full",
+                      "relative shrink-0 text-left lg:w-full",
                       "rounded-full px-5 py-3 lg:rounded-none lg:px-8 lg:py-5",
                       selected
                         ? "bg-white text-ink-950 lg:bg-white/[0.07] lg:text-white"
@@ -500,69 +477,46 @@ function Industries() {
                         {item.tabLabel}
                       </span>
                     </span>
-                    {selected && (
-                      <>
-                        <span
-                          aria-hidden
-                          className="absolute top-1/2 left-0 hidden h-8 w-1 -translate-y-1/2 rounded-r-full bg-brand-400 lg:block"
-                        />
-                        <span className="absolute inset-x-8 bottom-0 hidden h-px overflow-hidden bg-white/10 lg:block">
-                          <span
-                            ref={setProgressNode}
-                            className="block h-full origin-left bg-brand-400"
-                            style={{ transform: "scaleX(0)" }}
-                          />
-                        </span>
-                      </>
-                    )}
+                    {selected ? (
+                      <span
+                        aria-hidden
+                        className="absolute top-1/2 left-0 hidden h-8 w-1 -translate-y-1/2 rounded-r-full bg-brand-400 lg:block"
+                      />
+                    ) : null}
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Stage */}
           <div
             role="tabpanel"
             id={`${tablistId}-panel`}
             aria-labelledby={`${tablistId}-tab-${active}`}
-            className="relative min-h-[420px] overflow-hidden sm:min-h-[520px] lg:min-h-[640px]"
+            className="relative min-h-[420px] overflow-hidden bg-ink-900 sm:min-h-[520px] lg:min-h-[640px]"
           >
-            {HOME_INDUSTRY_SLIDES.map((item, index) => {
-              const isActive = index === active;
-              return (
-                <img
-                  key={item.image}
-                  src={item.image}
-                  alt={isActive ? item.imageAlt : ""}
-                  width={1400}
-                  height={900}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                  aria-hidden={!isActive}
-                  className={cn(
-                    "absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ease-out",
-                    isActive
-                      ? "pointer-events-none z-[1] opacity-100"
-                      : "pointer-events-none z-0 opacity-0",
-                  )}
-                />
-              );
-            })}
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/35 to-transparent"
+            <img
+              key={slide.image}
+              src={slide.image}
+              alt={slide.imageAlt}
+              width={1400}
+              height={900}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              className="absolute inset-0 h-full w-full object-cover"
             />
             <div
               aria-hidden
-              className="absolute inset-0 bg-gradient-to-r from-ink-950/50 via-transparent to-transparent"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/35 to-transparent"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink-950/50 via-transparent to-transparent"
             />
 
             <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8 lg:p-10">
-              <div
-                key={slide.name}
-                className="max-w-xl animate-[fadeUp_0.5s_ease-out]"
-              >
+              <div key={slide.name} className="max-w-xl">
                 <p className="text-sm font-medium text-brand-200">{slide.eyebrow}</p>
                 <blockquote className="mt-3 font-serif text-[clamp(1.35rem,2.6vw,2rem)] leading-snug text-white">
                   “{slide.quote}”
@@ -584,7 +538,7 @@ function Industries() {
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-white/70 transition hover:text-white"
                   >
                     Next industry
-                    <ChevronRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4" />
                   </button>
                 </div>
               </div>
@@ -595,6 +549,7 @@ function Industries() {
     </section>
   );
 }
+
 
 const HOW_STEPS = [
   {

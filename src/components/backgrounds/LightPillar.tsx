@@ -44,6 +44,7 @@ const LightPillar: FC<LightPillarProps> = ({
   const mouseRef = useRef(new THREE.Vector2(0, 0));
   const timeRef = useRef(0);
   const rotationSpeedRef = useRef(rotationSpeed);
+  const isVisibleRef = useRef(true);
   const [webGLSupported, setWebGLSupported] = useState(true);
 
   useEffect(() => {
@@ -265,11 +266,19 @@ const LightPillar: FC<LightPillarProps> = ({
     }
 
     let lastTime = performance.now();
-    const targetFPS = effectiveQuality === "low" ? 30 : 60;
+    const targetFPS = effectiveQuality === "low" ? 24 : effectiveQuality === "medium" ? 30 : 60;
     const frameTime = 1000 / targetFPS;
 
     const animate = (currentTime: number) => {
-      if (!materialRef.current || !rendererRef.current || !sceneRef.current || !cameraRef.current) return;
+      if (!materialRef.current || !rendererRef.current || !sceneRef.current || !cameraRef.current) {
+        return;
+      }
+
+      // Pause when hero is off-screen or tab is hidden — prevents Mac freezes lower on the page.
+      if (!isVisibleRef.current || document.hidden) {
+        rafRef.current = requestAnimationFrame(animate);
+        return;
+      }
 
       const deltaTime = currentTime - lastTime;
 
@@ -287,6 +296,22 @@ const LightPillar: FC<LightPillarProps> = ({
     };
     rafRef.current = requestAnimationFrame(animate);
 
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = Boolean(entry?.isIntersecting);
+      },
+      { threshold: 0.05, rootMargin: "0px" },
+    );
+    io.observe(container);
+
+    const onVisibility = () => {
+      // Kick a frame when returning so animation resumes immediately.
+      if (!document.hidden && isVisibleRef.current && rafRef.current == null) {
+        rafRef.current = requestAnimationFrame(animate);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
     let resizeTimeout: number | null = null;
     const handleResize = () => {
       if (resizeTimeout) clearTimeout(resizeTimeout);
@@ -302,6 +327,8 @@ const LightPillar: FC<LightPillarProps> = ({
     window.addEventListener("resize", handleResize, { passive: true });
 
     return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("resize", handleResize);
       if (interactive) window.removeEventListener("mousemove", handleMouseMove);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
