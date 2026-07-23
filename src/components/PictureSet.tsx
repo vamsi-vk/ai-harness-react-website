@@ -23,7 +23,7 @@
  *   />
  */
 
-import type { ImgHTMLAttributes } from "react";
+import { useState, type ImgHTMLAttributes, type SyntheticEvent } from "react";
 
 type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "srcSet"> & {
   /**
@@ -38,14 +38,37 @@ type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "srcSet"> & {
   className?: string;
 };
 
-export default function PictureSet({ base, alt, className, ...rest }: Props) {
-  const stem = base.replace(/\.png$/i, "");
+export default function PictureSet({ base, alt, className, onError, ...rest }: Props) {
+  const stem = base.replace(/\.(png|jpe?g|webp|avif)$/i, "");
+  const pngSrc = `${stem}.png`;
+  /** If AVIF/WebP 404 or fail to decode, fall back to a plain PNG <img>. */
+  const [usePngOnly, setUsePngOnly] = useState(false);
+
+  const handleError = (event: SyntheticEvent<HTMLImageElement>) => {
+    if (!usePngOnly) {
+      setUsePngOnly(true);
+      return;
+    }
+    onError?.(event);
+  };
+
+  if (usePngOnly) {
+    return (
+      <img src={pngSrc} alt={alt} className={className} onError={onError} {...rest} />
+    );
+  }
 
   return (
     <picture>
       <source srcSet={`${stem}.avif`} type="image/avif" />
       <source srcSet={`${stem}.webp`} type="image/webp" />
-      <img src={`${stem}.png`} alt={alt} className={className} {...rest} />
+      <img
+        src={pngSrc}
+        alt={alt}
+        className={className}
+        onError={handleError}
+        {...rest}
+      />
     </picture>
   );
 }
