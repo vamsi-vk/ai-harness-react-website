@@ -4,6 +4,7 @@ import Container from "../Container";
 import ScrollReveal from "../ScrollReveal";
 import SoftPastelBackdrop from "../marketing-automation/SoftPastelBackdrop";
 import { cn } from "../../lib/cn";
+import PictureSet from "../../components/PictureSet";
 
 export type ReviewJourneyStep = {
   number: string;
@@ -257,9 +258,10 @@ export default function ReviewGenerationJourneySection({
 
                     <div className="relative aspect-[4/3] w-full">
                       {steps.map((s, index) => (
-                        <img
+                        <PictureSet
+      base={s.imageSrc}
                           key={s.number}
-                          src={s.imageSrc}
+                         
                           alt={index === safeIndex ? s.imageAlt : ""}
                           className={cn(
                             "absolute inset-0 h-full w-full object-cover object-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
@@ -268,9 +270,9 @@ export default function ReviewGenerationJourneySection({
                               : "pointer-events-none scale-[1.03] opacity-0",
                           )}
                           loading={index <= 1 ? "eager" : "lazy"}
-                          decoding="async"
+                         
                           aria-hidden={index !== safeIndex}
-                        />
+                         sizes="(max-width: 1024px) 100vw, 800px"/>
                       ))}
                     </div>
                   </div>
@@ -291,7 +293,8 @@ export default function ReviewGenerationJourneySection({
                         : "opacity-55 ring-transparent hover:opacity-90",
                     )}
                   >
-                    <img src={s.imageSrc} alt="" className="h-full w-full object-cover" />
+                    <PictureSet
+      base={s.imageSrc} alt="" className="h-full w-full object-cover"  sizes="(max-width: 1024px) 100vw, 800px"/>
                   </button>
                 ))}
               </div>

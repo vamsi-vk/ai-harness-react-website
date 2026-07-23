@@ -35,6 +35,13 @@ type PlatformProduct = {
   to: string;
   icon: LucideIcon;
   badge?: string;
+  /** Optional badge color variant; defaults to brand purple */
+  badgeTone?: "brand" | "indigo" | "rose" | "amber" | "emerald" | "sky" | "onSolid";
+  /** Icon tile colors — match Platform agent section accents */
+  iconTone?: "brand" | "indigo" | "rose" | "amber" | "emerald" | "sky" | "onSolid";
+  hoverTone?: "brand" | "indigo" | "rose" | "amber" | "emerald" | "sky";
+  /** Solid card fill from platform workforce stack */
+  solidBg?: string;
 };
 
 /** Placeholder data — replace with final Platform content when ready. */
@@ -86,6 +93,10 @@ export const PLATFORM_PRODUCTS: PlatformProduct[] = [
     to: "/agents/marketing-automation",
     icon: Megaphone,
     badge: "NEW",
+    badgeTone: "onSolid",
+    iconTone: "onSolid",
+    hoverTone: "indigo",
+    solidBg: "#0444CB",
   },
   {
     label: "Reputation & Sentiment",
@@ -93,6 +104,10 @@ export const PLATFORM_PRODUCTS: PlatformProduct[] = [
     to: "/agents/reputation-sentiment",
     icon: MessageSquare,
     badge: "NEW",
+    badgeTone: "onSolid",
+    iconTone: "onSolid",
+    hoverTone: "rose",
+    solidBg: "#CD1266",
   },
   {
     label: "Automated Review Agent",
@@ -100,6 +115,10 @@ export const PLATFORM_PRODUCTS: PlatformProduct[] = [
     to: "/agents/automated-reviews",
     icon: Star,
     badge: "NEW",
+    badgeTone: "onSolid",
+    iconTone: "onSolid",
+    hoverTone: "amber",
+    solidBg: "#FFA116",
   },
   {
     label: "Visibility and Listing AI Agent",
@@ -107,20 +126,79 @@ export const PLATFORM_PRODUCTS: PlatformProduct[] = [
     to: "/agents/visibility-listing",
     icon: MapPinned,
     badge: "NEW",
+    badgeTone: "onSolid",
+    iconTone: "onSolid",
+    hoverTone: "emerald",
+    solidBg: "#22742F",
   },
   {
     label: "Product five",
     description: "Placeholder description for the fifth platform product card.",
     to: "/platform",
     icon: ShieldCheck,
+    badge: "Coming Soon",
+    badgeTone: "sky",
+    iconTone: "sky",
+    hoverTone: "sky",
   },
   {
     label: "Product six",
     description: "Placeholder description for the sixth platform product card.",
     to: "/platform",
     icon: Puzzle,
+    badge: "Coming Soon",
+    badgeTone: "sky",
+    iconTone: "sky",
+    hoverTone: "sky",
   },
 ];
+
+const BADGE_TONES: Record<NonNullable<PlatformProduct["badgeTone"]>, string> = {
+  brand: "bg-brand-100 text-brand-700",
+  indigo: "bg-indigo-100 text-indigo-800",
+  rose: "bg-rose-100 text-rose-800",
+  amber: "bg-amber-100 text-amber-800",
+  emerald: "bg-emerald-100 text-emerald-800",
+  sky: "bg-sky-100 text-sky-800",
+  onSolid: "bg-white/20 text-white",
+};
+
+const ICON_TONES: Record<NonNullable<PlatformProduct["iconTone"]>, string> = {
+  brand: "bg-brand-50 text-brand-700 ring-brand-200/70",
+  indigo: "bg-indigo-50 text-indigo-700 ring-indigo-200/80",
+  rose: "bg-rose-50 text-rose-700 ring-rose-200/80",
+  amber: "bg-amber-50 text-amber-700 ring-amber-200/80",
+  emerald: "bg-emerald-50 text-emerald-700 ring-emerald-200/80",
+  sky: "bg-sky-50 text-sky-700 ring-sky-200/80",
+  onSolid: "bg-white/15 text-white ring-white/25",
+};
+
+const HOVER_TONES: Record<NonNullable<PlatformProduct["hoverTone"]>, string> = {
+  brand: "hover:border-brand-300 hover:bg-white",
+  indigo: "hover:brightness-110",
+  rose: "hover:brightness-110",
+  amber: "hover:border-amber-200 hover:bg-white",
+  emerald: "hover:brightness-110",
+  sky: "hover:border-sky-200 hover:bg-white",
+};
+
+const CARD_BG_TONES: Record<NonNullable<PlatformProduct["hoverTone"]>, string> = {
+  brand: "border-brand-100 bg-brand-50/70",
+  indigo: "border-indigo-100 bg-indigo-50/80",
+  rose: "border-rose-100 bg-rose-50/80",
+  amber: "border-amber-100 bg-amber-50/80",
+  emerald: "border-emerald-100 bg-emerald-50/80",
+  sky: "border-sky-100 bg-sky-50/80",
+};
+
+const TITLE_HOVER_TONES: Record<NonNullable<PlatformProduct["hoverTone"]>, string> = {
+  brand: "group-hover:text-brand-700",
+  indigo: "group-hover:text-white",
+  rose: "group-hover:text-white",
+  amber: "group-hover:text-amber-900",
+  emerald: "group-hover:text-white",
+  sky: "group-hover:text-sky-800",
+};
 
 type Props = {
   onNavigate?: () => void;
@@ -201,25 +279,56 @@ export default function PlatformNavMenu({ onNavigate, className }: Props) {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {PLATFORM_PRODUCTS.map((product) => {
               const Icon = product.icon;
+              const tone = product.hoverTone ?? "brand";
+              const solid = Boolean(product.solidBg);
               return (
                 <Link
                   key={product.label}
                   to={product.to}
                   onClick={onNavigate}
-                  className="group relative flex min-h-[9.5rem] flex-col rounded-2xl border border-ink-200/90 bg-white p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50/40 hover:shadow-soft"
+                  className={cn(
+                    "group relative flex min-h-[9.5rem] flex-col rounded-2xl border p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-soft",
+                    solid
+                      ? "border-transparent text-white"
+                      : CARD_BG_TONES[tone],
+                    HOVER_TONES[tone],
+                  )}
+                  style={solid ? { backgroundColor: product.solidBg } : undefined}
                 >
                   {product.badge ? (
-                    <span className="absolute top-3.5 right-3.5 rounded-full bg-brand-100 px-1.5 py-0.5 text-[10px] font-bold tracking-wide text-brand-700 uppercase">
+                    <span
+                      className={cn(
+                        "absolute top-3.5 right-3.5 rounded-full px-1.5 py-0.5 text-[10px] font-bold tracking-wide uppercase",
+                        BADGE_TONES[product.badgeTone ?? "brand"],
+                      )}
+                    >
                       {product.badge}
                     </span>
                   ) : null}
-                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-ink-50 text-ink-700 ring-1 ring-ink-200/70 transition duration-200 group-hover:bg-white group-hover:text-brand-600">
+                  <span
+                    className={cn(
+                      "grid h-10 w-10 place-items-center rounded-xl ring-1 transition duration-200",
+                      ICON_TONES[product.iconTone ?? "brand"],
+                      solid ? "group-hover:bg-white/25" : "group-hover:bg-white",
+                    )}
+                  >
                     <Icon className="h-5 w-5" strokeWidth={2} />
                   </span>
-                  <span className="mt-3.5 text-[15px] font-semibold text-ink-900 transition-colors group-hover:text-brand-700">
+                  <span
+                    className={cn(
+                      "mt-3.5 text-[15px] font-semibold transition-colors",
+                      solid ? "text-white" : "text-ink-900",
+                      TITLE_HOVER_TONES[tone],
+                    )}
+                  >
                     {product.label}
                   </span>
-                  <span className="mt-1.5 text-[13px] leading-relaxed text-ink-500">
+                  <span
+                    className={cn(
+                      "mt-1.5 text-[13px] leading-relaxed",
+                      solid ? "text-white/80" : "text-ink-500",
+                    )}
+                  >
                     {product.description}
                   </span>
                 </Link>

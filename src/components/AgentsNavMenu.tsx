@@ -17,28 +17,28 @@ export const AGENT_NAV_ITEMS: AgentNavItem[] = [
     to: "/agents/visibility-listing",
     description: "Lists your business everywhere customers search and ranks you higher.",
     icon: MapPinned,
-    accent: "from-brand-400 to-brand-700",
+    accent: "from-emerald-500 to-green-600",
   },
   {
     label: "Reputation & Sentiment Agent",
     to: "/agents/reputation-sentiment",
     description: "Reads and replies to reviews in your voice.",
     icon: MessageSquare,
-    accent: "from-error-400 to-brand-600",
+    accent: "from-rose-400 to-pink-600",
   },
   {
     label: "Automated Review Agent",
     to: "/agents/automated-reviews",
     description: "Asks happy customers for reviews, automatically.",
     icon: Star,
-    accent: "from-warning-400 to-warning-500",
+    accent: "from-amber-400 to-orange-500",
   },
   {
     label: "Marketing Automation Agent",
     to: "/agents/marketing-automation",
     description: "Plans, publishes, replies, and reports. Your always-on marketing teammate.",
     icon: Megaphone,
-    accent: "from-success-400 to-success-600",
+    accent: "from-indigo-500 to-violet-600",
   },
 ];
 

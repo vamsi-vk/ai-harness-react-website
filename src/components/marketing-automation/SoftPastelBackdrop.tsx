@@ -1,4 +1,5 @@
 import { cn } from "../../lib/cn";
+import PictureSet from "../PictureSet";
 
 type SoftPastelBackdropProps = {
   side?: "left" | "right";
@@ -20,10 +21,11 @@ export default function SoftPastelBackdrop({
       className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}
     >
       <div className="absolute inset-0 bg-white" />
-      <img
-        src={src}
+      <PictureSet
+        base={src}
         alt=""
         className="absolute inset-0 h-full w-full object-cover object-center opacity-100"
+        sizes="100vw"
       />
     </div>
   );

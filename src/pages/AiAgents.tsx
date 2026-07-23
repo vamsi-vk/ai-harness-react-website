@@ -1,4 +1,4 @@
-import { ArrowRight, FileText, MessageSquare, Star, TrendingUp } from "lucide-react";
+import { ArrowRight, MapPin, MessageSquare, Star, TrendingUp } from "lucide-react";
 import { useEffect, type ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import { scrollToHashWithRetry } from "../lib/scrollToHash";
@@ -25,11 +25,11 @@ const FAQS = [
   },
   {
     q: "Is this one big automation, or separate agents?",
-    a: "Separate agents. Each one (sales, reputation, reviews, and proposals) is its own teammate with its own job. Turn on one or run them together.",
+    a: "Separate agents. Each one (marketing, reputation, reviews, and visibility) is its own teammate with its own job. Turn on one or run them together.",
   },
   {
     q: "How is this different from a chatbot?",
-    a: "A chatbot answers questions. AI-Harness agents actually do the work: Capturing leads, replying to reviews, asking for reviews, and drafting proposals inside your business.",
+    a: "A chatbot answers questions. AI-Harness agents actually do the work: Capturing leads, replying to reviews, asking for reviews, and keeping your listings visible across search.",
   },
   {
     q: "Will it replace my staff?",
@@ -75,7 +75,7 @@ const AGENTS: AgentSection[] = [
   {
     id: "sales-pipeline",
     number: "1",
-    name: "Sales Pipeline & CRM Agent",
+    name: "Marketing Automation Agent",
     role: "your marketing and sales engine",
     headline: "Never let a lead go cold again.",
     intro:
@@ -83,7 +83,7 @@ const AGENTS: AgentSection[] = [
     icon: <TrendingUp className="h-6 w-6" strokeWidth={2} />,
     image: {
       src: "/illustrations/custom/sales-pipeline-agent-detail.png",
-      alt: "Sales Pipeline and CRM Agent capturing a new lead and sending follow-up messages automatically",
+      alt: "Marketing Automation Agent capturing a new lead and sending follow-up messages automatically",
     },
     benefits: [
       "Capture every lead: Answer after-hours calls and capture every web form and message, then sort and prioritize so you know who to chase first.",
@@ -101,7 +101,7 @@ const AGENTS: AgentSection[] = [
     caseStudy: {
       company: "Summit Plumbing Co., a 9-person plumbing business in Austin, TX",
       story:
-        "Before AI-Harness, roughly 4 in 10 after-hours calls went to voicemail and most callers never rang back. After turning on the Sales Pipeline & CRM Agent, every call and web message is captured, quotes go out within minutes, and quiet leads get a nudge. The result: about 24 more booked jobs a month and quote-to-close time cut from around two days to under an hour.",
+        "Before AI-Harness, roughly 4 in 10 after-hours calls went to voicemail and most callers never rang back. After turning on the Marketing Automation Agent, every call and web message is captured, quotes go out within minutes, and quiet leads get a nudge. The result: about 24 more booked jobs a month and quote-to-close time cut from around two days to under an hour.",
     },
   },
   {
@@ -170,35 +170,35 @@ const AGENTS: AgentSection[] = [
     },
   },
   {
-    id: "proposals",
+    id: "visibility-listing",
     number: "4",
-    name: "Proposal Drafting Agent",
-    role: "your proposal writer",
-    headline: "Win more work with proposals done in minutes.",
+    name: "Visibility and Listing Agent",
+    role: "your local search and listings engine",
+    headline: "Get found first, before a customer calls the competition.",
     intro:
-      "A separate agent that turns a customer request or RFP into a polished, accurate first-draft proposal, using your own services, pricing, and past wins.",
-    icon: <FileText className="h-6 w-6" strokeWidth={2} />,
+      "Gets your business found by more people, on more places, every day. A separate agent that lists you across Google, Apple, Facebook, Yelp, and more, watches every profile for errors, and works the moves that put you ahead in local search.",
+    icon: <MapPin className="h-6 w-6" strokeWidth={2} />,
     image: {
-      src: "/illustrations/custom/proposals-agent.png",
-      alt: "Proposal Drafting Agent turning a request into a ready-to-send proposal in minutes",
+      src: "/illustrations/custom/visibility-listing-agent-slider.png",
+      alt: "Visibility and Listing Agent dashboard with listings overview and visibility score",
     },
     benefits: [
-      "Read the request: Understand what the customer is asking for and what your proposal needs to include.",
-      "Draft it for you: Write a clear, on-brand proposal from your services, pricing, and previous work.",
-      "Keep it accurate: Flag anything missing so nothing important gets left out before you send.",
+      "List everywhere: Keep your business accurate on the directories and maps customers actually use.",
+      "Watch every profile: Catch wrong hours, broken links, and duplicate listings before they cost you calls.",
+      "Improve visibility: Optimize categories, keywords, and posts so you show up when locals search.",
     ],
     comparisons: [
-      { oldWay: "Proposals take hours you simply do not have.", withAgent: "A solid first draft is ready in minutes." },
-      { oldWay: "You lose work to whoever replies first.", withAgent: "You reply fast, while the lead is still hot." },
-      { oldWay: "You copy-paste from old docs and hope it is right.", withAgent: "Consistent, accurate proposals every time." },
-      { oldWay: "Big jobs slip because quoting is a chore.", withAgent: "You can comfortably say yes to more opportunities." },
+      { oldWay: "Your listings are outdated on half the sites that matter.", withAgent: "Profiles stay synced and accurate across channels." },
+      { oldWay: "You only notice listing errors when a customer complains.", withAgent: "The agent flags issues and suggests fixes automatically." },
+      { oldWay: "Local SEO feels like a part-time job you never have time for.", withAgent: "High-impact listing work runs in the background." },
+      { oldWay: "Competitors outrank you even when your service is better.", withAgent: "You climb local results with steady, on-brand optimization." },
     ],
     outcome:
-      "Faster turnaround on every proposal means a higher win rate on the work you quote. Send polished first drafts in minutes instead of days, and stop losing jobs to whoever replies first.",
+      "Being findable is how you win the next customer. More accurate listings and stronger local visibility mean more calls, directions, and bookings from search, without adding another dashboard to your day.",
     caseStudy: {
-      company: "Harbor Creative, a 6-person marketing agency in San Diego, CA",
+      company: "Green Leaf Café, a neighborhood café in San Francisco, CA",
       story:
-        "Proposals used to take a full afternoon each. After turning on the Proposal Drafting Agent, first drafts are ready in minutes and the team replies the same day. Their win rate on quoted work climbed by roughly 18%.",
+        "Listings were inconsistent across Google, Yelp, and Apple Maps, and the team rarely had time to fix them. After turning on the Visibility and Listing Agent, profiles stayed in sync, errors were caught early, and local search impressions rose by about 40% in the first quarter.",
     },
   },
 ];
@@ -265,20 +265,20 @@ const AGENT_ACCENTS: Record<
     imageRing: "ring-orange-200/80",
     imageGlow: "bg-orange-500/20",
   },
-  proposals: {
-    gradient: "from-cyan-500 via-sky-600 to-blue-800",
-    badge: "from-cyan-400 to-sky-600",
-    pill: "border-sky-200/70 bg-sky-50/80 text-sky-800",
-    tick: "text-cyan-500",
-    tickOpen: "text-cyan-600",
-    itemBg: "bg-gradient-to-br from-sky-50/60 via-white to-white",
-    itemBgOpen: "bg-gradient-to-br from-sky-50/90 via-white to-cyan-50/40",
+  "visibility-listing": {
+    gradient: "from-emerald-600 via-green-600 to-lime-700",
+    badge: "from-emerald-500 to-green-600",
+    pill: "border-emerald-200/70 bg-emerald-50/80 text-emerald-900",
+    tick: "text-emerald-500",
+    tickOpen: "text-emerald-600",
+    itemBg: "bg-gradient-to-br from-emerald-50/60 via-white to-white",
+    itemBgOpen: "bg-gradient-to-br from-emerald-50/90 via-white to-lime-50/40",
     openStyle:
-      "border-sky-200/80 shadow-[0_8px_30px_rgba(56,189,248,0.1)] ring-1 ring-sky-100/80",
-    chevronOpen: "text-cyan-500",
-    imageShadow: "shadow-[0_28px_80px_-28px_rgba(56,189,248,0.28)]",
-    imageRing: "ring-sky-200/80",
-    imageGlow: "bg-cyan-500/20",
+      "border-emerald-200/80 shadow-[0_8px_30px_rgba(34,197,94,0.1)] ring-1 ring-emerald-100/80",
+    chevronOpen: "text-emerald-600",
+    imageShadow: "shadow-[0_28px_80px_-28px_rgba(34,197,94,0.28)]",
+    imageRing: "ring-emerald-200/80",
+    imageGlow: "bg-emerald-500/20",
   },
 };
 
@@ -338,8 +338,8 @@ export default function AiAgents() {
       <Seo
         path="/ai-agents"
         title="AI Workforce for Small & Mid-Size Businesses | AI-Harness"
-        description="AI-Harness gives your business a team of AI agents, each built for one job: leads, reviews, reputation, and proposals. Work keeps moving 24/7. Start free."
-        keywords="AI agents for small and mid-size businesses, AI workforce for small businesses, automate customer follow-up, get more reviews, AI sales assistant, never miss a lead, AI proposal writer"
+        description="AI-Harness gives your business a team of AI agents, each built for one job: leads, reviews, reputation, and local visibility. Work keeps moving 24/7. Start free."
+        keywords="AI agents for small and mid-size businesses, AI workforce for small businesses, automate customer follow-up, get more reviews, AI sales assistant, never miss a lead, AI listing management"
       />
       <FaqJsonLd faqs={FAQS} />
       <Hero />
@@ -353,7 +353,7 @@ export default function AiAgents() {
       <ScrollReveal>
         <CTASection
           title="Ready to put your AI workforce to work?"
-          description="Hire the agents you need: One to capture leads, one to manage your reputation, one to grow your reviews, and one to draft your proposals. Together they help your business win more customers and grow revenue, 24/7."
+          description="Hire the agents you need: One to capture leads, one to manage your reputation, one to grow your reviews, and one to keep you visible in local search. Together they help your business win more customers and grow revenue, 24/7."
           primaryCta={{ label: "Start free, no credit card", to: "/signup" }}
           secondaryCta={{ label: "Book a demo", to: "/demo" }}
           footnote="Set up in minutes · Works with the tools you already use · Your data stays yours"
@@ -377,7 +377,7 @@ function Hero() {
             </h1>
             <p className="mt-6 max-w-2xl text-lg font-normal leading-[1.7] tracking-[-0.015em] text-ink-700 sm:text-[1.35rem] sm:leading-[1.65]">
               AI-Harness puts a team of AI agents to work across your marketing & sales pipelines, reviews
-              management, reputation management, and proposals management, so no lead & operation is missed and
+              management, reputation management, and listings management, so no lead & operation is missed and
               work keeps moving 24/7.
             </p>
             <p className="mt-5 text-base font-normal leading-[1.65] tracking-[-0.01em] text-ink-600 sm:text-lg">

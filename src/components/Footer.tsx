@@ -32,12 +32,11 @@ const socials: Array<{ label: string; href: string; Icon: (props: { className?: 
 
 const columns: FooterColumn[] = [
   {
-    title: "Your AI workforce",
+    title: "Your AI Workforce",
     links: [
-      { label: "Get seen & win customers", to: "/ai-agents" },
-      { label: "Protect your reputation", to: "/agents/reputation-sentiment" },
-      { label: "Run the business", to: "/ai-agents" },
-      { label: "All agents", to: "/ai-agents" },
+      { label: "Get Found & Win Customers", to: "/agents/visibility-listing" },
+      { label: "Protect Your Reputation", to: "/agents/reputation-sentiment" },
+      { label: "All agents", to: "/platform" },
     ],
   },
   {
@@ -54,14 +53,14 @@ const columns: FooterColumn[] = [
   {
     title: "Product",
     links: [
-      { label: "How it works", to: "/#how-it-works" },
+      { label: "The platform", to: "/platform" },
       { label: "Pricing", to: "/contact" },
       { label: "Integrations", to: "/platform#integrations" },
       { label: "Start free", to: "/signup" },
     ],
   },
   {
-    title: "For enterprise",
+    title: "For Enterprise",
     links: [
       { label: "Enterprise", to: "/enterprise" },
       { label: "Platform", to: "/platform" },
@@ -75,7 +74,8 @@ const columns: FooterColumn[] = [
     links: [
       { label: "About", to: "/about" },
       { label: "Contact", to: "/contact" },
-      { label: "AI Agents", to: "/ai-agents" },
+      { label: "Careers", to: "/about" },
+      { label: "Blog", to: "/contact" },
     ],
   },
 ];
@@ -98,8 +98,8 @@ export default function Footer() {
           <div>
             <Logo dark />
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-ink-400">
-              The enterprise control plane for a unified human + AI workforce. Deploy, govern, and scale
-              AI agents across every workflow, with full transparency.
+              The AI agent platform that gives your business an AI workforce, agents that run your
+              marketing and social, grow and answer your reviews, and get you found across search.
             </p>
             <div className="mt-7 flex flex-wrap gap-2">
               <Link

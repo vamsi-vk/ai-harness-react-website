@@ -5,7 +5,7 @@ import {
   type CSSProperties,
   type ReactNode,
 } from "react";
-import { ArrowRight, FileText, MessageSquare, Star, TrendingUp } from "lucide-react";
+import { ArrowRight, MapPin, MessageSquare, Star, TrendingUp } from "lucide-react";
 import Container from "./Container";
 import { cn } from "../lib/cn";
 import ScrollReveal from "./ScrollReveal";
@@ -29,12 +29,13 @@ type WorkforceCard = {
 const CARDS: WorkforceCard[] = [
   {
     job: "Never miss a lead",
-    agent: "Sales Pipeline & CRM Agent",
-    description: "Captures leads, follows up, and keeps customers organized.",
+    agent: "Marketing Automation Agent",
+    description: "Automates campaigns, nurtures leads, and drives growth on autopilot.",
     icon: <TrendingUp className="h-6 w-6" strokeWidth={2} />,
-    href: "#sales-pipeline",
-    image: "/illustrations/custom/sales-pipeline-agent-slider.png",
-    imageAlt: "Sales Pipeline and CRM Agent capturing leads and following up automatically",
+    href: "/agents/marketing-automation",
+    image: "/illustrations/custom/marketing-automation-agent-slider.png",
+    imageAlt:
+      "Marketing Automation Agent dashboard with lead pipeline, follow-ups, and conversion metrics",
     layout: "full-image",
     gradient: "from-indigo-500 via-blue-600 to-violet-900",
     glow: "rgba(99,102,241,0.42)",
@@ -65,15 +66,16 @@ const CARDS: WorkforceCard[] = [
   },
   {
     job: "Win more work",
-    agent: "Proposal Drafting Agent",
-    description: "Turns requests into ready-to-send proposals.",
-    icon: <FileText className="h-6 w-6" strokeWidth={2} />,
-    href: "#proposals",
-    image: "/illustrations/custom/proposals-agent-slider.png",
-    imageAlt: "Proposal Drafting Agent turning requests into ready-to-send proposals",
+    agent: "Visibility and Listing Agent",
+    description: "Gets your business found by more people, on more places, every day.",
+    icon: <MapPin className="h-6 w-6" strokeWidth={2} />,
+    href: "/agents/visibility-listing",
+    image: "/illustrations/custom/visibility-listing-agent-slider.png",
+    imageAlt:
+      "Visibility and Listing Agent dashboard with listings, visibility score, and optimization suggestions",
     layout: "full-image",
-    gradient: "from-cyan-500 via-sky-600 to-blue-900",
-    glow: "rgba(56,189,248,0.4)",
+    gradient: "from-emerald-600 via-green-600 to-lime-200",
+    glow: "rgba(34,197,94,0.4)",
   },
 ];
 
@@ -238,17 +240,25 @@ function WorkforceScrollCard({
             active &&
             "border-white/20 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.9)]",
         )}
-        style={{
-          ...motionStyle,
-          ...(card.layout === "full-image"
-            ? { backgroundImage: `url(${card.image})` }
-            : {}),
-        }}
+        style={motionStyle}
       >
         {card.layout === "full-image" ? (
-          <span className="sr-only">
-            {card.job}. {card.agent}. {card.description}
-          </span>
+          <>
+            <picture className="absolute inset-0">
+              <source srcSet={card.image.replace(/\.png$/i, ".avif")} type="image/avif" />
+              <source srcSet={card.image.replace(/\.png$/i, ".webp")} type="image/webp" />
+              <img
+                src={card.image}
+                alt={card.imageAlt}
+                className="h-full w-full object-cover object-center"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <span className="sr-only">
+              {card.job}. {card.agent}. {card.description}
+            </span>
+          </>
         ) : card.layout === "gradient-overlay" ? (
           <div className="relative flex min-h-[min(58vh,520px)] flex-1 flex-col lg:flex-row">
             <div
