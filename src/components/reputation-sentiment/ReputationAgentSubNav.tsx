@@ -60,13 +60,13 @@ export function ReputationAgentSubNav() {
               <MessageSquare className="h-4 w-4" strokeWidth={2} />
             </span>
             <span className="hidden text-[15px] font-medium tracking-tight sm:inline">
-              Reputation & Sentiment
+              Reputation & Sentiment AI Agent
             </span>
             <span className="text-[15px] font-medium tracking-tight sm:hidden">Reputation</span>
           </Link>
 
           <nav
-            aria-label="Reputation & Sentiment sections"
+            aria-label="Reputation & Sentiment AI Agent sections"
             className="flex items-center gap-0.5 overflow-x-auto"
           >
             {REPUTATION_AGENT_TABS.map((tab) => {

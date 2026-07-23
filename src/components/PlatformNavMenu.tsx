@@ -1,11 +1,11 @@
 import {
   ArrowRight,
   Bot,
+  CalendarDays,
+  FileText,
   MapPinned,
   Megaphone,
   MessageSquare,
-  Network,
-  Puzzle,
   ShieldCheck,
   Sparkles,
   Star,
@@ -21,12 +21,6 @@ type PlatformSidebarItem = {
   to: string;
   icon: LucideIcon;
   badge?: string;
-};
-
-type PlatformLink = {
-  label: string;
-  to: string;
-  icon: LucideIcon;
 };
 
 type PlatformProduct = {
@@ -51,74 +45,57 @@ export const PLATFORM_SIDEBAR_ITEMS: PlatformSidebarItem[] = [
     description: "Placeholder · how the platform works",
     to: "/platform",
     icon: Sparkles,
-    badge: "NEW",
   },
   {
     label: "Agents",
     description: "Placeholder · role-based AI teammates",
-    to: "/platform#agents",
+    to: "/agents/marketing-automation",
     icon: Bot,
   },
   {
     label: "Workflows",
     description: "Placeholder · connect and orchestrate work",
-    to: "/platform#workflows",
+    to: "/enterprise",
     icon: Workflow,
   },
   {
     label: "Governance",
     description: "Placeholder · control, audit, and guardrails",
-    to: "/platform#governance",
+    to: "/security",
     icon: ShieldCheck,
-  },
-];
-
-export const PLATFORM_LINKS: PlatformLink[] = [
-  {
-    label: "Integrations",
-    to: "/platform#integrations",
-    icon: Puzzle,
-  },
-  {
-    label: "Infrastructure",
-    to: "/platform",
-    icon: Network,
   },
 ];
 
 export const PLATFORM_PRODUCTS: PlatformProduct[] = [
   {
-    label: "Marketing Automation Agent",
+    label: "Marketing Automation AI Agent",
     description: "Plans, publishes, replies, and reports what grew revenue.",
     to: "/agents/marketing-automation",
     icon: Megaphone,
     badge: "NEW",
-    badgeTone: "onSolid",
-    iconTone: "onSolid",
+    badgeTone: "indigo",
+    iconTone: "indigo",
     hoverTone: "indigo",
-    solidBg: "#0444CB",
   },
   {
-    label: "Reputation & Sentiment",
+    label: "Reputation & Sentiment AI Agent",
     description: "Reads and replies to reviews in your voice across every site.",
     to: "/agents/reputation-sentiment",
     icon: MessageSquare,
     badge: "NEW",
-    badgeTone: "onSolid",
-    iconTone: "onSolid",
+    badgeTone: "rose",
+    iconTone: "rose",
     hoverTone: "rose",
-    solidBg: "#CD1266",
   },
   {
-    label: "Automated Review Agent",
+    label: "Automated Review AI Agent",
     description: "Asks happy customers for reviews automatically — fresh five-stars that keep arriving.",
     to: "/agents/automated-reviews",
     icon: Star,
     badge: "NEW",
-    badgeTone: "onSolid",
-    iconTone: "onSolid",
+    badgeTone: "amber",
+    iconTone: "amber",
     hoverTone: "amber",
-    solidBg: "#FFA116",
   },
   {
     label: "Visibility and Listing AI Agent",
@@ -126,26 +103,25 @@ export const PLATFORM_PRODUCTS: PlatformProduct[] = [
     to: "/agents/visibility-listing",
     icon: MapPinned,
     badge: "NEW",
-    badgeTone: "onSolid",
-    iconTone: "onSolid",
+    badgeTone: "emerald",
+    iconTone: "emerald",
     hoverTone: "emerald",
-    solidBg: "#22742F",
   },
   {
-    label: "Product five",
-    description: "Placeholder description for the fifth platform product card.",
+    label: "Appointment & Booking AI Agent",
+    description: "Fills the calendar and cuts no-shows, so bookings run without chasing.",
     to: "/platform",
-    icon: ShieldCheck,
+    icon: CalendarDays,
     badge: "Coming Soon",
     badgeTone: "sky",
     iconTone: "sky",
     hoverTone: "sky",
   },
   {
-    label: "Product six",
-    description: "Placeholder description for the sixth platform product card.",
+    label: "Proposal Drafting AI Agent",
+    description: "Turns quotes and proposals around the same day, ready to send.",
     to: "/platform",
-    icon: Puzzle,
+    icon: FileText,
     badge: "Coming Soon",
     badgeTone: "sky",
     iconTone: "sky",
@@ -174,29 +150,29 @@ const ICON_TONES: Record<NonNullable<PlatformProduct["iconTone"]>, string> = {
 };
 
 const HOVER_TONES: Record<NonNullable<PlatformProduct["hoverTone"]>, string> = {
-  brand: "hover:border-brand-300 hover:bg-white",
-  indigo: "hover:brightness-110",
-  rose: "hover:brightness-110",
-  amber: "hover:border-amber-200 hover:bg-white",
-  emerald: "hover:brightness-110",
-  sky: "hover:border-sky-200 hover:bg-white",
+  brand: "hover:border-brand-200 hover:bg-brand-50 hover:shadow-soft",
+  indigo: "hover:border-indigo-200 hover:bg-indigo-50 hover:shadow-soft",
+  rose: "hover:border-rose-200 hover:bg-rose-50 hover:shadow-soft",
+  amber: "hover:border-amber-200 hover:bg-amber-50 hover:shadow-soft",
+  emerald: "hover:border-emerald-200 hover:bg-emerald-50 hover:shadow-soft",
+  sky: "hover:border-sky-200 hover:bg-sky-50 hover:shadow-soft",
 };
 
 const CARD_BG_TONES: Record<NonNullable<PlatformProduct["hoverTone"]>, string> = {
-  brand: "border-brand-100 bg-brand-50/70",
-  indigo: "border-indigo-100 bg-indigo-50/80",
-  rose: "border-rose-100 bg-rose-50/80",
-  amber: "border-amber-100 bg-amber-50/80",
-  emerald: "border-emerald-100 bg-emerald-50/80",
-  sky: "border-sky-100 bg-sky-50/80",
+  brand: "border-ink-200/90 bg-white",
+  indigo: "border-ink-200/90 bg-white",
+  rose: "border-ink-200/90 bg-white",
+  amber: "border-ink-200/90 bg-white",
+  emerald: "border-ink-200/90 bg-white",
+  sky: "border-ink-200/90 bg-white",
 };
 
 const TITLE_HOVER_TONES: Record<NonNullable<PlatformProduct["hoverTone"]>, string> = {
   brand: "group-hover:text-brand-700",
-  indigo: "group-hover:text-white",
-  rose: "group-hover:text-white",
-  amber: "group-hover:text-amber-900",
-  emerald: "group-hover:text-white",
+  indigo: "group-hover:text-indigo-700",
+  rose: "group-hover:text-rose-700",
+  amber: "group-hover:text-amber-800",
+  emerald: "group-hover:text-emerald-800",
   sky: "group-hover:text-sky-800",
 };
 
@@ -208,66 +184,43 @@ type Props = {
 export default function PlatformNavMenu({ onNavigate, className }: Props) {
   return (
     <div className={cn("w-full", className)}>
-      <div className="grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.5fr)]">
+      <div className="grid lg:grid-cols-[minmax(15.5rem,17.5rem)_minmax(0,1fr)]">
         {/* Left: PLATFORM */}
         <div className="border-b border-ink-100 lg:border-b-0 lg:border-r">
-          <p className="px-6 pt-6 text-[11px] font-semibold tracking-[0.16em] text-ink-400 uppercase">
+          <p className="px-4 pt-6 text-[11px] font-semibold tracking-[0.16em] text-ink-400 uppercase sm:px-5">
             Platform
           </p>
-          <div className="grid sm:grid-cols-[minmax(0,1.2fr)_minmax(0,0.9fr)]">
-            {/* Sidebar list */}
-            <div className="bg-ink-50/80 px-3 py-4 sm:min-h-[22rem]">
-              {PLATFORM_SIDEBAR_ITEMS.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <Link
-                    key={item.label}
-                    to={item.to}
-                    onClick={onNavigate}
-                    className="group flex items-start gap-3.5 rounded-2xl px-3.5 py-3.5 transition-colors duration-200 hover:bg-white"
-                  >
-                    <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-brand-600 shadow-sm ring-1 ring-ink-200/80 transition duration-200 group-hover:scale-105">
-                      <Icon className="h-5 w-5" strokeWidth={2} />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="flex items-center gap-2">
-                        <span className="text-[15px] font-semibold text-ink-900 transition-colors group-hover:text-brand-700">
-                          {item.label}
+          <div className="bg-ink-50/80 px-2 py-4 sm:px-3">
+            {PLATFORM_SIDEBAR_ITEMS.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.label}
+                  to={item.to}
+                  onClick={onNavigate}
+                  className="group flex items-start gap-3 rounded-2xl px-2.5 py-3 transition-colors duration-200 hover:bg-white sm:px-3 sm:py-3.5"
+                >
+                  <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-brand-600 shadow-sm ring-1 ring-ink-200/80 transition duration-200 group-hover:scale-105">
+                    <Icon className="h-5 w-5" strokeWidth={2} />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="flex items-center gap-2">
+                      <span className="text-[15px] font-semibold text-ink-900 transition-colors group-hover:text-brand-700">
+                        {item.label}
+                      </span>
+                      {item.badge ? (
+                        <span className="rounded-full bg-brand-100 px-1.5 py-0.5 text-[10px] font-bold tracking-wide text-brand-700 uppercase">
+                          {item.badge}
                         </span>
-                        {item.badge ? (
-                          <span className="rounded-full bg-brand-100 px-1.5 py-0.5 text-[10px] font-bold tracking-wide text-brand-700 uppercase">
-                            {item.badge}
-                          </span>
-                        ) : null}
-                      </span>
-                      <span className="mt-1 block text-[13px] leading-snug text-ink-500">
-                        {item.description}
-                      </span>
+                      ) : null}
                     </span>
-                  </Link>
-                );
-              })}
-            </div>
-
-            {/* Mid links */}
-            <div className="flex flex-col gap-5 px-5 py-5">
-              <div className="space-y-1.5">
-                {PLATFORM_LINKS.map((link) => {
-                  const Icon = link.icon;
-                  return (
-                    <Link
-                      key={link.label}
-                      to={link.to}
-                      onClick={onNavigate}
-                      className="flex items-center gap-3 rounded-xl px-2.5 py-2.5 text-[14.5px] font-semibold text-ink-800 transition-colors duration-200 hover:bg-ink-50 hover:text-brand-700"
-                    >
-                      <Icon className="h-5 w-5 text-ink-400" strokeWidth={2} />
-                      {link.label}
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
+                    <span className="mt-1 block text-[13px] leading-snug text-ink-500">
+                      {item.description}
+                    </span>
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
 

@@ -61,7 +61,7 @@ export function MarketingAgentSubNav() {
               <Megaphone className="h-4 w-4" strokeWidth={2} />
             </span>
             <span className="hidden text-[15px] font-medium tracking-tight sm:inline">
-              Marketing Automation Agent
+              Marketing Automation AI Agent
             </span>
             <span className="text-[15px] font-medium tracking-tight sm:hidden">
               Marketing Agent
@@ -70,7 +70,7 @@ export function MarketingAgentSubNav() {
 
           <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-3">
             <nav
-              aria-label="Marketing Automation Agent sections"
+              aria-label="Marketing Automation AI Agent sections"
               className="flex items-center gap-0.5 overflow-x-auto"
             >
               {MARKETING_AGENT_TABS.map((tab) => {

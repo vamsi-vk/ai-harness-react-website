@@ -28,21 +28,22 @@ type WorkforceCard = {
 
 const CARDS: WorkforceCard[] = [
   {
-    job: "Never miss a lead",
-    agent: "Marketing Automation Agent",
-    description: "Automates campaigns, nurtures leads, and drives growth on autopilot.",
+    job: "Never go quiet on social",
+    agent: "Marketing Automation AI Agent",
+    description:
+      "Plans your calendar, publishes everywhere, answers every comment, and runs campaigns that drive footfall.",
     icon: <TrendingUp className="h-6 w-6" strokeWidth={2} />,
     href: "/agents/marketing-automation",
     image: "/illustrations/custom/marketing-automation-agent-slider.png",
     imageAlt:
-      "Marketing Automation Agent dashboard with lead pipeline, follow-ups, and conversion metrics",
+      "Marketing Automation AI Agent planning, publishing, and engaging across social channels",
     layout: "full-image",
     gradient: "from-indigo-500 via-blue-600 to-violet-900",
     glow: "rgba(99,102,241,0.42)",
   },
   {
     job: "Protect your reputation",
-    agent: "Reputation & Sentiment Agent",
+    agent: "Reputation & Sentiment AI Agent",
     description: "Reads and replies to reviews in your voice.",
     icon: <MessageSquare className="h-6 w-6" strokeWidth={2} />,
     href: "#reputation",
@@ -54,25 +55,26 @@ const CARDS: WorkforceCard[] = [
   },
   {
     job: "Grow your reviews",
-    agent: "Automated Review Agent",
+    agent: "Automated Review AI Agent",
     description: "Asks happy customers for reviews, automatically.",
     icon: <Star className="h-6 w-6" strokeWidth={2} />,
     href: "#reviews",
     image: "/illustrations/custom/reviews-agent-slider.png",
-    imageAlt: "Automated Review Agent growing five-star reviews",
+    imageAlt: "Automated Review AI Agent growing five-star reviews",
     layout: "full-image",
     gradient: "from-amber-500 via-orange-500 to-rose-600",
     glow: "rgba(251,146,60,0.4)",
   },
   {
-    job: "Win more work",
-    agent: "Visibility and Listing Agent",
-    description: "Gets your business found by more people, on more places, every day.",
+    job: "Get found first everywhere",
+    agent: "Visibility and Listing AI Agent",
+    description:
+      "Lists you everywhere customers search, keeps every profile accurate, and works to rank you higher.",
     icon: <MapPin className="h-6 w-6" strokeWidth={2} />,
     href: "/agents/visibility-listing",
     image: "/illustrations/custom/visibility-listing-agent-slider.png",
     imageAlt:
-      "Visibility and Listing Agent dashboard with listings, visibility score, and optimization suggestions",
+      "Visibility and Listing AI Agent dashboard with listings, Listing Score, and optimization suggestions",
     layout: "full-image",
     gradient: "from-emerald-600 via-green-600 to-lime-200",
     glow: "rgba(34,197,94,0.4)",

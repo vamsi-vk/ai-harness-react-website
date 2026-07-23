@@ -29,7 +29,7 @@ const FAQS = [
   },
   {
     q: "How is this different from a chatbot?",
-    a: "A chatbot answers questions. AI-Harness agents actually do the work: Capturing leads, replying to reviews, asking for reviews, and keeping your listings visible across search.",
+    a: "A chatbot answers questions. AI-Harness agents actually do the work: Running your social and marketing, replying to reviews, asking for reviews, and keeping your listings visible across search.",
   },
   {
     q: "Will it replace my staff?",
@@ -75,33 +75,45 @@ const AGENTS: AgentSection[] = [
   {
     id: "sales-pipeline",
     number: "1",
-    name: "Marketing Automation Agent",
-    role: "your marketing and sales engine",
-    headline: "Never let a lead go cold again.",
+    name: "Marketing Automation AI Agent",
+    role: "your social media and marketing engine",
+    headline: "Never let your social media go quiet again.",
     intro:
-      "This is your marketing and sales engine, a separate agent focused on one thing: Turning interest into booked business. It captures every lead, follows up automatically, and keeps your customer records tidy in one place.",
+      "This is your social media and marketing engine, a separate agent on the AI-Harness platform focused on one thing: keeping your brand visible everywhere your customers scroll and turning that attention into footfall. It plans your social media calendar, creates and publishes your posts across every platform, answers every comment and message, and runs the campaigns that fill your quiet nights, all in one place.",
     icon: <TrendingUp className="h-6 w-6" strokeWidth={2} />,
     image: {
-      src: "/illustrations/custom/sales-pipeline-agent-detail.png",
-      alt: "Marketing Automation Agent capturing a new lead and sending follow-up messages automatically",
+      src: "/illustrations/custom/marketing-automation-agent-slider.png",
+      alt: "Marketing Automation AI Agent planning, publishing, and engaging across social channels",
     },
     benefits: [
-      "Capture every lead: Answer after-hours calls and capture every web form and message, then sort and prioritize so you know who to chase first.",
-      "Follow up automatically: Send timely, personal follow-ups so nothing slips, day, night, and weekends.",
-      "Keep customers organized (CRM): Every contact, note, and payment in one clean record your whole team can pick up.",
+      "Plan and publish everywhere: It builds your social media calendar and posts for you across Facebook, Instagram, Meta, TikTok, Twitter (X), and Google, formatted for each platform and scheduled at the best time to post, so your page never goes quiet.",
+      "Answer every comment and message: It replies to comments, DMs, and questions across Facebook, Instagram, WhatsApp, and more in your voice within moments, day, night, and weekends, and points buyers to your booking link, your menu, or your door.",
+      "Run campaigns that drive footfall: It builds and launches full campaigns for your promotions, events, and slow nights as one motion, then reports which posts brought people in, so every campaign is aimed at footfall, not just likes.",
     ],
     comparisons: [
-      { oldWay: "Leads pile up in texts, emails, and sticky notes.", withAgent: "Every lead is captured and prioritized for you automatically." },
-      { oldWay: "You follow up when you remember, usually too late.", withAgent: "Fast, personal follow-up runs on autopilot, day and night." },
-      { oldWay: "Customer info is scattered across apps and your memory.", withAgent: "One clean customer record anyone on the team can use." },
-      { oldWay: "Hot leads go cold while you are busy on the job.", withAgent: "The agent nudges quiet leads so they book with you, not a competitor." },
+      {
+        oldWay: "Your page goes quiet on busy weeks and the algorithm moves on to whoever stayed visible.",
+        withAgent: "A full social media calendar planned and posted for you across every platform, every day.",
+      },
+      {
+        oldWay: "You write captions and resize photos late at night, if you get to them at all.",
+        withAgent: "On-brand posts, reels, and stories created and scheduled at the best time to post.",
+      },
+      {
+        oldWay: "Comments and DMs pile up unanswered while you work the floor.",
+        withAgent: "Every comment, DM, and message answered in your voice within moments, day and night.",
+      },
+      {
+        oldWay: "You run a promotion and just hope people show up.",
+        withAgent: "Campaigns built and launched as one motion, with a report on what actually drove footfall.",
+      },
     ],
     outcome:
-      "The business that replies first usually wins the sale. Answer and follow up on every lead within minutes, and you book noticeably more of the leads you already pay for, without spending more on ads. This agent turns the demand you already have into paying customers.",
+      "Businesses that stay consistently active and reply fast on social keep their brand in front of nearby customers, and that steady local visibility is what turns a scroll into a walk-in. The business that stays visible is the business people choose. By keeping your social media active every day and turning comments and campaigns into bookings and walk-ins, this agent brings more footfall through your door from the audience you already have, without spending an extra dollar on ads.",
     caseStudy: {
-      company: "Summit Plumbing Co., a 9-person plumbing business in Austin, TX",
+      company: "Bella Nonna, a family-run restaurant in Austin, TX",
       story:
-        "Before AI-Harness, roughly 4 in 10 after-hours calls went to voicemail and most callers never rang back. After turning on the Marketing Automation Agent, every call and web message is captured, quotes go out within minutes, and quiet leads get a nudge. The result: about 24 more booked jobs a month and quote-to-close time cut from around two days to under an hour.",
+        "Before AI-Harness, the team posted maybe once a week when someone remembered, weeknight tables sat empty, and comments and DMs went unanswered for days. After turning on the Marketing Automation AI Agent, a full content calendar now posts across Facebook, Instagram, TikTok, and Google every day, weeknight campaigns promote the slow nights, and every comment and message is answered in minutes. The result: about 20 more covers on a typical Tuesday and Wednesday, a steady flow of reservations coming straight from Instagram and Facebook, and a feed that finally looks as busy as the kitchen.",
     },
   },
   {
@@ -172,33 +184,46 @@ const AGENTS: AgentSection[] = [
   {
     id: "visibility-listing",
     number: "4",
-    name: "Visibility and Listing Agent",
+    name: "Visibility and Listing AI Agent",
     role: "your local search and listings engine",
-    headline: "Get found first, before a customer calls the competition.",
+    headline: "Get found first, everywhere customers search.",
     intro:
-      "Gets your business found by more people, on more places, every day. A separate agent that lists you across Google, Apple, Facebook, Yelp, and more, watches every profile for errors, and works the moves that put you ahead in local search.",
+      "A separate agent on the AI-Harness platform that lists your business everywhere customers look, keeps every detail accurate, and works to rank you higher in local search and in the answers AI assistants give, so you are the business they find first, not the one down the street.",
     icon: <MapPin className="h-6 w-6" strokeWidth={2} />,
     image: {
       src: "/illustrations/custom/visibility-listing-agent-slider.png",
-      alt: "Visibility and Listing Agent dashboard with listings overview and visibility score",
+      alt: "Visibility and Listing AI Agent dashboard with listings overview and Listing Score",
     },
     benefits: [
-      "List everywhere: Keep your business accurate on the directories and maps customers actually use.",
-      "Watch every profile: Catch wrong hours, broken links, and duplicate listings before they cost you calls.",
-      "Improve visibility: Optimize categories, keywords, and posts so you show up when locals search.",
+      "List you everywhere: It builds and maintains complete, matching business listings across Google, Apple, Facebook, and Yelp, all from one place.",
+      "Rank you higher: It learns the local keywords your customers search and sharpens every profile to lift you in local search and in AI answers.",
+      "Keep you accurate: It watches every listing around the clock and flags anything missing, outdated, or duplicated before it costs you a customer.",
     ],
     comparisons: [
-      { oldWay: "Your listings are outdated on half the sites that matter.", withAgent: "Profiles stay synced and accurate across channels." },
-      { oldWay: "You only notice listing errors when a customer complains.", withAgent: "The agent flags issues and suggests fixes automatically." },
-      { oldWay: "Local SEO feels like a part-time job you never have time for.", withAgent: "High-impact listing work runs in the background." },
-      { oldWay: "Competitors outrank you even when your service is better.", withAgent: "You climb local results with steady, on-brand optimization." },
+      {
+        oldWay:
+          "Your listings drift out of date and the customer searching nearby finds the business down the street.",
+        withAgent: "Every listing accurate everywhere, so you are the one they find first.",
+      },
+      {
+        oldWay: "You are on Google but missing from the other maps and directories customers use.",
+        withAgent: "Listed and consistent across Google, Apple, Facebook, Yelp, and more.",
+      },
+      {
+        oldWay: "Duplicate and half-finished profiles quietly split your reviews and your ranking.",
+        withAgent: "One clean, complete profile that ranks higher and earns trust.",
+      },
+      {
+        oldWay: "You cannot tell why customers are not finding you.",
+        withAgent: "A clear Listing Score and report showing exactly what to fix.",
+      },
     ],
     outcome:
-      "Being findable is how you win the next customer. More accurate listings and stronger local visibility mean more calls, directions, and bookings from search, without adding another dashboard to your day.",
+      "More of the customers searching nearby find you first, on Google, Apple, and AI search, instead of a competitor, and more of those searches turn into visits. The business that shows up first, complete, and accurate is the one that gets the call. By getting you found everywhere customers search and keeping every business listing right, this agent turns the searches you are missing today into calls, bookings, and walk-ins, without spending an extra dollar on ads.",
     caseStudy: {
-      company: "Green Leaf Café, a neighborhood café in San Francisco, CA",
+      company: "Riverside Diner, a family-run restaurant in Denver, CO",
       story:
-        "Listings were inconsistent across Google, Yelp, and Apple Maps, and the team rarely had time to fix them. After turning on the Visibility and Listing Agent, profiles stayed in sync, errors were caught early, and local search impressions rose by about 40% in the first quarter.",
+        "Before AI-Harness, its Google listing showed the wrong hours, it was missing from Apple Maps entirely, and two duplicate profiles were splitting its reviews. After turning on the Visibility and Listing AI Agent, every profile is complete and accurate across Google, Apple, Facebook, and Yelp, the duplicates are cleaned up, and the listings are tuned for the searches locals actually type. Its Listing Score climbed from a C to an A, it began showing up in the top results for breakfast near me, and calls and direction requests from search rose by roughly 30% in the first two months.",
     },
   },
 ];

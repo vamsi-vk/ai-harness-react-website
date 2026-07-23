@@ -277,11 +277,11 @@ function FullTeam() {
                       >
                         <span
                           className={cn(
-                            "grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br text-white shadow-soft transition group-hover:scale-[1.03]",
+                            "grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br text-white shadow-soft transition group-hover:scale-[1.03]",
                             deptAccents[dept.icon],
                           )}
                         >
-                          <Icon className="h-4 w-4" />
+                          <Icon className="h-5 w-5" strokeWidth={2} />
                         </span>
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
@@ -669,6 +669,21 @@ function WhatChanges() {
         </ScrollReveal>
 
         <div className="mt-6 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-soft sm:mt-8">
+          <div className="hidden border-b border-ink-200 bg-gradient-to-r from-ink-50 via-white to-brand-50/80 px-3 py-4 sm:px-4 lg:grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.1fr)_auto_minmax(0,1.1fr)_minmax(110px,0.55fr)] lg:items-center lg:gap-3 lg:px-5">
+            <p className="text-[12px] font-bold tracking-[0.12em] text-ink-800 uppercase">
+              The work
+            </p>
+            <p className="inline-flex w-fit items-center rounded-full bg-red-50 px-2.5 py-1 text-[12px] font-bold tracking-[0.08em] text-red-700 uppercase ring-1 ring-red-200/80">
+              Your team today, doing it by hand
+            </p>
+            <span aria-hidden className="block w-6" />
+            <p className="inline-flex w-fit items-center rounded-full bg-brand-100 px-2.5 py-1 text-[12px] font-bold tracking-[0.08em] text-brand-800 uppercase ring-1 ring-brand-300/70">
+              With your AI-Harness workforce
+            </p>
+            <p className="text-right text-[12px] font-bold tracking-[0.12em] text-ink-700 uppercase">
+              Result
+            </p>
+          </div>
           {HOME_WHAT_CHANGES.map((row, i) => {
             const Icon = WHAT_CHANGE_ICONS[row.icon];
             return (
@@ -699,9 +714,14 @@ function WhatChanges() {
                     <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-red-500 text-white">
                       <X className="h-2.5 w-2.5" strokeWidth={3} />
                     </span>
-                    <p className="text-[12px] leading-snug text-ink-600 sm:text-[13px]">
-                      {row.before}
-                    </p>
+                    <div className="min-w-0">
+                      <p className="mb-1 inline-flex rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-bold tracking-[0.1em] text-red-700 uppercase ring-1 ring-red-200/70 lg:hidden">
+                        Your team today, doing it by hand
+                      </p>
+                      <p className="text-[12px] leading-snug text-ink-600 sm:text-[13px]">
+                        {row.before}
+                      </p>
+                    </div>
                   </div>
 
                   <div className="hidden justify-center lg:flex">
@@ -714,9 +734,14 @@ function WhatChanges() {
                     <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-success-500 text-white">
                       <Check className="h-2.5 w-2.5" strokeWidth={3} />
                     </span>
-                    <p className="text-[12px] leading-snug text-ink-700 sm:text-[13px]">
-                      {row.after}
-                    </p>
+                    <div className="min-w-0">
+                      <p className="mb-1 inline-flex rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-bold tracking-[0.1em] text-brand-800 uppercase ring-1 ring-brand-300/70 lg:hidden">
+                        With your AI-Harness workforce
+                      </p>
+                      <p className="text-[12px] leading-snug text-ink-700 sm:text-[13px]">
+                        {row.after}
+                      </p>
+                    </div>
                   </div>
 
                   <OutcomeVisual

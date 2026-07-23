@@ -74,14 +74,14 @@ export const HOME_AGENT_GROUPS: { title: string; agents: HomeAgentCard[] }[] = [
       {
         outcome:
           "Every review answered, even the hard ones. Replies to every review in your voice within minutes, reads the patterns behind the feedback so you fix the real cause, and turns your best reviews into ready-to-post marketing. Trust that keeps building instead of leaking away.",
-        name: "Reputation & Sentiment Agent",
+        name: "Reputation & Sentiment AI Agent",
         seeTo: "/agents/reputation-sentiment",
         live: true,
       },
       {
         outcome:
           "A steady stream of fresh five-star reviews. Invites every happy customer at the right moment, on the channel they answer, so your rating reflects the real room and keeps the strongest signal on who customers choose next working for you.",
-        name: "Automated Review Agent",
+        name: "Automated Review AI Agent",
         seeTo: "/agents/automated-reviews",
         live: true,
       },
@@ -136,21 +136,21 @@ export const HOME_PROFIT_POINTS = [
 export const HOME_TEAM_DEPARTMENTS = [
   {
     label: "Marketing and social",
-    agent: "Marketing Automation Agent",
+    agent: "Marketing Automation AI Agent",
     blurb: "Plans, posts, and engages across every channel in your voice.",
     seeTo: "/agents/marketing-automation",
     icon: "megaphone" as const,
   },
   {
     label: "Reviews",
-    agent: "Reputation & Sentiment Agent",
+    agent: "Reputation & Sentiment AI Agent",
     blurb: "Answers every review and surfaces the patterns behind them.",
     seeTo: "/agents/reputation-sentiment",
     icon: "message" as const,
   },
   {
     label: "Review growth",
-    agent: "Automated Review Agent",
+    agent: "Automated Review AI Agent",
     blurb: "Invites happy customers at the right moment for fresh five-stars.",
     seeTo: "/agents/automated-reviews",
     icon: "chart" as const,
@@ -167,7 +167,7 @@ export const HOME_TEAM_DEPARTMENTS = [
 export const HOME_WHAT_CHANGES = [
   {
     title: "Marketing & Social",
-    agent: "Marketing Automation Agent",
+    agent: "Marketing Automation AI Agent",
     before:
       "Posting slips on busy weeks, the feed goes quiet, and the algorithm moves on to whoever stayed visible.",
     after:
@@ -180,7 +180,7 @@ export const HOME_WHAT_CHANGES = [
   },
   {
     title: "Reviews & Reputation",
-    agent: "Reputation & Sentiment Agent",
+    agent: "Reputation & Sentiment AI Agent",
     before:
       "Reviews pile up unanswered and the patterns behind them go unseen, so trust quietly leaks away.",
     after:
@@ -193,7 +193,7 @@ export const HOME_WHAT_CHANGES = [
   },
   {
     title: "Review Growth",
-    agent: "Automated Review Agent",
+    agent: "Automated Review AI Agent",
     before: "Happy customers leave without a word online, and your rating undersells the real room.",
     after:
       "Every happy customer invited at the right moment, so fresh five-star reviews keep arriving on their own.",

@@ -45,13 +45,13 @@ export function AutomatedReviewAgentSubNav() {
               <Star className="h-4 w-4" strokeWidth={2} />
             </span>
             <span className="hidden text-[15px] font-medium tracking-tight sm:inline">
-              Automated Review Agent
+              Automated Review AI Agent
             </span>
             <span className="text-[15px] font-medium tracking-tight sm:hidden">Reviews</span>
           </Link>
 
           <nav
-            aria-label="Automated Review Agent sections"
+            aria-label="Automated Review AI Agent sections"
             className="flex items-center gap-0.5 overflow-x-auto"
           >
             {AUTOMATED_REVIEW_AGENT_TABS.map((tab) => {

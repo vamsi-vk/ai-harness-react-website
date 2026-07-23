@@ -267,13 +267,13 @@ function Hero() {
               Visibility and Listing AI Agent
             </p>
             <h1 className="mt-4 text-[clamp(2rem,4.5vw,3.35rem)] font-medium leading-[1.08] tracking-[-0.025em] text-ink-900">
-              Get <span className={HL}>Found First</span>, before a customer calls the competition
+              Get <span className={HL}>found first</span>, everywhere customers search
             </h1>
             <p className="mt-5 text-lg font-normal leading-[1.7] text-ink-600 sm:text-xl">
-              Being on the map is not the same as being seen. Your agent lists your business
-              everywhere customers search, watches every profile for the errors that quietly cost
-              you customers, and works the moves that put you ahead in local search, so the next
-              search for what you do ends with you.
+              A separate agent on the AI-Harness platform that lists your business everywhere
+              customers look, keeps every detail accurate, and works to rank you higher in local
+              search and in the answers AI assistants give, so you are the business they find first,
+              not the one down the street.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Button to="/signup" size="lg">

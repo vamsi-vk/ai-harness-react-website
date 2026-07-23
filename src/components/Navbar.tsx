@@ -66,6 +66,34 @@ function isNavPathActive(pathname: string, to: string) {
   return pathname === to || pathname.startsWith(`${to}/`);
 }
 
+/**
+ * Parent tab highlight.
+ * Skip children that point at another top-level nav root (e.g. SMB → /platform
+ * must not light up Solutions while you're on Platform).
+ */
+function isNavParentActive(pathname: string, item: NavItem) {
+  if (isNavPathActive(pathname, item.to)) return true;
+
+  const otherRoots = navItems
+    .filter((other) => other.label !== item.label && other.to !== "/")
+    .map((other) => other.to);
+
+  return (
+    item.children?.some((child) => {
+      if (child.to === "/") return false;
+      // Cross-link into another primary section — that section owns the highlight
+      if (
+        otherRoots.some(
+          (root) => child.to === root || child.to.startsWith(`${root}/`),
+        )
+      ) {
+        return false;
+      }
+      return isNavPathActive(pathname, child.to);
+    }) ?? false
+  );
+}
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [chromeCompact, setChromeCompact] = useState(false);
@@ -142,12 +170,7 @@ export default function Navbar() {
                 onMouseLeave={handleLeave}
               >
                 {(() => {
-                  const isActive =
-                    isNavPathActive(location.pathname, item.to) ||
-                    (item.children?.some((child) =>
-                      isNavPathActive(location.pathname, child.to),
-                    ) ??
-                      false);
+                  const isActive = isNavParentActive(location.pathname, item);
                   return (
                     <div
                       className={cn(
@@ -283,10 +306,7 @@ export default function Navbar() {
                         className={({ isActive }) =>
                           cn(
                             "flex-1 rounded-lg px-3 py-3 text-[15px] font-medium",
-                            isActive ||
-                              item.children?.some((child) =>
-                                isNavPathActive(location.pathname, child.to),
-                              )
+                            isActive || isNavParentActive(location.pathname, item)
                               ? "text-ink-900"
                               : "text-ink-700",
                           )

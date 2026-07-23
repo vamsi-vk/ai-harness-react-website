@@ -21,7 +21,7 @@ export const SOLUTIONS_MENU_ITEMS: SolutionItem[] = [
   {
     label: "Solution - For SMBs",
     description: "AI agents that get you found, win reviews, and run the day-to-day for local businesses.",
-    to: "/",
+    to: "/platform",
     icon: Store,
     badge: "NEW",
   },
