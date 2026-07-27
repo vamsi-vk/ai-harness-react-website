@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 type LogoProps = {
+  /** White wordmark for dark backgrounds (hero video). Default is purple wordmark for light backgrounds. */
   dark?: boolean;
   className?: string;
 };

@@ -32,12 +32,52 @@ const socials: Array<{ label: string; href: string; Icon: (props: { className?: 
 
 const columns: FooterColumn[] = [
   {
-    title: "Platform", links: [
-      { label: "Overview", to: "/platform" }, { label: "AI Agents", to: "/platform#agents" }, { label: "Workflow Engine", to: "/platform#workflows" }, { label: "Governance", to: "/security" }, { label: "Integrations", to: "/platform#integrations" }, ], }, {
-    title: "Solutions", links: [
-      { label: "By Use Case", to: "/solutions" }, { label: "By Industry", to: "/industries" }, { label: "For Operations", to: "/solutions#operations" }, { label: "For Engineering", to: "/solutions#engineering" }, { label: "For Customer Ops", to: "/solutions#customer" }, ], }, {
-    title: "Company", links: [
-      { label: "About Us", to: "/about" }, { label: "Contact Us", to: "/contact" }, { label: "Security & Trust", to: "/security" }, ], },
+    title: "Your AI Workforce",
+    links: [
+      { label: "Get Found & Win Customers", to: "/agents/visibility-listing" },
+      { label: "Protect Your Reputation", to: "/agents/reputation-sentiment" },
+      { label: "All agents", to: "/platform" },
+    ],
+  },
+  {
+    title: "Industries",
+    links: [
+      { label: "Restaurants", to: "/industries" },
+      { label: "Retail", to: "/industries" },
+      { label: "Real Estate", to: "/industries" },
+      { label: "Dental & Medical", to: "/industries" },
+      { label: "Home & Professional Services", to: "/industries" },
+      { label: "Beauty & Wellness", to: "/industries" },
+    ],
+  },
+  {
+    title: "Product",
+    links: [
+      { label: "The platform", to: "/platform" },
+      { label: "Pricing", to: "/contact" },
+      { label: "Integrations", to: "/platform#integrations" },
+      { label: "Start free", to: "/signup" },
+    ],
+  },
+  {
+    title: "For Enterprise",
+    links: [
+      { label: "Enterprise", to: "/enterprise" },
+      { label: "Platform", to: "/platform" },
+      { label: "Governance & Security", to: "/security" },
+      { label: "Multi-location", to: "/platform" },
+      { label: "Book a demo", to: "/demo" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", to: "/about" },
+      { label: "Contact", to: "/contact" },
+      { label: "Careers", to: "/about" },
+      { label: "Blog", to: "/contact" },
+    ],
+  },
 ];
 
 export default function Footer() {
@@ -50,18 +90,16 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="site-footer" className="relative mt-16 overflow-hidden border-t border-ink-200 bg-ink-950 text-ink-300">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent" />
-      <div aria-hidden className="pointer-events-none absolute -left-40 top-0 h-96 w-96 rounded-full bg-brand-600/20 blur-3xl" />
-      <div aria-hidden className="pointer-events-none absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-indigo-500/15 blur-3xl" />
+    <footer id="site-footer" className="relative z-20 mt-16 overflow-hidden border-t border-ink-200 bg-ink-950 text-ink-300">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ink-600 to-transparent" />
 
       <Container className="relative py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(4,1fr)] xl:grid-cols-[1.4fr_repeat(5,1fr)]">
           <div>
             <Logo dark />
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-ink-400">
-              The enterprise control plane for a unified human + AI workforce. Deploy, govern, and scale
-              AI agents across every workflow, with full transparency.
+              The AI agent platform that gives your business an AI workforce, agents that run your
+              marketing and social, grow and answer your reviews, and get you found across search.
             </p>
             <div className="mt-7 flex flex-wrap gap-2">
               <Link

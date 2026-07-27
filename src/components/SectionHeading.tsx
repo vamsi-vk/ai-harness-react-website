@@ -25,12 +25,14 @@ export default function SectionHeading({
       )}
       <h2
         className={cn(
-          "text-[34px] sm:text-[44px] leading-[1.05] font-semibold tracking-[-0.02em]", dark ? "text-white" : "text-ink-900", )}
+          "type-section",
+          dark ? "text-white" : "text-ink-900",
+        )}
       >
         {title}
       </h2>
       {description && (
-        <p className={cn("mt-5 text-lg leading-relaxed", dark ? "text-ink-300" : "text-ink-600")}>{description}</p>
+        <p className={cn("type-body-lg mt-5", dark ? "text-ink-300" : "text-ink-600")}>{description}</p>
       )}
     </div>
   );

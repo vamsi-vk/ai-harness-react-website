@@ -66,7 +66,7 @@ export default function InternationalConsultation() {
         description={`Book a 45-minute consultation with the ${desk.name}. In English or ${desk.language}, at ${desk.timezoneAbbr} or Pacific hours. An honest read on your US readiness, whether or not you work with us.`}
         keywords={`${desk.name}, consultation, US market entry, ${desk.countryAdjective} companies, AI-Harness`}
         breadcrumbs={[
-          { label: "Solutions", path: "/solutions" },
+          { label: "Solutions", path: "/solutions/enterprise" },
           { label: "International Businesses", path: "/international-businesses" },
           { label: desk.name, path: `/international-businesses/${desk.id}` },
           { label: "Consultation", path: seoPath },
@@ -114,7 +114,7 @@ function Breadcrumb({ desk }: { desk: DeskConfig }) {
       aria-label="Breadcrumb"
       className="flex flex-wrap items-center gap-1.5 text-[12.5px] font-medium text-ink-500"
     >
-      <Link to="/solutions" className="hover:text-ink-700">
+      <Link to="/solutions/enterprise" className="hover:text-ink-700">
         Solutions
       </Link>
       <span className="text-ink-300">/</span>
@@ -155,12 +155,12 @@ function HeroIntro({ desk }: { desk: DeskConfig }) {
     {
       icon: <Languages className="h-5 w-5" />,
       title: `In English or ${desk.language}`,
-      desc: `Pick one or both on the form — we staff the call to match. ${NATIVE_ONLY_OK[desk.id]}`,
+      desc: `Pick one or both on the form. We staff the call to match. ${NATIVE_ONLY_OK[desk.id]}`,
     },
     {
       icon: <Globe2 className="h-5 w-5" />,
       title: `${desk.timezoneAbbr} or Pacific hours`,
-      desc: `We book at hours that work for ${desk.hqCity} mornings or US Pacific time — your team shouldn't have to take the call at midnight.`,
+      desc: `We book at hours that work for ${desk.hqCity} mornings or US Pacific time. Your team shouldn't have to take the call at midnight.`,
     },
     {
       icon: <ShieldCheck className="h-5 w-5" />,
@@ -207,7 +207,7 @@ function HeroIntro({ desk }: { desk: DeskConfig }) {
               Trade show next quarter?
             </p>
             <p className="mt-1 text-[13.5px] leading-relaxed text-ink-600">
-              Mention it below — we'll come to the call with a pre-show meeting
+              Mention it below. We'll come to the call with a pre-show meeting
               plan and a 90-day follow-up workflow already sketched out.
             </p>
           </div>
@@ -307,7 +307,7 @@ function ConsultationForm({ desk }: { desk: DeskConfig }) {
 
         <CheckboxGroup
           label={`Preferred time windows`}
-          helper={`Pick any that work — we'll find the overlap with ${desk.hqCity} and US Pacific time.`}
+          helper={`Pick any that work. We'll find the overlap with ${desk.hqCity} and US Pacific time.`}
         >
           {timeSlotsForDesk.map((slot) => (
             <CheckboxPill
@@ -331,7 +331,7 @@ function ConsultationForm({ desk }: { desk: DeskConfig }) {
 
         <p className="text-xs text-ink-500">
           By submitting, you agree to our Privacy Policy. We'll only use your
-          details to schedule this consultation — no marketing list, no shared
+          details to schedule this consultation. No marketing list, no shared
           contacts.
         </p>
 
@@ -484,7 +484,7 @@ function CheckboxGroup({
       )}
       <div className="mt-2.5 grid gap-2 sm:grid-cols-2">{children}</div>
       {error && (
-        <p className="mt-2 text-[12.5px] font-medium text-red-600">{error}</p>
+        <p className="mt-2 text-[12.5px] font-medium text-error-600">{error}</p>
       )}
     </fieldset>
   );

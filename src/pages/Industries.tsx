@@ -220,10 +220,10 @@ function IndustrySection({ industry, invert }: { industry: Industry; invert: boo
           </div>
 
           <div className="relative">
-            <div aria-hidden className="absolute -inset-6 rounded-[40px] bg-gradient-to-br from-brand-100 via-white to-indigo-100 opacity-70 blur-2xl" />
+            <div aria-hidden className="absolute -inset-6 rounded-[40px] bg-gradient-to-br from-brand-100 via-white to-brand-100 opacity-70 blur-2xl" />
             <div className="relative rounded-[24px] border border-ink-200 bg-white p-2 shadow-lift">
               <div className="rounded-[18px] bg-gradient-to-br from-ink-950 to-ink-900 p-8 text-white">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-300">Typical outcomes</p>
+                <p className="text-sm font-medium text-ink-300">Typical outcomes</p>
                 <div className="mt-6 grid grid-cols-2 gap-6">
                   {industry.metrics.map((m) => (
                     <div key={m.label}>
@@ -262,7 +262,7 @@ function CrossIndustry() {
   return (
     <section className="py-16 sm:py-20">
       <Container>
-        <div className="rounded-[32px] border border-ink-200 bg-gradient-to-br from-brand-50 via-white to-indigo-50 p-10 sm:p-14">
+        <div className="rounded-[32px] border border-ink-200 bg-gradient-to-br from-brand-50 via-white to-brand-50 p-10 sm:p-14">
           <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
             <div>
               <Eyebrow>Cross-industry</Eyebrow>

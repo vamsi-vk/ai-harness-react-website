@@ -38,7 +38,7 @@ function SecurityHero() {
     <section className="relative overflow-hidden bg-ink-950 text-white pb-20 pt-24">
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid-dark opacity-40" />
       <div aria-hidden className="pointer-events-none absolute -left-40 top-10 h-[420px] w-[420px] rounded-full bg-brand-600/25 blur-3xl" />
-      <div aria-hidden className="pointer-events-none absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-indigo-500/20 blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute -right-40 bottom-0 h-[420px] w-[420px] rounded-full bg-brand-500/20 blur-3xl" />
       <Container className="relative">
         <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="max-w-2xl">
@@ -189,7 +189,7 @@ function AgentGovernance() {
   return (
     <section className="py-16 sm:py-20">
       <Container>
-        <div className="rounded-[32px] bg-gradient-to-br from-brand-50 via-white to-indigo-50 p-10 sm:p-14 border border-ink-200">
+        <div className="rounded-[32px] bg-gradient-to-br from-brand-50 via-white to-brand-50 p-10 sm:p-14 border border-ink-200">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
             <div>
               <Eyebrow>Agent Governance</Eyebrow>

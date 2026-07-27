@@ -6,7 +6,10 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/((?!.*\\.(?:js|css|png|jpe?g|gif|svg|webp|avif|ico|woff2?|ttf|map|txt|xml|json|webmanifest|mp4|webm)$).*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {

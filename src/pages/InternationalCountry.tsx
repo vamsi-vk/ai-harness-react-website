@@ -47,13 +47,13 @@ const humans: WorkforceMember[] = [
     initials: "KT",
     name: "Bilingual Account Director",
     kind: "human",
-    gradient: "from-emerald-400 to-teal-500",
+    gradient: "from-success-400 to-success-500",
   },
   {
     initials: "JM",
     name: "US Sales Lead",
     kind: "human",
-    gradient: "from-sky-400 to-indigo-500",
+    gradient: "from-brand-400 to-brand-500",
   },
 ];
 
@@ -63,25 +63,25 @@ function getAgents(desk: DeskConfig): WorkforceMember[] {
       initials: "RA",
       name: "Account Research Agent",
       kind: "ai",
-      gradient: "from-brand-400 to-fuchsia-500",
+      gradient: "from-brand-400 to-brand-500",
     },
     {
       initials: "FU",
       name: "Trade Show Follow-up Agent",
       kind: "ai",
-      gradient: "from-indigo-400 to-brand-500",
+      gradient: "from-brand-400 to-brand-500",
     },
     {
       initials: "CR",
       name: "CRM & Pipeline Agent",
       kind: "ai",
-      gradient: "from-brand-500 to-indigo-500",
+      gradient: "from-brand-500 to-brand-600",
     },
     {
       initials: "RA",
       name: `${desk.reportingAgentNative} Reporting Agent`,
       kind: "ai",
-      gradient: "from-fuchsia-500 to-brand-500",
+      gradient: "from-brand-500 to-brand-600",
     },
   ];
 }
@@ -214,7 +214,7 @@ export default function InternationalCountry() {
         description={`${desk.name} helps ${desk.countryAdjective} companies build US pipeline through bilingual account directors and governed AI agents: qualified meetings, channel partners, and monthly reporting in ${desk.language}, all on one platform.`}
         keywords={`${desk.name}, AI managed service, US revenue, bilingual account director, AI agents ${desk.countryAdjective}, AI-Harness international`}
         breadcrumbs={[
-          { label: "Solutions", path: "/solutions" },
+          { label: "Solutions", path: "/solutions/enterprise" },
           { label: "International Businesses", path: "/international-businesses" },
           { label: desk.name, path: `/international-businesses/${desk.id}` },
         ]}
@@ -276,7 +276,7 @@ function Hero({ desk }: { desk: DeskConfig }) {
               <Button
                 to={`/international-businesses/${desk.id}/consultation`}
                 size="md"
-                className="bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lift hover:from-brand-700 hover:to-indigo-700"
+                className="bg-gradient-to-r from-brand-600 to-brand-700 text-white shadow-lift hover:from-brand-700 hover:to-brand-800"
               >
                 Talk to the {desk.name}
                 <ArrowRight className="h-4 w-4" />
@@ -320,16 +320,16 @@ function WorkspaceCard({ desk }: { desk: DeskConfig }) {
     <div className="relative">
       <div
         aria-hidden
-        className="absolute -inset-6 rounded-[40px] bg-gradient-to-br from-brand-200/60 via-white to-indigo-200/60 opacity-80 blur-2xl"
+        className="absolute -inset-6 rounded-[40px] bg-gradient-to-br from-brand-200/60 via-white to-brand-200/60 opacity-80 blur-2xl"
       />
-      <div className="relative overflow-hidden rounded-[20px] border border-ink-900/80 bg-gradient-to-br from-ink-950 via-ink-900 to-indigo-950 shadow-lift">
+      <div className="relative overflow-hidden rounded-[20px] border border-ink-900/80 bg-gradient-to-br from-ink-950 via-ink-900 to-brand-950 shadow-lift">
         <div
           aria-hidden
           className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-brand-500/30 blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-16 -left-10 h-40 w-40 rounded-full bg-indigo-500/25 blur-3xl"
+          className="pointer-events-none absolute -bottom-16 -left-10 h-40 w-40 rounded-full bg-brand-500/25 blur-3xl"
         />
 
         <div className="relative flex items-center justify-between border-b border-white/10 px-4 py-2.5">
@@ -340,8 +340,8 @@ function WorkspaceCard({ desk }: { desk: DeskConfig }) {
             <span className="text-ink-500">/</span>
             <span className="text-white">{desk.id}-desk</span>
           </div>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[9.5px] font-semibold uppercase tracking-[0.08em] text-emerald-300 ring-1 ring-inset ring-emerald-400/30">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-live-dot" />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-success-500/15 px-2 py-0.5 text-[9.5px] font-semibold uppercase tracking-[0.08em] text-success-300 ring-1 ring-inset ring-success-400/30">
+            <span className="h-1.5 w-1.5 rounded-full bg-success-400 animate-live-dot" />
             Hybrid pod · Live
           </span>
         </div>
@@ -361,8 +361,8 @@ function WorkspaceCard({ desk }: { desk: DeskConfig }) {
 
         <div className="relative flex items-center justify-between border-t border-white/10 px-4 py-2.5 text-[11px]">
           <span className="font-medium text-ink-400">Audit trail</span>
-          <span className="inline-flex items-center gap-1.5 font-semibold text-emerald-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-live-dot" />
+          <span className="inline-flex items-center gap-1.5 font-semibold text-success-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-success-400 animate-live-dot" />
             Active on every action
           </span>
         </div>
@@ -384,7 +384,7 @@ function Group({
     <div>
       <p
         className={`text-[9.5px] font-semibold uppercase tracking-[0.14em] ${
-          tone === "emerald" ? "text-emerald-300/90" : "text-brand-300"
+          tone === "emerald" ? "text-success-300/90" : "text-brand-300"
         }`}
       >
         {label}
@@ -426,14 +426,14 @@ function StatsRow({ desk }: { desk: DeskConfig }) {
   return (
     <section className="pb-16 sm:pb-20">
       <Container>
-        <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-br from-ink-950 via-ink-900 to-indigo-950 px-5 py-5 shadow-lift sm:px-7 sm:py-6">
+        <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-br from-ink-950 via-ink-900 to-brand-950 px-5 py-5 shadow-lift sm:px-7 sm:py-6">
           <div
             aria-hidden
             className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-brand-500/25 blur-3xl"
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute -bottom-24 -left-16 h-60 w-60 rounded-full bg-indigo-500/20 blur-3xl"
+            className="pointer-events-none absolute -bottom-24 -left-16 h-60 w-60 rounded-full bg-brand-500/20 blur-3xl"
           />
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid-dark opacity-50" />
 
@@ -469,7 +469,7 @@ function Challenges({ desk }: { desk: DeskConfig }) {
           <p className="mt-5 max-w-2xl text-[15.5px] leading-relaxed text-ink-600">
             These aren't strategy-deck abstractions. They're the specific
             failure modes we've watched {desk.countryName}-based companies hit
-            during US market entry — and the reasons the {desk.name} exists.
+            during US market entry, and the reasons the {desk.name} exists.
           </p>
         </div>
 
@@ -505,7 +505,7 @@ function StrategySection({ desk }: { desk: DeskConfig }) {
             <span className="text-gradient">for {desk.countryName}.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-[15.5px] leading-relaxed text-ink-600">
-            One playbook per country — not one global template. Below is the
+            One playbook per country, not one global template. Below is the
             specific {desk.countryAdjective} GTM motion we run, refined from
             actual engagements with {desk.countryName}-headquartered companies.
           </p>
@@ -579,28 +579,28 @@ function PodRoster({ desk }: { desk: DeskConfig }) {
   const podMembers = getPodMembers(desk);
   const reportingAgentName = `${desk.reportingAgentNative} Reporting Agent`;
   const gradients: Record<string, string> = {
-    "Bilingual Account Director": "from-emerald-400 to-teal-500",
-    "US Sales Lead": "from-sky-400 to-indigo-500",
-    "Account Research Agent": "from-brand-400 to-fuchsia-500",
-    "Trade Show Follow-up Agent": "from-indigo-400 to-brand-500",
-    "CRM & Pipeline Agent": "from-brand-500 to-indigo-500",
-    [reportingAgentName]: "from-fuchsia-500 to-brand-500",
+    "Bilingual Account Director": "from-success-400 to-success-500",
+    "US Sales Lead": "from-brand-400 to-brand-500",
+    "Account Research Agent": "from-brand-400 to-brand-500",
+    "Trade Show Follow-up Agent": "from-brand-400 to-brand-500",
+    "CRM & Pipeline Agent": "from-brand-500 to-brand-600",
+    [reportingAgentName]: "from-brand-500 to-brand-600",
   };
 
   return (
     <div className="relative">
       <div
         aria-hidden
-        className="absolute -inset-4 rounded-[32px] bg-gradient-to-br from-brand-200/60 via-white to-indigo-200/60 opacity-80 blur-2xl"
+        className="absolute -inset-4 rounded-[32px] bg-gradient-to-br from-brand-200/60 via-white to-brand-200/60 opacity-80 blur-2xl"
       />
-      <div className="relative overflow-hidden rounded-[22px] border border-ink-900/80 bg-gradient-to-br from-ink-950 via-ink-900 to-indigo-950 shadow-lift">
+      <div className="relative overflow-hidden rounded-[22px] border border-ink-900/80 bg-gradient-to-br from-ink-950 via-ink-900 to-brand-950 shadow-lift">
         <div
           aria-hidden
           className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-brand-500/30 blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-24 -left-16 h-52 w-52 rounded-full bg-indigo-500/25 blur-3xl"
+          className="pointer-events-none absolute -bottom-24 -left-16 h-52 w-52 rounded-full bg-brand-500/25 blur-3xl"
         />
 
         <div className="relative flex items-center justify-between border-b border-white/10 px-5 py-4">
@@ -612,8 +612,8 @@ function PodRoster({ desk }: { desk: DeskConfig }) {
               Your hybrid pod
             </p>
           </div>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-emerald-300 ring-1 ring-inset ring-emerald-400/30">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-live-dot" />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-success-500/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-success-300 ring-1 ring-inset ring-success-400/30">
+            <span className="h-1.5 w-1.5 rounded-full bg-success-400 animate-live-dot" />
             On platform
           </span>
         </div>
@@ -626,7 +626,7 @@ function PodRoster({ desk }: { desk: DeskConfig }) {
             >
               <span
                 className={`mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gradient-to-br ${
-                  gradients[m.name] ?? "from-brand-400 to-indigo-500"
+                  gradients[m.name] ?? "from-brand-400 to-brand-500"
                 } text-[12px] font-semibold text-white shadow-soft ${
                   m.kind === "ai" ? "animate-agent-ring" : ""
                 }`}
@@ -663,8 +663,8 @@ function PodRoster({ desk }: { desk: DeskConfig }) {
           <span className="font-medium text-ink-400">
             Audit trail · governed by AI-Harness
           </span>
-          <span className="inline-flex items-center gap-1.5 font-semibold text-emerald-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-live-dot" />
+          <span className="inline-flex items-center gap-1.5 font-semibold text-success-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-success-400 animate-live-dot" />
             Active on every action
           </span>
         </div>
@@ -692,7 +692,7 @@ function ServicePackages({ desk }: { desk: DeskConfig }) {
               key={pkg.title}
               className="flex flex-col rounded-2xl border border-ink-200 bg-white p-6 shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:border-ink-300 hover:shadow-lift sm:p-7"
             >
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-700">
+              <p className="text-sm font-medium text-ink-500">
                 {pkg.jp}
               </p>
               <h3 className="mt-3 text-[20px] font-semibold leading-snug tracking-tight text-ink-900">
@@ -728,7 +728,7 @@ function Governance({ desk }: { desk: DeskConfig }) {
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-indigo-500/20 blur-3xl"
+            className="pointer-events-none absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl"
           />
 
           <div className="relative grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
@@ -773,7 +773,7 @@ function MonthlyReportCard({ desk }: { desk: DeskConfig }) {
     <div className="relative">
       <div
         aria-hidden
-        className="absolute -inset-3 rounded-[28px] bg-gradient-to-br from-brand-500/15 to-indigo-500/15 blur-xl"
+        className="absolute -inset-3 rounded-[28px] bg-gradient-to-br from-brand-500/15 to-brand-500/15 blur-xl"
       />
       <div className="relative overflow-hidden rounded-[20px] border border-white/10 bg-ink-900/70 shadow-lift backdrop-blur">
         <div className="border-b border-white/10 px-6 py-5">
@@ -798,8 +798,8 @@ function MonthlyReportCard({ desk }: { desk: DeskConfig }) {
           ))}
         </ul>
         <div className="flex items-center gap-2 border-t border-white/10 px-6 py-3.5 text-[12.5px]">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-live-dot" />
-          <span className="font-medium text-emerald-300">
+          <span className="h-1.5 w-1.5 rounded-full bg-success-400 animate-live-dot" />
+          <span className="font-medium text-success-300">
             Generated from the AI-Harness audit trail
           </span>
         </div>
@@ -820,7 +820,7 @@ function GetStarted({ desk }: { desk: DeskConfig }) {
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute -bottom-28 right-0 h-[300px] w-[300px] rounded-full bg-indigo-500/20 blur-3xl"
+            className="pointer-events-none absolute -bottom-28 right-0 h-[300px] w-[300px] rounded-full bg-brand-500/20 blur-3xl"
           />
 
           <div className="relative z-10 mx-auto max-w-3xl text-center">
@@ -841,7 +841,7 @@ function GetStarted({ desk }: { desk: DeskConfig }) {
               <Button
                 to={`/international-businesses/${desk.id}/consultation`}
                 size="md"
-                className="bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lift hover:from-brand-700 hover:to-indigo-700"
+                className="bg-gradient-to-r from-brand-600 to-brand-700 text-white shadow-lift hover:from-brand-700 hover:to-brand-800"
               >
                 Book a consultation
                 <ArrowRight className="h-4 w-4" />

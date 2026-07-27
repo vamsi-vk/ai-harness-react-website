@@ -55,10 +55,10 @@ function passwordStrengthScore(checks: PasswordChecks): number {
 
 const STRENGTH_LABELS = ["", "Very weak", "Weak", "Fair", "Strong", "Very strong"];
 const STRENGTH_BAR_COLORS = [
-  "bg-ink-200", "bg-red-500", "bg-orange-500", "bg-amber-500", "bg-emerald-500", "bg-emerald-600",
+  "bg-ink-200", "bg-error-500", "bg-warning-500", "bg-warning-400", "bg-success-500", "bg-success-600",
 ];
 const STRENGTH_TEXT_COLORS = [
-  "text-ink-500", "text-red-600", "text-orange-600", "text-amber-700", "text-emerald-600", "text-emerald-700",
+  "text-ink-500", "text-error-600", "text-warning-600", "text-warning-700", "text-success-600", "text-success-700",
 ];
 
 type Step = "form" | "verify" | "done";
@@ -186,7 +186,7 @@ export default function SignUp() {
           </div>
 
           <div className="relative">
-            <div aria-hidden className="absolute -inset-4 rounded-[40px] bg-gradient-to-br from-brand-200/40 via-white to-indigo-200/40 blur-2xl" />
+            <div aria-hidden className="absolute -inset-4 rounded-[40px] bg-gradient-to-br from-brand-200/40 via-white to-brand-200/40 blur-2xl" />
             <div className="relative rounded-[28px] border border-ink-200 bg-white p-8 shadow-lift sm:p-10">
               {step === "form" && (
                 <>
@@ -255,7 +255,7 @@ export default function SignUp() {
                           aria-invalid={errors.terms ? true : undefined}
                           className={
                             "mt-0.5 h-4 w-4 rounded text-brand-600 focus:ring-brand-500 " +
-                            (errors.terms ? "border-red-400" : "border-ink-300")
+                            (errors.terms ? "border-error-500" : "border-ink-300")
                           }
                         />
                         <span>
@@ -270,7 +270,7 @@ export default function SignUp() {
                         </span>
                       </label>
                       {errors.terms && (
-                        <p className="mt-1.5 text-[12.5px] text-red-600">{errors.terms}</p>
+                        <p className="mt-1.5 text-[12.5px] text-error-600">{errors.terms}</p>
                       )}
                     </div>
                     <Button className="w-full">
@@ -400,12 +400,12 @@ function Input({
         className={
           "mt-1.5 w-full rounded-xl border bg-white px-3.5 py-2.5 text-[14.5px] text-ink-900 outline-none placeholder:text-ink-400 focus:ring-2 " +
           (error
-            ? "border-red-400 focus:border-red-500 focus:ring-red-100"
+            ? "border-error-400 focus:border-error-500 focus:ring-error-100"
             : "border-ink-200 focus:border-brand-500 focus:ring-brand-100")
         }
       />
       {error ? (
-        <span className="mt-1.5 block text-[12.5px] font-normal text-red-600">{error}</span>
+        <span className="mt-1.5 block text-[12.5px] font-normal text-error-600">{error}</span>
       ) : hint ? (
         <span className="mt-1.5 block text-[12.5px] font-normal text-ink-500">{hint}</span>
       ) : null}
@@ -443,7 +443,7 @@ function PasswordStrength({ password }: { password: string }) {
 
 function Rule({ ok, label }: { ok: boolean; label: string }) {
   return (
-    <li className={cn("flex items-center gap-1.5", ok ? "text-ink-500" : "text-red-600")}>
+    <li className={cn("flex items-center gap-1.5", ok ? "text-ink-500" : "text-error-600")}>
       {ok ? <Check className="h-3.5 w-3.5" /> : <X className="h-3.5 w-3.5" />}
       {label}
     </li>

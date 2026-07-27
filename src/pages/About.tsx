@@ -91,26 +91,26 @@ function FlowDiagram() {
       icon: <Users className="h-5 w-5" />,
       label: "Human team",
       sub: "Operators, reviewers, leaders",
-      tint: "from-emerald-500 to-teal-600",
+      tint: "from-success-500 to-success-600",
     },
     {
       icon: <AhMark />,
       label: "AI-Harness",
       sub: "Control plane",
-      tint: "from-brand-600 via-indigo-600 to-fuchsia-600",
+      tint: "from-brand-500 via-brand-600 to-brand-700",
       highlight: true,
     },
     {
       icon: <Bot className="h-5 w-5" />,
       label: "AI agents",
       sub: "Scoped, accountable, observable",
-      tint: "from-violet-500 to-fuchsia-500",
+      tint: "from-brand-500 to-brand-600",
     },
     {
       icon: <Building2 className="h-5 w-5" />,
       label: "Business systems",
       sub: "CRM, ERP, ITSM, data, comms",
-      tint: "from-sky-500 to-blue-600",
+      tint: "from-brand-500 to-brand-600",
     },
   ];
 
@@ -124,7 +124,7 @@ function FlowDiagram() {
     <div className="relative mx-auto mt-16 max-w-5xl sm:mt-20">
       <div
         aria-hidden
-        className="pointer-events-none absolute -inset-x-4 -inset-y-6 -z-10 rounded-[40px] bg-gradient-to-b from-brand-100/30 via-white to-indigo-100/30 blur-xl"
+        className="pointer-events-none absolute -inset-x-4 -inset-y-6 -z-10 rounded-[40px] bg-gradient-to-b from-brand-100/30 via-white to-brand-100/30 blur-xl"
       />
 
       <div className="relative rounded-[32px] border border-dashed border-brand-300/70 bg-white/70 p-6 shadow-soft backdrop-blur sm:p-10">
@@ -196,17 +196,17 @@ function FlowConnector() {
         className="relative hidden h-px shrink-0 self-center sm:block sm:w-8 md:w-10"
         aria-hidden
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-300/60 via-indigo-400/70 to-brand-300/60" />
-        <span className="absolute left-0 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.7)] animate-data-flow-h" />
-        <ArrowRight className="absolute -right-2 top-1/2 h-4 w-4 -translate-y-1/2 text-indigo-500" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-300/60 via-brand-400/70 to-brand-300/60" />
+        <span className="absolute left-0 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(120, 57, 224,0.7)] animate-data-flow-h" />
+        <ArrowRight className="absolute -right-2 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-500" />
       </div>
       <div
         className="relative mx-auto block h-8 w-px shrink-0 sm:hidden"
         aria-hidden
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-300/60 via-indigo-400/70 to-brand-300/60" />
-        <span className="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.7)] animate-data-flow-v" />
-        <ArrowDown className="absolute -bottom-2 left-1/2 h-4 w-4 -translate-x-1/2 text-indigo-500" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-300/60 via-brand-400/70 to-brand-300/60" />
+        <span className="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(120, 57, 224,0.7)] animate-data-flow-v" />
+        <ArrowDown className="absolute -bottom-2 left-1/2 h-4 w-4 -translate-x-1/2 text-brand-500" />
       </div>
     </>
   );
@@ -244,12 +244,12 @@ function Problem() {
     <section className="relative py-20 sm:py-24">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-rose-300/50 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-error-300/50 to-transparent"
       />
       <Container>
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-rose-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-rose-700 ring-1 ring-inset ring-rose-200/70">
-            <span className="h-1.5 w-1.5 rounded-full bg-rose-500" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-error-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-error-700 ring-1 ring-inset ring-error-200/70">
+            <span className="h-1.5 w-1.5 rounded-full bg-error-500" />
             The old way is broken
           </span>
           <h2 className="mt-6 text-[32px] font-semibold leading-[1.06] tracking-[-0.02em] text-ink-900 sm:text-[44px]">
@@ -278,7 +278,7 @@ function Problem() {
             >
               <span
                 aria-hidden
-                className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-rose-100/60 blur-2xl transition-opacity group-hover:opacity-80"
+                className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-error-100/60 blur-2xl transition-opacity group-hover:opacity-80"
               />
               <span
                 aria-hidden
@@ -286,7 +286,7 @@ function Problem() {
               >
                 0{i + 1}
               </span>
-              <span className="relative grid h-11 w-11 place-items-center rounded-xl bg-rose-50 text-rose-600 ring-1 ring-inset ring-rose-200/60">
+              <span className="relative grid h-11 w-11 place-items-center rounded-xl bg-error-50 text-error-600 ring-1 ring-inset ring-error-200/60">
                 {p.icon}
               </span>
               <h3 className="relative mt-6 text-lg font-semibold text-ink-900">
@@ -382,7 +382,7 @@ function BeliefCard({
       {featured && (
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-50/70 via-white to-indigo-50/40"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-50/70 via-white to-brand-50/40"
         />
       )}
       <span
@@ -398,8 +398,8 @@ function BeliefCard({
           className={cn(
             "grid shrink-0 place-items-center rounded-xl bg-gradient-to-br text-white shadow-soft",
             featured
-              ? "h-14 w-14 from-brand-600 via-indigo-600 to-fuchsia-600"
-              : "h-11 w-11 from-brand-500 to-indigo-500",
+              ? "h-14 w-14 from-brand-500 via-brand-600 to-brand-700"
+              : "h-11 w-11 from-brand-500 to-brand-600",
           )}
         >
           {belief.icon}
@@ -436,19 +436,19 @@ function Mission() {
       icon: <Workflow className="h-5 w-5" />,
       label: "Reliable execution",
       description: "Agents designed for repeatable business workflows.",
-      tint: "from-brand-600 via-indigo-600 to-fuchsia-600",
+      tint: "from-brand-500 via-brand-600 to-brand-700",
     },
     {
       icon: <Eye className="h-5 w-5" />,
       label: "Human oversight",
       description: "Approvals and controls built into the way work gets done.",
-      tint: "from-emerald-500 to-teal-600",
+      tint: "from-success-500 to-success-600",
     },
     {
       icon: <FileCheck2 className="h-5 w-5" />,
       label: "Operational trust",
       description: "Audit trails and governance from day one.",
-      tint: "from-sky-500 to-blue-600",
+      tint: "from-brand-500 to-brand-600",
     },
   ];
 
@@ -527,7 +527,7 @@ function WhatWeBuild() {
       title: "Agent templates",
       description:
         "Deploy AI teammates for repeatable, high-value work across functions such as operations, sales, marketing, service, and internal processes.",
-      tint: "from-brand-600 via-indigo-600 to-fuchsia-600",
+      tint: "from-brand-500 via-brand-600 to-brand-700",
       span: "wide",
     },
     {
@@ -535,28 +535,28 @@ function WhatWeBuild() {
       title: "Workflow orchestration",
       description:
         "Coordinate AI agents with human approvals, business rules, handoffs, and the systems your team already uses.",
-      tint: "from-indigo-500 to-sky-500",
+      tint: "from-brand-500 to-brand-600",
     },
     {
       icon: <Lock className="h-5 w-5" />,
       title: "Guardrails and permissions",
       description:
         "Define what agents can access, what they can do, and when a human needs to step in.",
-      tint: "from-emerald-500 to-teal-600",
+      tint: "from-success-500 to-success-600",
     },
     {
       icon: <ScrollText className="h-5 w-5" />,
       title: "Audit trails",
       description:
         "Track agent activity, decisions, outputs, and approvals so teams can review, improve, and govern AI work.",
-      tint: "from-amber-500 to-orange-500",
+      tint: "from-warning-500 to-warning-500",
     },
     {
       icon: <Gauge className="h-5 w-5" />,
       title: "Enterprise readiness",
       description:
         "Built for teams that need reliability, visibility, and control before they scale automation.",
-      tint: "from-sky-500 to-blue-600",
+      tint: "from-brand-500 to-brand-600",
     },
   ];
 
@@ -577,7 +577,7 @@ function WhatWeBuild() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-40 bottom-1/4 h-96 w-96 rounded-full bg-indigo-200/25 blur-3xl"
+        className="pointer-events-none absolute -right-40 bottom-1/4 h-96 w-96 rounded-full bg-brand-200/25 blur-3xl"
       />
 
       <Container className="relative">
@@ -669,28 +669,28 @@ function WhoWeServe() {
       title: "Operations teams",
       description:
         "Automate recurring workflows while keeping approvals and accountability in place.",
-      tint: "from-emerald-500 to-teal-600",
+      tint: "from-success-500 to-success-600",
     },
     {
       icon: <Target className="h-5 w-5" />,
       title: "Revenue teams",
       description:
         "Scale research, outreach, follow-ups, CRM updates, and customer-facing workflows.",
-      tint: "from-rose-500 to-orange-500",
+      tint: "from-error-500 to-warning-500",
     },
     {
       icon: <Headphones className="h-5 w-5" />,
       title: "Service teams",
       description:
         "Handle requests faster while preserving quality, escalation paths, and visibility.",
-      tint: "from-sky-500 to-blue-600",
+      tint: "from-brand-500 to-brand-600",
     },
     {
       icon: <Briefcase className="h-5 w-5" />,
       title: "Leadership teams",
       description:
         "Gain confidence that AI is being used consistently, safely, and in line with business priorities.",
-      tint: "from-brand-600 via-indigo-600 to-fuchsia-600",
+      tint: "from-brand-500 via-brand-600 to-brand-700",
     },
   ];
 
@@ -768,7 +768,7 @@ function WhyNow() {
     <section id="why-now" className="relative overflow-hidden py-20 sm:py-28">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-brand-50/40 via-white to-indigo-50/40"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-brand-50/40 via-white to-brand-50/40"
       />
 
       <Container className="relative">
@@ -890,16 +890,16 @@ function WaveArrow() {
         className="relative hidden h-px w-14 self-center md:w-16 lg:flex lg:items-center"
         aria-hidden
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-300/40 via-indigo-400/70 to-brand-500/80" />
-        <span className="absolute left-0 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.7)] animate-data-flow-h" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-300/40 via-brand-400/70 to-brand-500/80" />
+        <span className="absolute left-0 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(120, 57, 224,0.7)] animate-data-flow-h" />
         <ArrowRight className="absolute -right-2 top-1/2 h-5 w-5 -translate-y-1/2 text-brand-600" />
       </div>
       <div
         className="relative mx-auto block h-10 w-px self-center lg:hidden"
         aria-hidden
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-ink-300/40 via-indigo-400/70 to-brand-500/80" />
-        <span className="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.7)] animate-data-flow-v" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-300/40 via-brand-400/70 to-brand-500/80" />
+        <span className="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(120, 57, 224,0.7)] animate-data-flow-v" />
         <ArrowDown className="absolute -bottom-2 left-1/2 h-5 w-5 -translate-x-1/2 text-brand-600" />
       </div>
     </>
@@ -913,35 +913,35 @@ function Principles() {
       title: "Accountability by design",
       description:
         "AI work should always have clear ownership, logs, and review paths.",
-      tint: "from-emerald-500 to-teal-600",
+      tint: "from-success-500 to-success-600",
     },
     {
       icon: <Feather className="h-5 w-5" />,
       title: "Governance without friction",
       description:
         "Controls should make adoption safer without slowing teams down unnecessarily.",
-      tint: "from-indigo-500 to-sky-500",
+      tint: "from-brand-500 to-brand-600",
     },
     {
       icon: <Users2 className="h-5 w-5" />,
       title: "Human-in-the-loop where it matters",
       description:
         "Not every task needs approval, but every high-impact decision needs the right level of oversight.",
-      tint: "from-amber-500 to-orange-500",
+      tint: "from-warning-500 to-warning-500",
     },
     {
       icon: <Hammer className="h-5 w-5" />,
       title: "Useful before flashy",
       description:
         "The best AI systems do not just impress in demos. They save time, reduce bottlenecks, and complete real work.",
-      tint: "from-brand-600 via-indigo-600 to-fuchsia-600",
+      tint: "from-brand-500 via-brand-600 to-brand-700",
     },
     {
       icon: <Puzzle className="h-5 w-5" />,
       title: "Composable by default",
       description:
         "Teams should be able to adapt agents, workflows, and policies as their business changes.",
-      tint: "from-violet-500 to-fuchsia-500",
+      tint: "from-brand-500 to-brand-600",
     },
   ];
 
@@ -996,28 +996,28 @@ function Leadership() {
       title: "Platform engineering",
       description:
         "Operators who have run distributed platforms, workflow engines, and integration layers at enterprise scale.",
-      tint: "from-brand-600 via-indigo-600 to-fuchsia-600",
+      tint: "from-brand-500 via-brand-600 to-brand-700",
     },
     {
       icon: <Cpu className="h-5 w-5" />,
       title: "AI & infrastructure",
       description:
         "Practitioners building model orchestration, agent runtimes, and the reliability work behind production AI.",
-      tint: "from-indigo-500 to-sky-500",
+      tint: "from-brand-500 to-brand-600",
     },
     {
       icon: <Shield className="h-5 w-5" />,
       title: "Security & governance",
       description:
         "Engineers and program leaders who have designed enterprise controls, audit trails, and access policies.",
-      tint: "from-emerald-500 to-teal-600",
+      tint: "from-success-500 to-success-600",
     },
     {
       icon: <Compass className="h-5 w-5" />,
       title: "Operations & delivery",
       description:
         "Operators with first-hand experience scaling AI inside large organizations under real business constraints.",
-      tint: "from-amber-500 to-orange-500",
+      tint: "from-warning-500 to-warning-500",
     },
   ];
 
@@ -1075,7 +1075,7 @@ function Careers() {
   return (
     <section id="careers" className="py-20 sm:py-24">
       <Container>
-        <div className="rounded-[32px] border border-ink-200 bg-gradient-to-br from-brand-50 via-white to-indigo-50 p-10 sm:p-14">
+        <div className="rounded-[32px] border border-ink-200 bg-gradient-to-br from-brand-50 via-white to-brand-50 p-10 sm:p-14">
           <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-center">
             <div>
               <Eyebrow>Careers</Eyebrow>

@@ -103,7 +103,7 @@ export const DESKS: Record<DeskId, DeskConfig> = {
     tagline:
       "Build US pipeline while Tokyo sleeps. Bilingual account directors and 72-hour trade show follow-up.",
     marketEntrySummary:
-      "Japanese companies bring world-class products and patient capital to the US market. What they often lack is on-the-ground velocity. The Japan Desk closes that gap with bilingual account directors and governed AI agents — your US revenue team operating while Tokyo sleeps.",
+      "Japanese companies bring world-class products and patient capital to the US market. What they often lack is on-the-ground velocity. The Japan Desk closes that gap with bilingual account directors and governed AI agents: your US revenue team operating while Tokyo sleeps.",
     painPoints: [
       {
         title: "HQ approval loops kill US-speed deals",
@@ -178,7 +178,7 @@ export const DESKS: Record<DeskId, DeskConfig> = {
     tagline:
       "Compliance-first US market entry. Brand-aware positioning, governed agents, bilingual contracts.",
     marketEntrySummary:
-      "Chinese companies entering the US market navigate a more complex mix of regulatory, brand-perception, and contracting differences than peers from any other region. The China Desk runs your US GTM as a compliance-first, brand-aware managed service — bilingual humans and governed AI agents operating to American buyers' tempo.",
+      "Chinese companies entering the US market navigate a more complex mix of regulatory, brand-perception, and contracting differences than peers from any other region. The China Desk runs your US GTM as a compliance-first, brand-aware managed service: bilingual humans and governed AI agents operating to American buyers' tempo.",
     painPoints: [
       {
         title: "Geopolitical headwinds across the cross-border surface",
@@ -198,19 +198,19 @@ export const DESKS: Record<DeskId, DeskConfig> = {
       {
         title: "Unfamiliar regulatory landscape",
         body:
-          "FDA for medtech, FCC for hardware, FTC for SaaS, plus state-by-state privacy laws — none of it intuitive coming from PRC frameworks.",
+          "FDA for medtech, FCC for hardware, FTC for SaaS, plus state-by-state privacy laws, none of it intuitive coming from PRC frameworks.",
       },
     ],
     strategies: [
       {
         title: "Compliance-first market entry",
         body:
-          "US entity, banking, and a sector-specific regulatory roadmap — completed before the first sales call, not after the first deal.",
+          "US entity, banking, and a sector-specific regulatory roadmap, completed before the first sales call, not after the first deal.",
       },
       {
         title: "US-localized brand and positioning",
         body:
-          "A US-facing identity, visible US team, and customer references built from day one — so the brand question never derails a sales cycle.",
+          "A US-facing identity, visible US team, and customer references built from day one, so the brand question never derails a sales cycle.",
       },
       {
         title: "Channel-first for hardware; direct for SaaS",
@@ -253,7 +253,7 @@ export const DESKS: Record<DeskId, DeskConfig> = {
     tagline:
       "Convert manufacturing strength into US enterprise accounts. Bilingual ops, sector-targeted GTM.",
     marketEntrySummary:
-      "Taiwanese companies bring deep engineering and manufacturing strength to the US market — and need an owned-relationship sales infrastructure to match. The Taiwan Desk gives you bilingual account directors and governed AI agents to convert OEM/ODM relationships into direct US enterprise accounts.",
+      "Taiwanese companies bring deep engineering and manufacturing strength to the US market, and need an owned-relationship sales infrastructure to match. The Taiwan Desk gives you bilingual account directors and governed AI agents to convert OEM/ODM relationships into direct US enterprise accounts.",
     painPoints: [
       {
         title: "Differentiating from PRC brands in the buyer's mind",
@@ -280,7 +280,7 @@ export const DESKS: Record<DeskId, DeskConfig> = {
       {
         title: "Position on manufacturing strength",
         body:
-          "Lead with semiconductors, hardware, or medtech credentials. US buyers respect Taiwanese engineering — make it the front door.",
+          "Lead with semiconductors, hardware, or medtech credentials. US buyers respect Taiwanese engineering. Make it the front door.",
       },
       {
         title: "Convert OEM relationships into direct accounts",
@@ -295,7 +295,7 @@ export const DESKS: Record<DeskId, DeskConfig> = {
       {
         title: "Sector-targeted US trade show strategy",
         body:
-          "COMPUTEX is home turf — but the US revenue lives at CES, RSA, HIMSS, and SEMICON West. We pick the shows that actually pencil out.",
+          "COMPUTEX is home turf, but the US revenue lives at CES, RSA, HIMSS, and SEMICON West. We pick the shows that actually pencil out.",
       },
     ],
   },

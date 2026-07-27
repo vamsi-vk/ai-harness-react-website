@@ -1,0 +1,2763 @@
+{
+  "/ai-harness-favicon": {
+    "ext": "png",
+    "width": 499,
+    "height": 512,
+    "widths": [
+      499
+    ]
+  },
+  "/ai-harness-logo-dark": {
+    "ext": "png",
+    "width": 1156,
+    "height": 335,
+    "widths": [
+      640,
+      960,
+      1156
+    ]
+  },
+  "/ai-harness-logo-light": {
+    "ext": "png",
+    "width": 1156,
+    "height": 335,
+    "widths": [
+      640,
+      960,
+      1156
+    ]
+  },
+  "/clintrust-logo": {
+    "ext": "png",
+    "width": 382,
+    "height": 349,
+    "widths": [
+      382
+    ]
+  },
+  "/governance": {
+    "ext": "png",
+    "width": 1376,
+    "height": 768,
+    "widths": [
+      640,
+      960,
+      1280,
+      1376
+    ]
+  },
+  "/hero": {
+    "ext": "png",
+    "width": 1376,
+    "height": 768,
+    "widths": [
+      640,
+      960,
+      1280,
+      1376
+    ]
+  },
+  "/illustrations/custom/ai-agents-gallery-field-services": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/ai-agents-gallery-healthcare": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/ai-agents-gallery-professional": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/ai-agents-gallery-restaurants": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/ai-agents-gallery-retail": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/ai-agents-gallery-salon": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/ai-agents-hero": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/auto-repair-dealerships": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/automated-review-step-handoff": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/automated-review-step-invitation": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/automated-review-step-monthly-tally": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/automated-review-step-review-posts": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/automated-review-step-right-moment": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/automated-review-step-visit-ends": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/automated-reviews-hero-main": {
+    "ext": "png",
+    "width": 1024,
+    "height": 825,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/hero-cafe": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/hero-construction": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/hero-dental": {
+    "ext": "png",
+    "width": 1024,
+    "height": 819,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/hero-office": {
+    "ext": "png",
+    "width": 1024,
+    "height": 819,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/hero-professional-financial": {
+    "ext": "png",
+    "width": 1024,
+    "height": 819,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/hero-retail": {
+    "ext": "png",
+    "width": 1024,
+    "height": 910,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/hero-salon": {
+    "ext": "png",
+    "width": 1024,
+    "height": 932,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-agents-product-shot": {
+    "ext": "png",
+    "width": 1024,
+    "height": 640,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-agents-section-ref": {
+    "ext": "png",
+    "width": 1024,
+    "height": 384,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-agents-visibility": {
+    "ext": "png",
+    "width": 1024,
+    "height": 643,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-built-to-grow-owner": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-built-to-grow-workforce": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-field-services-card": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-clean-analytics": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-hero-clean-beauty": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-clean-cafe": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-hero-clean-calendar": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-hero-clean-dental": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-clean-home-services": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-hero-clean-listings": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-clean-marketing": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-clean-real-estate": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-hero-clean-restaurants": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-clean-retail": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-clean-review": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-hero-clean-social-post": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-life-barista": {
+    "ext": "png",
+    "width": 682,
+    "height": 1024,
+    "widths": [
+      640,
+      682
+    ]
+  },
+  "/illustrations/custom/home-hero-life-calendar-widget": {
+    "ext": "png",
+    "width": 231,
+    "height": 181,
+    "widths": [
+      231
+    ]
+  },
+  "/illustrations/custom/home-hero-life-content-calendar": {
+    "ext": "png",
+    "width": 1024,
+    "height": 880,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-life-highfive": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-life-revenue-growth": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-life-social-icons": {
+    "ext": "png",
+    "width": 682,
+    "height": 1024,
+    "widths": [
+      640,
+      682
+    ]
+  },
+  "/illustrations/custom/home-hero-mosaic-analytics": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-hero-mosaic-beauty": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-mosaic-dental": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-hero-mosaic-gbp": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-hero-mosaic-home-services": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-hero-mosaic-marketing": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-mosaic-real-estate": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-mosaic-restaurants-2": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-hero-mosaic-restaurants": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-hero-mosaic-retail": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-hero-mosaic-reviews": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-hero-product-calendar": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/home-industry-beauty-wellness": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-industry-dental-medical": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-industry-home-services": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-industry-real-estate-photo": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-industry-real-estate": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-industry-restaurants": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-industry-retail": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-page-hero-poster": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-page-industry-beauty": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-page-industry-dental": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-page-industry-home-services": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-page-industry-real-estate": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-page-industry-restaurants": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-page-industry-retail": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-redesign-control": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-redesign-cta": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-redesign-grow-agents": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-redesign-hero": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-redesign-platform": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-workforce-ops": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-workforce-reputation": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/home-workforce-seen": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/industries-founder-auto": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/industries-founder-home-services": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/industries-founder-it": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/industries-founder-professional": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/industries-founder-real-estate": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/industries-founder-restaurants": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/industries-founder-retail": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/industries-founder-salon": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/industries-gallery-bg": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/it-services": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-ai-generate-voice": {
+    "ext": "png",
+    "width": 1024,
+    "height": 683,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-analytics-campaign-scorecard": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-analytics-dashboard": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-analytics-loop-closes": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-analytics-report": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-analytics-shareable": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-answered-engagement": {
+    "ext": "png",
+    "width": 1024,
+    "height": 683,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-approvals": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-approve-minutes": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-best-time-to-post": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-blob-left": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-blob-right": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-campaigns-motion": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-collage-circle": {
+    "ext": "jpg",
+    "width": 700,
+    "height": 480,
+    "widths": [
+      640,
+      700
+    ]
+  },
+  "/illustrations/custom/marketing-collage-float": {
+    "ext": "jpg",
+    "width": 900,
+    "height": 598,
+    "widths": [
+      640,
+      900
+    ]
+  },
+  "/illustrations/custom/marketing-collage-main-bottom": {
+    "ext": "jpg",
+    "width": 1400,
+    "height": 934,
+    "widths": [
+      640,
+      960,
+      1280,
+      1400
+    ]
+  },
+  "/illustrations/custom/marketing-collage-main-top": {
+    "ext": "jpg",
+    "width": 1400,
+    "height": 933,
+    "widths": [
+      640,
+      960,
+      1280,
+      1400
+    ]
+  },
+  "/illustrations/custom/marketing-connect-channels": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-content-calendar": {
+    "ext": "png",
+    "width": 1024,
+    "height": 880,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-create-post-composer": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-engagement-escalation": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-engagement-metrics": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-engagement-replies": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-engagement-watching": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-flow-step-01-connect": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-flow-step-02-goal": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-flow-step-03-drafts": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-flow-step-04-schedule": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-flow-step-05-calendar": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-grew-revenue": {
+    "ext": "png",
+    "width": 1024,
+    "height": 767,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-hero-main": {
+    "ext": "png",
+    "width": 1024,
+    "height": 745,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-hero-overlap": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-hero-post-creation": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-hero-social-analytics": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-hero-social-engagement": {
+    "ext": "png",
+    "width": 1024,
+    "height": 793,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-outreach-dashboard": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-outreach-tab-overview": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-plans-month": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-problem-hero": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-problem-social": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-problem-video-ref": {
+    "ext": "png",
+    "width": 316,
+    "height": 252,
+    "widths": [
+      316
+    ]
+  },
+  "/illustrations/custom/marketing-publish-calendar": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/marketing-run-campaign": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-social-analytics-flow-01": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-social-analytics-flow-02": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-social-analytics-flow-03": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-social-analytics-flow-04": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-social-engagement-flow-01": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-social-engagement-flow-02": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-social-engagement-flow-03": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-social-engagement-flow-04": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-social-engagement-flow-05": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/marketing-soft-blob-bg": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/professional-financial-services": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/proposals-agent-slider": {
+    "ext": "png",
+    "width": 1024,
+    "height": 681,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/proposals-agent": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/real-estate": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/reputation-agent-detail": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/reputation-agent-slider": {
+    "ext": "png",
+    "width": 1024,
+    "height": 683,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/reputation-agent": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/reputation-analytics-benchmarked": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-analytics-flow-01": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-analytics-flow-02": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-analytics-flow-03": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-analytics-flow-04": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-analytics-reports": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-analytics-review-marketing": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-analytics-sentiment": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-analytics-trends": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-gen-channel-choice": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-gen-customer-detection": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-gen-honest-by-design": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-gen-journey-01-finish": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-gen-journey-02-detect": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-gen-journey-03-channel": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-gen-journey-04-invite": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-gen-journey-05-thankyou": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-gen-perfect-timing": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-hero-main": {
+    "ext": "png",
+    "width": 1024,
+    "height": 819,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/reputation-hero-review-analytics": {
+    "ext": "png",
+    "width": 1024,
+    "height": 800,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/reputation-hero-review-generation": {
+    "ext": "png",
+    "width": 1024,
+    "height": 819,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/reputation-hero-review-management": {
+    "ext": "png",
+    "width": 1024,
+    "height": 765,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/reputation-mgmt-all-platforms": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-mgmt-escalation": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-mgmt-every-language": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-mgmt-flow-01": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-mgmt-flow-02": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-mgmt-flow-03": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-mgmt-flow-04": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-mgmt-flow-05": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-mgmt-replies-voice": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-mgmt-your-controls": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-step-fresh-reviews": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-step-reputation-metrics": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-step-review-replies": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-step-review-to-marketing": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/reputation-step-sentiment-patterns": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/restaurants-cafe-card": {
+    "ext": "png",
+    "width": 1024,
+    "height": 768,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/retail-ecommerce-card": {
+    "ext": "png",
+    "width": 1024,
+    "height": 934,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/reviews-agent-detail": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/reviews-agent-slider": {
+    "ext": "png",
+    "width": 1024,
+    "height": 683,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/reviews-agent": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/sales-pipeline-agent-detail": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/sales-pipeline-agent-slider": {
+    "ext": "png",
+    "width": 1024,
+    "height": 683,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/sales-pipeline-agent": {
+    "ext": "png",
+    "width": 1024,
+    "height": 682,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/salon-spa-card": {
+    "ext": "png",
+    "width": 1024,
+    "height": 819,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/visibility-analytics-feature-actions": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-analytics-feature-benchmark": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-analytics-feature-rankings": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-analytics-feature-report": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-analytics-feature-score": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-analytics-flow-01-data-captured": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-analytics-flow-02-visibility-score": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-analytics-flow-03-benchmarked": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-analytics-flow-04-report-moves": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-analytics-rankings": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-hero-analytics": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-hero-listings": {
+    "ext": "png",
+    "width": 1024,
+    "height": 751,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/visibility-hero-main": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-hero-search": {
+    "ext": "png",
+    "width": 1024,
+    "height": 833,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/illustrations/custom/visibility-hub-dashboard-preview": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-hub-problem-gaps": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-hub-step-01-listings": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-hub-step-02-watch": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-hub-step-03-keywords": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-hub-step-04-chosen": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-hub-step-05-metrics": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-hub-step-06-trust": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-listing-score": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-listings-feature-accuracy": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-listings-feature-directories": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-listings-feature-priority": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-listings-feature-profiles": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-listings-feature-publish-once": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-listings-flow-01-profile": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-listings-flow-02-publish": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-listings-flow-03-sync": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-listings-flow-04-watch": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-listings-flow-05-fix": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-listings-grid": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-monitor": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-search-feature-competitors": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-search-feature-factors": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-search-feature-keywords": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-search-feature-posts": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-search-flow-01-analyze": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-search-flow-02-keywords": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-search-flow-03-posts": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-search-flow-04-rankings": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/visibility-search-flow-05-adjust": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/illustrations/custom/workforce-goal-rocket": {
+    "ext": "png",
+    "width": 1024,
+    "height": 561,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/industries": {
+    "ext": "png",
+    "width": 1376,
+    "height": 768,
+    "widths": [
+      640,
+      960,
+      1280,
+      1376
+    ]
+  },
+  "/lifecycle": {
+    "ext": "png",
+    "width": 1376,
+    "height": 768,
+    "widths": [
+      640,
+      960,
+      1280,
+      1376
+    ]
+  },
+  "/og": {
+    "ext": "png",
+    "width": 1200,
+    "height": 630,
+    "widths": [
+      640,
+      960,
+      1200
+    ]
+  },
+  "/original-logo": {
+    "ext": "png",
+    "width": 499,
+    "height": 512,
+    "widths": [
+      499
+    ]
+  },
+  "/podium-logo": {
+    "ext": "png",
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/screenshot-board": {
+    "ext": "png",
+    "width": 1024,
+    "height": 505,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/screenshot-dashboard": {
+    "ext": "png",
+    "width": 2048,
+    "height": 1026,
+    "widths": [
+      640,
+      960,
+      1280,
+      1600,
+      2048
+    ]
+  },
+  "/shield-dna-logo": {
+    "ext": "png",
+    "width": 1024,
+    "height": 185,
+    "widths": [
+      640,
+      960,
+      1024
+    ]
+  },
+  "/video/hero-frames/hero-frame-01-cafe-owner": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/video/hero-frames/hero-frame-02-team": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/video/hero-frames/hero-frame-03-customer-service": {
+    "ext": "png",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      640,
+      960,
+      1280,
+      1536
+    ]
+  },
+  "/workflow": {
+    "ext": "png",
+    "width": 1376,
+    "height": 768,
+    "widths": [
+      640,
+      960,
+      1280,
+      1376
+    ]
+  }
+}
