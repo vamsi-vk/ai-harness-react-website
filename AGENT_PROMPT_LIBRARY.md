@@ -8,6 +8,7 @@ Primary references: `BRAND_GUIDELINES.md`, `brand-policy.yaml`
 
 ## How to use this library
 
+
 1. Pick the prompt matching your asset type.
 2. Fill all bracketed fields.
 3. Pass `BRAND_GUIDELINES.md` and `brand-policy.yaml` to the agent.
