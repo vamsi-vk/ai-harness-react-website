@@ -1019,7 +1019,7 @@ function OutreachDashboardVisual() {
           <img
             src="/illustrations/custom/marketing-outreach-tab-overview.png"
             alt="Outreach dashboard in AI-Harness violet theme with Post Overview, engagement, and calendar"
-            className="aspect-[4/3] h-auto w-full object-cover object-center bg-white"
+            className="block h-auto w-full bg-white"
             loading="lazy"
             decoding="async"
           />
@@ -1035,7 +1035,7 @@ function DashboardSection() {
       <SoftPastelBackdrop side="right" />
 
       <Container className="relative z-10">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <ScrollReveal className="order-2 lg:order-1">
             <p className={cn("text-sm font-medium", PALETTE_EYEBROW)}>
               On your AI-Harness dashboard

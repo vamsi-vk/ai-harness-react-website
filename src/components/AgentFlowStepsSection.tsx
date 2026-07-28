@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type MouseEvent, type ReactNode } from "react";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import Container from "./Container";
 import ScrollReveal from "./ScrollReveal";
@@ -9,6 +9,7 @@ import {
   flowAccentForIndex,
   type FlowAccent,
 } from "./agent-journey-accents";
+import { MARKETING_STAGE_IMAGE_CLASS } from "./marketing-automation/marketingImageClasses";
 
 export type AgentFlowStep = {
   number: string;
@@ -35,9 +36,6 @@ type AgentFlowStepsSectionProps = {
   className?: string;
   sectionId?: string;
 };
-
-/** Viewport heights of scroll runway per step (desktop / mobile) */
-const SCROLL_VH_PER_STEP = { desktop: 72, mobile: 58 };
 
 function clamp(n: number, min: number, max: number) {
   return Math.min(max, Math.max(min, n));
@@ -128,7 +126,7 @@ function FlowStage({
                 {visual?.panelHint ?? "Live preview"}
               </p>
             </div>
-            <div className="relative aspect-[4/3] w-full">
+            <div className="relative aspect-[4/3] w-full bg-ink-950">
               {steps.map((s, index) => {
                 const v = visuals[index] ?? visuals[0];
                 if (s.imageSrc) {
@@ -138,7 +136,8 @@ function FlowStage({
                       src={s.imageSrc}
                       alt={index === activeIndex ? (s.imageAlt ?? "") : ""}
                       className={cn(
-                        "absolute inset-0 h-full w-full object-cover object-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                        MARKETING_STAGE_IMAGE_CLASS,
+                        "transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
                         index === activeIndex ? "scale-100 opacity-100" : "pointer-events-none scale-[1.02] opacity-0",
                       )}
                       loading={index <= 1 ? "eager" : "lazy"}
@@ -245,10 +244,6 @@ export default function AgentFlowStepsSection({
 }: AgentFlowStepsSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-  const scrollLockRef = useRef(false);
 
   const safeIndex = Math.min(activeIndex, Math.max(steps.length - 1, 0));
   const step = steps[safeIndex];
@@ -258,82 +253,29 @@ export default function AgentFlowStepsSection({
   const progress = steps.length <= 1 ? 100 : (safeIndex / (steps.length - 1)) * 100;
   const showThumbStrip = steps.length > 1;
 
-  const vhPerStep = isDesktop ? SCROLL_VH_PER_STEP.desktop : SCROLL_VH_PER_STEP.mobile;
-  const trackMinHeight = steps.length * vhPerStep;
-
   const railLabel = (s: AgentFlowStep) =>
     s.railLabel ?? (typeof s.title === "string" ? s.title : `Step ${s.number}`);
 
-  const updateIndexFromScroll = useCallback(() => {
-    const track = trackRef.current;
-    if (!track || scrollLockRef.current) return;
-
-    const rect = track.getBoundingClientRect();
-    const scrollable = track.offsetHeight - window.innerHeight;
-    if (scrollable <= 0) {
-      setActiveIndex(0);
-      return;
-    }
-
-    const scrolled = clamp(-rect.top, 0, scrollable);
-    const ratio = scrolled / scrollable;
-    const next = clamp(Math.round(ratio * (steps.length - 1)), 0, steps.length - 1);
-    setActiveIndex(next);
+  const selectStep = useCallback((index: number) => {
+    setActiveIndex(clamp(index, 0, steps.length - 1));
   }, [steps.length]);
 
-  const scrollToStep = useCallback(
-    (index: number) => {
-      const track = trackRef.current;
-      if (!track) return;
-
-      const scrollable = track.offsetHeight - window.innerHeight;
-      if (scrollable <= 0) {
-        setActiveIndex(index);
-        return;
-      }
-
-      const ratio = steps.length <= 1 ? 0 : index / (steps.length - 1);
-      const top = track.offsetTop + ratio * scrollable;
-
-      scrollLockRef.current = true;
-      window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
-      setActiveIndex(index);
-
-      window.setTimeout(() => {
-        scrollLockRef.current = false;
-      }, reduceMotion ? 0 : 650);
+  const handleStepSelect = useCallback(
+    (index: number) => (event: MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      selectStep(index);
     },
-    [reduceMotion, steps.length],
+    [selectStep],
   );
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     const motionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const desktopMedia = window.matchMedia("(min-width: 1024px)");
-    const sync = () => {
-      setReduceMotion(motionMedia.matches);
-      setIsDesktop(desktopMedia.matches);
-    };
+    const sync = () => setReduceMotion(motionMedia.matches);
     sync();
     motionMedia.addEventListener("change", sync);
-    desktopMedia.addEventListener("change", sync);
-    return () => {
-      motionMedia.removeEventListener("change", sync);
-      desktopMedia.removeEventListener("change", sync);
-    };
+    return () => motionMedia.removeEventListener("change", sync);
   }, []);
-
-  useEffect(() => {
-    if (reduceMotion) return;
-
-    updateIndexFromScroll();
-    window.addEventListener("scroll", updateIndexFromScroll, { passive: true });
-    window.addEventListener("resize", updateIndexFromScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", updateIndexFromScroll);
-      window.removeEventListener("resize", updateIndexFromScroll);
-    };
-  }, [reduceMotion, updateIndexFromScroll, trackMinHeight]);
 
   const thumbStrip = showThumbStrip ? (
     <div className="mt-3 flex gap-2">
@@ -346,7 +288,7 @@ export default function AgentFlowStepsSection({
             <button
               key={`thumb-${s.number}`}
               type="button"
-              onClick={() => scrollToStep(index)}
+              onMouseDown={handleStepSelect(index)}
               className={cn(
                 "relative h-12 w-[3.25rem] overflow-hidden rounded-lg ring-2 transition-all",
                 isActive
@@ -354,7 +296,7 @@ export default function AgentFlowStepsSection({
                   : "opacity-50 ring-transparent hover:opacity-90",
               )}
             >
-              <img src={s.imageSrc} alt="" className="h-full w-full object-cover" />
+              <img src={s.imageSrc} alt="" className="h-full w-full object-contain object-center" />
             </button>
           );
         }
@@ -362,7 +304,7 @@ export default function AgentFlowStepsSection({
           <button
             key={`thumb-${s.number}`}
             type="button"
-            onClick={() => scrollToStep(index)}
+            onMouseDown={handleStepSelect(index)}
             className={cn(
               "grid h-12 w-12 place-items-center rounded-lg text-xs font-semibold tabular-nums ring-2 transition-all",
               isActive
@@ -387,7 +329,7 @@ export default function AgentFlowStepsSection({
           <button
             key={s.number}
             type="button"
-            onClick={() => scrollToStep(index)}
+            onMouseDown={handleStepSelect(index)}
             className={cn(
               "group flex items-center justify-between gap-3 rounded-2xl border px-4 py-3 text-left transition-all duration-300",
               isActive ? itemStyles.railActive : cn("text-ink-700", itemStyles.railIdle),
@@ -419,7 +361,6 @@ export default function AgentFlowStepsSection({
 
   return (
     <section
-      ref={sectionRef}
       id={sectionId}
       className={cn("relative scroll-mt-28 border-y border-ink-100/80", className)}
       aria-label="Step-by-step flow"
@@ -438,7 +379,7 @@ export default function AgentFlowStepsSection({
           </h2>
           {!reduceMotion ? (
             <p className="mt-3 text-base text-ink-600 lg:max-w-sm">
-              Scroll to move through each step. The preview updates as you go.
+              Select a step to preview. The slide updates without moving the page.
             </p>
           ) : null}
         </ScrollReveal>
@@ -469,71 +410,65 @@ export default function AgentFlowStepsSection({
           })}
         </Container>
       ) : (
-        <div
-          ref={trackRef}
-          className="relative"
-          style={{ minHeight: `${trackMinHeight}vh` }}
-        >
-          <div className="sticky top-[5.5rem] z-10 pb-16 pt-8 sm:top-28 sm:pt-10">
-            <Container>
-              <div className="grid grid-cols-12 items-start gap-6 xl:gap-8">
-                <div className="col-span-12 lg:col-span-4">
-                  <div className="relative mt-2 hidden lg:block">
-                    <div className="absolute bottom-4 left-[1.35rem] top-4 w-0.5 rounded-full bg-ink-200/90" />
-                    <div
-                      className={cn(
-                        "absolute left-[1.35rem] top-4 w-0.5 rounded-full bg-gradient-to-b to-brand-500 transition-[height] duration-500",
-                        styles.line,
-                      )}
-                      style={{ height: `${Math.max(8, progress * 0.85)}%` }}
-                    />
-                  </div>
-                  <div className="mt-4 hidden lg:block">{railButtons}</div>
-
-                  <div className="flex gap-2 overflow-x-auto pb-1 lg:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                    {steps.map((s, index) => {
-                      const itemAccent = flowAccentForIndex(index, s.accent);
-                      const itemStyles = FLOW_ACCENT_STYLES[itemAccent];
-                      const isActive = safeIndex === index;
-                      return (
-                        <button
-                          key={s.number}
-                          type="button"
-                          onClick={() => scrollToStep(index)}
-                          className={cn(
-                            "shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-all",
-                            isActive ? itemStyles.railActive : cn("text-ink-600", itemStyles.railIdle),
-                          )}
-                        >
-                          {railLabel(s)}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <div className="col-span-12 lg:col-span-5">
-                  <FlowStage
-                    steps={steps}
-                    visuals={visuals}
-                    activeIndex={safeIndex}
-                    reduceMotion={reduceMotion}
+        <div className="relative z-10 pb-16 pt-8 sm:pt-10">
+          <Container>
+            <div className="grid grid-cols-12 items-start gap-6 xl:gap-8">
+              <div className="col-span-12 lg:col-span-4">
+                <div className="relative mt-2 hidden lg:block">
+                  <div className="absolute bottom-4 left-[1.35rem] top-4 w-0.5 rounded-full bg-ink-200/90" />
+                  <div
+                    className={cn(
+                      "absolute left-[1.35rem] top-4 w-0.5 rounded-full bg-gradient-to-b to-brand-500 transition-[height] duration-500",
+                      styles.line,
+                    )}
+                    style={{ height: `${Math.max(8, progress * 0.85)}%` }}
                   />
-                  {thumbStrip}
                 </div>
+                <div className="mt-4 hidden lg:block">{railButtons}</div>
 
-                <div className="col-span-12 lg:col-span-3">
-                  <FlowStepCopy
-                    step={step}
-                    visual={visual}
-                    activeIndex={safeIndex}
-                    total={steps.length}
-                    accent={accent}
-                  />
+                <div className="flex gap-2 overflow-x-auto pb-1 lg:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  {steps.map((s, index) => {
+                    const itemAccent = flowAccentForIndex(index, s.accent);
+                    const itemStyles = FLOW_ACCENT_STYLES[itemAccent];
+                    const isActive = safeIndex === index;
+                    return (
+                      <button
+                        key={s.number}
+                        type="button"
+                        onMouseDown={handleStepSelect(index)}
+                        className={cn(
+                          "shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-all",
+                          isActive ? itemStyles.railActive : cn("text-ink-600", itemStyles.railIdle),
+                        )}
+                      >
+                        {railLabel(s)}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
-            </Container>
-          </div>
+
+              <div className="col-span-12 lg:col-span-5">
+                <FlowStage
+                  steps={steps}
+                  visuals={visuals}
+                  activeIndex={safeIndex}
+                  reduceMotion={reduceMotion}
+                />
+                {thumbStrip}
+              </div>
+
+              <div className="col-span-12 lg:col-span-3">
+                <FlowStepCopy
+                  step={step}
+                  visual={visual}
+                  activeIndex={safeIndex}
+                  total={steps.length}
+                  accent={accent}
+                />
+              </div>
+            </div>
+          </Container>
         </div>
       )}
     </section>

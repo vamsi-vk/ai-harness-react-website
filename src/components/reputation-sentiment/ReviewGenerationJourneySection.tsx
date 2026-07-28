@@ -5,6 +5,7 @@ import ScrollReveal from "../ScrollReveal";
 import SoftPastelBackdrop from "../marketing-automation/SoftPastelBackdrop";
 import { cn } from "../../lib/cn";
 import PictureSet from "../../components/PictureSet";
+import { MARKETING_STAGE_IMAGE_CLASS } from "../marketing-automation/marketingImageClasses";
 
 export type ReviewJourneyStep = {
   number: string;
@@ -256,7 +257,7 @@ export default function ReviewGenerationJourneySection({
                       </p>
                     </div>
 
-                    <div className="relative aspect-[4/3] w-full">
+                    <div className="relative aspect-[4/3] w-full bg-ink-950">
                       {steps.map((s, index) => (
                         <PictureSet
       base={s.imageSrc}
@@ -264,7 +265,8 @@ export default function ReviewGenerationJourneySection({
                          
                           alt={index === safeIndex ? s.imageAlt : ""}
                           className={cn(
-                            "absolute inset-0 h-full w-full object-cover object-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                            MARKETING_STAGE_IMAGE_CLASS,
+                            "transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
                             index === safeIndex
                               ? "scale-100 opacity-100"
                               : "pointer-events-none scale-[1.03] opacity-0",
@@ -294,7 +296,7 @@ export default function ReviewGenerationJourneySection({
                     )}
                   >
                     <PictureSet
-      base={s.imageSrc} alt="" className="h-full w-full object-cover"  sizes="(max-width: 1024px) 100vw, 800px"/>
+      base={s.imageSrc} alt="" className="h-full w-full object-contain object-center"  sizes="(max-width: 1024px) 100vw, 800px"/>
                   </button>
                 ))}
               </div>

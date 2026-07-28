@@ -1,4 +1,5 @@
 import PictureSet from "../PictureSet";
+import { MARKETING_HERO_IMAGE_CLASS } from "./marketingImageClasses";
 
 type MarketingHeroImageProps = {
   src: string;
@@ -11,10 +12,7 @@ export function MarketingHeroImage({ src, alt, className }: MarketingHeroImagePr
     <PictureSet
       base={src}
       alt={alt}
-      className={
-        className ??
-        "aspect-[5/4] h-auto min-h-[16rem] w-full object-cover object-center sm:min-h-[18rem] lg:aspect-[4/3] lg:min-h-[22rem] xl:min-h-[24rem]"
-      }
+      className={className ?? MARKETING_HERO_IMAGE_CLASS}
       sizes="(max-width: 1024px) 100vw, 560px"
       loading="eager"
       fetchPriority="high"

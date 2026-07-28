@@ -292,10 +292,7 @@ export default function PlatformNavMenu({ onNavigate, className }: Props) {
       </div>
 
       {/* Footer */}
-      <div className="flex flex-col gap-3 border-t border-ink-100 bg-ink-50/60 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-[13px] text-ink-500">
-          Trust signals placeholder · ratings &amp; partner logos go here
-        </p>
+      <div className="flex justify-end border-t border-ink-100 bg-ink-50/60 px-6 py-4">
         <Link
           to="/platform"
           onClick={onNavigate}

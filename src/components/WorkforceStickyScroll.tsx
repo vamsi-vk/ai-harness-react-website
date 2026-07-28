@@ -252,7 +252,7 @@ function WorkforceScrollCard({
               <img
                 src={card.image}
                 alt={card.imageAlt}
-                className="h-full w-full object-cover object-center"
+                className="h-full w-full object-contain object-center"
                 loading="lazy"
                 decoding="async"
               />
@@ -324,9 +324,9 @@ function WorkforceScrollCard({
               alt={card.imageAlt}
               className={cn(
                 "absolute inset-0 h-full w-full transition-transform duration-300 ease-out will-change-transform group-hover:scale-[1.03]",
-                card.imageFit === "contain"
-                  ? "object-contain object-center p-1"
-                  : cn("object-cover", card.imagePosition ?? "object-top"),
+                card.imageFit === "cover"
+                  ? cn("object-cover", card.imagePosition ?? "object-top")
+                  : "object-contain object-center p-1",
               )}
               style={{ transform: `translateY(${parallax}px) scale(1.02)` }}
               loading="lazy"

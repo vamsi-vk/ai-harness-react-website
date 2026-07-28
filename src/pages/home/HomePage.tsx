@@ -600,17 +600,12 @@ function Agents() {
                                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
                                 Live
                               </span>
-                              {agent.live ? (
-                                <span className="inline-flex items-center gap-1.5 rounded-full bg-success/15 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-success-300 uppercase">
-                                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
-                                  Live
-                                </span>
-                              ) : (
-                                <span className="text-[11px] font-semibold tracking-wide text-white/35 uppercase">
-                                  Soon
-                                </span>
-                              )}
-                            </div>
+                            ) : (
+                              <span className="text-[11px] font-semibold tracking-wide text-white/35 uppercase">
+                                Soon
+                              </span>
+                            )}
+                          </div>
                             {open ? (
                               <div className="mt-3">
                                 <p className="text-[15px] leading-relaxed text-white/70">
