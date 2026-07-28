@@ -536,27 +536,31 @@ function Agents() {
           role="tabpanel"
           className="mt-12 grid overflow-hidden rounded-[1.75rem] bg-ink-950 lg:mt-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
         >
-          <div className="relative min-h-[280px] bg-ink-900 sm:min-h-[360px] lg:min-h-[560px]">
-            <img
-              key={activeMission.image}
-              src={activeMission.image}
-              alt={activeMission.imageAlt}
-              width={1200}
-              height={800}
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-ink-950 via-ink-950/40 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-ink-950/20 lg:to-ink-950"
-            />
-            <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8 lg:hidden">
-              <p className="font-serif text-2xl text-white">{agentGroupTitle(group.title)}</p>
-              <p className="mt-2 text-sm leading-relaxed text-white/75">{activeMission.blurb}</p>
+          <div className="grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start">
+            {/* Photo stays fixed — self-start stops the grid row from stretching a blank band under the image */}
+            <div className="relative self-start lg:sticky lg:top-28">
+              <div className="relative h-[16rem] w-full overflow-hidden sm:h-[20rem] lg:h-[34rem]">
+                <img
+                  key={activeMission.image}
+                  src={activeMission.image}
+                  alt={activeMission.imageAlt}
+                  width={1200}
+                  height={800}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                  className="absolute inset-0 h-full w-full object-cover object-center"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-ink-950 via-ink-950/40 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-ink-950/25 lg:to-ink-950"
+                />
+                <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8 lg:hidden">
+                  <p className="font-serif text-2xl text-white">{agentGroupTitle(group.title)}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-white/75">{activeMission.blurb}</p>
+                </div>
+              </div>
             </div>
-          </div>
 
           <div className="relative flex flex-col justify-between p-6 sm:p-8 lg:p-10">
             <div className="hidden lg:block">
@@ -596,52 +600,57 @@ function Agents() {
                                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
                                 Live
                               </span>
-                            ) : (
-                              <span className="text-[11px] font-semibold tracking-wide text-white/35 uppercase">
-                                Soon
-                              </span>
-                            )}
-                          </div>
-                          {open ? (
-                            <div className="mt-3">
-                              <p className="text-[15px] leading-relaxed text-white/70">
-                                {agent.outcome}
-                              </p>
                               {agent.live ? (
-                                <Link
-                                  to={agent.seeTo}
-                                  onClick={(e) => e.stopPropagation()}
-                                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand-200 hover:text-white"
-                                >
-                                  Open this agent
-                                  <ArrowRight className="h-3.5 w-3.5" />
-                                </Link>
-                              ) : null}
+                                <span className="inline-flex items-center gap-1.5 rounded-full bg-success/15 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-success-300 uppercase">
+                                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
+                                  Live
+                                </span>
+                              ) : (
+                                <span className="text-[11px] font-semibold tracking-wide text-white/35 uppercase">
+                                  Soon
+                                </span>
+                              )}
                             </div>
-                          ) : null}
+                            {open ? (
+                              <div className="mt-3">
+                                <p className="text-[15px] leading-relaxed text-white/70">
+                                  {agent.outcome}
+                                </p>
+                                {agent.live ? (
+                                  <Link
+                                    to={agent.seeTo}
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand-200 hover:text-white"
+                                  >
+                                    Open this agent
+                                    <ArrowRight className="h-3.5 w-3.5" />
+                                  </Link>
+                                ) : null}
+                              </div>
+                            ) : null}
+                          </div>
+                          <span
+                            className={cn(
+                              "mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/15 text-white/70 transition-transform duration-200",
+                              open && "rotate-90 border-brand-300/40 text-brand-200",
+                            )}
+                          >
+                            <ArrowRight className="h-3.5 w-3.5" />
+                          </span>
                         </div>
-                        <span
-                          className={cn(
-                            "mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/15 text-white/70 transition-transform duration-200",
-                            open && "rotate-90 border-brand-300/40 text-brand-200",
-                          )}
-                        >
-                          <ArrowRight className="h-3.5 w-3.5" />
-                        </span>
-                      </div>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-
-            <div className="mt-8 flex flex-wrap gap-3 border-t border-white/10 pt-6">
-              <Button to="/platform" variant="white">
-                See all products
-              </Button>
-              <Button to="/signup" className="border border-white/20 bg-transparent text-white hover:bg-white/10">
-                Start free
-              </Button>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className="mt-8 flex flex-wrap gap-3 border-t border-white/10 pt-6">
+                <Button to="/platform" variant="white">
+                  See all products
+                </Button>
+                <Button to="/signup" className="border border-white/20 bg-transparent text-white hover:bg-white/10">
+                  Start free
+                </Button>
+              </div>
             </div>
           </div>
         </div>

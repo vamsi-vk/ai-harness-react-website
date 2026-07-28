@@ -408,6 +408,13 @@ function FeatureVisual({
       src={feature.imageSrc}
       alt={feature.imageAlt}
       pillSide={pillSide}
+      imageClassName={
+        feature.id === "keywords"
+          ? "translate-x-3 object-left sm:translate-x-5"
+          : feature.id === "competitors"
+            ? "translate-x-2 object-right sm:translate-x-4"
+            : undefined
+      }
     />
   );
 }

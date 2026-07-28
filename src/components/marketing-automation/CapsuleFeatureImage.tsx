@@ -4,10 +4,12 @@ type CapsuleFeatureImageProps = {
   src: string;
   alt: string;
   pillSide: "left" | "right";
+  /** Extra classes on the img, e.g. translate-x-4 to reveal left-edge artwork */
+  imageClassName?: string;
 };
 
 /** One-sided capsule (pill) frame for agent feature images */
-export function CapsuleFeatureImage({ src, alt, pillSide }: CapsuleFeatureImageProps) {
+export function CapsuleFeatureImage({ src, alt, pillSide, imageClassName }: CapsuleFeatureImageProps) {
   const plateRound =
     pillSide === "right"
       ? "rounded-l-[1.5rem] rounded-r-[999px] sm:rounded-l-[1.75rem]"
@@ -40,11 +42,14 @@ export function CapsuleFeatureImage({ src, alt, pillSide }: CapsuleFeatureImageP
           boxShadow: "0 18px 40px -24px rgba(124,58,237,0.18)",
         }}
       >
-        <div className={cn("overflow-hidden bg-white", innerRound)}>
+        <div className={cn("overflow-hidden bg-white p-1 sm:p-1.5", innerRound)}>
           <img
             src={src}
             alt={alt}
-            className="aspect-[4/3] h-auto min-h-[15rem] w-full object-cover object-center sm:min-h-[17rem] lg:min-h-[20rem]"
+            className={cn(
+              "block h-auto w-full object-contain",
+              imageClassName ?? "object-center",
+            )}
             loading="lazy"
             decoding="async"
           />
