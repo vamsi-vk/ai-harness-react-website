@@ -29,39 +29,39 @@ export default function Contact() {
         title="Contact Us | Talk to the AI-Harness team"
         description="Get in touch with sales, support, partners, or security. The AI-Harness team responds within one business day."
       />
-      <section className="relative overflow-hidden pb-10 pt-20">
+      <section className="relative overflow-hidden pb-4 pt-10 sm:pb-6 sm:pt-12">
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-spotlight" />
         <Container className="relative">
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow>Contact Us</Eyebrow>
-            <h1 className="mt-6 text-[36px] font-semibold leading-[1.04] tracking-[-0.02em] text-ink-900 sm:text-[56px]">
+            <h1 className="mt-3 text-[30px] font-semibold leading-[1.04] tracking-[-0.02em] text-ink-900 sm:text-[40px]">
               We'd love to <span className="text-gradient">hear from you.</span>
             </h1>
-            <p className="mt-5 text-lg text-ink-600">
+            <p className="mt-2 text-[15px] text-ink-600 sm:text-base">
               Whether you're evaluating the platform or building a case inside your organization, our team is here.
             </p>
           </div>
         </Container>
       </section>
 
-      <section className="py-16">
+      <section className="py-7 sm:py-8">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr]">
-            <div className="space-y-5">
+          <div className="grid gap-4 lg:grid-cols-[0.95fr_1.25fr]">
+            <div className="space-y-2.5">
               {[
                 { icon: <MessageSquare className="h-5 w-5" />, title: "Sales", sub: "sales@ai-harness.com", desc: "Deals, pilots, and enterprise rollouts." }, { icon: <Mail className="h-5 w-5" />, title: "Support", sub: "support@ai-harness.com", desc: "Customer support and product help." }, { icon: <PhoneCall className="h-5 w-5" />, title: "Press & partners", sub: "partners@ai-harness.com", desc: "Media and partnership inquiries." }, { icon: <Building2 className="h-5 w-5" />, title: "Security", sub: "security@ai-harness.com", desc: "Responsible disclosure and security team." }, ].map((c) => (
-                <div key={c.title} className="flex items-start gap-4 rounded-2xl border border-ink-200 bg-white p-5">
+                <div key={c.title} className="flex items-start gap-3 rounded-2xl border border-ink-200 bg-white p-3.5">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-200/60">
                     {c.icon}
                   </span>
                   <div>
-                    <p className="font-semibold text-ink-900">{c.title}</p>
+                    <p className="text-[15px] font-semibold text-ink-900">{c.title}</p>
                     <p className="text-[14px] text-brand-700">{c.sub}</p>
-                    <p className="mt-1 text-[13.5px] text-ink-600">{c.desc}</p>
+                    <p className="mt-0.5 text-[13px] text-ink-600">{c.desc}</p>
                   </div>
                 </div>
               ))}
-              <div className="flex items-start gap-4 rounded-2xl border border-ink-200 bg-white p-5">
+              <div className="hidden items-start gap-4 rounded-2xl border border-ink-200 bg-white p-4 lg:flex">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-200/60">
                   <MapPin className="h-5 w-5" />
                 </span>
@@ -70,7 +70,7 @@ export default function Contact() {
                   <p className="mt-1 text-[13.5px] text-ink-600">San Francisco · Singapore · India</p>
                 </div>
               </div>
-              <div className="rounded-2xl border border-ink-200 bg-white p-5">
+              <div className="hidden rounded-2xl border border-ink-200 bg-white p-4 lg:block">
                 <div className="flex items-start gap-4">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-200/60">
                     <Share2 className="h-5 w-5" />
@@ -82,7 +82,7 @@ export default function Contact() {
                     </p>
                   </div>
                 </div>
-                <div className="mt-4 grid grid-cols-2 gap-2.5">
+                <div className="mt-3 grid grid-cols-2 gap-2">
                   {socials.map(({ label, href, Icon }) => (
                     <a
                       key={label}
@@ -102,9 +102,9 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-ink-200 bg-white p-8 shadow-soft">
+            <div className="rounded-[28px] border border-ink-200 bg-white p-4.5 shadow-soft sm:p-5">
               {sent ? (
-                <div className="flex flex-col items-center justify-center py-16 text-center">
+                <div className="flex flex-col items-center justify-center py-14 text-center">
                   <div className="grid h-14 w-14 place-items-center rounded-full bg-brand-50 text-brand-700">
                     <ArrowRight className="h-6 w-6" />
                   </div>
@@ -118,32 +118,42 @@ export default function Contact() {
                   </div>
                 </div>
               ) : (
+                <>
+                <h2 className="text-2xl font-semibold leading-tight tracking-[-0.01em] text-ink-900">
+                  Send us a message
+                </h2>
+                <p className="mt-2 text-[15px] text-ink-600">Usually replies within one business day.</p>
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
                     setSent(true);
                   }}
-                  className="space-y-5"
+                  className="mt-6 space-y-4"
                 >
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="First name" name="firstName" required />
-                    <Field label="Last name" name="lastName" required />
-                    <Field label="Work email" name="email" type="email" required />
+                  <div className="grid gap-4">
+                    <Field label="Full name" name="fullName" required />
+                    <Field
+                      label="Work email"
+                      name="email"
+                      type="email"
+                      required
+                      hint="Use your corporate email. Gmail, Outlook, and disposable addresses aren't accepted."
+                    />
                     <Field label="Company" name="company" required />
                     <Field label="Job title" name="title" />
-                    <Field label="Team size" name="size" as="select" options={["1–10", "11–50", "51–200", "201–1,000", "1,000+"]} />
                   </div>
-                  <Field label="How can we help?" name="message" as="textarea" rows={5} />
-                  <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                  <Field label="How can we help?" name="message" as="textarea" rows={4} />
+                  <div className="flex flex-col gap-3 pt-1">
                     <p className="text-xs text-ink-500">
                       By submitting, you agree to our Privacy Policy.
                     </p>
-                    <Button className="w-full sm:w-auto">
+                    <Button className="w-full">
                       Send message
                       <ArrowRight className="h-4 w-4" />
                     </Button>
                   </div>
                 </form>
+                </>
               )}
             </div>
           </div>
@@ -154,7 +164,7 @@ export default function Contact() {
 }
 
 function Field({
-  label, name, type = "text", required, as = "input", rows = 3, options = [],
+  label, name, type = "text", required, as = "input", rows = 3, options = [], hint,
 }: {
   label: string;
   name: string;
@@ -163,11 +173,12 @@ function Field({
   as?: "input" | "textarea" | "select";
   rows?: number;
   options?: string[];
+  hint?: string;
 }) {
   const className =
-    "mt-2 w-full rounded-xl border border-ink-200 bg-white px-3.5 py-2.5 text-[14.5px] text-ink-900 outline-none placeholder:text-ink-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-100";
+    "mt-1.5 w-full rounded-2xl border border-ink-200 bg-white px-4 py-3 text-[16px] text-ink-900 outline-none placeholder:text-ink-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-100";
   return (
-    <label className="block text-sm font-medium text-ink-800">
+    <label className="block text-[14px] font-medium text-ink-800">
       {label} {required && <span className="text-brand-600">*</span>}
       {as === "input" && <input type={type} name={name} required={required} className={className} />}
       {as === "textarea" && <textarea name={name} rows={rows} className={className} />}
@@ -179,6 +190,7 @@ function Field({
           ))}
         </select>
       )}
+      {hint ? <span className="mt-1.5 block text-[12.5px] font-normal text-ink-500">{hint}</span> : null}
     </label>
   );
 }

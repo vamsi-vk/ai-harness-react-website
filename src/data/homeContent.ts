@@ -100,18 +100,6 @@ export const HOME_AGENT_GROUPS: { title: string; agents: HomeAgentCard[] }[] = [
         outcome: "Quotes and proposals out the door same day.",
         name: "Proposal Drafting Agent",
         seeTo: "/platform",
-        live: true,
-      },
-      {
-        outcome: "Money in, without the chasing.",
-        name: "Payments & Invoicing Agent",
-        seeTo: "/ai-agents",
-        live: false,
-      },
-      {
-        outcome: "Your best customers, bringing you more.",
-        name: "Referral Agent",
-        seeTo: "/ai-agents",
         live: false,
       },
     ],

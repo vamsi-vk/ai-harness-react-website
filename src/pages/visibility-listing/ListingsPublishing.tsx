@@ -340,9 +340,6 @@ export default function ListingsPublishing() {
   );
 }
 
-const VISIBILITY_HERO_IMAGE_CLASS =
-  "aspect-[5/4] h-auto min-h-[15rem] w-full object-cover object-[40%_center] sm:min-h-[17rem] lg:aspect-[4/3] lg:min-h-[20rem] xl:min-h-[22rem]";
-
 function Hero() {
   return (
     <section className="relative overflow-x-clip border-b border-ink-100/70 pb-12 pt-10 sm:pb-16 sm:pt-14 lg:pb-20 lg:pt-16">
@@ -382,7 +379,6 @@ function Hero() {
             <MarketingHeroImage
               src="/illustrations/custom/visibility-hero-listings.png"
               alt="Retail owner publishing one business profile to multiple directories with sync status"
-              className={VISIBILITY_HERO_IMAGE_CLASS}
             />
           </ScrollReveal>
         </div>
