@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run sitemap && tsc -b && vite build && npm run prerender",
+    "build": "npm run build:no-prerender",
+    "build:with-prerender": "npm run sitemap && tsc -b && vite build && npm run prerender",
     "build:analyze": "npm run sitemap && tsc -b && vite build --mode analyze && npm run prerender",
     "build:no-prerender": "npm run sitemap && tsc -b && vite build",
     "sitemap": "node scripts/generate-sitemap.mjs",
