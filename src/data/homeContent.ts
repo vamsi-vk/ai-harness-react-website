@@ -55,14 +55,14 @@ export const HOME_AGENT_GROUPS: { title: string; agents: HomeAgentCard[] }[] = [
       {
         outcome:
           "Your business gets listed and stays accurate everywhere, so you are the answer customers find on search and when they ask AI.",
-        name: "Listings & Search Visibility Agent",
+        name: "Visibility and Listing",
         seeTo: "/agents/visibility-listing",
         live: true,
       },
       {
         outcome:
           "Your social media, run for you. Plans the month, writes and publishes posts, answers comments and DMs in your voice, and reports what brought in revenue.",
-        name: "Social Media Agent",
+        name: "Marketing Automation AI Agent",
         seeTo: "/agents/marketing-automation",
         live: true,
       },
