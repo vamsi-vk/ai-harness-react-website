@@ -471,8 +471,8 @@ function Agents() {
         className="pointer-events-none absolute -top-24 right-0 h-72 w-72 rounded-full bg-brand-300/25 blur-3xl"
       />
       <Container>
-        <div className="grid items-end gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-          <ScrollReveal>
+        <div>
+          <ScrollReveal className="max-w-2xl">
             <p className="text-xs font-semibold tracking-[0.2em] text-ink-500 uppercase">
               Your AI team
             </p>
@@ -485,50 +485,6 @@ function Agents() {
               visibility, reputation, and the ops that fill your calendar.
             </p>
           </ScrollReveal>
-          {/* Tabs stay outside ScrollReveal — Safari hit-testing breaks on transformed parents */}
-          <div className="relative z-10 lg:pb-2">
-            <p className="text-sm font-medium text-ink-500">Start with a mission</p>
-            <div
-              role="tablist"
-              aria-label="Agent missions"
-              className="mt-3 grid grid-cols-1 gap-2 min-[480px]:grid-cols-3 lg:grid-cols-1"
-            >
-              {WORKFORCE_MISSIONS.map((item, index) => {
-                const selected = index === mission;
-                return (
-                  <button
-                    key={item.title}
-                    type="button"
-                    role="tab"
-                    aria-selected={selected}
-                    aria-controls="home-mission-panel"
-                    onClick={() => selectMission(index)}
-                    className={cn(
-                      "flex items-center justify-between gap-3 rounded-2xl px-3.5 py-3 text-left sm:gap-4 sm:px-4 sm:py-3.5",
-                      selected
-                        ? "bg-ink-950 text-white shadow-lift"
-                        : "bg-white/70 text-ink-700 hover:bg-white",
-                    )}
-                  >
-                    <span className="min-w-0">
-                      <span className="block text-[11px] font-semibold tracking-[0.16em] uppercase opacity-60">
-                        0{index + 1}
-                      </span>
-                      <span className="mt-0.5 block truncate text-sm font-semibold tracking-tight sm:text-base lg:text-lg">
-                        {item.short}
-                      </span>
-                    </span>
-                    <ArrowRight
-                      className={cn(
-                        "h-4 w-4 shrink-0",
-                        selected ? "opacity-100" : "opacity-0",
-                      )}
-                    />
-                  </button>
-                );
-              })}
-            </div>
-          </div>
         </div>
 
         <div
@@ -567,8 +523,53 @@ function Agents() {
             </div>
 
             <div className="relative flex min-w-0 flex-col p-5 sm:p-7 lg:p-9 xl:p-10">
+              {/* Mission tabs live inside the panel and stay horizontal at every breakpoint. */}
+              <div className="relative z-10">
+                <p className="text-sm font-medium text-white/55">Start with a mission</p>
+                <div
+                  role="tablist"
+                  aria-label="Agent missions"
+                  className="mt-3 grid grid-cols-3 gap-2"
+                >
+                  {WORKFORCE_MISSIONS.map((item, index) => {
+                    const selected = index === mission;
+                    return (
+                      <button
+                        key={item.title}
+                        type="button"
+                        role="tab"
+                        aria-selected={selected}
+                        aria-controls="home-mission-panel"
+                        onClick={() => selectMission(index)}
+                        className={cn(
+                          "flex min-w-0 items-center justify-between gap-1.5 rounded-xl border px-2.5 py-2.5 text-left transition sm:rounded-2xl sm:px-3.5 sm:py-3",
+                          selected
+                            ? "border-white/20 bg-white text-ink-950 shadow-lift"
+                            : "border-white/10 bg-white/[0.04] text-white/75 hover:border-white/20 hover:bg-white/[0.08] hover:text-white",
+                        )}
+                      >
+                        <span className="min-w-0">
+                          <span className="block text-[9px] font-semibold tracking-[0.16em] uppercase opacity-55 sm:text-[10px]">
+                            0{index + 1}
+                          </span>
+                          <span className="mt-0.5 block truncate text-xs font-semibold tracking-tight sm:text-sm">
+                            {item.short}
+                          </span>
+                        </span>
+                        <ArrowRight
+                          className={cn(
+                            "hidden h-3.5 w-3.5 shrink-0 sm:block",
+                            selected ? "opacity-100" : "opacity-30",
+                          )}
+                        />
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
               <div className="hidden lg:block">
-                <p className="text-xs font-semibold tracking-[0.18em] text-brand-300 uppercase">
+                <p className="mt-7 text-xs font-semibold tracking-[0.18em] text-brand-300 uppercase">
                   Mission 0{mission + 1}
                 </p>
                 <h3 className="mt-3 text-[clamp(1.35rem,2.2vw,2rem)] font-medium tracking-tight text-white">
