@@ -471,16 +471,16 @@ function Agents() {
         className="pointer-events-none absolute -top-24 right-0 h-72 w-72 rounded-full bg-brand-300/25 blur-3xl"
       />
       <Container>
-        <div className="grid items-end gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+        <div className="grid items-end gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <ScrollReveal>
             <p className="text-xs font-semibold tracking-[0.2em] text-ink-500 uppercase">
               Your AI team
             </p>
-            <h2 className="mt-5 text-[clamp(2.25rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.03em] text-ink-900">
+            <h2 className="mt-5 text-[clamp(1.85rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.03em] text-ink-900">
               Meet the agents that{" "}
               <span className="font-serif italic text-brand-600">do the work</span>
             </h2>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-600">
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-600 sm:text-lg">
               Not a dashboard full of tools. A team you can hire for the jobs that keep slipping:
               visibility, reputation, and the ops that fill your calendar.
             </p>
@@ -491,7 +491,7 @@ function Agents() {
             <div
               role="tablist"
               aria-label="Agent missions"
-              className="mt-3 flex flex-col gap-2"
+              className="mt-3 grid grid-cols-1 gap-2 min-[480px]:grid-cols-3 lg:grid-cols-1"
             >
               {WORKFORCE_MISSIONS.map((item, index) => {
                 const selected = index === mission;
@@ -504,17 +504,17 @@ function Agents() {
                     aria-controls="home-mission-panel"
                     onClick={() => selectMission(index)}
                     className={cn(
-                      "flex items-center justify-between gap-4 rounded-2xl px-4 py-3.5 text-left",
+                      "flex items-center justify-between gap-3 rounded-2xl px-3.5 py-3 text-left sm:gap-4 sm:px-4 sm:py-3.5",
                       selected
                         ? "bg-ink-950 text-white shadow-lift"
                         : "bg-white/70 text-ink-700 hover:bg-white",
                     )}
                   >
-                    <span>
+                    <span className="min-w-0">
                       <span className="block text-[11px] font-semibold tracking-[0.16em] uppercase opacity-60">
                         0{index + 1}
                       </span>
-                      <span className="mt-0.5 block text-base font-semibold tracking-tight sm:text-lg">
+                      <span className="mt-0.5 block truncate text-sm font-semibold tracking-tight sm:text-base lg:text-lg">
                         {item.short}
                       </span>
                     </span>
@@ -534,12 +534,12 @@ function Agents() {
         <div
           id="home-mission-panel"
           role="tabpanel"
-          className="mt-12 grid overflow-hidden rounded-[1.75rem] bg-ink-950 lg:mt-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
+          className="mt-10 overflow-hidden rounded-[1.75rem] bg-ink-950 sm:mt-12 lg:mt-16"
         >
           <div className="grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start">
-            {/* Photo stays fixed — self-start stops the grid row from stretching a blank band under the image */}
-            <div className="relative self-start lg:sticky lg:top-28">
-              <div className="relative h-[16rem] w-full overflow-hidden sm:h-[20rem] lg:h-[34rem]">
+            {/* Fixed photo column — does not grow when accordion expands */}
+            <div className="relative self-start">
+              <div className="relative aspect-[5/4] w-full overflow-hidden sm:aspect-[4/3] lg:aspect-auto lg:h-[min(32rem,70vh)] xl:h-[34rem]">
                 <img
                   key={activeMission.image}
                   src={activeMission.image}
@@ -555,60 +555,66 @@ function Agents() {
                   aria-hidden
                   className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-ink-950 via-ink-950/40 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-ink-950/25 lg:to-ink-950"
                 />
-                <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8 lg:hidden">
-                  <p className="font-serif text-2xl text-white">{agentGroupTitle(group.title)}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/75">{activeMission.blurb}</p>
+                <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-7 lg:hidden">
+                  <p className="font-serif text-xl text-white sm:text-2xl">
+                    {agentGroupTitle(group.title)}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-white/75">
+                    {activeMission.blurb}
+                  </p>
                 </div>
               </div>
             </div>
 
-          <div className="relative flex flex-col justify-between p-6 sm:p-8 lg:p-10">
-            <div className="hidden lg:block">
-              <p className="text-xs font-semibold tracking-[0.18em] text-brand-300 uppercase">
-                Mission 0{mission + 1}
-              </p>
-              <h3 className="mt-3 text-[clamp(1.5rem,2.4vw,2rem)] font-medium tracking-tight text-white">
-                {agentGroupTitle(group.title)}
-              </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-white/65">{activeMission.blurb}</p>
-            </div>
+            <div className="relative flex min-w-0 flex-col p-5 sm:p-7 lg:p-9 xl:p-10">
+              <div className="hidden lg:block">
+                <p className="text-xs font-semibold tracking-[0.18em] text-brand-300 uppercase">
+                  Mission 0{mission + 1}
+                </p>
+                <h3 className="mt-3 text-[clamp(1.35rem,2.2vw,2rem)] font-medium tracking-tight text-white">
+                  {agentGroupTitle(group.title)}
+                </h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-white/65">
+                  {activeMission.blurb}
+                </p>
+              </div>
 
-            <ul className="mt-6 space-y-2 lg:mt-10">
-              {group.agents.map((agent, index) => {
-                const open = openAgent === index;
-                return (
-                  <li key={agent.name}>
-                    <button
-                      type="button"
-                      aria-expanded={open}
-                      onClick={() => setOpenAgent(open ? -1 : index)}
-                      className={cn(
-                        "w-full rounded-2xl border px-4 py-4 text-left transition-colors duration-200 sm:px-5",
-                        open
-                          ? "border-brand-400/50 bg-white/[0.08]"
-                          : "border-white/10 bg-transparent hover:border-white/20 hover:bg-white/[0.04]",
-                      )}
-                    >
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="min-w-0">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <span className="text-base font-semibold text-white sm:text-lg">
-                              {agent.name}
-                            </span>
-                            {agent.live ? (
-                              <span className="inline-flex items-center gap-1.5 rounded-full bg-success/15 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-success-300 uppercase">
-                                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
-                                Live
+              <ul className="mt-5 space-y-2 sm:mt-6 lg:mt-8">
+                {group.agents.map((agent, index) => {
+                  const open = openAgent === index;
+                  return (
+                    <li key={agent.name}>
+                      <button
+                        type="button"
+                        aria-expanded={open}
+                        onClick={() => setOpenAgent(open ? -1 : index)}
+                        className={cn(
+                          "w-full rounded-2xl border px-3.5 py-3.5 text-left transition-colors duration-200 sm:px-5 sm:py-4",
+                          open
+                            ? "border-brand-400/50 bg-white/[0.08]"
+                            : "border-white/10 bg-transparent hover:border-white/20 hover:bg-white/[0.04]",
+                        )}
+                      >
+                        <div className="flex items-start justify-between gap-3 sm:gap-4">
+                          <div className="min-w-0 flex-1">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <span className="text-[15px] font-semibold text-white sm:text-base lg:text-lg">
+                                {agent.name}
                               </span>
-                            ) : (
-                              <span className="text-[11px] font-semibold tracking-wide text-white/35 uppercase">
-                                Soon
-                              </span>
-                            )}
-                          </div>
+                              {agent.live ? (
+                                <span className="inline-flex items-center gap-1.5 rounded-full bg-success/15 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-success-300 uppercase">
+                                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
+                                  Live
+                                </span>
+                              ) : (
+                                <span className="text-[11px] font-semibold tracking-wide text-white/35 uppercase">
+                                  Soon
+                                </span>
+                              )}
+                            </div>
                             {open ? (
                               <div className="mt-3">
-                                <p className="text-[15px] leading-relaxed text-white/70">
+                                <p className="text-sm leading-relaxed text-white/70 sm:text-[15px]">
                                   {agent.outcome}
                                 </p>
                                 {agent.live ? (
@@ -626,7 +632,7 @@ function Agents() {
                           </div>
                           <span
                             className={cn(
-                              "mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/15 text-white/70 transition-transform duration-200",
+                              "mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/15 text-white/70 transition-transform duration-200",
                               open && "rotate-90 border-brand-300/40 text-brand-200",
                             )}
                           >
@@ -638,11 +644,15 @@ function Agents() {
                   );
                 })}
               </ul>
-              <div className="mt-8 flex flex-wrap gap-3 border-t border-white/10 pt-6">
+
+              <div className="mt-6 flex flex-wrap gap-3 border-t border-white/10 pt-5 sm:mt-8 sm:pt-6">
                 <Button to="/platform" variant="white">
                   See all products
                 </Button>
-                <Button to="/signup" className="border border-white/20 bg-transparent text-white hover:bg-white/10">
+                <Button
+                  to="/signup"
+                  className="border border-white/20 bg-transparent text-white hover:bg-white/10"
+                >
                   Start free
                 </Button>
               </div>
