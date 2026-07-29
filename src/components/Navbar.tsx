@@ -158,9 +158,9 @@ export default function Navbar() {
           : "translate-y-0",
       )}
     >
-      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-6 px-6 sm:px-8">
+      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-3 px-4 sm:gap-6 sm:px-6 lg:px-8">
         <Logo />
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-0.5 xl:gap-1 lg:flex">
           {navItems.map((item) =>
             item.children ? (
               <div
@@ -181,7 +181,7 @@ export default function Navbar() {
                       <Link
                         to={item.to}
                         onClick={() => setOpenDropdown(null)}
-                        className="rounded-l-full px-3.5 py-2 pr-1 text-[14px] font-medium"
+                        className="rounded-l-full px-2.5 py-2 pr-1 text-[13px] font-medium xl:px-3.5 xl:text-[14px]"
                       >
                         {item.label}
                       </Link>
@@ -260,7 +260,7 @@ export default function Navbar() {
                 to={item.to}
                 className={({ isActive }) =>
                   cn(
-                    "rounded-full px-3.5 py-2 text-[14px] font-medium transition-colors",
+                    "rounded-full px-2.5 py-2 text-[13px] font-medium transition-colors xl:px-3.5 xl:text-[14px]",
                     isActive ? navLinkActive : navLinkIdle,
                   )
                 }

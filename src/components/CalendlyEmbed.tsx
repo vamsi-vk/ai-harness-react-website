@@ -72,17 +72,14 @@ export default function CalendlyEmbed({ className = "" }: CalendlyEmbedProps) {
         </p>
       </div>
       <div
-        className="relative overflow-hidden bg-white"
-        style={{
-          clipPath:
-            "polygon(0 0, calc(100% - 118px) 0, 100% 118px, 100% 100%, 0 100%)",
-        }}
+        className="relative w-full min-w-0 overflow-hidden bg-white md:[clip-path:polygon(0_0,calc(100%-118px)_0,100%_118px,100%_100%,0_100%)]"
       >
         <InlineWidget
           url={CALENDLY_URL}
           styles={{
             height: `${height}px`,
-            minWidth: "320px",
+            minWidth: "100%",
+            width: "100%",
           }}
           pageSettings={{
             backgroundColor: "ffffff",
@@ -95,7 +92,7 @@ export default function CalendlyEmbed({ className = "" }: CalendlyEmbedProps) {
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute right-0 top-0 z-20 h-[130px] w-[130px] bg-white"
+          className="pointer-events-none absolute right-0 top-0 z-20 hidden h-[130px] w-[130px] bg-white md:block"
           style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%)" }}
         />
       </div>

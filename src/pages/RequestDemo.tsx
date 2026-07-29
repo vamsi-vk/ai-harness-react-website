@@ -13,13 +13,13 @@ export default function RequestDemo() {
         title="Book a demo | See AI-Harness live"
         description="A 30-minute working session, not a pitch. We map AI-Harness to your organization with concrete examples and a draft rollout plan."
       />
-      <section className="relative overflow-hidden pb-20 pt-20">
+      <section className="relative overflow-hidden pb-14 pt-12 sm:pb-16 sm:pt-16 lg:pb-20 lg:pt-20">
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-spotlight" />
         <Container className="relative">
-          <div className="grid gap-14 lg:grid-cols-[1fr_1.15fr] lg:items-stretch">
-            <div className="flex flex-col">
+          <div className="grid gap-10 sm:gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-stretch lg:gap-14">
+            <div className="flex min-w-0 flex-col">
               <Eyebrow>Book a demo</Eyebrow>
-              <h1 className="mt-6 text-[40px] font-semibold leading-[1.04] tracking-[-0.02em] text-ink-900 sm:text-[52px]">
+              <h1 className="mt-6 text-[clamp(2rem,8vw,3.25rem)] font-semibold leading-[1.04] tracking-[-0.02em] text-ink-900">
                 See AI-Harness <span className="text-gradient">live.</span>
               </h1>
               <p className="mt-5 text-[16.5px] leading-relaxed text-ink-600">
@@ -68,7 +68,7 @@ export default function RequestDemo() {
               </div>
             </div>
 
-            <div className="h-full overflow-hidden rounded-[28px] border border-ink-200 bg-white shadow-lift">
+            <div className="h-full min-w-0 overflow-hidden rounded-[22px] border border-ink-200 bg-white shadow-lift sm:rounded-[28px]">
               <CalendlyEmbed />
             </div>
           </div>

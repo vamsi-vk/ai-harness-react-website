@@ -71,7 +71,7 @@ export function MarketingAgentSubNav() {
           <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-3">
             <nav
               aria-label="Marketing Automation AI Agent sections"
-              className="flex items-center gap-0.5 overflow-x-auto"
+              className="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {MARKETING_AGENT_TABS.map((tab) => {
                 const active =

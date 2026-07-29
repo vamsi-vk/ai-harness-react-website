@@ -67,7 +67,7 @@ export function ReputationAgentSubNav() {
 
           <nav
             aria-label="Reputation & Sentiment AI Agent sections"
-            className="flex items-center gap-0.5 overflow-x-auto"
+            className="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {REPUTATION_AGENT_TABS.map((tab) => {
               const active =

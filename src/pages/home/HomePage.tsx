@@ -684,7 +684,7 @@ function WhatChanges() {
         </ScrollReveal>
 
         <div className="mt-6 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-soft sm:mt-8">
-          <div className="hidden border-b border-ink-200 bg-gradient-to-r from-ink-50 via-white to-brand-50/80 px-3 py-4 sm:px-4 lg:grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.1fr)_auto_minmax(0,1.1fr)_minmax(110px,0.55fr)] lg:items-center lg:gap-3 lg:px-5">
+          <div className="hidden border-b border-ink-200 bg-gradient-to-r from-ink-50 via-white to-brand-50/80 px-3 py-4 sm:px-4 xl:grid xl:grid-cols-[minmax(0,0.85fr)_minmax(0,1.1fr)_auto_minmax(0,1.1fr)_minmax(110px,0.55fr)] xl:items-center xl:gap-3 xl:px-5">
             <p className="text-[12px] font-bold tracking-[0.12em] text-ink-800 uppercase">
               The work
             </p>
@@ -705,11 +705,11 @@ function WhatChanges() {
               <div
                 key={row.title}
                 className={cn(
-                  "px-3 py-3 sm:px-4 sm:py-3.5 lg:px-5",
+                  "px-3 py-3 sm:px-4 sm:py-3.5 xl:px-5",
                   i > 0 && "border-t border-ink-100",
                 )}
               >
-                <div className="grid gap-2.5 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.1fr)_auto_minmax(0,1.1fr)_minmax(110px,0.55fr)] lg:items-center lg:gap-3">
+                <div className="grid gap-2.5 xl:grid-cols-[minmax(0,0.85fr)_minmax(0,1.1fr)_auto_minmax(0,1.1fr)_minmax(110px,0.55fr)] xl:items-center xl:gap-3">
                   <div className="flex items-center gap-2.5">
                     <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 text-white">
                       <Icon className="h-3.5 w-3.5" />
@@ -730,7 +730,7 @@ function WhatChanges() {
                       <X className="h-2.5 w-2.5" strokeWidth={3} />
                     </span>
                     <div className="min-w-0">
-                      <p className="mb-1 inline-flex rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-bold tracking-[0.1em] text-red-700 uppercase ring-1 ring-red-200/70 lg:hidden">
+                      <p className="mb-1 inline-flex rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-bold tracking-[0.1em] text-red-700 uppercase ring-1 ring-red-200/70 xl:hidden">
                         Your team today, doing it by hand
                       </p>
                       <p className="text-[12px] leading-snug text-ink-600 sm:text-[13px]">
@@ -739,7 +739,7 @@ function WhatChanges() {
                     </div>
                   </div>
 
-                  <div className="hidden justify-center lg:flex">
+                  <div className="hidden justify-center xl:flex">
                     <span className="grid h-6 w-6 place-items-center rounded-full bg-brand-50 text-brand-600 ring-1 ring-brand-200">
                       <ArrowRight className="h-3 w-3" />
                     </span>
@@ -750,7 +750,7 @@ function WhatChanges() {
                       <Check className="h-2.5 w-2.5" strokeWidth={3} />
                     </span>
                     <div className="min-w-0">
-                      <p className="mb-1 inline-flex rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-bold tracking-[0.1em] text-brand-800 uppercase ring-1 ring-brand-300/70 lg:hidden">
+                      <p className="mb-1 inline-flex rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-bold tracking-[0.1em] text-brand-800 uppercase ring-1 ring-brand-300/70 xl:hidden">
                         With your AI-Harness workforce
                       </p>
                       <p className="text-[12px] leading-snug text-ink-700 sm:text-[13px]">
@@ -862,9 +862,9 @@ function Industries() {
       </Container>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto grid max-w-[1400px] lg:grid-cols-[minmax(280px,0.38fr)_minmax(0,0.62fr)]">
+        <div className="mx-auto grid max-w-[1400px] xl:grid-cols-[minmax(240px,0.36fr)_minmax(0,0.64fr)]">
           {/* Industry rail: primary interactive control */}
-          <div className="relative flex flex-col border-b border-white/10 lg:border-r lg:border-b-0">
+          <div className="relative flex flex-col border-b border-white/10 xl:border-r xl:border-b-0">
             <p className="px-6 pt-6 text-xs font-semibold tracking-[0.18em] text-white/45 uppercase sm:px-8">
               Choose an industry
             </p>
@@ -872,7 +872,7 @@ function Industries() {
               role="tablist"
               aria-label="Industries"
               id={tablistId}
-              className="flex gap-2 overflow-x-auto px-4 py-4 [-ms-overflow-style:none] [scrollbar-width:none] sm:px-6 lg:flex-col lg:gap-0 lg:overflow-visible lg:px-0 lg:py-4 [&::-webkit-scrollbar]:hidden"
+              className="flex gap-2 overflow-x-auto px-4 py-4 [-ms-overflow-style:none] [scrollbar-width:none] sm:px-6 xl:flex-col xl:gap-0 xl:overflow-visible xl:px-0 xl:py-4 [&::-webkit-scrollbar]:hidden"
             >
               {HOME_INDUSTRY_SLIDES.map((item, index) => {
                 const selected = index === active;
@@ -896,30 +896,30 @@ function Industries() {
                       }
                     }}
                     className={cn(
-                      "relative shrink-0 text-left lg:w-full",
-                      "rounded-full px-5 py-3 lg:rounded-none lg:px-8 lg:py-5",
+                      "relative shrink-0 text-left xl:w-full",
+                      "rounded-full px-5 py-3 xl:rounded-none xl:px-8 xl:py-5",
                       selected
-                        ? "bg-white text-ink-950 lg:bg-white/[0.07] lg:text-white"
-                        : "bg-white/10 text-white/70 hover:bg-white/15 hover:text-white lg:bg-transparent lg:hover:bg-white/[0.04]",
+                        ? "bg-white text-ink-950 xl:bg-white/[0.07] xl:text-white"
+                        : "bg-white/10 text-white/70 hover:bg-white/15 hover:text-white xl:bg-transparent xl:hover:bg-white/[0.04]",
                     )}
                   >
-                    <span className="flex items-baseline gap-3 lg:gap-4">
+                    <span className="flex items-baseline gap-3 xl:gap-4">
                       <span
                         className={cn(
-                          "hidden font-mono text-[11px] tracking-wider lg:inline",
+                          "hidden font-mono text-[11px] tracking-wider xl:inline",
                           selected ? "text-brand-300" : "text-white/30",
                         )}
                       >
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <span className="block text-[15px] font-semibold tracking-tight sm:text-base lg:text-[1.35rem] lg:leading-tight">
+                      <span className="block text-[15px] font-semibold tracking-tight sm:text-base xl:text-[1.35rem] xl:leading-tight">
                         {item.tabLabel}
                       </span>
                     </span>
                     {selected ? (
                       <span
                         aria-hidden
-                        className="absolute top-1/2 left-0 hidden h-8 w-1 -translate-y-1/2 rounded-r-full bg-brand-400 lg:block"
+                        className="absolute top-1/2 left-0 hidden h-8 w-1 -translate-y-1/2 rounded-r-full bg-brand-400 xl:block"
                       />
                     ) : null}
                   </button>
@@ -1248,7 +1248,7 @@ function Pricing() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[42rem] -translate-x-1/2 rounded-full bg-brand-500/20 blur-3xl"
+        className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[24rem] -translate-x-1/2 rounded-full bg-brand-500/20 blur-3xl sm:w-[32rem] lg:w-[42rem]"
       />
       <div
         aria-hidden

@@ -67,7 +67,7 @@ export function VisibilityListingSubNav() {
 
           <nav
             aria-label="Visibility and Listing sections"
-            className="flex items-center gap-0.5 overflow-x-auto"
+            className="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {VISIBILITY_LISTING_TABS.map((tab) => {
               const active =

@@ -326,7 +326,7 @@ function Hero() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={80} className="relative min-w-0 lg:-ml-4 xl:-ml-6">
+          <ScrollReveal delay={80} className="relative min-w-0 xl:-ml-4 2xl:-ml-6">
             <MarketingHeroImage
               src="/illustrations/custom/marketing-hero-main.png"
               alt="Café owner managing social marketing with AI-powered calendar, campaign suggestions, and post previews"

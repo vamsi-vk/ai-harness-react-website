@@ -94,8 +94,8 @@ export default function Footer() {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ink-600 to-transparent" />
 
       <Container className="relative py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(4,1fr)] xl:grid-cols-[1.4fr_repeat(5,1fr)]">
-          <div>
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(4,1fr)] 2xl:grid-cols-[1.4fr_repeat(5,1fr)]">
+          <div className="min-w-0">
             <Logo dark />
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-ink-400">
               The AI agent platform that gives your business an AI workforce, agents that run your
@@ -131,12 +131,12 @@ export default function Footer() {
             </div>
           </div>
           {columns.map((col) => (
-            <div key={col.title}>
+            <div key={col.title} className="min-w-0">
               <h4 className="text-sm font-semibold uppercase tracking-[0.14em] text-white">{col.title}</h4>
               <ul className="mt-5 space-y-3 text-[14.5px]">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <Link to={l.to} className="text-ink-400 transition-colors hover:text-white">
+                    <Link to={l.to} className="break-words text-ink-400 transition-colors hover:text-white">
                       {l.label}
                     </Link>
                   </li>

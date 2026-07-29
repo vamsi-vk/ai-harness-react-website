@@ -355,7 +355,7 @@ function Hero() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={80} className="relative min-w-0 lg:-ml-4 xl:-ml-6">
+          <ScrollReveal delay={80} className="relative min-w-0 xl:-ml-4 2xl:-ml-6">
             <MarketingHeroImage
               src="/illustrations/custom/visibility-hero-analytics.png"
               alt="Business owner reviewing visibility analytics, ranking trends, and location comparisons on a tablet"
